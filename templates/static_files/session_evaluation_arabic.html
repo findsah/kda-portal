@@ -1,0 +1,347 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Session Evaluation' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Session Evaluation' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <form class="new-added-form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Student Name' %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ a_intv.session.intervention.student.full_name }}</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Session Evaluation Date' %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ a_intv.date }}</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Letter' %}</label>
+                        <select class="select2" name="letter_number" onchange="form.requestSubmit();">
+                            <option value="1">{% translate 'Please Select Letter' %}</option>
+                            <option value="1" {% if letter_number == "1" %}selected="selected"{% endif %} {% if n_of_letters != 1 %}disabled="disabled"{% endif %}>الراء</option>
+                            <option value="2" {% if letter_number == "2" %}selected="selected"{% endif %} {% if n_of_letters != 2 %}disabled="disabled"{% endif %}>الباء</option>
+                            <option value="3" {% if letter_number == "3" %}selected="selected"{% endif %} {% if n_of_letters != 3 %}disabled="disabled"{% endif %}>العين</option>
+                            <option value="4" {% if letter_number == "4" %}selected="selected"{% endif %} {% if n_of_letters != 4 %}disabled="disabled"{% endif %}>الدال</option>
+                            <option value="5" {% if letter_number == "5" %}selected="selected"{% endif %} {% if n_of_letters != 5 %}disabled="disabled"{% endif %}>السين</option>
+                            <option value="6" {% if letter_number == "6" %}selected="selected"{% endif %} {% if n_of_letters != 6 %}disabled="disabled"{% endif %}>الميم</option>
+                            <option value="7" {% if letter_number == "7" %}selected="selected"{% endif %} {% if n_of_letters != 7 %}disabled="disabled"{% endif %}>النون</option>
+                            <option value="8" {% if letter_number == "8" %}selected="selected"{% endif %} {% if n_of_letters != 8 %}disabled="disabled"{% endif %}>التنوين</option>
+                            <option value="9" {% if letter_number == "9" %}selected="selected"{% endif %} {% if n_of_letters != 9 %}disabled="disabled"{% endif %}>الصاد</option>
+                            <option value="10" {% if letter_number == "10" %}selected="selected"{% endif %} {% if n_of_letters != 10 %}disabled="disabled"{% endif %}>الزاي</option>
+                            <option value="11" {% if letter_number == "11" %}selected="selected"{% endif %} {% if n_of_letters != 11 %}disabled="disabled"{% endif %}>الكاف</option>
+                            <option value="12" {% if letter_number == "12" %}selected="selected"{% endif %} {% if n_of_letters != 12 %}disabled="disabled"{% endif %}>الهاء</option>
+                            <option value="13" {% if letter_number == "13" %}selected="selected"{% endif %} {% if n_of_letters != 13 %}disabled="disabled"{% endif %}>النون</option>
+                            <option value="14" {% if letter_number == "14" %}selected="selected"{% endif %} {% if n_of_letters != 14 %}disabled="disabled"{% endif %}>التاء المربوطة</option>
+                            <option value="15" {% if letter_number == "15" %}selected="selected"{% endif %} {% if n_of_letters != 15 %}disabled="disabled"{% endif %}>الحاء</option>
+                            <option value="16" {% if letter_number == "16" %}selected="selected"{% endif %} {% if n_of_letters != 16 %}disabled="disabled"{% endif %}>الواو</option>
+                            <option value="17" {% if letter_number == "17" %}selected="selected"{% endif %} {% if n_of_letters != 17 %}disabled="disabled"{% endif %}>الفاء</option>
+                            <option value="18" {% if letter_number == "18" %}selected="selected"{% endif %} {% if n_of_letters != 18 %}disabled="disabled"{% endif %}>الياء</option>
+                            <option value="19" {% if letter_number == "19" %}selected="selected"{% endif %} {% if n_of_letters != 19 %}disabled="disabled"{% endif %}>الضاد</option>
+                            <option value="20" {% if letter_number == "20" %}selected="selected"{% endif %} {% if n_of_letters != 20 %}disabled="disabled"{% endif %}>اللام</option>
+                            <option value="21" {% if letter_number == "21" %}selected="selected"{% endif %} {% if n_of_letters != 21 %}disabled="disabled"{% endif %}>الألف</option>
+                            <option value="22" {% if letter_number == "22" %}selected="selected"{% endif %} {% if n_of_letters != 22 %}disabled="disabled"{% endif %}>همزتا الوصل والقطع</option>
+                            <option value="23" {% if letter_number == "23" %}selected="selected"{% endif %} {% if n_of_letters != 23 %}disabled="disabled"{% endif %}>الهمزة المتوسطة</option>
+                            <option value="24" {% if letter_number == "24" %}selected="selected"{% endif %} {% if n_of_letters != 24 %}disabled="disabled"{% endif %}>الهمزة آخر الكلمة</option>
+                            <option value="25" {% if letter_number == "25" %}selected="selected"{% endif %} {% if n_of_letters != 25 %}disabled="disabled"{% endif %}>الألف المتطرفة</option>
+                            <option value="26" {% if letter_number == "26" %}selected="selected"{% endif %} {% if n_of_letters != 26 %}disabled="disabled"{% endif %}>الشدة</option>
+                            <option value="27" {% if letter_number == "27" %}selected="selected"{% endif %} {% if n_of_letters != 27 %}disabled="disabled"{% endif %}>الـ التعريف</option>
+                            <option value="28" {% if letter_number == "28" %}selected="selected"{% endif %} {% if n_of_letters != 28 %}disabled="disabled"{% endif %}>مهارة دخول حرف على الكلمة المبدوءة بـ ال</option>
+                            <option value="29" {% if letter_number == "29" %}selected="selected"{% endif %} {% if n_of_letters != 29 %}disabled="disabled"{% endif %}>القاف</option>
+                            <option value="30" {% if letter_number == "30" %}selected="selected"{% endif %} {% if n_of_letters != 30 %}disabled="disabled"{% endif %}>الجيم</option>
+                            <option value="31" {% if letter_number == "31" %}selected="selected"{% endif %} {% if n_of_letters != 31 %}disabled="disabled"{% endif %}>التاء</option>
+                            <option value="32" {% if letter_number == "32" %}selected="selected"{% endif %} {% if n_of_letters != 32 %}disabled="disabled"{% endif %}>الطاء</option>
+                            <option value="33" {% if letter_number == "33" %}selected="selected"{% endif %} {% if n_of_letters != 33 %}disabled="disabled"{% endif %}>الغين</option>
+                            <option value="34" {% if letter_number == "34" %}selected="selected"{% endif %} {% if n_of_letters != 34 %}disabled="disabled"{% endif %}>الشين</option>
+                            <option value="35" {% if letter_number == "35" %}selected="selected"{% endif %} {% if n_of_letters != 35 %}disabled="disabled"{% endif %}>الذال</option>
+                            <option value="36" {% if letter_number == "36" %}selected="selected"{% endif %} {% if n_of_letters != 36 %}disabled="disabled"{% endif %}>الخاء</option>
+                            <option value="37" {% if letter_number == "37" %}selected="selected"{% endif %} {% if n_of_letters != 37 %}disabled="disabled"{% endif %}>الطاء</option>
+                        </select>
+                    </div>
+                    <input value="{{ letter_number }}" name="letter_number" hidden>
+                {% if letter_number %}
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <p><strong>{% translate 'Skills:' %}</strong></p>
+                    </div>
+                    {% if letter_number in general %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز الصوت المكرر في الجملة العلاجية</label>
+                            <select class="select2" name="f%one" onchange="form.requestSubmit();" {% if skills.one %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                         <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.one %}style="display: none"{% endif %}>
+                            <label>يضع دائة حول الحرف المعالج</label>
+                            <select class="select2" name="f%two" onchange="form.requestSubmit();" {% if skills.two %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.two == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.two == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.two == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.two == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                         <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.two %}style="display: none"{% endif %}>
+                            <label>يميز بين صوت الحرف المعالج القصير والطويل</label>
+                            <select class="select2" name="f%three" onchange="form.requestSubmit();" {% if skills.three %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.three == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.three == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.three == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.three == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                         <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.three %}style="display: none"{% endif %}>
+                            <label>يكتب الحرف المعالج بأشكاله بحسب موقعه بالجملة</label>
+                            <select class="select2" name="f%four" onchange="form.requestSubmit();" {% if skills.four %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                 <option value="acceptable" {% if skills.four == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.four == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.four == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.four == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                         <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.four %}style="display: none"{% endif %}>
+                            <label>يحدد المقطع الساكن</label>
+                            <select class="select2" name="f%five" onchange="form.requestSubmit();" {% if skills.five %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                 <option value="acceptable" {% if skills.five == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.five == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.five == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.five == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                         <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.five %}style="display: none"{% endif %}>
+                            <label>يركب كلمات من مقاطع مد</label>
+                            <select class="select2" name="f%six" onchange="form.requestSubmit();" {% if skills.six %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                 <option value="acceptable" {% if skills.six == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.six == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.six == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.six == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                         <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.six %}style="display: none"{% endif %}>
+                            <label>يقرأ جمل مكونة من  كلمات محتوية على أصوات سبق دراستها</label>
+                            <select class="select2" name="f%seven" onchange="form.requestSubmit();" {% if skills.seven %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                 <option value="acceptable" {% if skills.seven == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.seven == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.seven == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.seven == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                         <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.seven %}style="display: none"{% endif %}>
+                            <label>يكتب ما يملى عليه</label>
+                            <select class="select2" name="l%eight" onchange="form.requestSubmit();" {% if skills.eight %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                 <option value="acceptable" {% if skills.eight == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.eight == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.eight == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.eight == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '8' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز بين أنواع التنوين الثلاثة</label>
+                            <select class="select2" name="f%a_one" onchange="form.requestSubmit();" {% if skills.a_one %}disabled {% endif %}>
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.a_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.a_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.a_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.a_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.a_one %}style="display: none"{% endif %}>
+                            <label>يقرأ جمل محتوية على كلمات منونة</label>
+                            <select class="select2" name="l%a_two" onchange="form.requestSubmit();" {% if skills.a_two %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.n_two == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.n_two == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.n_two == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.n_two == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '14' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز بين التاء المربوطة والمفتوحة</label>
+                            <select class="select2" name="l%b_one" onchange="form.requestSubmit();" {% if skills.b_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.b_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.b_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.b_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.b_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '22' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز بين همزتي الوصل والقطع قراءةً</label>
+                            <select class="select2" name="f%c_one" onchange="form.requestSubmit();" {% if skills.c_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.c_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.c_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.c_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.c_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.c_one %}style="display: none"{% endif %}>
+                            <label>يميز بين همزتي الوصل والقطع كتابةً</label>
+                            <select class="select2" name="l%c_two" onchange="form.requestSubmit();" {% if skills.c_two %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.c_two == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.c_two == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.c_two == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.c_two == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '23' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يكتب كلمات محتوية على همزة متوسطة على ألف</label>
+                            <select class="select2" name="f%d_one" onchange="form.requestSubmit();" {% if skills.d_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.d_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.d_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.d_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.d_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.d_one %}style="display: none"{% endif %}>
+                            <label>يكتب كلمات محتوية على همزة متوسطة على واو</label>
+                            <select class="select2" name="f%d_two" onchange="form.requestSubmit();" {% if skills.d_two %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.d_two == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.d_two == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.d_two == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.d_two == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.d_two %}style="display: none"{% endif %}>
+                            <label>يكتب كلمات محتوية على همزة متوسطة على ياء</label>
+                            <select class="select2" name="f%d_three" onchange="form.requestSubmit();" {% if skills.d_three %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.d_three == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.d_three == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.d_three == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.d_three == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.d_three %}style="display: none"{% endif %}>
+                            <label>يكتب كلمات محتوية على همزة متوسطة على السطر</label>
+                            <select class="select2" name="l%d_four" onchange="form.requestSubmit();" {% if skills.d_four %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.d_four == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.d_four == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.d_four == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.d_four == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '24' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز بين اشكال الهمزة آخر الكلمة المسبوقة بفتحة وضمة وكسرة</label>
+                            <select class="select2" name="l%e_one" onchange="form.requestSubmit();" {% if skills.e_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.e_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.e_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.e_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.e_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '25' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز بين الألف المتطرفة الممدودة والتي تكتب على شكل الياء المقصورة</label>
+                            <select class="select2" name="l%f_one" onchange="form.requestSubmit();" {% if skills.f_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.f_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.f_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.f_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.f_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '26' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز  المقطع المشددة قراءةً</label>
+                            <select class="select2" name="f%g_one" onchange="form.requestSubmit();" {% if skills.g_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.g_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.g_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.g_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.g_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.g_one %}style="display: none"{% endif %}>
+                            <label>يميز المقطع المشدد كتابةً</label>
+                            <select class="select2" name="l%g_two" onchange="form.requestSubmit();" {% if skills.g_two %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.g_two == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.g_two == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.g_two == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.g_two == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '27' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يميز بين اللام القمرية واللام الشمسية قراءةً</label>
+                            <select class="select2" name="f%h_one" onchange="form.requestSubmit();" {% if skills.h_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.h_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.h_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.h_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.h_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.h_one %}style="display: none"{% endif %}>
+                            <label>يميز بين اللام القمرية واللام الشمسية كتابةً</label>
+                            <select class="select2" name="l%h_two" onchange="form.requestSubmit();" {% if skills.h_two %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.h_two == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.h_two == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.h_two == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.h_two == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% elif letter_number == '28' %}
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>يجيد كتابة كلمات محتوية على ال التعريف دخل عليها حرف من حروف الجر ( بـ  , كـ  , لـ ) او حرف الفاء</label>
+                            <select class="select2" name="l%i_one" onchange="form.requestSubmit();" {% if skills.i_one %}disabled {% endif %} >
+                                <option value="">{% translate 'Please Select Grade' %}</option>
+                                <option value="acceptable" {% if skills.i_one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                                <option value="good" {% if skills.i_one == "good" %}selected="selected"{% endif %}>جيد</option>
+                                <option value="vgood" {% if skills.i_one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                                <option value="excellent" {% if skills.i_one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                            </select>
+                        </div>
+                    {% endif %}
+                     <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <a href="{% url 'eva-search' a_intv.session.intervention.teacher.id %}"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Back" %}</button></a>
+                    </div>
+                {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+
+
+
+    </script>
+
+
+{% endblock %}

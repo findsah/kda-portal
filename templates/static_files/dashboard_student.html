@@ -1,0 +1,592 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+        <div class="breadcrumbs-area">
+            <div class="row">
+                <h3>{% translate 'Dashboard of' %} "{{ student.full_name }}"</h3>
+            </div>
+            <ul>
+                <li>
+                    <a href="index.html">{% translate 'Home' %}</a>
+                </li>
+                <li>{% translate 'Student' %}</li>
+            </ul>
+        </div>
+
+{#        <div class="col-8-xxxl col-12">#}
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-magenta">
+                                    <i class="flaticon-shopping-list text-magenta"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Current Sessions' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ on_going }}>{{ on_going }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="item-icon bg-light-blue">
+                                    <i class="flaticon-calendar text-blue"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Concluded Sessions' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ concluded }}>{{ concluded }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-couple text-orange"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Attended Sessions' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ attended }}>{{ attended }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-calendar text-green"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Student Absents' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ stu_absents }}>{{ stu_absents }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-calendar text-violet-blue"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Teacher Absents' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ teacher_absents }}>{{ teacher_absents }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-reload text-red"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Cancelled' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ cancelled }}>{{ cancelled }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-percentage-discount text-orange"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Attendance' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ attendance|floatformat:0 }}>{{ attendance|floatformat:0 }}<span>%</span></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{#        </div>#}
+
+         <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>{% translate 'Monitor Performance' %}:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for subj in subjs.keys %}
+                         <div class="col-xl-6 col-lg-6 col-12">
+                            <a href={% url 'monitor-performance' student.id subj%}> <button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% if subj == 'Arabic' %}{% translate 'Arabic' %}{% elif subj == 'English' %}{% translate 'English' %}{% endif %}</button></a>
+                         </div>
+                     {% endfor %}
+                </div>
+            </div>
+         </div>
+
+        <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>{% translate 'Student Information' %}:</h3>
+                    </div>
+                </div>
+                <div class="student-info">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-12">
+                            {% if student.profile_pic %}
+                                <img src="{{ student.profile_pic.url }}" class="" alt="student">
+                            {% else %}
+                                <img style="max-width: 210px" src="{% static 'image_2021-07-26_142124.png' %}" class="media-img-auto" alt="student">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="table-responsive info-table">
+                        <table class="table text-nowrap">
+                            <tbody>
+                                <tr>
+                                    <td>{% translate 'Name' %}:</td>
+                                    <td class="font-medium text-dark-medium">{{ student.full_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Gender' %}:</td>
+                                    <td class="font-medium text-dark-medium">{% if student.gender == 'Male' %}{% translate 'Male' %}{% elif student.gender == 'Female' %}{% translate 'Female' %}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Nationality' %}:</td>
+                                    <td class="font-medium text-dark-medium">{% if student.nationality %}{{ student.nationality }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Date Of Birth' %}:</td>
+                                    <td class="font-medium text-dark-medium">{{ student.dob|date:'d/m/Y' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Age' %}:</td>
+                                    <td class="font-medium text-dark-medium">{{ student.age }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'School' %}:</td>
+                                    <td class="font-medium text-dark-medium">{% if student.student %}{{ student.school }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Class' %}:</td>
+                                    <td class="font-medium text-dark-medium">{% if student.class_name %}{{ student.class_name }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Language' %}:</td>
+                                    <td class="font-medium text-dark-medium">{% if student.language %}{{ student.language }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'School Language' %}</td>
+                                    <td class="font-medium text-dark-medium">{% if student.s_language %}{{ student.s_language }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Contact Information' %}:</td>
+                                    <td class="font-medium text-dark-medium">{% if student.mobile_number %}{{ student.mobile_number }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% translate 'Subjects Enrolled' %}</td>
+                                    <td class="font-medium text-dark-medium">{% for s in subjs.keys %}{% if not forloop.first %}, {% endif %}{% if s == 'English' %}{% translate 'English' %}{% elif s == 'Arabic' %}{% translate 'Arabic' %}{% endif %}{% endfor %}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Parent' %}:</h3>
+                        </div>
+                    </div>
+                    {% if parent %}
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-12">
+                                <label><strong>{% translate 'Name' %}:</strong></label>
+                                {{ parent.full_name }}
+                            </div>
+{#                            <div class="col-xl-6 col-lg-6 col-12">#}
+{#                                <a href="{% url 'assign_parent' student.username %}"><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Change' %}</button></a>#}
+{#                            </div>#}
+                        </div>
+                    {% else %}
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-12">
+                                <h5>No Parent assigned</h5>
+                            </div>
+{#                            <div class="col-xl-6 col-lg-6 col-12">#}
+{#                                <a href="{% url 'assign_parent' student.username %}"><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Assign' %}</button></a>#}
+{#                            </div>#}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            {% if assessment %}
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Assessment Results' %}:</h3>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table display text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>{% translate 'Psychologist' %}</th>
+                                    <th>{% translate 'Results' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ assessment.appointment.psychologist.full_name }}</td>
+                                    <td><a href="{% url 'assessment-graph' assessment.appointment.id %}"><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Check' %}</button></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Child Case Form' %}:</h3>
+                        </div>
+                        {% if child_case %}
+                        <div>
+                            <a href="https://v2.convertapi.com/convert/web/to/pdf?download=inline&secret=IqqTZPI6mCvzto4E&url=http://40.89.138.111/download-child-case/{{ student.id }}/&FileName=Child_Case_{{ student.id }}&&PageSize=a2"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Download' %}</button></a>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <a href="{% url 'child-case' student.id %}"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Add/Edit' %}</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Reports' %}:</h3>
+                        </div>
+                        {% if stanford %}
+                        <div>
+                            <a href="https://v2.convertapi.com/convert/web/to/pdf?download=inline&secret=IqqTZPI6mCvzto4E&url=http://40.89.138.111/download-stanford/{{ student.id }}/&FileName=Stanford_{{ student.id }}&&PageSize=a2"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Stanford' %}</button></a>
+                        </div>
+                        {% endif %}
+                        {% if secondary %}
+                        <div>
+                            <a href="https://v2.convertapi.com/convert/web/to/pdf?download=inline&secret=IqqTZPI6mCvzto4E&url=http://40.89.138.111/download-secondary/{{ student.id }}/&FileName=Secondary{{ student.id }}&&PageSize=a2"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Secondary' %}</button></a>
+                        </div>
+                        {% endif %}
+                        {% if junior %}
+                        <div>
+                            <a href="https://v2.convertapi.com/convert/web/to/pdf?download=inline&secret=IqqTZPI6mCvzto4E&url=http://40.89.138.111/download-junior/{{ student.id }}/&FileName=Junior{{ student.id }}&&PageSize=a2"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Junior' %}</button></a>
+                        </div>
+                        {% endif %}
+                        {% if acops %}
+                        <div>
+                            <a href="https://v2.convertapi.com/convert/web/to/pdf?download=inline&secret=IqqTZPI6mCvzto4E&url=http://40.89.138.111/download-acops/{{ student.id }}/&FileName=ACOPS{{ student.id }}&&PageSize=a2"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'ACOPS' %}</button></a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% if request.user.role.name == 'Parent' %}
+                {% if subjs %}
+                    <div class="card height-auto">
+                        <div class="card-body">
+                            <div class="heading-layout1">
+                                <div class="item-title">
+                                    <h3>{% translate 'Upload Homework' %}:</h3>
+                                </div>
+                            </div>
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="table-responsive">
+                                    <table class="table display  text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>{% translate "Subject" %}</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for subj in subjs %}
+                                                <tr>
+                                                    <td>{{ subj }}</td>
+                                                    <td><input name="homework_file" type="file"></td>
+                                                    <td><button type="submit" name="{{ subj }}" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Save' %}</button></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+
+            {% if request.user.role.name == 'Receptionist' %}
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Enroll To A Course' %}:</h3>
+                            <sub>{% translate 'Currently Enrolled' %}: <strong>{% for s in subjs.keys %}{% if not forloop.first %}, {% endif %}{% if s == 'English' %}{% translate 'English' %}{% elif s == 'Arabic' %}{% translate 'Arabic' %}{% endif %}{% endfor %}</strong></sub>
+                        </div>
+                        {% if 'English' in subjs.keys and 'Arabic' in subjs.keys %}
+                            <div>
+                                <h5>{% translate 'Already Enrolled to every course available' %}</h5>
+                            </div>
+                        {% else %}
+                            <div>
+                                <a href={% url 'add_intervention' student.id %}> <button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Enroll' %}?</button></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Time Table of Sessions for Each Course' %}:</h3>
+                        </div>
+                    </div>
+
+{#                        <div class="table-responsive">#}
+{#                            <table class="table display data-table text-nowrap">#}
+{#                                <thead>#}
+{#                                    <tr>#}
+{#                                        <th>{% translate 'Subject' %}</th>#}
+{#                                        <th>{% translate 'Teacher Name' %}</th>#}
+{#                                        <th>{% translate 'Session Time' %}</th>#}
+{#                                        <th>{% translate 'Session Day' %}</th>#}
+{#                                    </tr>#}
+{#                                </thead>#}
+{#                                <tbody>#}
+{#                                    {% for subj, intv in subjs.items %}#}
+{#                                        <tr>#}
+{#                                        <td>{{ subj }}</td>#}
+{#                                        <td>{{ intv.teacher.full_name }}</td>#}
+{#                                        <td>{{ intv.time }}</td>#}
+{#                                        <td>{{ intv.day }}</td>#}
+{#                                        </tr>#}
+{#                                    {% endfor %}#}
+{#                                 </tbody>#}
+{#                            </table>#}
+{#                        </div>#}
+
+                <div class="table-responsive">
+                <table class="table display  text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>{% translate "Teacher Name" %}</th>
+{#                            <th></th>#}
+                            <th>{% translate "Subject" %}</th>
+                            <th>{% translate "Start Date" %}</th>
+                            <th>{% translate "Total Sessions" %}</th>
+                            <th>{% translate "Sessions Conducted" %}</th>
+                            <th>{% translate "Status" %}</th>
+                            {% if request.user.role.name == 'Receptionist' %}
+                                <th></th>
+                            {% endif %}
+                            <th>{% translate "Day" %}</th>
+                            <th>{% translate "Time" %}</th>
+{#                            {% if today %}#}
+{#                                <th>{% translate "Status" %}</th>#}
+{#                            {% endif %}#}
+{#                            {% if request.user.role.name == 'Receptionist' and not today%}#}
+{#                                <th>{% translate "Reschedule" %}</th>#}
+{#                                <th>{% translate "Status" %}</th>#}
+{#                            {% endif %}#}
+{#                            <th></th>#}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for intv in all_interventions %}
+                            <tr>
+                                <td rowspan="{{ intv.count|add:1 }}">{{ intv.teacher.full_name }}</td>
+{#                                <td rowspan="{{ intv.count|add:1 }}">#}
+{#                                    <div class="dropdown">#}
+{#                                        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"#}
+{#                                            aria-expanded="false">#}
+{#                                            <span class="flaticon-more-button-of-three-dots"></span>#}
+{#                                        </a>#}
+{#                                        <div class="dropdown-menu dropdown-menu-right">#}
+{#                                            <a class="dropdown-item" href="#">Change Teacher</a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </td>#}
+                                <td rowspan="{{ intv.count|add:1 }}">{% if intv.teacher.subject_teaching == 'English' %}{% translate 'English' %}{% elif intv.teacher.subject_teaching == 'Arabic' %}{% translate 'Arabic' %}{% endif %}</td>
+                                <td rowspan="{{ intv.count|add:1 }}">{{ intv.start_date|date:'d/m/Y' }}</td>
+                                <td rowspan="{{ intv.count|add:1 }}">{{ intv.total_sessions }}</td>
+                                <td rowspan="{{ intv.count|add:1 }}">{{ intv.conducted }}</td>
+                                <td rowspan="{{ intv.count|add:1 }}">{% if intv.status == 'Not_Active' %}{% translate 'Not Active' %}Not Active{% elif intv.status == 'Active' %}{% translate 'Active' %}{% elif intv.status == 'Pending' %}{% translate 'Pending' %}{% endif %}</td>
+                                {% if request.user.role.name == 'Receptionist' %}
+                                    <td rowspan="{{ intv.count|add:1 }}">
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <span class="flaticon-more-button-of-three-dots"></span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="{% url 'change_status_student' intv.id %}">{% translate 'Change Status' %}</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                            {% for session in intv.sessions %}
+                                <tr>
+                                    <td>
+                                        {% if session.day == 'Monday' %}{% translate 'Monday' %}
+                                        {% elif session.day == 'Tuesday' %}{% translate 'Tuesday' %}
+                                        {% elif session.day == 'Wednesday' %}{% translate 'Wednesday' %}
+                                        {% elif session.day == 'Thursday' %}{% translate 'Thursday' %}
+                                        {% elif session.day == 'Saturday' %}{% translate 'Saturday' %}
+                                        {% elif session.day == 'Sunday' %}{% translate 'Sunday' %}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ session.time }}</td>
+{#                                    <td>#}
+{#                                        <div class="dropdown">#}
+{#                                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"#}
+{#                                                aria-expanded="false">#}
+{#                                                <span class="flaticon-more-button-of-three-dots"></span>#}
+{#                                            </a>#}
+{#                                            <div class="dropdown-menu dropdown-menu-right">#}
+{#                                                <a class="dropdown-item" href="{% url 'weekly' session.id intv.teacher.username %}"><i#}
+{#                                                        class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </td>#}
+                                </tr>
+                            {% endfor %}
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+
+                </div>
+            </div>
+
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'All Sessions' %}</h3>
+                        </div>
+                    </div>
+
+                        <div class="table-responsive">
+                            <table class="table display data-table text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>{% translate 'Teacher Name' %}</th>
+                                        <th>{% translate 'Subject' %}</th>
+                                        <th>{% translate 'Session Date' %}</th>
+                                        <th>{% translate 'Session Time' %}</th>
+                                        <th>{% translate 'Status' %}</th>
+                                        {% if request.user.role.name == 'Receptionist' %}
+                                            <th>{% translate 'Performance Data' %}</th>
+                                        {% endif %}
+{#                                        <th>{% translate 'Performance Report' %}</th>#}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for intv in all_intvs %}
+                                        <tr>
+                                        <td>{{ intv.session.intervention.teacher.full_name }}</td>
+                                        <td>{% if intv.session.intervention.teacher.subject_teaching == 'English' %}{% translate 'English' %}{% elif intv.session.intervention.teacher.subject_teaching == 'Arabic' %}{% translate 'Arabic' %}{% endif %}</td>
+                                        <td>{{ intv.date|date:'d/m/Y' }}</td>
+                                        <td>{{ intv.session.time }}</td>
+                                        <td>
+                                            {% if intv.status == 'attended' %}
+                                                {% translate 'Attended' %}
+                                            {% elif intv.status == 's_absent' %}
+                                                {% translate 'Student Absent' %}
+                                            {% elif intv.status == 't_absent' %}
+                                                {% translate 'Teacher Absent' %}
+                                            {% elif intv.status == 'cancelled' %}
+                                                {% translate 'Cancelled' %}
+                                            {% endif %}
+                                        </td>
+                                        {% if request.user.role.name == 'Receptionist' %}
+                                        <td><a href={% url 'eva' intv.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Add/Edit' %}</button></a></td>
+                                        {% endif %}
+{#                                        <td>#}
+{#                                            {% if intv.status == 'attended' %}#}
+{#                                                {% if intv.session.intervention.teacher.subject_teaching == 'English' %}#}
+{#                                                    <a href={% url 'english-session-report' intv.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Check' %}</button></a>#}
+{#                                                {% elif intv.session.intervention.teacher.subject_teaching == 'Arabic' %}#}
+{#                                                    <a href={% url 'arabic-session-report' intv.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Check' %}</button></a>#}
+{#                                                {% endif %}#}
+{#                                            {% else %}#}
+{#                                                <p style="text-align: center; margin: 0">--</p>#}
+{#                                            {% endif %}#}
+{#                                        </td>#}
+                                        </tr>
+                                    {% endfor %}
+                                 </tbody>
+                            </table>
+                        </div>
+
+
+                </div>
+            </div>
+
+{% endblock %}

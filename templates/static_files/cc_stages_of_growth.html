@@ -1,0 +1,296 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+     <form class="new-added-form" method="POST">
+         {% csrf_token %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Child Case Form' %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 1' %}</button></a></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 2' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 3' %}</button></a>
+            </li>
+            <li>
+                <button style="margin-bottom: 8px" href={% url 'receptionist' %} type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate 'Step 4' %}</button>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 5' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 6' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 7' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 8' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 9' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 10' %}</button></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate 'Stages Of Growth' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Write age of first occurrence of following' %}</strong></p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Breastfeeding' %}</label>
+                            <select class="select2" name="breastfeeding">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="natural" {% if cc.breastfeeding == "natural"%}selected="selected"{% endif %}>{% translate 'Natural' %}</option>
+                                <option value="industrial" {% if cc.breastfeeding == "industrial"%}selected="selected"{% endif %}>{% translate 'Industrial' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of Weaning' %}</label>
+                            {% render_field form.weaning_age class="form-control" value=cc.age_weaning%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of Teething' %}</label>
+                            {% render_field form.age_tooth_start class="form-control" value=cc.age_teething%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of Commune' %}</label>
+                            {% render_field form.age_commune class="form-control" value=cc.age_commune%}
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-12 form-group">
+                            <label>{% translate 'Age of Pronouncing Simple Words (Papa, Mama)' %}</label>
+                            {% render_field form.age_simple_words class="form-control" value=cc.age_pronouncing%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of Speech' %}</label>
+                            {% render_field form.age_speech class="form-control" value=cc.age_speech%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of Use of Full Sentence' %}</label>
+                            {% render_field form.age_sentence class="form-control" value=cc.age_full_sentence%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of carrying bottle of milk alone' %}</label>
+                            {% render_field form.age_bottle_carry class="form-control" value=cc.age_bottle_milk%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age at which Love began' %}</label>
+                            {% render_field form.age_love class="form-control" value=cc.age_love%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age at which the child sat without help' %}</label>
+                            {% render_field form.age_sat class="form-control" value=cc.age_sat_self%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age at which the child stop without help' %}</label>
+                            {% render_field form.age_stop class="form-control" value=cc.age_stop_self%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of walking alone' %}</label>
+                            {% render_field form.age_walk class="form-control" value=cc.age_walking%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of wearing clothes with help' %}</label>
+                            {% render_field form.age_wore_help class="form-control" value=cc.age_wearing_help%}
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-12 form-group">
+                            <label>{% translate 'Age of wearing and taking off of clothes without help' %}</label>
+                            {% render_field form.age_wore_self class="form-control" value=cc.age_wearing_self%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of wearing shoes' %}</label>
+                            {% render_field form.age_shoes class="form-control" value=cc.age_shoes%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of feeding himself' %}</label>
+                            {% render_field form.age_feed class="form-control" value=cc.age_feeding%}
+                        </div>
+                        <div class="col-xl-6 col-lg-8 col-12 form-group">
+                            <label>{% translate 'Age of adjusting output and urination functions' %}</label>
+                            {% render_field form.age_urination class="form-control" value=cc.age_urination%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of using bathroom well' %}</label>
+                            {% render_field form.age_bathroom_train class="form-control" value=cc.age_bathroom%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Has Visual Problems?' %}</label>
+                            <select class="select2" name="visual_probs">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.visual_prob == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.visual_prob == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Use Glasses?' %}</label>
+                            <select class="select2" name="use_glasses">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.use_glasses == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.use_glasses == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of Glasses, if yes' %}</label>
+                            {% render_field form.age_glasses class="form-control" value=cc.age_glasses%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Has Hearing Problems?' %}</label>
+                            <select class="select2" name="hearing_probs">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.hearing_prob == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.hearing_prob == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Uses Hearing Aid?' %}</label>
+                            <select class="select2" name="hearing_aid">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.use_hearing_aid == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.use_hearing_aid == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of hearing aid, if yes' %}</label>
+                            {% render_field form.age_hearing_aid class="form-control" value=cc.age_hearing_aid%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Difficulty speaking?' %}</label>
+                            <select class="select2" name="speaking_difficulty">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.diff_speaking == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.diff_speaking == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Treated at speach centres?' %}</label>
+                            <select class="select2" name="treated_speech_centres">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.treated_speech == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.treated_speech == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of treated at speech centre?' %}</label>
+                            {% render_field form.age_speech_centre class="form-control" value=cc.age_treated_speech%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Hand of writing/drawing' %}</label>
+                            <select class="select2" name="hand">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="right" {% if cc.hand_writing == "right"%}selected="selected"{% endif %}>{% translate 'Right' %}</option>
+                                <option value="left" {% if cc.hand_writing == "left"%}selected="selected"{% endif %}>{% translate 'Left' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Leg for kicking the ball' %}</label>
+                            <select class="select2" name="leg">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="right" {% if cc.leg_kicking == "right"%}selected="selected"{% endif %}>{% translate 'Right' %}</option>
+                                <option value="left" {% if cc.leg_kicking == "left"%}selected="selected"{% endif %}>{% translate 'Left' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Both hands use?' %}</label>
+                            <select class="select2" name="both_hand">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.both_hands == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.both_hands == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Attempt to stop using left hand?' %}</label>
+                            <select class="select2" name="stop_left_hand">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.stop_left_hand == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.stop_left_hand == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of stop using left hand?' %}</label>
+                            {% render_field form.age_stop_left_hand class="form-control" value=cc.age_stop_left_hand%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Suffering from involuntary urination?' %}</label>
+                            <select class="select2" name="involuntary_urination">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.involuntary_urination == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.involuntary_urination == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Cause of involuntary urination?' %}</label>
+                            <select class="select2" name="cause_involuntary_urination">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="psychological" {% if cc.cause_involuntary_urination == "psychological"%}selected="selected"{% endif %}>{% translate 'Psychological' %}</option>
+                                <option value="organic" {% if cc.cause_involuntary_urination == "organic"%}selected="selected"{% endif %}>{% translate 'Organic' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age of Involuntary urination(If any)' %}</label>
+                            {% render_field form.age_involutary_urination class="form-control" value=cc.age_involuntary_urination%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Taking any medicines?' %}</label>
+                            <select class="select2" name="medicines_bool">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.medicines_bool == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.medicines_bool == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Medicine Name' %}</label>
+                            {% render_field form.medicine_name class="form-control" value=cc.medicines_name%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Medicine Use Reason' %}</label>
+                            {% render_field form.medicine_reason class="form-control" value=cc.medicine_reason%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Appetite/Eating habits' %}</label>
+                            {% render_field form.appetite class="form-control" value=cc.eating_habits%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Favourite food' %}</label>
+                            {% render_field form.fav_food class="form-control" value=cc.fav_food%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <a href={% url 'cc_condition' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Previous' %}</button></a>
+                            <a href={% url 'cc_family_history' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+     </form>
+
+
+{% endblock %}

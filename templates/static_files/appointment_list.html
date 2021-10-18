@@ -1,0 +1,173 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="breadcrumbs-area">
+    <h3>{% translate 'Appointment List' %}</h3>
+    <ul>
+        <li>
+            <a href="index.html">{% translate "Home" %}</a>
+        </li>
+        <li>{% translate 'Appointment List' %}</li>
+    </ul>
+</div>
+
+<div class="card height-auto">
+    <div class="card-body">
+        <div class="heading-layout1">
+            <div class="item-title">
+                {% if not today %}<h3>{% translate 'All Appointments Data' %}</h3>{% else %}
+                <h3>{% translate 'Todays Appointment Data' %}</h3>{% endif %}
+            </div>
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="true">...</a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#"><i
+                            class="fas fa-times text-orange-red"></i>Close</a>
+                    <a class="dropdown-item" href="#"><i
+                            class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                    <a class="dropdown-item" href="#"><i
+                            class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                </div>
+            </div>
+        </div>
+        <form class="mg-b-20" method="post">
+            {% csrf_token %}
+            <div class="row gutters-8">
+                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                    <select class="select2" name="s_by_name">
+                        <option value="">{% translate 'Search by Child Name' %}</option>
+                        {% for child in children %}
+                            <option value="{{ child.username }}">{{ child.first_name }} {{ child.parent.first_name }} {{ child.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% if request.user.role.name == "Receptionist" %}
+                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                    <select class="select2" name="p_by_name">
+                        <option value="">{% translate 'Search by Psychologist Name' %}</option>
+                        {% for psy in psychologists %}
+                            <option value="{{ psy.username }}">{{ psy.full_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% endif %}
+                <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                    <button type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate "Search" %}</button>
+                </div>
+            </div>
+        </form>
+        <div class="table-responsive">
+            <table class="table display text-nowrap">
+                <thead>
+                    <tr>
+                        <th>{% translate 'Student Name' %}</th>
+                        {% if request.user.role.name == "Receptionist" %}
+                        <th>{% translate 'Teacher/Psychologist Name' %}</th>
+                        {% endif %}
+                        <th>{% translate 'Appointment Date and Time' %}</th>
+                        {% if request.user.role.name == "Receptionist" %}
+                        <th>{% translate 'Status' %}</th>
+                        <th>{% translate 'Child Case Form' %}</th>
+                        {% endif %}
+                        {% if request.user.role.name == "Receptionist" %}
+                        <th>{% translate 'Link' %}</th>
+{#                        <th>{% translate 'Delete' %}</th>#}
+                        <th>{% translate 'Reschedule' %}</th>
+                        {% endif %}
+                        {% if request.user.role.name == "Physiologist" %}
+                        <th>{% translate 'Tests' %}</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in objs %}
+                        <tr>
+                            <td>{{ obj.child.full_name }}</td>
+                            {% if request.user.role.name == "Receptionist" %}
+                            <td>{{ obj.psychologist.full_name }}</td>
+                            {% endif %}
+                            <td>{{ obj.appointment_date|date:'d/m/Y' }}; {{ obj.appointment_s_time|date:"G:i:s" }}-{{ obj.appointment_e_time|date:"G:i:s" }}</td>
+                            {% if request.user.role.name == "Receptionist" %}
+                            <td>
+                                {% if obj.status == 'true' %}
+                                    {% translate 'Approved  ' %}
+                                {% elif obj.status == 'false' %}
+                                    {% translate 'Not Approved' %}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if obj.child.child_form.count %}
+                                    <a href={% url 'child-case' obj.child.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Edit Your Form' %}</button></a>
+                                {% else %}
+                                    <a href={% url 'child-case' obj.child.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Add a form' %}</button></a>
+                                {% endif %}
+                            </td>
+                            {% endif %}
+
+                            {% if request.user.role.name == "Receptionist" %}
+                            <td>
+                                {% if LANGUAGE_CODE == 'en' %}
+                                    <a href={% url 'send_link' obj.id 'en' %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Send Link' %}</button></a>
+                                {% elif LANGUAGE_CODE == 'ar' %}
+                                    <a href={% url 'send_link' obj.id 'ar' %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Send Link' %}</button></a>
+                                {% endif %}
+                            </td>
+{#                            <td>#}
+{#                                <a href='https://www.kwtsms.com/API/send/?username=baharsoft&password=eid123987@&sender=KWT-MESSAGE&mobile={{ obj.child.mobile_number }}&lang=3&message=يرجى+الدخول+للرابط+وتعبئة+البيانات+المطلوبة+لاستمارة+الحالة++http://40.89.138.111/en/child-case-form/{{ obj.child.username }}/++الجمعية+الكويتية+للدسلكسيا'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Send Link' %}</button></a>#}
+{#                            </td>#}
+
+{#                            <td>#}
+{#                                <button type="button" class="fw-btn-fill btn-gradient-yellow" data-bs-toggle="modal" data-bs-target="#confirmation-modal">#}
+{#                                    {% translate 'Delete' %}#}
+{#                                </button>#}
+{#                            </td>#}
+                            <td>
+                                <a href={% url 'reschedule' obj.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Reschedule' %}</button></a>
+                            </td>
+                            {% endif %}
+                            {% if request.user.role.name == "Physiologist" %}
+                                <td>
+                                    <a href={% url 'view_tests' obj.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'View Tests' %}</button></a>
+                                </td>
+                            {% endif %}
+                        </tr>
+
+                        <div class="ui-modal-box">
+                            <div class="modal-box">
+                                <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog success-modal-content" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="success-message">
+                                                    <h3 class="item-title">{% translate 'You want to delete this Appointment?' %}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href={% url 'delete-appointment' obj.id %}><button type="button" class="footer-btn bg-linkedin">{% translate 'Ok' %}</button></a>
+                                                <button type="button" class="footer-btn bg-dark-low" data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

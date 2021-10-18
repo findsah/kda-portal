@@ -1,0 +1,44 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+        <div class="breadcrumbs-area">
+            {% if status_change %}
+                <h3>{% translate 'Select Teacher' %}</h3>
+            {% else %}
+                <h3>{% translate 'Teacher Dashboard' %}</h3>
+            {% endif %}
+            <ul>
+                <li>
+                    <a href="index.html">{% translate 'Home' %}</a>
+                </li>
+                <li>{% translate 'Teacher' %}</li>
+            </ul>
+        </div>
+
+        <div class="card height-auto">
+            <div class="card-body">
+                <form class="new-added-form" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Teacher Name' %}</label>
+                            <select class="select2" name="teacher">
+                                <option value="">{% translate 'Please Select Teacher' %}</option>
+                                {% for teacher in teachers%}
+                                    <option value={{ teacher.username }} {% if teacher.username == teach.username %}selected='selected'{% endif %}>{{ teacher.full_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" style="margin: 42px 0">
+                            <button type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Next' %}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}

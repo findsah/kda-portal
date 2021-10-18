@@ -1,0 +1,390 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate "Session Evaluation" %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate "Home" %}</a>
+            </li>
+            <li>{% translate "Session Evaluation" %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <form class="new-added-form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                        <label>{% translate "Student Name" %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ a_intv.session.intervention.student.full_name }}</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                        <label>{% translate "Teacher Name" %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ a_intv.session.intervention.teacher.full_name }}</p>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-12 form-group">
+                        <label>{% translate "Session Evaluation Date" %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ a_intv.date }}</p>
+                    </div>
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <p><strong>Skills:</strong></p>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group">
+                        <label>Reviewing CVC words (2-3 letters)</label>
+                        <select class="select2" name="cvc2" {% if skills.cvc2 %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.cvc2 == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.cvc2 == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.cvc2 %} style="display: none" {% endif %}>
+                        <label>The Letter sound</label>
+                        <select class="select2" name="letter" {% if skills.letter %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.letter == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.letter == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.letter %} style="display: none" {% endif %}>
+                        <label>Review Test CVC Words (2-4 letters)</label>
+                        <select class="select2" name="cvc4" {% if skills.cvc4 %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.cvc4 == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.cvc4 == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.cvc4 %} style="display: none" {% endif %}>
+                        <label>Two-Syllable Compound Words</label>
+                        <select class="select2" name="syllable" {% if skills.syllable %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.syllable == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.syllable == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.syllable %} style="display: none" {% endif %}>
+                        <label>Spelling Rule –ff-ll-ss-zz </label>
+                        <select class="select2" name="spelling" {% if skills.spelling %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.spelling == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.spelling == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.spelling %} style="display: none" {% endif %}>
+                        <label>Review Tests for CVC Detached Syllable</label>
+                        <select class="select2" name="cvcd" {% if skills.cvcd %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.cvcd == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.cvcd == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.cvcd %} style="display: none" {% endif %}>
+                        <label>Syllabication –Method VC/CV</label>
+                        <select class="select2" name="vccv" {% if skills.vccv %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.vccv == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.vccv == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.vccv %} style="display: none" {% endif %}>
+                        <label>Initial Blends</label>
+                        <select class="select2" name="iblends" {% if skills.iblends %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.iblends == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.iblends == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.iblends %} style="display: none" {% endif %}>
+                        <label>Final Consonant Blends</label>
+                        <select class="select2" name="fblends" {% if skills.fblends %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.fblends == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.fblends == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                     <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.fblends %} style="display: none" {% endif %}>
+                        <label>Page 92 Review Test</label>
+                        <select class="select2" name="review92" {% if skills.review92 %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.review92 == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.review92 == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.review92 %} style="display: none" {% endif %}>
+                        <label>Multisyllabic words with Blends (VC/CV, VCCCV)</label>
+                        <select class="select2" name="vcccv" {% if skills.vcccv %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.vcccv == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.vcccv == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.vcccv %} style="display: none" {% endif %}>
+                        <label>ng and nk Endings </label>
+                        <select class="select2" name="ngnk" {% if skills.ngnk %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.ngnk == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.ngnk == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.ngnk %} style="display: none" {% endif %}>
+                        <label>Suffix: ed as /id/ ;/d/; /t/</label>
+                        <select class="select2" name="suffix" {% if skills.suffix %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.suffix == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.suffix == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.suffix %} style="display: none" {% endif %}>
+                        <label>Magic E</label>
+                        <select class="select2" name="magic" {% if skills.magic %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.magic == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.magic == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.magic %} style="display: none" {% endif %}>
+                        <label>Review Test for Magic e Words</label>
+                        <select class="select2" name="magic_e" {% if skills.magic_e %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.magic_e == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.magic_e == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.magic_e %} style="display: none" {% endif %}>
+                        <label>Review Test- CVC and CVCe Contrasts</label>
+                        <select class="select2" name="cvce_test" {% if skills.cvce_test %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.cvce_test == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.cvce_test == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.cvce_test %} style="display: none" {% endif %}>
+                        <label>Review Test – Two Syllable Words with Magic e</label>
+                        <select class="select2" name="magic2e" {% if skills.magic2e %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.magic2e == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.magic2e == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.magic2e %} style="display: none" {% endif %}>
+                        <label>Syllable Magic e</label>
+                        <select class="select2" name="smagice" {% if skills.smagice %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.smagice == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.smagice == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.smagice %} style="display: none" {% endif %}>
+                        <label>Open and Closed Syllable V/CV</label>
+                        <select class="select2" name="vcv" {% if skills.vcv %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.vcv == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.vcv == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.vcv %} style="display: none" {% endif %}>
+                        <label>ph Digraph</label>
+                        <select class="select2" name="ph" {% if skills.ph %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.ph == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.ph == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.ph %} style="display: none" {% endif %}>
+                        <label>-ck</label>
+                        <select class="select2" name="ck" {% if skills.ck %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.ck == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.ck == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.ck %} style="display: none" {% endif %}>
+                        <label>Pre test Vowel Digraphs ea, oa, ai, ee, ay, oe Introduce Vowel Digraphs not mastered</label>
+                        <select class="select2" name="vowel" {% if skills.vowel %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.vowel == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.vowel == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.vowel %} style="display: none" {% endif %}>
+                        <label>Spellings for /k/: k, ck, or ke</label>
+                        <select class="select2" name="kkck" {% if skills.kkck %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.kkck == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.kkck == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.kkck %} style="display: none" {% endif %}>
+                        <label>r-Controlled Vowels – er, ir, ,ur</label>
+                        <select class="select2" name="erir" {% if skills.erir %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.erir == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.erir == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.erir %} style="display: none" {% endif %}>
+                        <label>Dipthongs ow; ou</label>
+                        <select class="select2" name="owou" {% if skills.owou %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.owou == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.owou == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.owou %} style="display: none" {% endif %}>
+                        <label>-igh </label>
+                        <select class="select2" name="igh" {% if skills.igh %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.igh == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.igh == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.igh %} style="display: none" {% endif %}>
+                        <label>Consonant le Endings (-ble; -fle; -tle; -dle; -gle; -kle; -ple; -zle)</label>
+                        <select class="select2" name="ble" {% if skills.ble %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.ble == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.ble == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.ble %} style="display: none" {% endif %}>
+                        <label>Doubling Rule Consonant-le</label>
+                        <select class="select2" name="le" {% if skills.le %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.le == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.le == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.le %} style="display: none" {% endif %}>
+                        <label>Consonant-y Endings (y, vy, by, dy, ty, ry, ny, py, sy, my; -l y)</label>
+                        <select class="select2" name="yvy" {% if skills.yvy %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.yvy == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.yvy == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.yvy %} style="display: none" {% endif %}>
+                        <label>Word endings in –ild; -old; -ind-; olt, ost</label>
+                        <select class="select2" name="ild" {% if skills.ild %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.ild == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.ild == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.ild %} style="display: none" {% endif %}>
+                        <label>r-Controlled Vowels – ar, or, </label>
+                        <select class="select2" name="aror" {% if skills.aror %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.aror == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.aror == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.aror %} style="display: none" {% endif %}>
+                        <label>Oo</label>
+                        <select class="select2" name="oo" {% if skills.oo %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.oo == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.oo == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.oo %} style="display: none" {% endif %}>
+                        <label>y as a vowel</label>
+                        <select class="select2" name="y_vowel" {% if skills.y_vowel %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.y_vowel == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.y_vowel == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.y_vowel %} style="display: none" {% endif %}>
+                        <label>Hard and Soft c</label>
+                        <select class="select2" name="soft_c" {% if skills.soft_c %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.soft_c == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.soft_c == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.soft_c %} style="display: none" {% endif %}>
+                        <label>Hard and Soft g</label>
+                        <select class="select2" name="soft_g" {% if skills.soft_g %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.soft_g == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.soft_g == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.soft_g %} style="display: none" {% endif %}>
+                        <label>Spelling with ge, dge</label>
+                        <select class="select2" name="gedge" {% if skills.gedge %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.gedge == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.gedge == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.gedge %} style="display: none" {% endif %}>
+                        <label>Review Test on Hard and Soft sounds of g and c</label>
+                        <select class="select2" name="gc" {% if skills.gc %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.gc == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.gc == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.gc %} style="display: none" {% endif %}>
+                        <label>The Three (au)s - aw -au -a</label>
+                        <select class="select2" name="auaw" {% if skills.auaw %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.auaw == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.auaw == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.auaw %} style="display: none" {% endif %}>
+                        <label>Oi and oy, tch</label>
+                        <select class="select2" name="tch" {% if skills.tch %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.tch == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.tch == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.tch %} style="display: none" {% endif %}>
+                        <label>ing as an Ending</label>
+                        <select class="select2" name="ing" {% if skills.ing %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.ing == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.ing == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.ing %} style="display: none" {% endif %}>
+                        <label>VCV Spelling Rule ( Alternative Spelling and Pronunciation)</label>
+                        <select class="select2" name="vcv_spelling" {% if skills.vcv_spelling %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.vcv_spelling == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.vcv_spelling == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.vcv_spelling %} style="display: none" {% endif %}>
+                        <label>Three Syllable Words</label>
+                        <select class="select2" name="three_s" {% if skills.three_s %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.three_s == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.three_s == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group" {% if not skills.three_s %} style="display: none" {% endif %}>
+                        <label>Schwa Sound</label>
+                        <select class="select2" name="schwa" {% if skills.schwa %}disabled{% endif %} onchange="form.requestSubmit();">
+                            <option value="">Please Select Grade</option>
+                            <option value="mastery" {% if skills.schwa == "mastery" %}selected="selected"{% endif %}>Mastery</option>
+                            <option value="n_mastery" {% if skills.schwa == "n_mastery" %}selected="selected"{% endif %}>Not Mastered</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <a href="{% url 'eva-search' a_intv.session.intervention.teacher.id %}"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Back" %}</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

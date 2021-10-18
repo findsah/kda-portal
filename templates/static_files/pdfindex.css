@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+}
+.main {
+    background-image: url("img1.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+}
+
+.img4 {
+    width: 25rem;
+    position: absolute;
+    top: 200%;
+    left: 20%;
+    /* display: none; */
+}
+.hala {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4rem 0;
+    height: 5rem;
+}
+.colorDiv {
+    height: 100%;
+    width: 15rem;
+    background-color: orange;
+}
+.halaInputDiv {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #87c556;
+    border-bottom: 2px solid #87c556;
+    margin-right: 0.5rem;
+    width: 75%;
+    justify-content: flex-end;
+}
+.halaInput {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    margin-right: 0.5rem;
+    width: 89%;
+    outline: none;
+}
+
+/* artBoard2.css */
+.imgDiv {
+    background-image: url(img2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 19rem;
+    height: 4rem;
+    width: 100%;
+    background-color: #f99d1c;
+}
+.containerPart {
+    /* background-image: url(img2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 19rem; */
+    padding: 0 3rem 5rem 3rem;
+}
+.bayanatHeading{
+    background: #FFE8CB;
+    padding: .5rem;
+    text-align: center;
+    color: #f99d1c;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+.subHeading{
+    background: #E6E7E8;
+    margin: 1rem 0;
+    padding: .5rem;
+    text-align: right;
+    font-weight: bold;
+}
+table, th, td {
+    border: 1px solid #CFCFCF;
+    border-collapse: collapse;
+    text-align: right;
+    padding: 0.3rem;
+    width: 33%;
+    height: 1rem;
+  }
+.doubleValueTd{
+    display: flex;
+    justify-content: flex-end;
+    width: 98%;
+    border: none;
+    height: 1rem;
+    align-items: center;
+}
+.differentTableHead{
+    text-align: center;
+    padding: 1rem;
+}

@@ -1,0 +1,81 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Confirm Slot' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Confirm Slot' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Confirm Your Weekly Intervention' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Student Name' %}:</label>
+                    <p class="form-control" style="padding-top: 13px; height: 50px">{{ stu.full_name }}</p>
+{#                    <select class="select2" name="student" required>#}
+{#                        <option value=''>Select the Student</option>#}
+{#                        {% for student in students %}#}
+{#                            <option value={{ student.username }} {% if stu.username == student.username %} selected="selected" {% endif %} >{{ student.full_name }}</option>#}
+{#                        {% endfor %}#}
+{#                    </select>#}
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Your Selected Teacher' %}: </label>
+                    <p class="form-control" style="padding-top: 13px; height: 50px">{{ teacher.full_name }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Total Number of Sessions' %}: </label>
+                    <input name="total_sessions" value="{{ total_sessions }}" type="number" class="form-control" required>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Your Selected Day' %}: </label>
+                    <p class="form-control" style="padding-top: 13px; height: 50px">{{ weekday }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Your Selected Time Slot' %}: </label>
+                    <p class="form-control" style="padding-top: 13px; height: 50px">{{ time_slot }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    {% if not already %}
+                        <label>{% translate 'Select Start Date:' %} </label>
+                        <input name='start_date' type="text" placeholder="Select a {{ weekday }}" class="form-control air-datepicker" data-position='bottom left'>
+                    {% else %}
+                        <label>{% translate 'Start Date of this Session:' %} </label>
+                        <input class="form-control" value="{{ start_date }}" readonly>
+                    {% endif %}
+                </div>
+                <div class="col-12 form-group mg-t-8">
+                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Confirm' %}?</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

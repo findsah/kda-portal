@@ -1,0 +1,4908 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-29 14:15+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\KDA\settings.py:131 .\templates\static_files\dashboard_student.html:154
+#: .\templates\static_files\dashboard_student.html:223
+#: .\templates\static_files\dashboard_student.html:385
+#: .\templates\static_files\dashboard_student.html:473
+#: .\templates\static_files\dashboard_student.html:554
+#: .\templates\static_files\registration_student.html:70
+#: .\templates\static_files\registration_student.html:362
+#: .\templates\static_files\registration_teacher.html:269
+#: .\templates\static_files\search_teacher.html:79
+#: .\templates\static_files\todays_intervention.html:62
+#: .\templates\static_files\todays_intervention.html:92
+msgid "English"
+msgstr "انكليزي"
+
+#: .\KDA\settings.py:132 .\templates\static_files\dashboard_student.html:154
+#: .\templates\static_files\dashboard_student.html:223
+#: .\templates\static_files\dashboard_student.html:385
+#: .\templates\static_files\dashboard_student.html:473
+#: .\templates\static_files\dashboard_student.html:554
+#: .\templates\static_files\registration_student.html:71
+#: .\templates\static_files\registration_student.html:363
+#: .\templates\static_files\registration_teacher.html:270
+#: .\templates\static_files\search_teacher.html:79
+#: .\templates\static_files\todays_intervention.html:62
+#: .\templates\static_files\todays_intervention.html:92
+msgid "Arabic"
+msgstr "عربي"
+
+#: .\KDA_app\models.py:40
+msgid "You must provide a username"
+msgstr ""
+
+#: .\KDA_app\models.py:135
+msgid "years"
+msgstr "سنة"
+
+#: .\KDA_app\models.py:136
+msgid "months"
+msgstr "شهر"
+
+#: .\KDA_app\models.py:138
+msgid "year"
+msgstr "سنة"
+
+#: .\KDA_app\models.py:140
+msgid "month"
+msgstr "شهر"
+
+#: .\templates\static_files\add_appointment.html:9
+#: .\templates\static_files\add_appointment.html:14
+#: .\templates\static_files\check_slots.html:14
+#: .\templates\static_files\confirm_appointment.html:14
+#: .\templates\static_files\dashboard_receptionist.html:371
+msgid "Add Appointment"
+msgstr "إضافة موعد"
+
+#: .\templates\static_files\add_appointment.html:12
+#: .\templates\static_files\add_intervention.html:16
+#: .\templates\static_files\add_parent.html:12
+#: .\templates\static_files\appointment_list.html:10
+#: .\templates\static_files\assess_tests.html:12
+#: .\templates\static_files\assessment.html:12
+#: .\templates\static_files\assessment_search.html:12
+#: .\templates\static_files\availability_psy.html:12
+#: .\templates\static_files\availability_psy_edit.html:12
+#: .\templates\static_files\change_password.html:12
+#: .\templates\static_files\change_status_student.html:12
+#: .\templates\static_files\check_intervention.html:12
+#: .\templates\static_files\check_slots.html:12
+#: .\templates\static_files\choose_parent.html:12
+#: .\templates\static_files\confirm_appointment.html:12
+#: .\templates\static_files\confirm_slot_teacher.html:12
+#: .\templates\static_files\dashboard_psy.html:12
+#: .\templates\static_files\dashboard_student.html:14
+#: .\templates\static_files\dashboard_teacher.html:12
+#: .\templates\static_files\monitor_performance.html:12
+#: .\templates\static_files\pre_eva_search.html:12
+#: .\templates\static_files\pre_evaluation.html:12
+#: .\templates\static_files\registration_psy.html:12
+#: .\templates\static_files\registration_student.html:16
+#: .\templates\static_files\registration_teacher.html:12
+#: .\templates\static_files\report_all_appointments.html:12
+#: .\templates\static_files\report_all_sessions.html:12
+#: .\templates\static_files\reshedule.html:12
+#: .\templates\static_files\search_intervention.html:17
+#: .\templates\static_files\search_psy.html:12
+#: .\templates\static_files\search_student.html:12
+#: .\templates\static_files\search_teacher.html:12
+#: .\templates\static_files\select_psy.html:12
+#: .\templates\static_files\select_student.html:20
+#: .\templates\static_files\select_teacher.html:16
+#: .\templates\static_files\select_teacher_assess.html:12
+#: .\templates\static_files\session_evaluation.html:12
+#: .\templates\static_files\session_evaluation_arabic.html:12
+#: .\templates\static_files\session_evaluation_search.html:12
+#: .\templates\static_files\test_list.html:12
+#: .\templates\static_files\todays_intervention.html:12
+#: .\templates\static_files\weekly_grid.html:12
+#: .\templates\tests\view_tests.html:10
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: .\templates\static_files\add_appointment.html:22
+msgid "Schedule New Appointment"
+msgstr "حجز موعد جديد"
+
+#: .\templates\static_files\add_appointment.html:39
+#: .\templates\static_files\assessment_search.html:39
+#: .\templates\static_files\dashboard_psy.html:103
+#: .\templates\static_files\report_all_appointments.html:59
+msgid "Select Child"
+msgstr "اختيار الطفل"
+
+#: .\templates\static_files\add_appointment.html:41
+#: .\templates\static_files\assessment_search.html:41
+msgid "Please Select Child"
+msgstr "يرجى اختيار اسم الطالب"
+
+#: .\templates\static_files\add_appointment.html:57
+#: .\templates\static_files\dashboard_psy.html:147
+#: .\templates\static_files\dashboard_psy.html:174
+#: .\templates\static_files\dashboard_psy.html:214
+#: .\templates\static_files\report_all_appointments.html:102
+#: .\templates\static_files\report_all_appointments.html:137
+#: .\templates\static_files\report_all_appointments.html:175
+#: .\templates\static_files\reshedule.html:43
+msgid "Appointment Date"
+msgstr "تاريخ الموعد"
+
+#: .\templates\static_files\add_appointment.html:83
+#: .\templates\static_files\assessment_search.html:49
+#: .\templates\static_files\report_all_appointments.html:28
+#: .\templates\static_files\reshedule.html:49
+msgid "Select Psychologist"
+msgstr "اختيار الأخصائي"
+
+#: .\templates\static_files\add_appointment.html:85
+#: .\templates\static_files\assessment_search.html:51
+#: .\templates\static_files\select_psy.html:26
+msgid "Please Select Psychologist"
+msgstr "اختر اسم الأخصائي"
+
+#: .\templates\static_files\add_appointment.html:93
+#: .\templates\static_files\dashboard_psy.html:81
+#: .\templates\static_files\dashboard_teacher.html:133
+#: .\templates\static_files\reshedule.html:58
+#: .\templates\static_files\search_psy.html:74
+#: .\templates\static_files\search_teacher.html:83
+msgid "Check Availability"
+msgstr "التحقق"
+
+#: .\templates\static_files\add_intervention.html:10
+msgid "Re-schedule Intervention"
+msgstr "اعادة جدولة الجلسات العلاجية"
+
+#: .\templates\static_files\add_intervention.html:12
+#: .\templates\static_files\add_intervention.html:21
+msgid "Add Intervention"
+msgstr "اضافة جلسات علاجية"
+
+#: .\templates\static_files\add_intervention.html:19
+msgid "Re-Schedule Intervention"
+msgstr "إعادة جدولة جلسات التدخل العلاجي"
+
+#: .\templates\static_files\add_intervention.html:31
+msgid "Re-Schedule Weekly Intervention"
+msgstr "إعادة جدولة جدول الجلسات العلاجية  الاسبوعي"
+
+#: .\templates\static_files\add_intervention.html:33
+#: .\templates\static_files\select_student.html:10
+msgid "Schedule New Weekly Intervention"
+msgstr "اعداد جدول الجلسات الاسبوعية"
+
+#: .\templates\static_files\add_intervention.html:51
+#: .\templates\static_files\check_intervention.html:30
+#: .\templates\static_files\check_intervention.html:61
+#: .\templates\static_files\dashboard_student.html:16
+#: .\templates\static_files\monitor_performance.html:14
+#: .\templates\static_files\select_student.html:25
+msgid "Student"
+msgstr "طالب"
+
+#: .\templates\static_files\add_intervention.html:56
+#: .\templates\static_files\report_all_sessions.html:28
+#: .\templates\static_files\select_teacher.html:10
+msgid "Select Teacher"
+msgstr "اختيار معالج"
+
+#: .\templates\static_files\add_intervention.html:58
+#: .\templates\static_files\select_teacher.html:30
+#: .\templates\static_files\select_teacher_assess.html:41
+msgid "Please Select Teacher"
+msgstr "يرجى اختيار المعالج"
+
+#: .\templates\static_files\add_intervention.html:65
+#: .\templates\static_files\assessment_search.html:59
+#: .\templates\static_files\cc-social-development.html:147
+#: .\templates\static_files\cc_child_beh.html:343
+#: .\templates\static_files\cc_condition.html:138
+#: .\templates\static_files\cc_development_of_child.html:254
+#: .\templates\static_files\cc_diff_info.html:295
+#: .\templates\static_files\cc_family_history.html:161
+#: .\templates\static_files\cc_school_history.html:193
+#: .\templates\static_files\cc_stages_of_growth.html:287
+#: .\templates\static_files\child-case.html:361
+#: .\templates\static_files\select_psy.html:33
+#: .\templates\static_files\select_student.html:49
+#: .\templates\static_files\select_teacher.html:37
+#: .\templates\static_files\select_teacher_assess.html:48
+#: .\templates\static_files\session_evaluation_search.html:58
+msgid "Next"
+msgstr "التالي"
+
+#: .\templates\static_files\add_intervention.html:69
+msgid "Student Already added in every available Subject"
+msgstr "هذا الطالب تمت اضافته لكل المقررات المتاحة"
+
+#: .\templates\static_files\add_parent.html:9
+msgid "Add Parent for"
+msgstr "أضف استمارة الحالة"
+
+#: .\templates\static_files\add_parent.html:14
+#: .\templates\static_files\choose_parent.html:14
+#: .\templates\static_files\dashboard_student.html:237
+#: .\templates\static_files\search_student.html:69
+msgid "Parent"
+msgstr "ولي الأمر"
+
+#: .\templates\static_files\add_parent.html:32
+#: .\templates\static_files\registration_psy.html:43
+#: .\templates\static_files\registration_student.html:97
+#: .\templates\static_files\registration_teacher.html:43
+msgid "Country Code"
+msgstr "الرقم الدولي"
+
+#: .\templates\static_files\add_parent.html:252
+#: .\templates\static_files\registration_psy.html:263
+#: .\templates\static_files\registration_student.html:322
+#: .\templates\static_files\registration_teacher.html:263
+#: .\templates\static_files\search_psy.html:59
+#: .\templates\static_files\search_student.html:72
+#: .\templates\static_files\search_teacher.html:67
+msgid "Mobile Number"
+msgstr "رقم الهاتف"
+
+#: .\templates\static_files\add_parent.html:256
+#: .\templates\static_files\assess_tests.html:106
+#: .\templates\static_files\search_intervention.html:151
+msgid "Add"
+msgstr "أضف"
+
+#: .\templates\static_files\appointment_list.html:7
+#: .\templates\static_files\appointment_list.html:12
+#: .\templates\static_files\dashboard_receptionist.html:361
+msgid "Appointment List"
+msgstr "قائمة المواعيد"
+
+#: .\templates\static_files\appointment_list.html:20
+msgid "All Appointments Data"
+msgstr "بيانات جميع المواعيد"
+
+#: .\templates\static_files\appointment_list.html:21
+msgid "Todays Appointment Data"
+msgstr "بيانات المواعيد اليومية"
+
+#: .\templates\static_files\appointment_list.html:42
+msgid "Search by Child Name"
+msgstr "البحث عن طريق اسم الطالب"
+
+#: .\templates\static_files\appointment_list.html:51
+msgid "Search by Psychologist Name"
+msgstr "البحث باسم الأخصائي"
+
+#: .\templates\static_files\appointment_list.html:59
+#: .\templates\static_files\report_all_sessions.html:84
+#: .\templates\static_files\search_intervention.html:77
+#: .\templates\static_files\search_psy.html:48
+#: .\templates\static_files\search_student.html:56
+#: .\templates\static_files\search_teacher.html:56
+#: .\templates\static_files\todays_intervention.html:68
+msgid "Search"
+msgstr "بحث"
+
+#: .\templates\static_files\appointment_list.html:67
+#: .\templates\static_files\confirm_slot_teacher.html:39
+#: .\templates\static_files\dashboard_teacher.html:330
+#: .\templates\static_files\pre_eva_search.html:41
+#: .\templates\static_files\report_all_sessions.html:113
+#: .\templates\static_files\report_all_sessions.html:170
+#: .\templates\static_files\search_intervention.html:85
+#: .\templates\static_files\select_student.html:39
+#: .\templates\static_files\session_evaluation.html:24
+#: .\templates\static_files\session_evaluation_arabic.html:24
+#: .\templates\static_files\session_evaluation_search.html:39
+#: .\templates\static_files\todays_intervention.html:76
+msgid "Student Name"
+msgstr "اسم الطالب"
+
+#: .\templates\static_files\appointment_list.html:69
+msgid "Teacher/Psychologist Name"
+msgstr "بحث باسم الأخصائي"
+
+#: .\templates\static_files\appointment_list.html:71
+msgid "Appointment Date and Time"
+msgstr "تاريخ وتوقيت الموعد"
+
+#: .\templates\static_files\appointment_list.html:73
+#: .\templates\static_files\change_status_student.html:14
+#: .\templates\static_files\change_status_student.html:24
+#: .\templates\static_files\dashboard_student.html:442
+#: .\templates\static_files\dashboard_student.html:543
+#: .\templates\static_files\dashboard_teacher.html:333
+#: .\templates\static_files\report_all_sessions.html:119
+#: .\templates\static_files\report_all_sessions.html:174
+#: .\templates\static_files\todays_intervention.html:83
+msgid "Status"
+msgstr "الحالة"
+
+#: .\templates\static_files\appointment_list.html:74
+#: .\templates\static_files\cc-social-development.html:12
+#: .\templates\static_files\cc_child_beh.html:12
+#: .\templates\static_files\cc_condition.html:9
+#: .\templates\static_files\cc_development_of_child.html:11
+#: .\templates\static_files\cc_diff_info.html:12
+#: .\templates\static_files\cc_family_history.html:12
+#: .\templates\static_files\cc_other_info.html:12
+#: .\templates\static_files\cc_school_history.html:12
+#: .\templates\static_files\cc_stages_of_growth.html:12
+#: .\templates\static_files\child-case.html:12
+#: .\templates\static_files\dashboard_student.html:297
+msgid "Child Case Form"
+msgstr "استمارة الطالب"
+
+#: .\templates\static_files\appointment_list.html:77
+msgid "Link"
+msgstr "رابط"
+
+#: .\templates\static_files\appointment_list.html:79
+#: .\templates\static_files\appointment_list.html:129
+msgid "Reschedule"
+msgstr "إعادة الحجز"
+
+#: .\templates\static_files\appointment_list.html:82
+#: .\templates\static_files\search_psy.html:63
+#: .\templates\tests\view_tests.html:7
+msgid "Tests"
+msgstr "الاختبارات"
+
+#: .\templates\static_files\appointment_list.html:97
+msgid "Approved  "
+msgstr "معتمد"
+
+#: .\templates\static_files\appointment_list.html:99
+msgid "Not Approved"
+msgstr "غير معتمد"
+
+#: .\templates\static_files\appointment_list.html:104
+msgid "Edit Your Form"
+msgstr "عدل استمارة الحالة"
+
+#: .\templates\static_files\appointment_list.html:106
+msgid "Add a form"
+msgstr "أضف استمارة الحالة"
+
+#: .\templates\static_files\appointment_list.html:114
+#: .\templates\static_files\appointment_list.html:116
+msgid "Send Link"
+msgstr "ارسل رابط"
+
+#: .\templates\static_files\appointment_list.html:134
+#: .\templates\static_files\registration_psy.html:274
+msgid "View Tests"
+msgstr "عرض الاختبارات"
+
+#: .\templates\static_files\appointment_list.html:151
+msgid "You want to delete this Appointment?"
+msgstr "هل تود إلغاء هذا الموعد"
+
+#: .\templates\static_files\appointment_list.html:155
+msgid "Ok"
+msgstr "حسناً"
+
+#: .\templates\static_files\appointment_list.html:156
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: .\templates\static_files\arabic_session_report.html:9
+#: .\templates\static_files\assessments_graph.html:9
+#: .\templates\static_files\english_session_report.html:9
+#: .\templates\static_files\report_session.html:9
+msgid "Report for"
+msgstr "تقرير عن"
+
+#: .\templates\static_files\arabic_session_report.html:10
+#: .\templates\static_files\english_session_report.html:10
+#: .\templates\static_files\report_session.html:10
+msgid "Teacher:"
+msgstr "المعالج:"
+
+#: .\templates\static_files\arabic_session_report.html:11
+msgid "Session Date:"
+msgstr "تاريخ الجلسة"
+
+#: .\templates\static_files\arabic_session_report.html:19
+msgid "Letter:"
+msgstr "حرف"
+
+#: .\templates\static_files\arabic_session_report.html:21
+#: .\templates\static_files\session_evaluation_arabic.html:34
+msgid "Please Select Letter"
+msgstr "يرجى اختيار حرف"
+
+#: .\templates\static_files\assess_tests.html:9
+#: .\templates\static_files\assess_tests.html:14
+msgid "Data for Assessments"
+msgstr "بيانات التشخيص"
+
+#: .\templates\static_files\assess_tests.html:22
+msgid "All Tests Assessments for"
+msgstr "اختبارات التشخيص لـ"
+
+#: .\templates\static_files\assess_tests.html:43
+msgid "Select Appointment Date"
+msgstr "اختر تاريخ الموعد"
+
+#: .\templates\static_files\assess_tests.html:45
+#: .\templates\static_files\assess_tests.html:57
+#: .\templates\static_files\cc-social-development.html:104
+#: .\templates\static_files\cc-social-development.html:116
+#: .\templates\static_files\cc-social-development.html:140
+#: .\templates\static_files\cc_child_beh.html:69
+#: .\templates\static_files\cc_child_beh.html:83
+#: .\templates\static_files\cc_child_beh.html:92
+#: .\templates\static_files\cc_child_beh.html:101
+#: .\templates\static_files\cc_child_beh.html:110
+#: .\templates\static_files\cc_child_beh.html:119
+#: .\templates\static_files\cc_child_beh.html:128
+#: .\templates\static_files\cc_child_beh.html:137
+#: .\templates\static_files\cc_child_beh.html:146
+#: .\templates\static_files\cc_child_beh.html:155
+#: .\templates\static_files\cc_child_beh.html:164
+#: .\templates\static_files\cc_child_beh.html:173
+#: .\templates\static_files\cc_child_beh.html:182
+#: .\templates\static_files\cc_child_beh.html:191
+#: .\templates\static_files\cc_child_beh.html:200
+#: .\templates\static_files\cc_child_beh.html:209
+#: .\templates\static_files\cc_child_beh.html:218
+#: .\templates\static_files\cc_child_beh.html:227
+#: .\templates\static_files\cc_child_beh.html:236
+#: .\templates\static_files\cc_child_beh.html:245
+#: .\templates\static_files\cc_child_beh.html:254
+#: .\templates\static_files\cc_child_beh.html:263
+#: .\templates\static_files\cc_child_beh.html:272
+#: .\templates\static_files\cc_child_beh.html:281
+#: .\templates\static_files\cc_child_beh.html:290
+#: .\templates\static_files\cc_child_beh.html:299
+#: .\templates\static_files\cc_child_beh.html:308
+#: .\templates\static_files\cc_child_beh.html:317
+#: .\templates\static_files\cc_child_beh.html:326
+#: .\templates\static_files\cc_child_beh.html:335
+#: .\templates\static_files\cc_development_of_child.html:86
+#: .\templates\static_files\cc_development_of_child.html:94
+#: .\templates\static_files\cc_development_of_child.html:102
+#: .\templates\static_files\cc_development_of_child.html:110
+#: .\templates\static_files\cc_development_of_child.html:138
+#: .\templates\static_files\cc_development_of_child.html:151
+#: .\templates\static_files\cc_development_of_child.html:164
+#: .\templates\static_files\cc_development_of_child.html:172
+#: .\templates\static_files\cc_development_of_child.html:180
+#: .\templates\static_files\cc_development_of_child.html:188
+#: .\templates\static_files\cc_development_of_child.html:196
+#: .\templates\static_files\cc_development_of_child.html:204
+#: .\templates\static_files\cc_development_of_child.html:212
+#: .\templates\static_files\cc_development_of_child.html:239
+#: .\templates\static_files\cc_diff_info.html:72
+#: .\templates\static_files\cc_diff_info.html:80
+#: .\templates\static_files\cc_diff_info.html:88
+#: .\templates\static_files\cc_diff_info.html:96
+#: .\templates\static_files\cc_diff_info.html:104
+#: .\templates\static_files\cc_diff_info.html:112
+#: .\templates\static_files\cc_diff_info.html:120
+#: .\templates\static_files\cc_diff_info.html:128
+#: .\templates\static_files\cc_diff_info.html:136
+#: .\templates\static_files\cc_diff_info.html:144
+#: .\templates\static_files\cc_diff_info.html:152
+#: .\templates\static_files\cc_diff_info.html:160
+#: .\templates\static_files\cc_diff_info.html:168
+#: .\templates\static_files\cc_diff_info.html:176
+#: .\templates\static_files\cc_diff_info.html:184
+#: .\templates\static_files\cc_diff_info.html:192
+#: .\templates\static_files\cc_diff_info.html:200
+#: .\templates\static_files\cc_diff_info.html:208
+#: .\templates\static_files\cc_diff_info.html:216
+#: .\templates\static_files\cc_diff_info.html:224
+#: .\templates\static_files\cc_diff_info.html:232
+#: .\templates\static_files\cc_diff_info.html:240
+#: .\templates\static_files\cc_diff_info.html:248
+#: .\templates\static_files\cc_diff_info.html:256
+#: .\templates\static_files\cc_diff_info.html:264
+#: .\templates\static_files\cc_diff_info.html:272
+#: .\templates\static_files\cc_diff_info.html:280
+#: .\templates\static_files\cc_diff_info.html:288
+#: .\templates\static_files\cc_family_history.html:146
+#: .\templates\static_files\cc_other_info.html:102
+#: .\templates\static_files\cc_school_history.html:106
+#: .\templates\static_files\cc_school_history.html:122
+#: .\templates\static_files\cc_school_history.html:134
+#: .\templates\static_files\cc_school_history.html:146
+#: .\templates\static_files\cc_stages_of_growth.html:72
+#: .\templates\static_files\cc_stages_of_growth.html:148
+#: .\templates\static_files\cc_stages_of_growth.html:156
+#: .\templates\static_files\cc_stages_of_growth.html:168
+#: .\templates\static_files\cc_stages_of_growth.html:176
+#: .\templates\static_files\cc_stages_of_growth.html:188
+#: .\templates\static_files\cc_stages_of_growth.html:196
+#: .\templates\static_files\cc_stages_of_growth.html:208
+#: .\templates\static_files\cc_stages_of_growth.html:216
+#: .\templates\static_files\cc_stages_of_growth.html:224
+#: .\templates\static_files\cc_stages_of_growth.html:232
+#: .\templates\static_files\cc_stages_of_growth.html:244
+#: .\templates\static_files\cc_stages_of_growth.html:252
+#: .\templates\static_files\cc_stages_of_growth.html:264
+#: .\templates\static_files\child-case.html:99
+#: .\templates\static_files\child-case.html:247
+#: .\templates\static_files\child-case.html:256
+#: .\templates\static_files\child-case.html:264
+#: .\templates\static_files\child-case.html:278
+#: .\templates\static_files\child-case.html:286
+#: .\templates\static_files\child-case.html:294
+#: .\templates\static_files\child-case.html:302
+#: .\templates\static_files\registration_student.html:69
+#: .\templates\static_files\registration_student.html:339
+#: .\templates\static_files\registration_student.html:361
+msgid "Please Select Option"
+msgstr "يرجى الاختيار"
+
+#: .\templates\static_files\assess_tests.html:55
+#: .\templates\static_files\assessment.html:27
+#: .\templates\static_files\registration_psy.html:280
+#: .\templates\static_files\test_list.html:24
+#: .\templates\tests\view_tests.html:23
+msgid "Test Name"
+msgstr "اسم الاختبار"
+
+#: .\templates\static_files\assess_tests.html:58
+#: .\templates\static_files\assess_tests.html:79
+#: .\templates\static_files\assessments_graph.html:71
+#: .\templates\static_files\registration_psy.html:286
+#: .\templates\static_files\test_list.html:30
+msgid "IQ"
+msgstr "اختبار الذكاء"
+
+#: .\templates\static_files\assess_tests.html:59
+#: .\templates\static_files\assessments_graph.html:134
+#: .\templates\static_files\dashboard_student.html:334
+#: .\templates\static_files\registration_psy.html:291
+#: .\templates\static_files\test_list.html:31
+msgid "ACOPS"
+msgstr "اختبار كوبس العربي"
+
+#: .\templates\static_files\assess_tests.html:60
+#: .\templates\static_files\assessments_graph.html:173
+#: .\templates\static_files\dashboard_student.html:329
+#: .\templates\static_files\registration_psy.html:327
+#: .\templates\static_files\test_list.html:32
+msgid "Junior"
+msgstr "اختبار الفئة العمرية المتوسطة"
+
+#: .\templates\static_files\assess_tests.html:61
+#: .\templates\static_files\assessments_graph.html:211
+#: .\templates\static_files\dashboard_student.html:324
+#: .\templates\static_files\registration_psy.html:359
+#: .\templates\static_files\test_list.html:33
+msgid "Secondary"
+msgstr "اختبار الفئة العمرية العليا"
+
+#: .\templates\static_files\assess_tests.html:62
+#: .\templates\static_files\assess_tests.html:98
+#: .\templates\static_files\assessments_graph.html:71
+#: .\templates\static_files\dashboard_student.html:319
+#: .\templates\static_files\registration_psy.html:391
+#: .\templates\static_files\test_list.html:34
+msgid "Stanford"
+msgstr "اختبار ستانفورد بينيه"
+
+#: .\templates\static_files\assess_tests.html:63
+#: .\templates\static_files\registration_psy.html:396
+#: .\templates\static_files\test_list.html:35
+msgid "Weksler"
+msgstr "اختبار وكسلر"
+
+#: .\templates\static_files\assess_tests.html:72
+msgid "Sub Tests Name"
+msgstr "اسم الاختبار الجزئي"
+
+#: .\templates\static_files\assess_tests.html:73
+msgid "Add/Edit Assessment"
+msgstr "اضف /عدل"
+
+#: .\templates\static_files\assess_tests.html:81
+#: .\templates\static_files\assessments_graph.html:103
+msgid "Rabbits"
+msgstr "الأرانب"
+
+#: .\templates\static_files\assess_tests.html:82
+#: .\templates\static_files\assessments_graph.html:103
+msgid "Zoid Friends"
+msgstr "اصدقاء زويد"
+
+#: .\templates\static_files\assess_tests.html:83
+#: .\templates\static_files\assessments_graph.html:103
+msgid "Zoid Letter Names"
+msgstr "اسماء حروف زويد"
+
+#: .\templates\static_files\assess_tests.html:84
+#: .\templates\static_files\assessments_graph.html:103
+msgid "Zoid Letters"
+msgstr "حروف زويد"
+
+#: .\templates\static_files\assess_tests.html:85
+#: .\templates\static_files\assessments_graph.html:103
+msgid "Wock"
+msgstr "ووك"
+
+#: .\templates\static_files\assess_tests.html:86
+#: .\templates\static_files\assessments_graph.html:103
+msgid "Ryhms"
+msgstr "المتشابهات"
+
+#: .\templates\static_files\assess_tests.html:87
+#: .\templates\static_files\assessments_graph.html:103
+msgid "Races"
+msgstr "السباقات"
+
+#: .\templates\static_files\assess_tests.html:88
+#: .\templates\static_files\assessments_graph.html:104
+msgid "Toybox"
+msgstr "صندوق الألعاب"
+
+#: .\templates\static_files\assess_tests.html:90
+#: .\templates\static_files\assessments_graph.html:142
+#: .\templates\static_files\assessments_graph.html:181
+msgid "Spelling"
+msgstr "التهجئة"
+
+#: .\templates\static_files\assess_tests.html:91
+#: .\templates\static_files\assessments_graph.html:142
+#: .\templates\static_files\assessments_graph.html:181
+#: .\templates\static_files\cc_diff_info.html:70
+msgid "Reading"
+msgstr "القراءة"
+
+#: .\templates\static_files\assess_tests.html:92
+#: .\templates\static_files\assessments_graph.html:142
+#: .\templates\static_files\assessments_graph.html:181
+msgid "Single Word Reading"
+msgstr "قراءة الكلمة المفردة"
+
+#: .\templates\static_files\assess_tests.html:93
+#: .\templates\static_files\assessments_graph.html:142
+#: .\templates\static_files\assessments_graph.html:181
+msgid "Mobile"
+msgstr "الهاتف النقال"
+
+#: .\templates\static_files\assess_tests.html:94
+#: .\templates\static_files\assessments_graph.html:142
+#: .\templates\static_files\assessments_graph.html:181
+msgid "Funny Words"
+msgstr "الكلمات الغريبة"
+
+#: .\templates\static_files\assess_tests.html:95
+#: .\templates\static_files\assessments_graph.html:142
+#: .\templates\static_files\assessments_graph.html:181
+msgid "Segment"
+msgstr "قص الكلمات"
+
+#: .\templates\static_files\assess_tests.html:96
+#: .\templates\static_files\assessments_graph.html:142
+#: .\templates\static_files\assessments_graph.html:181
+msgid "Cave"
+msgstr "الكهف"
+
+#: .\templates\static_files\assess_tests.html:100
+msgid "Vocabulary IQ"
+msgstr "الذكاء اللفظي"
+
+#: .\templates\static_files\assess_tests.html:101
+msgid "Practical IQ"
+msgstr "الذكاء العملي"
+
+#: .\templates\static_files\assess_tests.html:102
+msgid "Total IQ"
+msgstr "الذكاء الكلي"
+
+#: .\templates\static_files\assess_tests.html:104
+#: .\templates\static_files\availability_psy.html:79
+#: .\templates\static_files\availability_psy_edit.html:16
+#: .\templates\static_files\registration_student.html:10
+#: .\templates\static_files\registration_student.html:19
+#: .\templates\static_files\search_student.html:111
+msgid "Edit"
+msgstr "عدل"
+
+#: .\templates\static_files\assess_tests.html:117
+msgid "Cognitive Results for selected test"
+msgstr "نتائج  التشخيص  للاختبار المحدد"
+
+#: .\templates\static_files\assess_tests.html:120
+msgid "Cognitive Date"
+msgstr "تاريخ التشخيص"
+
+#: .\templates\static_files\assess_tests.html:124
+msgid "Cognitive Result"
+msgstr "التشخيص النهائي"
+
+#: .\templates\static_files\assess_tests.html:129
+msgid "Recommendations"
+msgstr "التوصيات"
+
+#: .\templates\static_files\assess_tests.html:134
+msgid "Notice"
+msgstr "الملاحظات وسلوك الحالة"
+
+#: .\templates\static_files\assess_tests.html:143
+#: .\templates\static_files\assessment.html:113
+#: .\templates\static_files\cc_other_info.html:126
+#: .\templates\static_files\pre_evaluation.html:143
+#: .\templates\static_files\registration_psy.html:427
+#: .\templates\static_files\registration_student.html:396
+#: .\templates\static_files\registration_teacher.html:300
+#: .\templates\static_files\report_all_appointments.html:35
+#: .\templates\static_files\report_all_appointments.html:50
+#: .\templates\static_files\report_all_appointments.html:66
+#: .\templates\static_files\report_all_sessions.html:35
+#: .\templates\static_files\report_all_sessions.html:50
+#: .\templates\static_files\report_all_sessions.html:66
+msgid "Submit"
+msgstr "إرسال"
+
+#: .\templates\static_files\assessment.html:9
+msgid "Assessment for"
+msgstr "تشخيص الطالب"
+
+#: .\templates\static_files\assessment.html:14
+#: .\templates\static_files\dashboard_psy.html:176
+#: .\templates\static_files\dashboard_psy.html:216
+#: .\templates\static_files\dashboard_receptionist.html:427
+#: .\templates\static_files\report_all_appointments.html:139
+#: .\templates\static_files\report_all_appointments.html:177
+msgid "Assessment Data"
+msgstr "بيانات التقييم"
+
+#: .\templates\static_files\assessment.html:24
+#: .\templates\static_files\dashboard_student.html:278
+msgid "Results"
+msgstr "النتائج"
+
+#: .\templates\static_files\assessment.html:31
+msgid "Sub Test Name"
+msgstr "اسم الاختبار الجزئي"
+
+#: .\templates\static_files\assessment.html:35
+msgid "Sub Test Score"
+msgstr "درجة الاختبار الجزئي"
+
+#: .\templates\static_files\assessment.html:40
+msgid "Select A Score"
+msgstr "حدد الدرجة"
+
+#: .\templates\static_files\assessment.html:50
+msgid "Sub Test Percentage"
+msgstr "النسبة المئوية"
+
+#: .\templates\static_files\assessment.html:53
+msgid "Sub Test Time (in seconds)"
+msgstr "وقت الاختبار الفرعي (بالثواني)"
+
+#: .\templates\static_files\assessment.html:55
+msgid "Select A Time"
+msgstr "حدد الوقت"
+
+#: .\templates\static_files\assessment.html:66
+#: .\templates\static_files\assessment.html:78
+msgid "Sub Test Grade"
+msgstr "تقدير الاختبار الجزئي"
+
+#: .\templates\static_files\assessment.html:68
+msgid "Select A Grade"
+msgstr "حدد  التقدير"
+
+#: .\templates\static_files\assessment.html:84
+msgid "Test Date"
+msgstr "تاريخ الاختبار"
+
+#: .\templates\static_files\assessment_search.html:9
+#: .\templates\static_files\assessment_search.html:22
+#: .\templates\static_files\pre_eva_search.html:9
+#: .\templates\static_files\search_student.html:9
+#: .\templates\static_files\search_student.html:14
+#: .\templates\static_files\session_evaluation_search.html:9
+#: .\templates\static_files\session_evaluation_search.html:22
+msgid "Search Student"
+msgstr "بحث طالب"
+
+#: .\templates\static_files\assessment_search.html:14
+msgid "Assessment Search"
+msgstr "بحث التشخيص"
+
+#: .\templates\static_files\assessments_graph.html:10
+msgid "Conducted by Psychologist"
+msgstr "المواعيد التي أجراها الاخصائي"
+
+#: .\templates\static_files\assessments_graph.html:71
+msgid "Weksler (Total IQ)"
+msgstr "الذكاء الكلي"
+
+#: .\templates\static_files\assessments_graph.html:73
+#: .\templates\static_files\assessments_graph.html:106
+#: .\templates\static_files\assessments_graph.html:144
+#: .\templates\static_files\assessments_graph.html:183
+msgid "Score"
+msgstr "الدرجات"
+
+#: .\templates\static_files\assessments_graph.html:80
+#: .\templates\static_files\assessments_graph.html:113
+#: .\templates\static_files\assessments_graph.html:152
+#: .\templates\static_files\assessments_graph.html:190
+#: .\templates\static_files\dashboard_student.html:447
+#: .\templates\static_files\search_intervention.html:95
+#: .\templates\static_files\todays_intervention.html:82
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2186
+msgid "Time"
+msgstr "الزمن"
+
+#: .\templates\static_files\availability_psy.html:9
+#: .\templates\static_files\availability_psy_edit.html:9
+msgid "Availability of Psychologist"
+msgstr "تواجد الأخصائي"
+
+#: .\templates\static_files\availability_psy.html:14
+#: .\templates\static_files\availability_psy_edit.html:14
+#: .\templates\static_files\dashboard_psy.html:78
+#: .\templates\static_files\dashboard_teacher.html:130
+#: .\templates\static_files\search_psy.html:61
+#: .\templates\static_files\search_teacher.html:70
+msgid "Availability"
+msgstr "التواجد"
+
+#: .\templates\static_files\availability_psy.html:24
+#: .\templates\static_files\availability_psy_edit.html:25
+msgid "Psychologist:"
+msgstr "الأخصائي:"
+
+#: .\templates\static_files\availability_psy.html:41
+#: .\templates\static_files\availability_psy_edit.html:44
+msgid "Start Time"
+msgstr "تاريخ البدء"
+
+#: .\templates\static_files\availability_psy.html:42
+#: .\templates\static_files\availability_psy_edit.html:45
+msgid "End Time"
+msgstr "تاريخ الانتهاء"
+
+#: .\templates\static_files\availability_psy.html:43
+#: .\templates\static_files\availability_psy_edit.html:46
+#: .\templates\static_files\dashboard_student.html:446
+#: .\templates\static_files\search_intervention.html:94
+msgid "Day"
+msgstr "اليوم"
+
+#: .\templates\static_files\availability_psy.html:50
+#: .\templates\static_files\availability_psy_edit.html:58
+#: .\templates\static_files\dashboard_student.html:495
+#: .\templates\static_files\weekly_grid.html:72
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Monday"
+msgstr "الاثنين"
+
+#: .\templates\static_files\availability_psy.html:55
+#: .\templates\static_files\availability_psy_edit.html:68
+#: .\templates\static_files\dashboard_student.html:496
+#: .\templates\static_files\weekly_grid.html:90
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Tuesday"
+msgstr "الثلاثاء"
+
+#: .\templates\static_files\availability_psy.html:60
+#: .\templates\static_files\availability_psy_edit.html:78
+#: .\templates\static_files\dashboard_student.html:497
+#: .\templates\static_files\weekly_grid.html:108
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Wednesday"
+msgstr "الاربعاء"
+
+#: .\templates\static_files\availability_psy.html:65
+#: .\templates\static_files\availability_psy_edit.html:88
+#: .\templates\static_files\dashboard_student.html:498
+#: .\templates\static_files\weekly_grid.html:126
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Thursday"
+msgstr "الخميس"
+
+#: .\templates\static_files\availability_psy.html:70
+#: .\templates\static_files\availability_psy_edit.html:103
+#: .\templates\static_files\dashboard_student.html:499
+#: .\templates\static_files\weekly_grid.html:144
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Saturday"
+msgstr "السبت"
+
+#: .\templates\static_files\availability_psy.html:75
+#: .\templates\static_files\availability_psy_edit.html:113
+#: .\templates\static_files\dashboard_student.html:500
+#: .\templates\static_files\weekly_grid.html:162
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Sunday"
+msgstr "الأحد"
+
+#: .\templates\static_files\availability_psy_edit.html:117
+msgid "Update"
+msgstr "تحديث"
+
+#: .\templates\static_files\cc-social-development.html:15
+#: .\templates\static_files\cc_child_beh.html:15
+#: .\templates\static_files\cc_condition.html:12
+#: .\templates\static_files\cc_development_of_child.html:14
+#: .\templates\static_files\cc_diff_info.html:15
+#: .\templates\static_files\cc_family_history.html:15
+#: .\templates\static_files\cc_other_info.html:15
+#: .\templates\static_files\cc_school_history.html:15
+#: .\templates\static_files\cc_stages_of_growth.html:15
+#: .\templates\static_files\child-case.html:15
+msgid "Step 1"
+msgstr "المرحلة 1"
+
+#: .\templates\static_files\cc-social-development.html:17
+#: .\templates\static_files\cc_child_beh.html:17
+#: .\templates\static_files\cc_condition.html:14
+#: .\templates\static_files\cc_development_of_child.html:16
+#: .\templates\static_files\cc_diff_info.html:17
+#: .\templates\static_files\cc_family_history.html:17
+#: .\templates\static_files\cc_other_info.html:17
+#: .\templates\static_files\cc_school_history.html:17
+#: .\templates\static_files\cc_stages_of_growth.html:17
+#: .\templates\static_files\child-case.html:17
+msgid "Step 2"
+msgstr "المرحلة 2"
+
+#: .\templates\static_files\cc-social-development.html:20
+#: .\templates\static_files\cc_child_beh.html:20
+#: .\templates\static_files\cc_condition.html:17
+#: .\templates\static_files\cc_development_of_child.html:19
+#: .\templates\static_files\cc_diff_info.html:20
+#: .\templates\static_files\cc_family_history.html:20
+#: .\templates\static_files\cc_other_info.html:20
+#: .\templates\static_files\cc_school_history.html:20
+#: .\templates\static_files\cc_stages_of_growth.html:20
+#: .\templates\static_files\child-case.html:20
+msgid "Step 3"
+msgstr "المرحلة 3"
+
+#: .\templates\static_files\cc-social-development.html:23
+#: .\templates\static_files\cc_child_beh.html:23
+#: .\templates\static_files\cc_condition.html:20
+#: .\templates\static_files\cc_development_of_child.html:22
+#: .\templates\static_files\cc_diff_info.html:23
+#: .\templates\static_files\cc_family_history.html:23
+#: .\templates\static_files\cc_other_info.html:23
+#: .\templates\static_files\cc_school_history.html:23
+#: .\templates\static_files\cc_stages_of_growth.html:23
+#: .\templates\static_files\child-case.html:23
+msgid "Step 4"
+msgstr "المرحلة 4"
+
+#: .\templates\static_files\cc-social-development.html:26
+#: .\templates\static_files\cc_child_beh.html:26
+#: .\templates\static_files\cc_condition.html:23
+#: .\templates\static_files\cc_development_of_child.html:25
+#: .\templates\static_files\cc_diff_info.html:26
+#: .\templates\static_files\cc_family_history.html:26
+#: .\templates\static_files\cc_other_info.html:26
+#: .\templates\static_files\cc_school_history.html:26
+#: .\templates\static_files\cc_stages_of_growth.html:26
+#: .\templates\static_files\child-case.html:26
+msgid "Step 5"
+msgstr "المرحلة 5"
+
+#: .\templates\static_files\cc-social-development.html:29
+#: .\templates\static_files\cc_child_beh.html:29
+#: .\templates\static_files\cc_condition.html:26
+#: .\templates\static_files\cc_development_of_child.html:28
+#: .\templates\static_files\cc_diff_info.html:29
+#: .\templates\static_files\cc_family_history.html:29
+#: .\templates\static_files\cc_other_info.html:29
+#: .\templates\static_files\cc_school_history.html:29
+#: .\templates\static_files\cc_stages_of_growth.html:29
+#: .\templates\static_files\child-case.html:29
+msgid "Step 6"
+msgstr "المرحلة 6"
+
+#: .\templates\static_files\cc-social-development.html:32
+#: .\templates\static_files\cc_child_beh.html:32
+#: .\templates\static_files\cc_condition.html:29
+#: .\templates\static_files\cc_development_of_child.html:31
+#: .\templates\static_files\cc_diff_info.html:32
+#: .\templates\static_files\cc_family_history.html:32
+#: .\templates\static_files\cc_other_info.html:32
+#: .\templates\static_files\cc_school_history.html:32
+#: .\templates\static_files\cc_stages_of_growth.html:32
+#: .\templates\static_files\child-case.html:32
+msgid "Step 7"
+msgstr "المرحلة 7"
+
+#: .\templates\static_files\cc-social-development.html:35
+#: .\templates\static_files\cc_child_beh.html:35
+#: .\templates\static_files\cc_condition.html:32
+#: .\templates\static_files\cc_development_of_child.html:34
+#: .\templates\static_files\cc_diff_info.html:35
+#: .\templates\static_files\cc_family_history.html:35
+#: .\templates\static_files\cc_other_info.html:35
+#: .\templates\static_files\cc_school_history.html:35
+#: .\templates\static_files\cc_stages_of_growth.html:35
+#: .\templates\static_files\child-case.html:35
+msgid "Step 8"
+msgstr "المرحلة 8"
+
+#: .\templates\static_files\cc-social-development.html:38
+#: .\templates\static_files\cc_child_beh.html:38
+#: .\templates\static_files\cc_condition.html:35
+#: .\templates\static_files\cc_development_of_child.html:37
+#: .\templates\static_files\cc_diff_info.html:38
+#: .\templates\static_files\cc_family_history.html:38
+#: .\templates\static_files\cc_other_info.html:38
+#: .\templates\static_files\cc_school_history.html:38
+#: .\templates\static_files\cc_stages_of_growth.html:38
+#: .\templates\static_files\child-case.html:38
+msgid "Step 9"
+msgstr "المرحلة 9"
+
+#: .\templates\static_files\cc-social-development.html:41
+#: .\templates\static_files\cc_child_beh.html:41
+#: .\templates\static_files\cc_condition.html:38
+#: .\templates\static_files\cc_development_of_child.html:40
+#: .\templates\static_files\cc_diff_info.html:41
+#: .\templates\static_files\cc_family_history.html:41
+#: .\templates\static_files\cc_other_info.html:41
+#: .\templates\static_files\cc_school_history.html:41
+#: .\templates\static_files\cc_stages_of_growth.html:41
+#: .\templates\static_files\child-case.html:41
+msgid "Step 10"
+msgstr "المرحلة 10"
+
+#: .\templates\static_files\cc-social-development.html:50
+msgid "Social/Personal Development"
+msgstr "التطور الاجتماعي / الشخصي"
+
+#: .\templates\static_files\cc-social-development.html:67
+msgid "Brief Description of child's relation towards following:"
+msgstr "وصف مختصر عن علاقة الحالة تجاه كل من"
+
+#: .\templates\static_files\cc-social-development.html:70
+msgid "Friends"
+msgstr "الأصدقاء"
+
+#: .\templates\static_files\cc-social-development.html:74
+msgid "Siblings"
+msgstr "الأشقاء"
+
+#: .\templates\static_files\cc-social-development.html:78
+msgid "Parents"
+msgstr "الوالدين"
+
+#: .\templates\static_files\cc-social-development.html:82
+msgid "Adults and Others"
+msgstr "الكبار والآخرين"
+
+#: .\templates\static_files\cc-social-development.html:86
+msgid "Maid"
+msgstr "الخدم"
+
+#: .\templates\static_files\cc-social-development.html:90
+msgid "Age at which have attachment with maid (if any)"
+msgstr "كان عمر الحالة عند ارتباطه بالخادمة (إن كان مرتبطا بها)"
+
+#: .\templates\static_files\cc-social-development.html:94
+msgid "Family's controlling authority"
+msgstr "السلطة الضابطة بالأسرة هي"
+
+#: .\templates\static_files\cc-social-development.html:98
+msgid "Family member close to the child"
+msgstr "الشخص القريب من الطفل"
+
+#: .\templates\static_files\cc-social-development.html:102
+msgid "Use Punishment/Reward System?"
+msgstr "يستخدم مع الحالة أسلوب العقاب والثواب"
+
+#: .\templates\static_files\cc-social-development.html:105
+#: .\templates\static_files\cc-social-development.html:141
+#: .\templates\static_files\cc_child_beh.html:70
+#: .\templates\static_files\cc_development_of_child.html:87
+#: .\templates\static_files\cc_development_of_child.html:95
+#: .\templates\static_files\cc_development_of_child.html:103
+#: .\templates\static_files\cc_development_of_child.html:111
+#: .\templates\static_files\cc_development_of_child.html:165
+#: .\templates\static_files\cc_development_of_child.html:173
+#: .\templates\static_files\cc_development_of_child.html:181
+#: .\templates\static_files\cc_development_of_child.html:189
+#: .\templates\static_files\cc_development_of_child.html:197
+#: .\templates\static_files\cc_development_of_child.html:205
+#: .\templates\static_files\cc_development_of_child.html:213
+#: .\templates\static_files\cc_development_of_child.html:240
+#: .\templates\static_files\cc_diff_info.html:73
+#: .\templates\static_files\cc_diff_info.html:81
+#: .\templates\static_files\cc_diff_info.html:89
+#: .\templates\static_files\cc_diff_info.html:97
+#: .\templates\static_files\cc_diff_info.html:105
+#: .\templates\static_files\cc_diff_info.html:113
+#: .\templates\static_files\cc_diff_info.html:121
+#: .\templates\static_files\cc_diff_info.html:129
+#: .\templates\static_files\cc_diff_info.html:137
+#: .\templates\static_files\cc_diff_info.html:145
+#: .\templates\static_files\cc_diff_info.html:153
+#: .\templates\static_files\cc_diff_info.html:161
+#: .\templates\static_files\cc_diff_info.html:169
+#: .\templates\static_files\cc_diff_info.html:177
+#: .\templates\static_files\cc_diff_info.html:185
+#: .\templates\static_files\cc_diff_info.html:193
+#: .\templates\static_files\cc_diff_info.html:201
+#: .\templates\static_files\cc_diff_info.html:209
+#: .\templates\static_files\cc_diff_info.html:217
+#: .\templates\static_files\cc_diff_info.html:225
+#: .\templates\static_files\cc_diff_info.html:233
+#: .\templates\static_files\cc_diff_info.html:241
+#: .\templates\static_files\cc_diff_info.html:249
+#: .\templates\static_files\cc_diff_info.html:257
+#: .\templates\static_files\cc_diff_info.html:265
+#: .\templates\static_files\cc_diff_info.html:273
+#: .\templates\static_files\cc_diff_info.html:281
+#: .\templates\static_files\cc_diff_info.html:289
+#: .\templates\static_files\cc_family_history.html:147
+#: .\templates\static_files\cc_other_info.html:103
+#: .\templates\static_files\cc_school_history.html:107
+#: .\templates\static_files\cc_school_history.html:123
+#: .\templates\static_files\cc_school_history.html:135
+#: .\templates\static_files\cc_school_history.html:147
+#: .\templates\static_files\cc_stages_of_growth.html:149
+#: .\templates\static_files\cc_stages_of_growth.html:157
+#: .\templates\static_files\cc_stages_of_growth.html:169
+#: .\templates\static_files\cc_stages_of_growth.html:177
+#: .\templates\static_files\cc_stages_of_growth.html:189
+#: .\templates\static_files\cc_stages_of_growth.html:197
+#: .\templates\static_files\cc_stages_of_growth.html:225
+#: .\templates\static_files\cc_stages_of_growth.html:233
+#: .\templates\static_files\cc_stages_of_growth.html:245
+#: .\templates\static_files\cc_stages_of_growth.html:265
+#: .\templates\static_files\child-case.html:279
+#: .\templates\static_files\child-case.html:287
+#: .\templates\static_files\child-case.html:303
+#: .\venv\Lib\site-packages\django\forms\widgets.py:715
+msgid "Yes"
+msgstr "نعم"
+
+#: .\templates\static_files\cc-social-development.html:106
+#: .\templates\static_files\cc-social-development.html:142
+#: .\templates\static_files\cc_child_beh.html:71
+#: .\templates\static_files\cc_development_of_child.html:88
+#: .\templates\static_files\cc_development_of_child.html:96
+#: .\templates\static_files\cc_development_of_child.html:104
+#: .\templates\static_files\cc_development_of_child.html:112
+#: .\templates\static_files\cc_development_of_child.html:166
+#: .\templates\static_files\cc_development_of_child.html:174
+#: .\templates\static_files\cc_development_of_child.html:182
+#: .\templates\static_files\cc_development_of_child.html:190
+#: .\templates\static_files\cc_development_of_child.html:198
+#: .\templates\static_files\cc_development_of_child.html:206
+#: .\templates\static_files\cc_development_of_child.html:214
+#: .\templates\static_files\cc_development_of_child.html:241
+#: .\templates\static_files\cc_diff_info.html:74
+#: .\templates\static_files\cc_diff_info.html:82
+#: .\templates\static_files\cc_diff_info.html:90
+#: .\templates\static_files\cc_diff_info.html:98
+#: .\templates\static_files\cc_diff_info.html:106
+#: .\templates\static_files\cc_diff_info.html:114
+#: .\templates\static_files\cc_diff_info.html:122
+#: .\templates\static_files\cc_diff_info.html:130
+#: .\templates\static_files\cc_diff_info.html:138
+#: .\templates\static_files\cc_diff_info.html:146
+#: .\templates\static_files\cc_diff_info.html:154
+#: .\templates\static_files\cc_diff_info.html:162
+#: .\templates\static_files\cc_diff_info.html:170
+#: .\templates\static_files\cc_diff_info.html:178
+#: .\templates\static_files\cc_diff_info.html:186
+#: .\templates\static_files\cc_diff_info.html:194
+#: .\templates\static_files\cc_diff_info.html:202
+#: .\templates\static_files\cc_diff_info.html:210
+#: .\templates\static_files\cc_diff_info.html:218
+#: .\templates\static_files\cc_diff_info.html:226
+#: .\templates\static_files\cc_diff_info.html:234
+#: .\templates\static_files\cc_diff_info.html:242
+#: .\templates\static_files\cc_diff_info.html:250
+#: .\templates\static_files\cc_diff_info.html:258
+#: .\templates\static_files\cc_diff_info.html:266
+#: .\templates\static_files\cc_diff_info.html:274
+#: .\templates\static_files\cc_diff_info.html:282
+#: .\templates\static_files\cc_diff_info.html:290
+#: .\templates\static_files\cc_family_history.html:148
+#: .\templates\static_files\cc_other_info.html:104
+#: .\templates\static_files\cc_school_history.html:108
+#: .\templates\static_files\cc_school_history.html:124
+#: .\templates\static_files\cc_school_history.html:136
+#: .\templates\static_files\cc_school_history.html:148
+#: .\templates\static_files\cc_stages_of_growth.html:150
+#: .\templates\static_files\cc_stages_of_growth.html:158
+#: .\templates\static_files\cc_stages_of_growth.html:170
+#: .\templates\static_files\cc_stages_of_growth.html:178
+#: .\templates\static_files\cc_stages_of_growth.html:190
+#: .\templates\static_files\cc_stages_of_growth.html:198
+#: .\templates\static_files\cc_stages_of_growth.html:226
+#: .\templates\static_files\cc_stages_of_growth.html:234
+#: .\templates\static_files\cc_stages_of_growth.html:246
+#: .\templates\static_files\cc_stages_of_growth.html:266
+#: .\templates\static_files\child-case.html:280
+#: .\templates\static_files\child-case.html:288
+#: .\templates\static_files\child-case.html:304
+#: .\venv\Lib\site-packages\django\forms\widgets.py:716
+msgid "No"
+msgstr "لا"
+
+#: .\templates\static_files\cc-social-development.html:110
+msgid "Who punishes (if any)"
+msgstr "من يقوم بالعقاب (في حالة وجوده)"
+
+#: .\templates\static_files\cc-social-development.html:114
+msgid "Is the Punishment"
+msgstr "ما هي العقوبة"
+
+#: .\templates\static_files\cc-social-development.html:117
+msgid "Immediate"
+msgstr "فورية"
+
+#: .\templates\static_files\cc-social-development.html:118
+msgid "Delayed"
+msgstr "مؤجلة"
+
+#: .\templates\static_files\cc-social-development.html:122
+msgid "Child spend time at home in?"
+msgstr "يقضي الطفل معظم وقته في البيت في"
+
+#: .\templates\static_files\cc-social-development.html:126
+msgid "Favourite game/hobby"
+msgstr "الألعاب المفضلة لدى الحالة (هواياته) هي"
+
+#: .\templates\static_files\cc-social-development.html:130
+msgid "Main Language at home"
+msgstr "اللغة الرئيسية المستخدمة في البيت هي"
+
+#: .\templates\static_files\cc-social-development.html:134
+msgid "Any Other Language used"
+msgstr "اللغات الأخرى المستخدمة في البيت"
+
+#: .\templates\static_files\cc-social-development.html:138
+msgid "Other Dialects used at home?"
+msgstr "هناك لهجات أخرى مستخدمة في البيت"
+
+#: .\templates\static_files\cc-social-development.html:146
+#: .\templates\static_files\cc_child_beh.html:342
+#: .\templates\static_files\cc_condition.html:137
+#: .\templates\static_files\cc_development_of_child.html:253
+#: .\templates\static_files\cc_diff_info.html:294
+#: .\templates\static_files\cc_family_history.html:160
+#: .\templates\static_files\cc_other_info.html:125
+#: .\templates\static_files\cc_school_history.html:192
+#: .\templates\static_files\cc_stages_of_growth.html:286
+msgid "Previous"
+msgstr "السابق"
+
+#: .\templates\static_files\cc_child_beh.html:50
+msgid "Child Behaviour"
+msgstr "سلوكيات الحالة"
+
+#: .\templates\static_files\cc_child_beh.html:67
+msgid "Child Suffers from Mental Illnesses"
+msgstr "تعاني الحالة من أمراض نفسية"
+
+#: .\templates\static_files\cc_child_beh.html:75
+msgid "Mental Illnesses (If any)"
+msgstr "الأمراض النفسية التي تعاني منها الحالة (إن وجدت) هي"
+
+#: .\templates\static_files\cc_child_beh.html:81
+msgid "Spends Most of the Time Alone"
+msgstr "يقضي معظم الوقت وحيدًا"
+
+#: .\templates\static_files\cc_child_beh.html:84
+#: .\templates\static_files\cc_child_beh.html:93
+#: .\templates\static_files\cc_child_beh.html:102
+#: .\templates\static_files\cc_child_beh.html:111
+#: .\templates\static_files\cc_child_beh.html:120
+#: .\templates\static_files\cc_child_beh.html:129
+#: .\templates\static_files\cc_child_beh.html:138
+#: .\templates\static_files\cc_child_beh.html:147
+#: .\templates\static_files\cc_child_beh.html:156
+#: .\templates\static_files\cc_child_beh.html:165
+#: .\templates\static_files\cc_child_beh.html:174
+#: .\templates\static_files\cc_child_beh.html:183
+#: .\templates\static_files\cc_child_beh.html:192
+#: .\templates\static_files\cc_child_beh.html:201
+#: .\templates\static_files\cc_child_beh.html:210
+#: .\templates\static_files\cc_child_beh.html:219
+#: .\templates\static_files\cc_child_beh.html:228
+#: .\templates\static_files\cc_child_beh.html:237
+#: .\templates\static_files\cc_child_beh.html:246
+#: .\templates\static_files\cc_child_beh.html:255
+#: .\templates\static_files\cc_child_beh.html:264
+#: .\templates\static_files\cc_child_beh.html:273
+#: .\templates\static_files\cc_child_beh.html:282
+#: .\templates\static_files\cc_child_beh.html:291
+#: .\templates\static_files\cc_child_beh.html:300
+#: .\templates\static_files\cc_child_beh.html:309
+#: .\templates\static_files\cc_child_beh.html:318
+#: .\templates\static_files\cc_child_beh.html:327
+#: .\templates\static_files\cc_child_beh.html:336
+msgid "Not True"
+msgstr "غير صحيح"
+
+#: .\templates\static_files\cc_child_beh.html:85
+#: .\templates\static_files\cc_child_beh.html:94
+#: .\templates\static_files\cc_child_beh.html:103
+#: .\templates\static_files\cc_child_beh.html:112
+#: .\templates\static_files\cc_child_beh.html:121
+#: .\templates\static_files\cc_child_beh.html:130
+#: .\templates\static_files\cc_child_beh.html:139
+#: .\templates\static_files\cc_child_beh.html:148
+#: .\templates\static_files\cc_child_beh.html:157
+#: .\templates\static_files\cc_child_beh.html:166
+#: .\templates\static_files\cc_child_beh.html:175
+#: .\templates\static_files\cc_child_beh.html:184
+#: .\templates\static_files\cc_child_beh.html:193
+#: .\templates\static_files\cc_child_beh.html:202
+#: .\templates\static_files\cc_child_beh.html:211
+#: .\templates\static_files\cc_child_beh.html:220
+#: .\templates\static_files\cc_child_beh.html:229
+#: .\templates\static_files\cc_child_beh.html:238
+#: .\templates\static_files\cc_child_beh.html:247
+#: .\templates\static_files\cc_child_beh.html:256
+#: .\templates\static_files\cc_child_beh.html:265
+#: .\templates\static_files\cc_child_beh.html:274
+#: .\templates\static_files\cc_child_beh.html:283
+#: .\templates\static_files\cc_child_beh.html:292
+#: .\templates\static_files\cc_child_beh.html:301
+#: .\templates\static_files\cc_child_beh.html:310
+#: .\templates\static_files\cc_child_beh.html:319
+#: .\templates\static_files\cc_child_beh.html:328
+#: .\templates\static_files\cc_child_beh.html:337
+msgid "Rarely/Sometimes"
+msgstr "بعض الأحيان"
+
+#: .\templates\static_files\cc_child_beh.html:86
+#: .\templates\static_files\cc_child_beh.html:95
+#: .\templates\static_files\cc_child_beh.html:104
+#: .\templates\static_files\cc_child_beh.html:113
+#: .\templates\static_files\cc_child_beh.html:122
+#: .\templates\static_files\cc_child_beh.html:131
+#: .\templates\static_files\cc_child_beh.html:140
+#: .\templates\static_files\cc_child_beh.html:149
+#: .\templates\static_files\cc_child_beh.html:158
+#: .\templates\static_files\cc_child_beh.html:167
+#: .\templates\static_files\cc_child_beh.html:176
+#: .\templates\static_files\cc_child_beh.html:185
+#: .\templates\static_files\cc_child_beh.html:194
+#: .\templates\static_files\cc_child_beh.html:203
+#: .\templates\static_files\cc_child_beh.html:212
+#: .\templates\static_files\cc_child_beh.html:221
+#: .\templates\static_files\cc_child_beh.html:230
+#: .\templates\static_files\cc_child_beh.html:239
+#: .\templates\static_files\cc_child_beh.html:248
+#: .\templates\static_files\cc_child_beh.html:257
+#: .\templates\static_files\cc_child_beh.html:266
+#: .\templates\static_files\cc_child_beh.html:275
+#: .\templates\static_files\cc_child_beh.html:284
+#: .\templates\static_files\cc_child_beh.html:293
+#: .\templates\static_files\cc_child_beh.html:302
+#: .\templates\static_files\cc_child_beh.html:311
+#: .\templates\static_files\cc_child_beh.html:320
+#: .\templates\static_files\cc_child_beh.html:329
+#: .\templates\static_files\cc_child_beh.html:338
+msgid "True"
+msgstr "صحيح"
+
+#: .\templates\static_files\cc_child_beh.html:90
+msgid "No specific friends"
+msgstr "ليس لديه أصدقاء معينون"
+
+#: .\templates\static_files\cc_child_beh.html:99
+msgid "Find Difficult to make friends"
+msgstr "يجد صعوبة في تكوين صداقات مع الآخرين"
+
+#: .\templates\static_files\cc_child_beh.html:108
+msgid "Quarrels with friends"
+msgstr "كثيرًا ما يتشاجر مع أصدقائه"
+
+#: .\templates\static_files\cc_child_beh.html:117
+msgid "Other children like to play with the child?"
+msgstr "يرغب الأطفال الآخرون في اللعب مع الحالة"
+
+#: .\templates\static_files\cc_child_beh.html:126
+msgid "Other children avoid to play with the child?"
+msgstr "يتجنب الأطفال الآخرون اللعب معه"
+
+#: .\templates\static_files\cc_child_beh.html:135
+msgid "Most of the friends older than the child?"
+msgstr "معظم أصدقائه أكبر منه سنًا"
+
+#: .\templates\static_files\cc_child_beh.html:144
+msgid "Most of the friends younger than the child?"
+msgstr "معظم أصدقاءه أصغر منه سنًا"
+
+#: .\templates\static_files\cc_child_beh.html:153
+msgid "Seeks to attract attention"
+msgstr "يتطلب أن يكون محور الاهتمام"
+
+#: .\templates\static_files\cc_child_beh.html:162
+msgid "Shows confidence in his ability?"
+msgstr "يبدي ثقة بمقدرته"
+
+#: .\templates\static_files\cc_child_beh.html:171
+msgid "Quite most of the time?"
+msgstr "معظم الوقت هادئ جدًا"
+
+#: .\templates\static_files\cc_child_beh.html:180
+msgid "Impulsive most of the time?"
+msgstr "معظم الوقت كثير الحركة واندفاعي"
+
+#: .\templates\static_files\cc_child_beh.html:189
+msgid "Activity is normal?"
+msgstr "نشاطه عادي"
+
+#: .\templates\static_files\cc_child_beh.html:198
+msgid "Cooperative with others?"
+msgstr "متعاون مع الآخرين"
+
+#: .\templates\static_files\cc_child_beh.html:207
+msgid "Mostly lies?"
+msgstr "كلامه غير صادق (كثير الكذب)"
+
+#: .\templates\static_files\cc_child_beh.html:216
+msgid "Irritable or moody"
+msgstr "سريع الغضب ومتقلب المزاج"
+
+#: .\templates\static_files\cc_child_beh.html:225
+msgid "Gets bored quickly"
+msgstr "سريع الملل"
+
+#: .\templates\static_files\cc_child_beh.html:234
+msgid "Completes the assigned tasks"
+msgstr "يستكمل المهام التي يكلف بها"
+
+#: .\templates\static_files\cc_child_beh.html:243
+msgid "Seems Unhappy/Sad/Depressed?"
+msgstr "يبدو غير سعيد (شعور بالاكتئاب والحزن)"
+
+#: .\templates\static_files\cc_child_beh.html:252
+msgid "Looks Cheerful/Upbeat"
+msgstr "يبدو مرحًا ومتفائلًا"
+
+#: .\templates\static_files\cc_child_beh.html:261
+msgid "Quite Aggressive behaviour?"
+msgstr "يتسم سلوك الحالة بالعدوانية"
+
+#: .\templates\static_files\cc_child_beh.html:270
+msgid "Avoids competition with others"
+msgstr "يتجنب المشاركة في المواقف التي تتطلب المنافسة مع الآخرين"
+
+#: .\templates\static_files\cc_child_beh.html:279
+msgid "Tends to Compete with others"
+msgstr "يميل إلى المنافسة"
+
+#: .\templates\static_files\cc_child_beh.html:288
+msgid "Lazy/Indifferent"
+msgstr "كسول ويميل إلى اللامبالاة"
+
+#: .\templates\static_files\cc_child_beh.html:297
+msgid "Performs Leadership roles"
+msgstr "قيامه بالأدوار القيادية"
+
+#: .\templates\static_files\cc_child_beh.html:306
+msgid "Self-Reliance/Autonomy"
+msgstr "اعتماده على الذات (وتحقيق الاستقلال الذاتي)"
+
+#: .\templates\static_files\cc_child_beh.html:315
+msgid "Takes long time in completing a task?"
+msgstr "يستغرق في العمل فترة طويلة من الزمن"
+
+#: .\templates\static_files\cc_child_beh.html:324
+msgid "Always seems Anxious"
+msgstr "يبدو قلقًا دائمًا"
+
+#: .\templates\static_files\cc_child_beh.html:333
+msgid "Always seems Afraid"
+msgstr "شعوره بالخوف"
+
+#: .\templates\static_files\cc_condition.html:47
+msgid "Did the child suffer from the following complications and problems"
+msgstr "المشاكل التي تعرضت الحالة لها"
+
+#: .\templates\static_files\cc_condition.html:66
+msgid "Condition"
+msgstr "الحالة"
+
+#: .\templates\static_files\cc_condition.html:67
+#: .\templates\static_files\child-case.html:139
+#: .\templates\static_files\child-case.html:177
+#: .\templates\static_files\dashboard_student.html:198
+#: .\templates\static_files\search_student.html:67
+msgid "Age"
+msgstr "العمر"
+
+#: .\templates\static_files\cc_condition.html:68
+msgid "Duration/Recurrence"
+msgstr "المدة الزمنية/نسبة تكرارها"
+
+#: .\templates\static_files\cc_condition.html:73
+msgid "Severe High Temperature"
+msgstr "ارتفاع شديد بدرجة الحرارة"
+
+#: .\templates\static_files\cc_condition.html:78
+msgid "Auditory problems/Ears Infection"
+msgstr "مشاكل سمعية / التهابات في الأذن"
+
+#: .\templates\static_files\cc_condition.html:83
+msgid "Vision Problems"
+msgstr "مشاكل بصرية"
+
+#: .\templates\static_files\cc_condition.html:88
+msgid "Juandice/Yellow Skin"
+msgstr "اصفرار"
+
+#: .\templates\static_files\cc_condition.html:93
+msgid "Asthma"
+msgstr "الربو"
+
+#: .\templates\static_files\cc_condition.html:98
+msgid "Allergy"
+msgstr "الحساسية"
+
+#: .\templates\static_files\cc_condition.html:103
+#: .\templates\static_files\cc_development_of_child.html:92
+msgid "Poisoning"
+msgstr "تسمم"
+
+#: .\templates\static_files\cc_condition.html:108
+msgid "Surgical Intervention"
+msgstr "عمليات جراحية (نوع العملية)"
+
+#: .\templates\static_files\cc_condition.html:113
+msgid "In case there was, please mention the surgery"
+msgstr "في حال هناك عمليات جراحية , ما هي هذه العمليات"
+
+#: .\templates\static_files\cc_condition.html:118
+msgid "Accidents"
+msgstr "حوادث"
+
+#: .\templates\static_files\cc_condition.html:123
+msgid "In case there was, please mention the type Accidents"
+msgstr "في حال هناك حوادث , ما هي هذه الحوادث"
+
+#: .\templates\static_files\cc_condition.html:128
+msgid "Does the child suffer from diseases or have health issues not mentioned"
+msgstr "هل يعاني الطفل من اي امراض مزمنة او مشاكل صحية غير مذكورة أعلاه ؟"
+
+#: .\templates\static_files\cc_development_of_child.html:49
+msgid "Development Of Child History"
+msgstr "التاريخ التطوري للحالة"
+
+#: .\templates\static_files\cc_development_of_child.html:66
+msgid "Pregnancy Period"
+msgstr "فترة الحمل"
+
+#: .\templates\static_files\cc_development_of_child.html:69
+msgid "State of Mind of Mother during Pregnancy"
+msgstr "الحالة الصحية للأم خلال فترة الحمل كانت"
+
+#: .\templates\static_files\cc_development_of_child.html:73
+msgid "Mother's age when she got pregnant with the case"
+msgstr "كان عمر الأم عند الحمل بالحالة"
+
+#: .\templates\static_files\cc_development_of_child.html:77
+msgid "Mother's health and psychological states during pregnancy"
+msgstr "حالة الأم النفسية أثناء الحمل كانت"
+
+#: .\templates\static_files\cc_development_of_child.html:81
+msgid "Did the mother suffer from any of the following problems"
+msgstr "هل تعرضت الأم لأي من المشاكل التالية"
+
+#: .\templates\static_files\cc_development_of_child.html:84
+msgid "Bleeding"
+msgstr "نزيف"
+
+#: .\templates\static_files\cc_development_of_child.html:100
+msgid "Infection"
+msgstr "الالتهابات"
+
+#: .\templates\static_files\cc_development_of_child.html:108
+msgid "Accident"
+msgstr "حوادث"
+
+#: .\templates\static_files\cc_development_of_child.html:116
+msgid "Please specify the kind of the accident"
+msgstr "نوع الحادث (إن وجد)"
+
+#: .\templates\static_files\cc_development_of_child.html:120
+msgid "List the kind of medicines and drugs the mother took during pregnancy"
+msgstr "نوع الأدوية والعقاقير التي تناولتها الأم أثناء الحمل"
+
+#: .\templates\static_files\cc_development_of_child.html:124
+msgid "Are there any other problems or diseases during the pregnancy period"
+msgstr "هناك مشاكل أو أمراض أخرى أثناء فترة الحمل"
+
+#: .\templates\static_files\cc_development_of_child.html:128
+msgid "Duration of Pregnancy was"
+msgstr "مدة الحمل"
+
+#: .\templates\static_files\cc_development_of_child.html:131
+msgid "Complete"
+msgstr "مكتملة"
+
+#: .\templates\static_files\cc_development_of_child.html:132
+msgid "In-Complete"
+msgstr "غير مكتملة"
+
+#: .\templates\static_files\cc_development_of_child.html:136
+msgid "If In-Complete, in which month"
+msgstr "اذا كانت غير مكتملة في اي شهر"
+
+#: .\templates\static_files\cc_development_of_child.html:139
+msgid "6th"
+msgstr "السادس"
+
+#: .\templates\static_files\cc_development_of_child.html:140
+msgid "7th"
+msgstr "السابع"
+
+#: .\templates\static_files\cc_development_of_child.html:141
+msgid "8th"
+msgstr "الثامن"
+
+#: .\templates\static_files\cc_development_of_child.html:142
+msgid "9th"
+msgstr ""
+
+#: .\templates\static_files\cc_development_of_child.html:146
+msgid "Birth Period"
+msgstr "فترة الولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:149
+msgid "Type Of Birth"
+msgstr "نوع الولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:152
+msgid "Normal"
+msgstr "طبيعية"
+
+#: .\templates\static_files\cc_development_of_child.html:153
+msgid "Birth With Retraction Ring"
+msgstr "بمساعدة آلة السحب"
+
+#: .\templates\static_files\cc_development_of_child.html:154
+msgid "Cesarean Section"
+msgstr "قيصرية"
+
+#: .\templates\static_files\cc_development_of_child.html:155
+msgid "Maternal Prenatal Anesthesia"
+msgstr "تخدير الأم للولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:159
+msgid "Case Of Baby during Birth"
+msgstr "حالة المولود أثناء الولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:162
+msgid "Born With Umbilical Cord around the baby's neck"
+msgstr "ولد والحبل السري حول عنقه"
+
+#: .\templates\static_files\cc_development_of_child.html:170
+msgid "Skin Turned Yellow"
+msgstr "اصفرت بشرته"
+
+#: .\templates\static_files\cc_development_of_child.html:178
+msgid "Skin was blue"
+msgstr "ازرقت بشرته"
+
+#: .\templates\static_files\cc_development_of_child.html:186
+msgid "Twin or a Triplet"
+msgstr "كان توأمًا أو أحد توائم ثلاثة"
+
+#: .\templates\static_files\cc_development_of_child.html:194
+msgid "Needed Oxygen or Oxygen Deficiency"
+msgstr "احتاج إلى الأكسجين (نقص أكسجين)"
+
+#: .\templates\static_files\cc_development_of_child.html:202
+msgid "Colic/Cramps"
+msgstr "أصيب بالتشنجات"
+
+#: .\templates\static_files\cc_development_of_child.html:210
+msgid "Dropsy/Edema/Hydrops"
+msgstr "استسقاء"
+
+#: .\templates\static_files\cc_development_of_child.html:218
+msgid "Baby's weight at birth"
+msgstr "وزن المولود عند الولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:222
+msgid "Any other problems at birth not mentioned"
+msgstr "مشاكل  أخرى تعرضت لها الحالة أثناء الولادة لم تذكر (إن وجدت)"
+
+#: .\templates\static_files\cc_development_of_child.html:226
+msgid "Did the mother suffer from complications during birth"
+msgstr "المشاكل التي عانتها الأم أثناء الولادة (إن وجدت)"
+
+#: .\templates\static_files\cc_development_of_child.html:230
+msgid "Post Birth Period"
+msgstr "فترة ما بعد الولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:233
+msgid "Health and psychological state of the mother post delivery"
+msgstr "الحالة الصحية والنفسية للأم بعد الولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:237
+msgid "Was baby in incubator"
+msgstr "وضعت الحالة بالحاضنة بعد الولادة"
+
+#: .\templates\static_files\cc_development_of_child.html:245
+msgid "Identify the period"
+msgstr "حدد المدة"
+
+#: .\templates\static_files\cc_development_of_child.html:249
+msgid ""
+"Did the baby need surgery immediately after birth, and what was the surgery"
+msgstr "هل احتاج الطفل لعمليات جراحية قورية بعد الولادة  ؟ وما هي هذه الجراحات"
+
+#: .\templates\static_files\cc_diff_info.html:50
+msgid "Child Difficulties"
+msgstr "الصعوبات"
+
+#: .\templates\static_files\cc_diff_info.html:67
+msgid "Please specify the difficulties that the Child suffers from:"
+msgstr "يرجى تحديد الصعوبات التي تعاني منها الحالة"
+
+#: .\templates\static_files\cc_diff_info.html:78
+msgid "Dictating"
+msgstr "صعوبة في  الاملاء"
+
+#: .\templates\static_files\cc_diff_info.html:86
+msgid "Writing"
+msgstr "صعوبة في الكتابة"
+
+#: .\templates\static_files\cc_diff_info.html:94
+msgid "Remembering nearby Information"
+msgstr "صعوبة في تذكر المعلومات القريبة"
+
+#: .\templates\static_files\cc_diff_info.html:102
+msgid "Recognizing Time"
+msgstr "صعوبة في  التعرف على الوقت"
+
+#: .\templates\static_files\cc_diff_info.html:110
+msgid "Recognizing Days/Weeks of Month"
+msgstr "صعوبة في  التعرف على ايام الاسبوع والاشهر"
+
+#: .\templates\static_files\cc_diff_info.html:118
+msgid "Recognizing Directions"
+msgstr "صعوبة في التعرف على الاتجاهات"
+
+#: .\templates\static_files\cc_diff_info.html:126
+msgid "Completing work on time"
+msgstr "صعوبة في انهاء الاعمال المطلوبة في الوقت المحددد"
+
+#: .\templates\static_files\cc_diff_info.html:134
+msgid "Focusing and paying Attention"
+msgstr "صعوبة في  التركيز والانتباه"
+
+#: .\templates\static_files\cc_diff_info.html:142
+msgid "Assimilating/Understanding"
+msgstr "صعوبة في  الاستيعاب والفهم "
+
+#: .\templates\static_files\cc_diff_info.html:150
+msgid "Remembering Remote Information"
+msgstr "صعوبة في  تذكر المعلومات البعيدة"
+
+#: .\templates\static_files\cc_diff_info.html:158
+msgid "Understanding Relationships"
+msgstr "صعوبة في  ادراك العلاقات (كبير – صغير  - بعيد – قريب )"
+
+#: .\templates\static_files\cc_diff_info.html:166
+msgid "Expressing Ideas/telling Stories"
+msgstr "صعوبة في  التعبير عن الافكار أو رواية القصص"
+
+#: .\templates\static_files\cc_diff_info.html:174
+msgid "Remembering previous skills, concepts and experiences"
+msgstr "صعوبة في  تذكر ما يقدم من مهارات وخبرات سابقة"
+
+#: .\templates\static_files\cc_diff_info.html:182
+msgid "Moving from the Blackboard"
+msgstr "صعوبة في  النقل من السبورة"
+
+#: .\templates\static_files\cc_diff_info.html:190
+msgid "Copying from printed material"
+msgstr "صعوبة في  النسخ من المادة المطبوعة"
+
+#: .\templates\static_files\cc_diff_info.html:198
+msgid "Tends to flip words, letters and shapes"
+msgstr "يميل إلى قلب الكلمات والأحرف والأشكال"
+
+#: .\templates\static_files\cc_diff_info.html:206
+msgid "Confuses Numbers, Letters with similar components"
+msgstr "بخلط بين الأرقام والحروف ذات المكونات المتشابهة"
+
+#: .\templates\static_files\cc_diff_info.html:214
+msgid "Understanding and executing verbal instructions"
+msgstr "لا يستطيع فهم وتنفيذ التعليمات الشفهية"
+
+#: .\templates\static_files\cc_diff_info.html:222
+msgid "Learning by listening"
+msgstr "صعوبة في التعلم عن طريق الاستماع"
+
+#: .\templates\static_files\cc_diff_info.html:230
+msgid "Always need to repeat instructions"
+msgstr "يحتاج دائماً إلى تكرار التعليمات"
+
+#: .\templates\static_files\cc_diff_info.html:238
+msgid "Distinguish Numbers"
+msgstr "صعوبة في التمييز بين الارقام"
+
+#: .\templates\static_files\cc_diff_info.html:246
+msgid "Memorizing multiplication tables"
+msgstr "صعوبة في حفظ جداول الضرب"
+
+#: .\templates\static_files\cc_diff_info.html:254
+msgid "Memorizing phone numbers"
+msgstr "صعوبة في حفظ ارقام التليفونات"
+
+#: .\templates\static_files\cc_diff_info.html:262
+msgid "Counting up and upwards"
+msgstr "صعوبة في العد التنازلي والتصاعدي"
+
+#: .\templates\static_files\cc_diff_info.html:270
+msgid ""
+"Performing addition, subtraction, multiplication and division operations"
+msgstr "صعوبة في اجراء عمليات الجمع والطرح والضرب والقسمة"
+
+#: .\templates\static_files\cc_diff_info.html:278
+msgid "Understanding mathematical symbols"
+msgstr "صعوبة في فهم الرموز الرياضية وترجمة رموزها مثل <، >."
+
+#: .\templates\static_files\cc_diff_info.html:286
+msgid "Distinguishing size, quantity, distance and time"
+msgstr "صعوبة في تمييز الحجم والكمية والمسافة والزمن"
+
+#: .\templates\static_files\cc_family_history.html:50
+msgid ""
+"Specify if one of the family members suffers from the following problems:"
+msgstr "تحديد إن كان أحد أفراد العائلة أو الأسرة يعاني من المشاكل التالية:"
+
+#: .\templates\static_files\cc_family_history.html:68
+msgid "Problems"
+msgstr "المشكلة"
+
+#: .\templates\static_files\cc_family_history.html:69
+msgid "Family Members"
+msgstr "أعضاء الأسرة"
+
+#: .\templates\static_files\cc_family_history.html:74
+msgid "Hyperactivity"
+msgstr "فرط نشاط"
+
+#: .\templates\static_files\cc_family_history.html:79
+msgid "Reading Difficulty"
+msgstr "صعوبة في القراءة"
+
+#: .\templates\static_files\cc_family_history.html:84
+msgid "Writing and Dictating Difficulty"
+msgstr "صعوبة في الكتابة والإملاء"
+
+#: .\templates\static_files\cc_family_history.html:89
+msgid "Difficulty in calculating"
+msgstr "صعوبة في الحساب"
+
+#: .\templates\static_files\cc_family_history.html:94
+msgid "Concentration and attention Difficulty"
+msgstr "صعوبة في التركيز والانتباه"
+
+#: .\templates\static_files\cc_family_history.html:99
+msgid "Difficulty in Pronouncing"
+msgstr "صعوبة في النطق"
+
+#: .\templates\static_files\cc_family_history.html:104
+msgid "Impaired Hearing"
+msgstr "إعاقة سمعية"
+
+#: .\templates\static_files\cc_family_history.html:109
+msgid "Visual Impairment"
+msgstr "إعاقة بصرية"
+
+#: .\templates\static_files\cc_family_history.html:114
+msgid "Impaired Mobility"
+msgstr "إعاقة حركية"
+
+#: .\templates\static_files\cc_family_history.html:119
+msgid "Intellectual Disability"
+msgstr "إعاقة ذهنية"
+
+#: .\templates\static_files\cc_family_history.html:124
+msgid "Down Syndrome"
+msgstr "متلازمة الداون"
+
+#: .\templates\static_files\cc_family_history.html:129
+msgid "Autism"
+msgstr "التوحد"
+
+#: .\templates\static_files\cc_family_history.html:139
+msgid "Other problems not mentioned, specifying family members"
+msgstr "مشاكل أخرى لم تذكر وتحدد أفراد العائلة (اذكرها)"
+
+#: .\templates\static_files\cc_family_history.html:144
+msgid "Problem of the child hereditary?"
+msgstr "هل مشكلة الحالة وراثية؟"
+
+#: .\templates\static_files\cc_family_history.html:152
+msgid "Age of child when the problem was discovered"
+msgstr "عمر الطفل عندما تم اكتشاف المشكلة"
+
+#: .\templates\static_files\cc_family_history.html:156
+msgid "How is the problem affecting the child?"
+msgstr "ما هو اثر المشكلة على الطفل"
+
+#: .\templates\static_files\cc_other_info.html:50
+msgid "Other Information"
+msgstr "معلومات اخرى"
+
+#: .\templates\static_files\cc_other_info.html:67
+msgid ""
+"To what extent are the parents cooperating with the school, are they "
+"attending to follow it automatically or in response to the school summons?"
+msgstr ""
+"ما مدى تعاون الأهل مع المدرسة، هل يحضرون لمتابعته تلقائيًا أم تلبية لاستدعاء "
+"المدرسة؟"
+
+#: .\templates\static_files\cc_other_info.html:72
+msgid "Reason/reasons for transferring the case to the association:"
+msgstr "أسباب التحويل ومعلومات عن الاختبار"
+
+#: .\templates\static_files\cc_other_info.html:75
+msgid "Reason 1"
+msgstr "السبب 1"
+
+#: .\templates\static_files\cc_other_info.html:80
+msgid "Reason 2"
+msgstr "السبب 2"
+
+#: .\templates\static_files\cc_other_info.html:85
+msgid "Reason 3"
+msgstr "السبب 3"
+
+#: .\templates\static_files\cc_other_info.html:90
+msgid "Reason 4"
+msgstr "السبب 4"
+
+#: .\templates\static_files\cc_other_info.html:95
+msgid "Reason 5"
+msgstr "السبب 5"
+
+#: .\templates\static_files\cc_other_info.html:100
+msgid "Child has taken the IQ Test Previously?"
+msgstr "سبق للطالب أخذ اختبار ذكاء من قبل"
+
+#: .\templates\static_files\cc_other_info.html:108
+msgid "Date of Last Assessment (If any)"
+msgstr "تاريخ آخر اختبار (إن وجد)"
+
+#: .\templates\static_files\cc_other_info.html:112
+msgid "Place of Last Assessment (If any)"
+msgstr "مكان اخر اختبار ( ان وجد )"
+
+#: .\templates\static_files\cc_other_info.html:116
+msgid "Any Other Information?"
+msgstr "أي معلومات اخرى"
+
+#: .\templates\static_files\cc_school_history.html:49
+msgid "School Life History"
+msgstr "التاريخ الدراسي للحالة والتوافق مع الحياة المدرسية"
+
+#: .\templates\static_files\cc_school_history.html:66
+msgid "Names of the Schools in which Child was enrolled in:"
+msgstr "أسماء المدارس التي تم الالتحاق بها:"
+
+#: .\templates\static_files\cc_school_history.html:73
+#: .\templates\static_files\child-case.html:79
+msgid "School Name"
+msgstr "اسم المدرسة"
+
+#: .\templates\static_files\cc_school_history.html:74
+msgid "Enrollment Date"
+msgstr "تاريخ الانتساب"
+
+#: .\templates\static_files\cc_school_history.html:75
+msgid "Child's Attitude towards School"
+msgstr "موقف الطفل تجاه المدرسة"
+
+#: .\templates\static_files\cc_school_history.html:100
+msgid "First Stage of Child's Education?"
+msgstr "أول مرحلة تعليم للحالة كانت"
+
+#: .\templates\static_files\cc_school_history.html:104
+msgid "Child Failed in One of the stages"
+msgstr "رسب الطفل في أحد المراحل"
+
+#: .\templates\static_files\cc_school_history.html:112
+msgid "Failure Class(If any)"
+msgstr "الصفوف  التي رسب بها"
+
+#: .\templates\static_files\cc_school_history.html:116
+msgid "Failure Subjects(If any)"
+msgstr "المواد التي رسب بها"
+
+#: .\templates\static_files\cc_school_history.html:120
+msgid "Used Private Tutors/Special Centres?"
+msgstr "استعانت الأسرة بمدرسين خصوصيين أو مراكز خاصة"
+
+#: .\templates\static_files\cc_school_history.html:128
+msgid "How to take advantage of these for the help of"
+msgstr "مدى الاستفادة من هذه لاستعانة"
+
+#: .\templates\static_files\cc_school_history.html:132
+msgid "Had difficult teaching the Child"
+msgstr "تعاني الأسرة من صعوبة في تدريسه"
+
+#: .\templates\static_files\cc_school_history.html:140
+msgid "Teachers Note on the Case"
+msgstr "ملاحظات المدرسين على الحالة هي"
+
+#: .\templates\static_files\cc_school_history.html:144
+msgid "Case needs supervision during teaching"
+msgstr "تحتاج الحالة إلى من يشرف عليها أثناء التدريس"
+
+#: .\templates\static_files\cc_school_history.html:152
+msgid "Current Academic achievement level"
+msgstr "مستواه التحصيلي الدراسي الحالي"
+
+#: .\templates\static_files\cc_school_history.html:156
+msgid "Comment on the Behaviour of the Child with respect to:"
+msgstr "التعليق على تصرف الحالة بالنسبة لـ"
+
+#: .\templates\static_files\cc_school_history.html:159
+msgid "His Motivation To Learn"
+msgstr "دافعيته للتعلم"
+
+#: .\templates\static_files\cc_school_history.html:163
+msgid "Enthusiasm level (for Homework)"
+msgstr "مستوى الحماس (لتأدية الواجبات)"
+
+#: .\templates\static_files\cc_school_history.html:167
+msgid "Time Punctuality"
+msgstr "تنظيم وتقسيم الوقت"
+
+#: .\templates\static_files\cc_school_history.html:171
+msgid "Favourite articles"
+msgstr "المواد المفضلة له"
+
+#: .\templates\static_files\cc_school_history.html:175
+msgid "Least Preferred material"
+msgstr "أقل المواد تفضيلًا"
+
+#: .\templates\static_files\cc_school_history.html:179
+msgid "Relationship with Teachers"
+msgstr "علاقته مع مدرسيه"
+
+#: .\templates\static_files\cc_school_history.html:183
+msgid "Desire to go to School"
+msgstr "رغبته في الذهاب إلى المدرسة"
+
+#: .\templates\static_files\cc_school_history.html:187
+msgid "Reason for being absent (If any)"
+msgstr "إذا كان كثير الغياب، فما هي الأسباب؟"
+
+#: .\templates\static_files\cc_stages_of_growth.html:50
+msgid "Stages Of Growth"
+msgstr "مراحل النمو"
+
+#: .\templates\static_files\cc_stages_of_growth.html:67
+msgid "Write age of first occurrence of following"
+msgstr "حدد العمر الذي حدث فيه ما يلي"
+
+#: .\templates\static_files\cc_stages_of_growth.html:70
+msgid "Breastfeeding"
+msgstr "الرضاعة"
+
+#: .\templates\static_files\cc_stages_of_growth.html:73
+msgid "Natural"
+msgstr "طبيعية"
+
+#: .\templates\static_files\cc_stages_of_growth.html:74
+msgid "Industrial"
+msgstr "صناعية"
+
+#: .\templates\static_files\cc_stages_of_growth.html:78
+msgid "Age of Weaning"
+msgstr "سن الفطام"
+
+#: .\templates\static_files\cc_stages_of_growth.html:82
+msgid "Age of Teething"
+msgstr "سن بداية التسنين"
+
+#: .\templates\static_files\cc_stages_of_growth.html:86
+msgid "Age of Commune"
+msgstr "سن بداية المناغاة"
+
+#: .\templates\static_files\cc_stages_of_growth.html:90
+msgid "Age of Pronouncing Simple Words (Papa, Mama)"
+msgstr "سن نطق كلمات بسيطة مثل (ماما، بابا)"
+
+#: .\templates\static_files\cc_stages_of_growth.html:94
+msgid "Age of Speech"
+msgstr "السن الذي بدأ فيه الكلام"
+
+#: .\templates\static_files\cc_stages_of_growth.html:98
+msgid "Age of Use of Full Sentence"
+msgstr "السن الذي استخدم فيه جملة كاملة"
+
+#: .\templates\static_files\cc_stages_of_growth.html:102
+msgid "Age of carrying bottle of milk alone"
+msgstr "حمل قنينة الحليب لوحده في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:106
+msgid "Age at which Love began"
+msgstr ""
+
+#: .\templates\static_files\cc_stages_of_growth.html:110
+msgid "Age at which the child sat without help"
+msgstr "جلس بدون مساعدة في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:114
+msgid "Age at which the child stop without help"
+msgstr "وقف دون مساعدة في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:118
+msgid "Age of walking alone"
+msgstr "مشى بمفرده"
+
+#: .\templates\static_files\cc_stages_of_growth.html:122
+msgid "Age of wearing clothes with help"
+msgstr "ارتدى ملابسه بمساعدة في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:126
+msgid "Age of wearing and taking off of clothes without help"
+msgstr "ارتدى ملابسه وخلعها بنفسه في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:130
+msgid "Age of wearing shoes"
+msgstr "بدأ بارتداء حذاءه في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:134
+msgid "Age of feeding himself"
+msgstr "بدأ بإطعام نفسه بصورة جيدة في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:138
+msgid "Age of adjusting output and urination functions"
+msgstr "بدأ فيه ضبط وظائف الإخراج والتبول في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:142
+msgid "Age of using bathroom well"
+msgstr "تم تدريبه على استخدام الحمام بصورة جيدة في سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:146
+msgid "Has Visual Problems?"
+msgstr "لديه مشاكل بصرية"
+
+#: .\templates\static_files\cc_stages_of_growth.html:154
+msgid "Use Glasses?"
+msgstr "يرتدي نظارات طبية"
+
+#: .\templates\static_files\cc_stages_of_growth.html:162
+msgid "Age of Glasses, if yes"
+msgstr "في حال يرتدي  ( أي سن ؟ )"
+
+#: .\templates\static_files\cc_stages_of_growth.html:166
+msgid "Has Hearing Problems?"
+msgstr "لديه مشاكل في السمع ؟"
+
+#: .\templates\static_files\cc_stages_of_growth.html:174
+msgid "Uses Hearing Aid?"
+msgstr "يستخدم معين سمعي"
+
+#: .\templates\static_files\cc_stages_of_growth.html:182
+msgid "Age of hearing aid, if yes"
+msgstr "اذا كان نعم , ما هو السن ؟"
+
+#: .\templates\static_files\cc_stages_of_growth.html:186
+msgid "Difficulty speaking?"
+msgstr "تعاني الحالة من صعوبة النطق"
+
+#: .\templates\static_files\cc_stages_of_growth.html:194
+msgid "Treated at speach centres?"
+msgstr "تم علاجها عند مراكز النطق"
+
+#: .\templates\static_files\cc_stages_of_growth.html:202
+msgid "Age of treated at speech centre?"
+msgstr "العمر"
+
+#: .\templates\static_files\cc_stages_of_growth.html:206
+msgid "Hand of writing/drawing"
+msgstr "اليد التي يستخدمها في الكتابة والرسم"
+
+#: .\templates\static_files\cc_stages_of_growth.html:209
+#: .\templates\static_files\cc_stages_of_growth.html:217
+msgid "Right"
+msgstr "اليمنى"
+
+#: .\templates\static_files\cc_stages_of_growth.html:210
+#: .\templates\static_files\cc_stages_of_growth.html:218
+msgid "Left"
+msgstr "اليسرى"
+
+#: .\templates\static_files\cc_stages_of_growth.html:214
+msgid "Leg for kicking the ball"
+msgstr "الرجل التي يستخدمها في ركله الكرة"
+
+#: .\templates\static_files\cc_stages_of_growth.html:222
+msgid "Both hands use?"
+msgstr "يستخدم كلتا يديه ؟"
+
+#: .\templates\static_files\cc_stages_of_growth.html:230
+msgid "Attempt to stop using left hand?"
+msgstr "هنالك محاولة لوقف استخدامه اليد اليسرى"
+
+#: .\templates\static_files\cc_stages_of_growth.html:238
+msgid "Age of stop using left hand?"
+msgstr "العمر الذي برأت محاولات وقف استخدام اليد اليسرى"
+
+#: .\templates\static_files\cc_stages_of_growth.html:242
+msgid "Suffering from involuntary urination?"
+msgstr "تعاني الحالة من التبول اللاإرادي"
+
+#: .\templates\static_files\cc_stages_of_growth.html:250
+msgid "Cause of involuntary urination?"
+msgstr "أسباب التبول اللاإرادي"
+
+#: .\templates\static_files\cc_stages_of_growth.html:253
+msgid "Psychological"
+msgstr "الأخصائي"
+
+#: .\templates\static_files\cc_stages_of_growth.html:254
+msgid "Organic"
+msgstr "عضوي"
+
+#: .\templates\static_files\cc_stages_of_growth.html:258
+msgid "Age of Involuntary urination(If any)"
+msgstr "بدأ التبول اللاارادي في  سن"
+
+#: .\templates\static_files\cc_stages_of_growth.html:262
+msgid "Taking any medicines?"
+msgstr "يتناول أي أدوية"
+
+#: .\templates\static_files\cc_stages_of_growth.html:270
+msgid "Medicine Name"
+msgstr "اسم الدواء"
+
+#: .\templates\static_files\cc_stages_of_growth.html:274
+msgid "Medicine Use Reason"
+msgstr "أسباب استخدام الدواء"
+
+#: .\templates\static_files\cc_stages_of_growth.html:278
+msgid "Appetite/Eating habits"
+msgstr "الشهية وعادات الأكل"
+
+#: .\templates\static_files\cc_stages_of_growth.html:282
+msgid "Favourite food"
+msgstr "الطعام المفضل"
+
+#: .\templates\static_files\change_password.html:9
+msgid "Change Password for"
+msgstr "تغيير كلمة المرور للمستخدم"
+
+#: .\templates\static_files\change_password.html:14
+#: .\templates\static_files\search_student.html:95
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates\static_files\change_password.html:24
+#: .\templates\static_files\search_psy.html:58
+#: .\templates\static_files\search_teacher.html:69
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\templates\static_files\change_password.html:28
+msgid "Enter New Password"
+msgstr "أدخل كلمة مرور جديدة"
+
+#: .\templates\static_files\change_password.html:32
+msgid "Confirm?"
+msgstr "التأكيد"
+
+#: .\templates\static_files\change_status_student.html:9
+msgid "Change Status of"
+msgstr "تغيير حالة"
+
+#: .\templates\static_files\change_status_student.html:9
+msgid "for subject"
+msgstr "للموضوع"
+
+#: .\templates\static_files\change_status_student.html:26
+#: .\templates\static_files\dashboard_student.html:477
+msgid "Active"
+msgstr "فعال"
+
+#: .\templates\static_files\change_status_student.html:27
+#: .\templates\static_files\dashboard_student.html:477
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#: .\templates\static_files\change_status_student.html:28
+#: .\templates\static_files\dashboard_student.html:477
+msgid "Not Active"
+msgstr "غير فعال"
+
+#: .\templates\static_files\change_status_student.html:32
+#: .\templates\static_files\dashboard_student.html:366
+msgid "Save"
+msgstr "حفظ"
+
+#: .\templates\static_files\check_intervention.html:9
+#: .\templates\static_files\check_intervention.html:14
+msgid "Check Intervention"
+msgstr "تحقق من التدخل"
+
+#: .\templates\static_files\check_intervention.html:22
+msgid "Check Data for this Intervention"
+msgstr "تحقق من البيانات الخاصة بهذاه الجلسة العلاجية"
+
+#: .\templates\static_files\check_intervention.html:34
+#: .\templates\static_files\check_intervention.html:65
+#: .\templates\static_files\dashboard_teacher.html:14
+#: .\templates\static_files\select_teacher.html:18
+msgid "Teacher"
+msgstr "المعالج"
+
+#: .\templates\static_files\check_intervention.html:38
+#: .\templates\static_files\check_intervention.html:69
+#: .\templates\static_files\dashboard_student.html:356
+#: .\templates\static_files\dashboard_student.html:438
+#: .\templates\static_files\dashboard_student.html:540
+#: .\templates\static_files\search_intervention.html:89
+#: .\templates\static_files\todays_intervention.html:79
+msgid "Subject"
+msgstr "المادة"
+
+#: .\templates\static_files\check_intervention.html:42
+#: .\templates\static_files\dashboard_student.html:440
+#: .\templates\static_files\report_session.html:17
+#: .\templates\static_files\search_intervention.html:92
+msgid "Total Sessions"
+msgstr "إجمالي الجلسات"
+
+#: .\templates\static_files\check_intervention.html:46
+#: .\templates\static_files\check_intervention.html:73
+msgid "Currently Sessions per week"
+msgstr "الجلسات في الأسبوع"
+
+#: .\templates\static_files\check_intervention.html:51
+msgid "You can not add more sessions per week!"
+msgstr "لا يمكنك إضافة المزيد من الجلسات الاسبوعية"
+
+#: .\templates\static_files\check_intervention.html:52
+msgid "Go Back"
+msgstr "عودة"
+
+#: .\templates\static_files\check_intervention.html:56
+#: .\templates\static_files\check_intervention.html:77
+msgid "Add Session"
+msgstr "أضف الجلسة"
+
+#: .\templates\static_files\check_slots.html:9
+msgid "Slots"
+msgstr "التوقيت"
+
+#: .\templates\static_files\check_slots.html:15
+#: .\templates\static_files\confirm_appointment.html:15
+#: .\templates\static_files\confirm_slot_teacher.html:9
+#: .\templates\static_files\confirm_slot_teacher.html:14
+msgid "Confirm Slot"
+msgstr "تأكيد التوقيت"
+
+#: .\templates\static_files\check_slots.html:24
+msgid "Available Slots for Psychologist"
+msgstr "المواعيد المتاحة"
+
+#: .\templates\static_files\check_slots.html:24
+msgid "on"
+msgstr "في"
+
+#: .\templates\static_files\child-case.html:50
+msgid "Child Details"
+msgstr "بيانات الحالة"
+
+#: .\templates\static_files\child-case.html:68
+msgid "Data Of Child"
+msgstr "بيانات الطالب"
+
+#: .\templates\static_files\child-case.html:71
+#: .\templates\static_files\confirm_appointment.html:39
+#: .\templates\static_files\dashboard_psy.html:146
+#: .\templates\static_files\dashboard_psy.html:173
+#: .\templates\static_files\dashboard_psy.html:213
+#: .\templates\static_files\report_all_appointments.html:98
+#: .\templates\static_files\report_all_appointments.html:133
+#: .\templates\static_files\report_all_appointments.html:173
+#: .\templates\static_files\select_student.html:37
+msgid "Child Name"
+msgstr "اسم الطالب"
+
+#: .\templates\static_files\child-case.html:75
+msgid "Civil Number"
+msgstr "الرقم المدني"
+
+#: .\templates\static_files\child-case.html:83
+#: .\templates\static_files\dashboard_student.html:194
+#: .\templates\static_files\registration_student.html:55
+msgid "Date Of Birth"
+msgstr "تاريخ الميلاد"
+
+#: .\templates\static_files\child-case.html:88
+msgid "Place of Birth"
+msgstr "مكان الميلاد"
+
+#: .\templates\static_files\child-case.html:92
+#: .\templates\static_files\child-case.html:143
+#: .\templates\static_files\child-case.html:181
+#: .\templates\static_files\dashboard_student.html:190
+#: .\templates\static_files\registration_student.html:63
+msgid "Nationality"
+msgstr "الجنسية"
+
+#: .\templates\static_files\child-case.html:96
+msgid "Grade"
+msgstr "الصف"
+
+#: .\templates\static_files\child-case.html:100
+#: .\templates\static_files\registration_student.html:340
+msgid "KG1"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:101
+#: .\templates\static_files\registration_student.html:341
+msgid "KG2"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:102
+#: .\templates\static_files\registration_student.html:342
+msgid "1"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:103
+#: .\templates\static_files\registration_student.html:343
+msgid "2"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:104
+#: .\templates\static_files\registration_student.html:344
+msgid "3"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:105
+#: .\templates\static_files\registration_student.html:345
+msgid "4"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:106
+#: .\templates\static_files\registration_student.html:346
+msgid "5"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:107
+#: .\templates\static_files\registration_student.html:347
+msgid "6"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:108
+#: .\templates\static_files\registration_student.html:348
+msgid "7"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:109
+#: .\templates\static_files\registration_student.html:349
+msgid "8"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:110
+#: .\templates\static_files\registration_student.html:350
+msgid "9"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:111
+#: .\templates\static_files\registration_student.html:351
+msgid "10"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:112
+#: .\templates\static_files\registration_student.html:352
+msgid "11"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:113
+#: .\templates\static_files\registration_student.html:353
+msgid "12"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:114
+#: .\templates\static_files\registration_student.html:354
+msgid "12+"
+msgstr ""
+
+#: .\templates\static_files\child-case.html:118
+msgid "Date of Evaluation"
+msgstr "تاريخ التقييم"
+
+#: .\templates\static_files\child-case.html:122
+#: .\templates\static_files\dashboard_student.html:186
+#: .\templates\static_files\registration_student.html:43
+#: .\templates\static_files\search_student.html:66
+msgid "Gender"
+msgstr "الجنس"
+
+#: .\templates\static_files\child-case.html:124
+#: .\templates\static_files\registration_student.html:48
+msgid "Please Select Gender"
+msgstr "يرجى تحديد الجنس"
+
+#: .\templates\static_files\child-case.html:125
+#: .\templates\static_files\dashboard_student.html:187
+#: .\templates\static_files\registration_student.html:49
+#: .\templates\static_files\search_student.html:81
+msgid "Male"
+msgstr "ذكر"
+
+#: .\templates\static_files\child-case.html:126
+#: .\templates\static_files\dashboard_student.html:187
+#: .\templates\static_files\registration_student.html:50
+#: .\templates\static_files\search_student.html:81
+msgid "Female"
+msgstr "انثى"
+
+#: .\templates\static_files\child-case.html:132
+msgid "Data Of Father"
+msgstr "بيانات الأب"
+
+#: .\templates\static_files\child-case.html:135
+msgid "Father Name"
+msgstr "اسم الأب"
+
+#: .\templates\static_files\child-case.html:147
+#: .\templates\static_files\child-case.html:185
+#: .\templates\static_files\child-case.html:223
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: .\templates\static_files\child-case.html:151
+#: .\templates\static_files\child-case.html:189
+#: .\templates\static_files\child-case.html:215
+msgid "Education Level"
+msgstr "المستوى التعليمي"
+
+#: .\templates\static_files\child-case.html:155
+#: .\templates\static_files\child-case.html:193
+#: .\templates\static_files\child-case.html:227
+msgid "Current Occupation"
+msgstr "الوظيفة الحالية"
+
+#: .\templates\static_files\child-case.html:159
+#: .\templates\static_files\child-case.html:197
+#: .\templates\static_files\child-case.html:231
+msgid "Residence Address"
+msgstr "عنوان الاقامة"
+
+#: .\templates\static_files\child-case.html:163
+#: .\templates\static_files\child-case.html:201
+#: .\templates\static_files\child-case.html:235
+#: .\templates\static_files\registration_psy.html:35
+#: .\templates\static_files\registration_student.html:326
+#: .\templates\static_files\registration_teacher.html:35
+#: .\templates\static_files\search_psy.html:60
+#: .\templates\static_files\search_teacher.html:68
+msgid "Email"
+msgstr "البريد الإلكترونى"
+
+#: .\templates\static_files\child-case.html:170
+msgid "Data Of Mother"
+msgstr "بيانات الام"
+
+#: .\templates\static_files\child-case.html:173
+msgid "Mother Name"
+msgstr "اسم"
+
+#: .\templates\static_files\child-case.html:208
+msgid "Data Of Guardian"
+msgstr "بيانات المرافق"
+
+#: .\templates\static_files\child-case.html:211
+msgid "Guardian Name"
+msgstr "اسم"
+
+#: .\templates\static_files\child-case.html:219
+msgid "Relation To Child"
+msgstr "صلته بالطالب"
+
+#: .\templates\static_files\child-case.html:242
+msgid "Family"
+msgstr "الأسرة"
+
+#: .\templates\static_files\child-case.html:245
+msgid "Relation Between Parents"
+msgstr "صلة القرابة بين الوالدين"
+
+#: .\templates\static_files\child-case.html:248
+msgid "Very Close"
+msgstr "شديدة"
+
+#: .\templates\static_files\child-case.html:249
+msgid "Far"
+msgstr "بعيدة"
+
+#: .\templates\static_files\child-case.html:250
+msgid "There is none"
+msgstr "لا توجد"
+
+#: .\templates\static_files\child-case.html:254
+msgid "Martial Status Of Parents"
+msgstr "الحالة الاجتماعية للوالدين"
+
+#: .\templates\static_files\child-case.html:257
+msgid "Still Exists"
+msgstr "الزواج قائم"
+
+#: .\templates\static_files\child-case.html:258
+msgid "Does Not Exists"
+msgstr "الزواج غير قائم"
+
+#: .\templates\static_files\child-case.html:262
+msgid "Indicate if Parent has passed away"
+msgstr "يرجى الإشارة إن كان أحد الوالدين متوفيًا"
+
+#: .\templates\static_files\child-case.html:265
+msgid "The Mother"
+msgstr "الام"
+
+#: .\templates\static_files\child-case.html:266
+msgid "The Father"
+msgstr "الاب"
+
+#: .\templates\static_files\child-case.html:267
+msgid "Both"
+msgstr "كلاهما"
+
+#: .\templates\static_files\child-case.html:268
+msgid "None"
+msgstr "لا"
+
+#: .\templates\static_files\child-case.html:272
+msgid "Child living with in case father or mother is lost"
+msgstr "يعيش الطفل في حالة فقد الأب والأم مع"
+
+#: .\templates\static_files\child-case.html:276
+msgid "Father has been married before"
+msgstr "هل سبق للأب الزواج"
+
+#: .\templates\static_files\child-case.html:284
+msgid "Mother has been married before"
+msgstr "هل سبق للأم الزواج"
+
+#: .\templates\static_files\child-case.html:292
+msgid "If yes, When was it"
+msgstr "اذا كان نعم , متى كان ذلك"
+
+#: .\templates\static_files\child-case.html:295
+msgid "Before Marriage of Parents"
+msgstr "قبل زواج الأبوين"
+
+#: .\templates\static_files\child-case.html:296
+msgid "After the parents separated"
+msgstr "بعد إنفصال الأبوين"
+
+#: .\templates\static_files\child-case.html:300
+msgid "Second Marriage in family"
+msgstr "زواج ثاني في العائلة"
+
+#: .\templates\static_files\child-case.html:308
+msgid "If yes, Nationality of Husband/Wife"
+msgstr "اذا كان نعم , جنسية الزوج / الزوجة"
+
+#: .\templates\static_files\child-case.html:312
+msgid "Number Of Family Members"
+msgstr "عدد أفراد الأسرة"
+
+#: .\templates\static_files\child-case.html:316
+msgid "Number of Siblings"
+msgstr "عدد الأشقاء"
+
+#: .\templates\static_files\child-case.html:319
+#: .\templates\static_files\child-case.html:330
+#: .\templates\static_files\child-case.html:341
+msgid "Brothers"
+msgstr "الأخوة"
+
+#: .\templates\static_files\child-case.html:323
+#: .\templates\static_files\child-case.html:334
+#: .\templates\static_files\child-case.html:345
+msgid "Sisters"
+msgstr "الأخوات"
+
+#: .\templates\static_files\child-case.html:327
+msgid "Number of Siblings from Father"
+msgstr "عدد الأخوة  من الأب"
+
+#: .\templates\static_files\child-case.html:338
+msgid "Number of Siblings from Mother"
+msgstr "عدد الأخوة  من الأم"
+
+#: .\templates\static_files\child-case.html:349
+msgid "Order of the child among siblings"
+msgstr "ترتيب الطالب بين الأشقاء"
+
+#: .\templates\static_files\child-case.html:353
+msgid "Other People Living in the House"
+msgstr "الأشخاص الذين يقيمون في المنزل عدا الأسرة"
+
+#: .\templates\static_files\child-case.html:357
+msgid "With whom the child lives currently"
+msgstr "مع من يعيش الطالب حالياً"
+
+#: .\templates\static_files\choose_parent.html:9
+msgid "Assign Parent to"
+msgstr ""
+
+#: .\templates\static_files\choose_parent.html:24
+msgid "Parent Name"
+msgstr "اسم ولي الأمر"
+
+#: .\templates\static_files\choose_parent.html:26
+msgid "Please Select Parent"
+msgstr ""
+
+#: .\templates\static_files\choose_parent.html:33
+msgid "Assign"
+msgstr "تعيين"
+
+#: .\templates\static_files\choose_parent.html:36
+msgid "Add New Parent"
+msgstr ""
+
+#: .\templates\static_files\confirm_appointment.html:9
+#: .\templates\static_files\confirm_appointment.html:16
+#: .\templates\static_files\confirm_appointment.html:65
+msgid "Confirm Appointment"
+msgstr "تأكيد الموعد"
+
+#: .\templates\static_files\confirm_appointment.html:24
+msgid "Confirm Your Appointment"
+msgstr "تأكيد موعد"
+
+#: .\templates\static_files\confirm_appointment.html:50
+msgid "Your Selected Psychologist"
+msgstr "الاخصائي"
+
+#: .\templates\static_files\confirm_appointment.html:55
+msgid "Your Selected Date"
+msgstr "التاريخ"
+
+#: .\templates\static_files\confirm_appointment.html:59
+#: .\templates\static_files\confirm_slot_teacher.html:61
+msgid "Your Selected Time Slot"
+msgstr "التوقيت المختار"
+
+#: .\templates\static_files\confirm_slot_teacher.html:22
+msgid "Confirm Your Weekly Intervention"
+msgstr "تأكيد الجدول الاسبوعي"
+
+#: .\templates\static_files\confirm_slot_teacher.html:49
+msgid "Your Selected Teacher"
+msgstr "المعالج المختار"
+
+#: .\templates\static_files\confirm_slot_teacher.html:53
+msgid "Total Number of Sessions"
+msgstr "إجمالي عدد الجلسات"
+
+#: .\templates\static_files\confirm_slot_teacher.html:57
+msgid "Your Selected Day"
+msgstr "اليوم المختار"
+
+#: .\templates\static_files\confirm_slot_teacher.html:66
+msgid "Select Start Date:"
+msgstr "اختر تاريخ البدء"
+
+#: .\templates\static_files\confirm_slot_teacher.html:69
+msgid "Start Date of this Session:"
+msgstr "تاريخ بدء هذه الجلسة"
+
+#: .\templates\static_files\confirm_slot_teacher.html:74
+msgid "Confirm"
+msgstr "التأكيد"
+
+#: .\templates\static_files\dashboard_psy.html:9
+msgid "Dashboard of "
+msgstr "لوحة تحكم الأخصائي"
+
+#: .\templates\static_files\dashboard_psy.html:14
+#: .\templates\static_files\dashboard_student.html:277
+#: .\templates\static_files\select_psy.html:14
+msgid "Psychologist"
+msgstr "الأخصائي"
+
+#: .\templates\static_files\dashboard_psy.html:30
+#: .\templates\static_files\dashboard_psy.html:139
+msgid "On Going Appointments"
+msgstr "المواعيد الحالية"
+
+#: .\templates\static_files\dashboard_psy.html:47
+#: .\templates\static_files\dashboard_psy.html:166
+msgid "Concluded Appointments"
+msgstr "المواعيد السابقة"
+
+#: .\templates\static_files\dashboard_psy.html:93
+msgid "Appointments for child"
+msgstr "مواعيد التشخيص للطالب"
+
+#: .\templates\static_files\dashboard_psy.html:110
+#: .\templates\static_files\dashboard_psy.html:118
+#: .\templates\static_files\dashboard_psy.html:129
+#: .\templates\static_files\dashboard_teacher.html:319
+msgid "Apply Filter"
+msgstr "ابحث حسب"
+
+#: .\templates\static_files\dashboard_psy.html:115
+msgid "Filter by Specific Date"
+msgstr "الفرز حسب تاريخ معين"
+
+#: .\templates\static_files\dashboard_psy.html:123
+#: .\templates\static_files\dashboard_teacher.html:313
+msgid "Select Range (From)"
+msgstr "اختيار الفترة ( من )"
+
+#: .\templates\static_files\dashboard_psy.html:126
+#: .\templates\static_files\dashboard_teacher.html:316
+msgid "Select Range (To)"
+msgstr "اختيار الفترة (إلى )"
+
+#: .\templates\static_files\dashboard_psy.html:148
+#: .\templates\static_files\dashboard_psy.html:175
+#: .\templates\static_files\dashboard_psy.html:215
+#: .\templates\static_files\report_all_appointments.html:103
+#: .\templates\static_files\report_all_appointments.html:138
+#: .\templates\static_files\report_all_appointments.html:176
+msgid "Appointment Time"
+msgstr "توقيت الموعد"
+
+#: .\templates\static_files\dashboard_psy.html:177
+#: .\templates\static_files\dashboard_psy.html:217
+msgid "Assessment Report"
+msgstr "تقرير التشخيص"
+
+#: .\templates\static_files\dashboard_psy.html:186
+#: .\templates\static_files\dashboard_psy.html:226
+#: .\templates\static_files\dashboard_student.html:305
+#: .\templates\static_files\dashboard_student.html:569
+#: .\templates\static_files\dashboard_teacher.html:355
+#: .\templates\static_files\pre_eva_search.html:52
+#: .\templates\static_files\pre_eva_search.html:54
+msgid "Add/Edit"
+msgstr "إضافة / تعديل"
+
+#: .\templates\static_files\dashboard_psy.html:188
+#: .\templates\static_files\dashboard_psy.html:228
+#: .\templates\static_files\dashboard_student.html:284
+#: .\templates\static_files\dashboard_teacher.html:359
+#: .\templates\static_files\dashboard_teacher.html:361
+#: .\templates\static_files\report_all_appointments.html:153
+#: .\templates\static_files\report_all_appointments.html:188
+#: .\templates\static_files\report_all_sessions.html:147
+#: .\templates\static_files\report_all_sessions.html:149
+#: .\templates\static_files\report_all_sessions.html:199
+#: .\templates\static_files\report_all_sessions.html:201
+msgid "Check"
+msgstr "التأكد"
+
+#: .\templates\static_files\dashboard_psy.html:203
+msgid "All Appointments on Date"
+msgstr "كل المواعيد  بتاريخ"
+
+#: .\templates\static_files\dashboard_psy.html:205
+#: .\templates\static_files\report_all_appointments.html:79
+msgid "All Appointments between"
+msgstr "كل المواعيد بين"
+
+#: .\templates\static_files\dashboard_receptionist.html:280
+#: .\templates\static_files\dashboard_receptionist.html:298
+#: .\templates\static_files\dashboard_receptionist.html:303
+msgid "Dashboard"
+msgstr "لوحة بيانات"
+
+#: .\templates\static_files\dashboard_receptionist.html:283
+#: .\templates\static_files\select_psy.html:9
+msgid "Psychologist Dashboard"
+msgstr "لوحة بيانات الأخصائي"
+
+#: .\templates\static_files\dashboard_receptionist.html:287
+#: .\templates\static_files\select_teacher.html:12
+msgid "Teacher Dashboard"
+msgstr "لوحة بيانات المعالج"
+
+#: .\templates\static_files\dashboard_receptionist.html:291
+#: .\templates\static_files\select_student.html:15
+msgid "Student Dashboard"
+msgstr "لوحة بيانات الطالب"
+
+#: .\templates\static_files\dashboard_receptionist.html:308
+#: .\templates\static_files\select_student.html:13
+msgid "Child Dashboard"
+msgstr "لوحة تحكم الطفل"
+
+#: .\templates\static_files\dashboard_receptionist.html:314
+msgid "Today's Appointment List"
+msgstr "قائمة مواعيد اليوم"
+
+#: .\templates\static_files\dashboard_receptionist.html:319
+msgid "Today's Session List"
+msgstr "قائمة جلسات اليوم"
+
+#: .\templates\static_files\dashboard_receptionist.html:324
+msgid "Registered Data"
+msgstr "البيانات المسجلة"
+
+#: .\templates\static_files\dashboard_receptionist.html:327
+msgid "Psychologist Registered List"
+msgstr "قائمة الأخصائيين المسجلين"
+
+#: .\templates\static_files\dashboard_receptionist.html:331
+msgid "Teacher Registered List"
+msgstr "قائمة المعالجين المسجلين"
+
+#: .\templates\static_files\dashboard_receptionist.html:335
+msgid "Student Registered List"
+msgstr "قائمة الطلاب المسجلين"
+
+#: .\templates\static_files\dashboard_receptionist.html:340
+msgid "Register Data"
+msgstr "تسجيل البيانات"
+
+#: .\templates\static_files\dashboard_receptionist.html:343
+#: .\templates\static_files\registration_student.html:12
+#: .\templates\static_files\registration_student.html:21
+msgid "Student Registration"
+msgstr "تسجيل الطالب"
+
+#: .\templates\static_files\dashboard_receptionist.html:347
+#: .\templates\static_files\registration_psy.html:9
+#: .\templates\static_files\registration_psy.html:14
+msgid "Psychologist Registration"
+msgstr "تسجيل الأخصائي"
+
+#: .\templates\static_files\dashboard_receptionist.html:351
+#: .\templates\static_files\registration_teacher.html:9
+#: .\templates\static_files\registration_teacher.html:14
+msgid "Teacher Registration"
+msgstr "تسجيل المعالج"
+
+#: .\templates\static_files\dashboard_receptionist.html:358
+msgid "Appointment Data"
+msgstr "بيانات مواعيد التشخيص"
+
+#: .\templates\static_files\dashboard_receptionist.html:379
+msgid "Intervention Data"
+msgstr "بيانات الجلسة علاجية"
+
+#: .\templates\static_files\dashboard_receptionist.html:387
+msgid "Add Intervention Weekly"
+msgstr "اضافة جلسات علاجية اسبوعية"
+
+#: .\templates\static_files\dashboard_receptionist.html:391
+msgid "Intervention List"
+msgstr "بيانات الجلسة علاجية"
+
+#: .\templates\static_files\dashboard_receptionist.html:433
+msgid "Pre Performance Data"
+msgstr "بيانات الاداء المسبق"
+
+#: .\templates\static_files\dashboard_receptionist.html:437
+#: .\templates\static_files\report_all_sessions.html:120
+#: .\templates\static_files\report_all_sessions.html:175
+msgid "Session Performance Data"
+msgstr "بيانات تقييم الجلسات"
+
+#: .\templates\static_files\dashboard_receptionist.html:442
+#: .\templates\static_files\dashboard_student.html:315
+msgid "Reports"
+msgstr "التقارير"
+
+#: .\templates\static_files\dashboard_receptionist.html:452
+msgid "All Appointments Report"
+msgstr "تقرير جميع المواعيد"
+
+#: .\templates\static_files\dashboard_receptionist.html:455
+msgid "All Sessions Report"
+msgstr "تقرير جميع الجلسات"
+
+#: .\templates\static_files\dashboard_student.html:10
+#: .\templates\static_files\dashboard_teacher.html:9
+msgid "Dashboard of"
+msgstr "لوحة بيانات المعالج"
+
+#: .\templates\static_files\dashboard_student.html:32
+msgid "Current Sessions"
+msgstr "المواد الحالية"
+
+#: .\templates\static_files\dashboard_student.html:49
+#: .\templates\static_files\dashboard_teacher.html:47
+msgid "Concluded Sessions"
+msgstr "الجلسات العلاجية السابقة"
+
+#: .\templates\static_files\dashboard_student.html:66
+#: .\templates\static_files\dashboard_teacher.html:64
+msgid "Attended Sessions"
+msgstr "الجلسات العلاجية التي تم حضورها"
+
+#: .\templates\static_files\dashboard_student.html:83
+#: .\templates\static_files\dashboard_teacher.html:81
+#: .\templates\static_files\report_session.html:47
+msgid "Student Absents"
+msgstr "الجلسات العلاجية التي غاب فيها الطالب"
+
+#: .\templates\static_files\dashboard_student.html:100
+#: .\templates\static_files\dashboard_teacher.html:98
+#: .\templates\static_files\report_session.html:53
+msgid "Teacher Absents"
+msgstr "غياب المعالج"
+
+#: .\templates\static_files\dashboard_student.html:117
+#: .\templates\static_files\dashboard_student.html:565
+#: .\templates\static_files\dashboard_teacher.html:115
+#: .\templates\static_files\dashboard_teacher.html:352
+#: .\templates\static_files\report_all_sessions.html:141
+#: .\templates\static_files\report_all_sessions.html:193
+#: .\templates\static_files\todays_intervention.html:115
+msgid "Cancelled"
+msgstr "ملغاة"
+
+#: .\templates\static_files\dashboard_student.html:134
+msgid "Attendance"
+msgstr "نسبة الحضور"
+
+#: .\templates\static_files\dashboard_student.html:148
+msgid "Monitor Performance"
+msgstr "متابعة الأداء"
+
+#: .\templates\static_files\dashboard_student.html:165
+msgid "Student Information"
+msgstr "معلومات الطالب"
+
+#: .\templates\static_files\dashboard_student.html:182
+#: .\templates\static_files\dashboard_student.html:243
+msgid "Name"
+msgstr "الاسم"
+
+#: .\templates\static_files\dashboard_student.html:202
+#: .\templates\static_files\registration_student.html:333
+#: .\templates\static_files\search_student.html:68
+msgid "School"
+msgstr "المدرسة"
+
+#: .\templates\static_files\dashboard_student.html:206
+#: .\templates\static_files\registration_student.html:337
+#: .\templates\static_files\search_student.html:65
+msgid "Class"
+msgstr "الفصل"
+
+#: .\templates\static_files\dashboard_student.html:210
+#: .\templates\static_files\registration_psy.html:39
+#: .\templates\static_files\registration_student.html:67
+#: .\templates\static_files\registration_teacher.html:39
+msgid "Language"
+msgstr "اللغة"
+
+#: .\templates\static_files\dashboard_student.html:214
+#: .\templates\static_files\registration_student.html:359
+msgid "School Language"
+msgstr "لغة المدرسة"
+
+#: .\templates\static_files\dashboard_student.html:218
+msgid "Contact Information"
+msgstr "بيانات الاتصال"
+
+#: .\templates\static_files\dashboard_student.html:222
+msgid "Subjects Enrolled"
+msgstr "المواد المسجلة"
+
+#: .\templates\static_files\dashboard_student.html:269
+msgid "Assessment Results"
+msgstr "نتائج التشخيص"
+
+#: .\templates\static_files\dashboard_student.html:301
+msgid "Download"
+msgstr "تحميل"
+
+#: .\templates\static_files\dashboard_student.html:347
+msgid "Upload Homework"
+msgstr "تحميل الواجب المنزلي"
+
+#: .\templates\static_files\dashboard_student.html:384
+msgid "Enroll To A Course"
+msgstr "الانتساب لمادة"
+
+#: .\templates\static_files\dashboard_student.html:385
+msgid "Currently Enrolled"
+msgstr "المواد المنتسب لها"
+
+#: .\templates\static_files\dashboard_student.html:389
+msgid "Already Enrolled to every course available"
+msgstr "مسجل بالفعل في كل منهج  متاح"
+
+#: .\templates\static_files\dashboard_student.html:393
+msgid "Enroll"
+msgstr "انتساب"
+
+#: .\templates\static_files\dashboard_student.html:405
+msgid "Time Table of Sessions for Each Course"
+msgstr "جدول الجلسات العلاجية لكل مادة"
+
+#: .\templates\static_files\dashboard_student.html:436
+#: .\templates\static_files\dashboard_student.html:539
+#: .\templates\static_files\report_all_sessions.html:115
+#: .\templates\static_files\report_all_sessions.html:171
+#: .\templates\static_files\search_intervention.html:87
+#: .\templates\static_files\select_teacher.html:28
+#: .\templates\static_files\select_teacher_assess.html:39
+#: .\templates\static_files\session_evaluation.html:28
+#: .\templates\static_files\todays_intervention.html:78
+msgid "Teacher Name"
+msgstr "اسم المعالج"
+
+#: .\templates\static_files\dashboard_student.html:439
+#: .\templates\static_files\search_intervention.html:91
+#: .\templates\static_files\todays_intervention.html:81
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#: .\templates\static_files\dashboard_student.html:441
+#: .\templates\static_files\search_intervention.html:93
+msgid "Sessions Conducted"
+msgstr "الجلسات التي تم اجتيازها"
+
+#: .\templates\static_files\dashboard_student.html:486
+msgid "Change Status"
+msgstr "تغيير الحالة"
+
+#: .\templates\static_files\dashboard_student.html:531
+#: .\templates\static_files\dashboard_teacher.html:275
+msgid "All Sessions"
+msgstr "كل الجلسات"
+
+#: .\templates\static_files\dashboard_student.html:541
+#: .\templates\static_files\dashboard_teacher.html:331
+#: .\templates\static_files\report_all_sessions.html:117
+#: .\templates\static_files\report_all_sessions.html:172
+#: .\templates\static_files\session_evaluation_search.html:49
+msgid "Session Date"
+msgstr "تاريخ الجلسة"
+
+#: .\templates\static_files\dashboard_student.html:542
+#: .\templates\static_files\dashboard_teacher.html:332
+#: .\templates\static_files\report_all_sessions.html:118
+#: .\templates\static_files\report_all_sessions.html:173
+msgid "Session Time"
+msgstr "توقيت الجلسة"
+
+#: .\templates\static_files\dashboard_student.html:545
+#: .\templates\static_files\dashboard_teacher.html:334
+msgid "Performance Data"
+msgstr "بيانات العلاج"
+
+#: .\templates\static_files\dashboard_student.html:559
+#: .\templates\static_files\dashboard_teacher.html:346
+#: .\templates\static_files\report_all_sessions.html:135
+#: .\templates\static_files\report_all_sessions.html:187
+#: .\templates\static_files\todays_intervention.html:106
+#: .\templates\static_files\todays_intervention.html:112
+#: .\templates\static_files\todays_intervention.html:128
+msgid "Attended"
+msgstr "حضور"
+
+#: .\templates\static_files\dashboard_student.html:561
+#: .\templates\static_files\dashboard_teacher.html:348
+#: .\templates\static_files\report_all_sessions.html:137
+#: .\templates\static_files\report_all_sessions.html:189
+#: .\templates\static_files\todays_intervention.html:113
+msgid "Student Absent"
+msgstr "غياب الطالب"
+
+#: .\templates\static_files\dashboard_student.html:563
+#: .\templates\static_files\dashboard_teacher.html:350
+#: .\templates\static_files\report_all_sessions.html:139
+#: .\templates\static_files\report_all_sessions.html:191
+#: .\templates\static_files\todays_intervention.html:114
+msgid "Teacher Absent"
+msgstr "غياب المعالج"
+
+#: .\templates\static_files\dashboard_teacher.html:30
+msgid "On Going Sessions"
+msgstr "الطلبة المسجلين"
+
+#: .\templates\static_files\dashboard_teacher.html:31
+msgid "Students"
+msgstr "الطلاب"
+
+#: .\templates\static_files\dashboard_teacher.html:144
+#: .\templates\static_files\weekly_grid.html:9
+#: .\templates\static_files\weekly_grid.html:14
+msgid "Weekly Schedule"
+msgstr "الجدول الاسبوعي"
+
+#: .\templates\static_files\dashboard_teacher.html:198
+#: .\templates\static_files\dashboard_teacher.html:210
+#: .\templates\static_files\dashboard_teacher.html:222
+#: .\templates\static_files\dashboard_teacher.html:234
+#: .\templates\static_files\dashboard_teacher.html:246
+#: .\templates\static_files\dashboard_teacher.html:258
+msgid "Empty"
+msgstr "فراغ"
+
+#: .\templates\static_files\dashboard_teacher.html:335
+msgid "Performance Report"
+msgstr "تقارير العلاج"
+
+#: .\templates\static_files\english_session_report.html:11
+msgid "Date:"
+msgstr "تاريخ"
+
+#: .\templates\static_files\monitor_performance.html:9
+msgid "Monitor Performance of"
+msgstr "مراقبة أداء"
+
+#: .\templates\static_files\monitor_performance.html:30
+msgid "Achievement"
+msgstr "إنجاز"
+
+#: .\templates\static_files\monitor_performance.html:50
+msgid "Overall Skill Percentage"
+msgstr "نسبة المهارة الإجمالية"
+
+#: .\templates\static_files\monitor_performance.html:63
+msgid "Percentage for each Skill"
+msgstr "النسبة المئوية لكل مهارة"
+
+#: .\templates\static_files\monitor_performance.html:71
+msgid "Skill Name"
+msgstr "اسم المهارة"
+
+#: .\templates\static_files\monitor_performance.html:72
+msgid "Skill Completion Date"
+msgstr "تاريخ إتمام المهارة"
+
+#: .\templates\static_files\monitor_performance.html:73
+#: .\templates\static_files\monitor_performance.html:165
+#: .\templates\static_files\monitor_performance.html:197
+msgid "Percentage"
+msgstr "النسبة المئوية"
+
+#: .\templates\static_files\monitor_performance.html:96
+#: .\templates\static_files\monitor_performance.html:219
+msgid "Graphical View"
+msgstr "عرض رسومي"
+
+#: .\templates\static_files\monitor_performance.html:141
+msgid "Overall Letters Percentage"
+msgstr "النسبة الإجمالية للحروف"
+
+#: .\templates\static_files\monitor_performance.html:155
+msgid "Percentage for Each Letter"
+msgstr "النسبة المئوية لكل حرف"
+
+#: .\templates\static_files\monitor_performance.html:163
+#: .\templates\static_files\session_evaluation_arabic.html:32
+msgid "Letter"
+msgstr "حرف"
+
+#: .\templates\static_files\monitor_performance.html:164
+msgid "Letter Completion Date"
+msgstr "تاريخ إتمام الحرف"
+
+#: .\templates\static_files\monitor_performance.html:188
+msgid "Percentage for Grouped Skills"
+msgstr "النسبة المئوية للمهارات المجمعة"
+
+#: .\templates\static_files\monitor_performance.html:196
+msgid "Skill"
+msgstr "مهارة"
+
+#: .\templates\static_files\pre_eva_search.html:14
+#: .\templates\static_files\pre_evaluation.html:14
+msgid "Pre Performance Search"
+msgstr "بحث للجلسة العلاجية الأولية"
+
+#: .\templates\static_files\pre_eva_search.html:22
+msgid "Search Student for teacher"
+msgstr "ابحث عن طالب للمدرس"
+
+#: .\templates\static_files\pre_eva_search.html:42
+msgid "Session Start Date"
+msgstr "تاريخ بدء الجلسة"
+
+#: .\templates\static_files\pre_eva_search.html:43
+msgid "Add/Edit Pre Evaluation"
+msgstr "اضافة /  تعديل التقييم الأولي"
+
+#: .\templates\static_files\pre_evaluation.html:9
+msgid "Pre Performance for"
+msgstr "الجلسة العلاجية الأولية لـ"
+
+#: .\templates\static_files\pre_evaluation.html:24
+msgid "Pre Performance"
+msgstr "الجلسة العلاجية الأولية"
+
+#: .\templates\static_files\pre_evaluation.html:64
+#: .\templates\static_files\pre_evaluation.html:74
+#: .\templates\static_files\pre_evaluation.html:84
+#: .\templates\static_files\pre_evaluation.html:94
+#: .\templates\static_files\pre_evaluation.html:104
+#: .\templates\static_files\pre_evaluation.html:114
+#: .\templates\static_files\pre_evaluation.html:124
+#: .\templates\static_files\pre_evaluation.html:134
+#: .\templates\static_files\session_evaluation_arabic.html:83
+#: .\templates\static_files\session_evaluation_arabic.html:93
+#: .\templates\static_files\session_evaluation_arabic.html:103
+#: .\templates\static_files\session_evaluation_arabic.html:113
+#: .\templates\static_files\session_evaluation_arabic.html:123
+#: .\templates\static_files\session_evaluation_arabic.html:133
+#: .\templates\static_files\session_evaluation_arabic.html:143
+#: .\templates\static_files\session_evaluation_arabic.html:153
+#: .\templates\static_files\session_evaluation_arabic.html:164
+#: .\templates\static_files\session_evaluation_arabic.html:174
+#: .\templates\static_files\session_evaluation_arabic.html:185
+#: .\templates\static_files\session_evaluation_arabic.html:196
+#: .\templates\static_files\session_evaluation_arabic.html:206
+#: .\templates\static_files\session_evaluation_arabic.html:217
+#: .\templates\static_files\session_evaluation_arabic.html:227
+#: .\templates\static_files\session_evaluation_arabic.html:237
+#: .\templates\static_files\session_evaluation_arabic.html:247
+#: .\templates\static_files\session_evaluation_arabic.html:258
+#: .\templates\static_files\session_evaluation_arabic.html:269
+#: .\templates\static_files\session_evaluation_arabic.html:280
+#: .\templates\static_files\session_evaluation_arabic.html:290
+#: .\templates\static_files\session_evaluation_arabic.html:301
+#: .\templates\static_files\session_evaluation_arabic.html:311
+#: .\templates\static_files\session_evaluation_arabic.html:322
+msgid "Please Select Grade"
+msgstr "برجاء اختيار التقدير"
+
+#: .\templates\static_files\registration_psy.html:24
+#: .\templates\static_files\registration_student.html:32
+#: .\templates\static_files\registration_teacher.html:24
+msgid "Personal Details"
+msgstr "البيانات الشخصية"
+
+#: .\templates\static_files\registration_psy.html:27
+#: .\templates\static_files\registration_student.html:35
+#: .\templates\static_files\registration_student.html:89
+#: .\templates\static_files\registration_teacher.html:27
+msgid "First Name"
+msgstr "الإسم الأول"
+
+#: .\templates\static_files\registration_psy.html:31
+#: .\templates\static_files\registration_student.html:39
+#: .\templates\static_files\registration_student.html:93
+#: .\templates\static_files\registration_teacher.html:31
+msgid "Last Name"
+msgstr "الإسم الأخير"
+
+#: .\templates\static_files\registration_psy.html:267
+#: .\templates\static_files\registration_student.html:81
+#: .\templates\static_files\registration_teacher.html:274
+msgid "ID Picture"
+msgstr "صورة البطاقة الشخصية"
+
+#: .\templates\static_files\registration_psy.html:271
+msgid "Tests:"
+msgstr "الإختبارات:"
+
+#: .\templates\static_files\registration_psy.html:416
+#: .\templates\static_files\registration_teacher.html:289
+msgid "Login Details"
+msgstr "بيانات الدخول"
+
+#: .\templates\static_files\registration_psy.html:419
+#: .\templates\static_files\registration_teacher.html:292
+msgid "Username (Must be unique)"
+msgstr "اسم المستخدم"
+
+#: .\templates\static_files\registration_psy.html:423
+#: .\templates\static_files\registration_teacher.html:296
+#: .\templates\static_files\search_psy.html:62
+#: .\templates\static_files\search_teacher.html:71
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: .\templates\static_files\registration_student.html:77
+msgid "Profile Picture"
+msgstr "صورة شخصية"
+
+#: .\templates\static_files\registration_student.html:86
+msgid "Guardian Details"
+msgstr "تفاصيل ولي الأمر"
+
+#: .\templates\static_files\registration_student.html:330
+msgid "Education Details"
+msgstr "بيانات التعليم"
+
+#: .\templates\static_files\registration_student.html:364
+msgid "Bilingual"
+msgstr "ثنائية اللغة"
+
+#: .\templates\static_files\registration_teacher.html:267
+#: .\templates\static_files\search_teacher.html:66
+msgid "Course"
+msgstr "المادة"
+
+#: .\templates\static_files\registration_teacher.html:278
+msgid "Qualification Details"
+msgstr "المؤهل العلمي"
+
+#: .\templates\static_files\registration_teacher.html:281
+msgid "Qualification"
+msgstr "المؤهل العلمي"
+
+#: .\templates\static_files\registration_teacher.html:285
+msgid "Certificate"
+msgstr "الشهادة"
+
+#: .\templates\static_files\report_all_appointments.html:9
+#: .\templates\static_files\report_all_appointments.html:14
+msgid "All Appointments Reports"
+msgstr "تقارير جميع المواعيد"
+
+#: .\templates\static_files\report_all_appointments.html:38
+#: .\templates\static_files\report_all_appointments.html:53
+#: .\templates\static_files\report_all_sessions.html:38
+#: .\templates\static_files\report_all_sessions.html:53
+msgid "OR"
+msgstr "أو"
+
+#: .\templates\static_files\report_all_appointments.html:41
+#: .\templates\static_files\report_all_sessions.html:41
+msgid "From Date"
+msgstr "من"
+
+#: .\templates\static_files\report_all_appointments.html:45
+#: .\templates\static_files\report_all_sessions.html:45
+msgid "To Date"
+msgstr "إلى"
+
+#: .\templates\static_files\report_all_appointments.html:71
+msgid "All Appointments of Psychologist"
+msgstr "تقارير جميع المواعيد"
+
+#: .\templates\static_files\report_all_appointments.html:75
+msgid "All Appointments of Child"
+msgstr "كل المواعيد للطالب"
+
+#: .\templates\static_files\report_all_appointments.html:90
+msgid "On Going Appointments:"
+msgstr "مواعيد حالية"
+
+#: .\templates\static_files\report_all_appointments.html:100
+#: .\templates\static_files\report_all_appointments.html:135
+#: .\templates\static_files\report_all_appointments.html:174
+#: .\templates\static_files\select_psy.html:24
+msgid "Psychologist Name"
+msgstr "اسم الأخصائي"
+
+#: .\templates\static_files\report_all_appointments.html:125
+msgid "Concluded Appointments:"
+msgstr "المواعيد السابقة"
+
+#: .\templates\static_files\report_all_appointments.html:166
+msgid "All Appointments:"
+msgstr "كل المواعيد:"
+
+#: .\templates\static_files\report_all_sessions.html:9
+#: .\templates\static_files\report_all_sessions.html:14
+msgid "All Sessions Reports"
+msgstr "تقارير جميع الجلسات"
+
+#: .\templates\static_files\report_all_sessions.html:59
+msgid "Select Student"
+msgstr "اختر الطالب"
+
+#: .\templates\static_files\report_all_sessions.html:71
+msgid "All Sessions of Teacher"
+msgstr "كل الجلسات العلاجية للمعالج"
+
+#: .\templates\static_files\report_all_sessions.html:75
+msgid "Students:"
+msgstr "الطلاب:"
+
+#: .\templates\static_files\report_all_sessions.html:77
+#: .\templates\static_files\select_student.html:42
+#: .\templates\static_files\session_evaluation_search.html:41
+msgid "Please Select Student"
+msgstr "يرجى اختيار طالب"
+
+#: .\templates\static_files\report_all_sessions.html:87
+msgid "Get Report"
+msgstr "التقرير"
+
+#: .\templates\static_files\report_all_sessions.html:91
+msgid "All Sessions of Student"
+msgstr "جميع الجلسات العلاجية للطالب"
+
+#: .\templates\static_files\report_all_sessions.html:95
+msgid "All Sessions between"
+msgstr "كل الجلسات العلاجية بين"
+
+#: .\templates\static_files\report_all_sessions.html:105
+#: .\templates\static_files\report_all_sessions.html:163
+msgid "Concluded Sessions:"
+msgstr "الجلسات السابقة"
+
+#: .\templates\static_files\report_session.html:11
+msgid "Start Date:"
+msgstr "تاريخ البدء"
+
+#: .\templates\static_files\report_session.html:23
+msgid "Total Sessions conducted"
+msgstr "مجموع الجلسات السابقة"
+
+#: .\templates\static_files\report_session.html:29
+msgid "Percentage Completion"
+msgstr "نسبة الإنجاز"
+
+#: .\templates\static_files\report_session.html:35
+msgid "Total Sessions Attended"
+msgstr "مجموع الجلسات التي تم حضورها"
+
+#: .\templates\static_files\report_session.html:41
+msgid "Total Sessions Cancelled"
+msgstr "مجموع الجلسات الملغاة"
+
+#: .\templates\static_files\reshedule.html:9
+msgid "Reschedule Appointment"
+msgstr "اعادة جدولة الموعد"
+
+#: .\templates\static_files\reshedule.html:14
+msgid "Confirm Psychologist and Date for Reschedule"
+msgstr "تأكيد الأخصائي وتاريخ إعادة الجدولة"
+
+#: .\templates\static_files\reshedule.html:22
+msgid "Re-Schedule Your Appointment"
+msgstr "أعد جدولة موعدك"
+
+#: .\templates\static_files\reshedule.html:39
+#: .\templates\static_files\select_student.html:23
+msgid "Child"
+msgstr "طالب"
+
+#: .\templates\static_files\search_intervention.html:10
+#: .\templates\static_files\search_intervention.html:28
+#: .\templates\static_files\todays_intervention.html:9
+msgid "Today's Interventions"
+msgstr "الجلسات العلاجية اليومية"
+
+#: .\templates\static_files\search_intervention.html:12
+#: .\templates\static_files\search_intervention.html:30
+#: .\templates\static_files\todays_intervention.html:22
+msgid "Weekly Interventions"
+msgstr "الجلسات العلاجية الأسبوعية"
+
+#: .\templates\static_files\search_intervention.html:19
+#: .\templates\static_files\todays_intervention.html:14
+msgid "Search Intervention"
+msgstr "البحث  حسب الجلسات"
+
+#: .\templates\static_files\search_psy.html:9
+#: .\templates\static_files\search_psy.html:14
+msgid "Search Psychologist"
+msgstr "بحث الأخصائيين"
+
+#: .\templates\static_files\search_psy.html:22
+msgid "All Available Psychologist"
+msgstr "االأخصائيين المتاحين"
+
+#: .\templates\static_files\search_psy.html:45
+#: .\templates\static_files\search_student.html:45
+#: .\templates\static_files\search_teacher.html:45
+msgid "Search by Name"
+msgstr "البحث بالاسم"
+
+#: .\templates\static_files\search_psy.html:56
+#: .\templates\static_files\search_student.html:64
+#: .\templates\static_files\search_teacher.html:64
+msgid "Full Name"
+msgstr "الإسم بالكامل"
+
+#: .\templates\static_files\search_psy.html:75
+#: .\templates\static_files\search_teacher.html:84
+msgid "Change Password?"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates\static_files\search_psy.html:76
+msgid "Check Tests"
+msgstr "اعرض الاختبارات"
+
+#: .\templates\static_files\search_student.html:22
+msgid "All Registered Students"
+msgstr "الطلاب المسجلين"
+
+#: .\templates\static_files\search_student.html:70
+msgid "Parent Username"
+msgstr "اسم المستخدم  لولي الأمر"
+
+#: .\templates\static_files\search_teacher.html:9
+#: .\templates\static_files\search_teacher.html:14
+#: .\templates\static_files\select_teacher_assess.html:9
+#: .\templates\static_files\select_teacher_assess.html:22
+msgid "Search Teacher"
+msgstr "بحث معالج"
+
+#: .\templates\static_files\search_teacher.html:22
+msgid "All Available Teachers"
+msgstr "المعالجين المتاحين"
+
+#: .\templates\static_files\search_teacher.html:49
+#: .\templates\static_files\todays_intervention.html:60
+msgid "Search by Subject"
+msgstr "البحث عن طريق المادة"
+
+#: .\templates\static_files\select_teacher_assess.html:14
+msgid "Teacher Search"
+msgstr "بحث المعالج"
+
+#: .\templates\static_files\session_evaluation.html:9
+#: .\templates\static_files\session_evaluation.html:14
+#: .\templates\static_files\session_evaluation_arabic.html:9
+#: .\templates\static_files\session_evaluation_arabic.html:14
+msgid "Session Evaluation"
+msgstr "تقييم الجلسة"
+
+#: .\templates\static_files\session_evaluation.html:32
+#: .\templates\static_files\session_evaluation_arabic.html:28
+msgid "Session Evaluation Date"
+msgstr "تاريخ تقييم الجلسة"
+
+#: .\templates\static_files\session_evaluation.html:384
+#: .\templates\static_files\session_evaluation_arabic.html:331
+msgid "Back"
+msgstr "عودة"
+
+#: .\templates\static_files\session_evaluation_arabic.html:77
+msgid "Skills:"
+msgstr "المهارات:"
+
+#: .\templates\static_files\session_evaluation_search.html:14
+msgid "Weekly Evaluation Search"
+msgstr "البحث عن التقييم الاسبوعي"
+
+#: .\templates\static_files\session_evaluation_search.html:51
+msgid "Please Select Session Date"
+msgstr "يرجى اختيار تاريخ الجلسة"
+
+#: .\templates\static_files\test_list.html:9
+msgid "All tests list for"
+msgstr "قائمة كافة الاختبارت ل"
+
+#: .\templates\static_files\test_list.html:14
+msgid "Tests list"
+msgstr "قائمة الاختبارات"
+
+#: .\templates\static_files\todays_intervention.html:43
+msgid "Search by Student Name"
+msgstr "البحث عن طريق اسم الطالب"
+
+#: .\templates\static_files\todays_intervention.html:52
+msgid "Search by Teacher Name"
+msgstr "البحث عن طريق اسم المعالج"
+
+#: .\templates\static_files\weekly_grid.html:22
+msgid "Select a slot"
+msgstr "اختر التوقيت"
+
+#: .\templates\tests\view_tests.html:12
+msgid "View Tests for child "
+msgstr "عرض الاختبارات للطالب"
+
+#: .\templates\tests\view_tests.html:24
+msgid "Sub Test"
+msgstr "اختبار فرعي"
+
+#: .\templates\tests\view_tests.html:33 .\templates\tests\view_tests.html:40
+#: .\templates\tests\view_tests.html:46 .\templates\tests\view_tests.html:52
+#: .\templates\tests\view_tests.html:58 .\templates\tests\view_tests.html:64
+#: .\templates\tests\view_tests.html:70 .\templates\tests\view_tests.html:76
+#: .\templates\tests\view_tests.html:82 .\templates\tests\view_tests.html:89
+msgid "Start Test"
+msgstr "ابدأ الاختبار"
+
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:51
+msgid "That page number is not an integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:53
+msgid "That page number is less than 1"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:58
+msgid "That page contains no results"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:93
+#: .\venv\Lib\site-packages\django\forms\fields.py:664
+msgid "Enter a valid URL."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:150
+msgid "Enter a valid integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:161
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\venv\Lib\site-packages\django\core\validators.py:262
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:269
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:278
+#: .\venv\Lib\site-packages\django\core\validators.py:288
+#: .\venv\Lib\site-packages\django\core\validators.py:311
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:296
+#: .\venv\Lib\site-packages\django\core\validators.py:312
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:306
+#: .\venv\Lib\site-packages\django\core\validators.py:310
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:340
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:346
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:379
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:388
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:398
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:413
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:432
+#: .\venv\Lib\site-packages\django\forms\fields.py:292
+#: .\venv\Lib\site-packages\django\forms\fields.py:327
+msgid "Enter a number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:434
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:439
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:444
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:506
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:559
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1197
+#: .\venv\Lib\site-packages\django\forms\models.py:768
+msgid "and"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1199
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:100
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:101
+msgid "This field cannot be null."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:102
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:103
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:107
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:126
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:958
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:959
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:961
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1002
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1096
+msgid "Comma-separated integers"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1145
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1147
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1290
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1150
+msgid "Date (without time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1288
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1292
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1296
+msgid "Date (with time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1444
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1446
+msgid "Decimal number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1585
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1588
+msgid "Duration"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1638
+msgid "Email address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1661
+msgid "File path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1727
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1729
+msgid "Floating point number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1767
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1769
+msgid "Integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1852
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1867
+msgid "Small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1875
+msgid "IPv4 address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1906
+msgid "IP address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1986
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1987
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1989
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2043
+msgid "Positive big integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2056
+msgid "Positive integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2069
+msgid "Positive small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2083
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2115
+msgid "Text"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2181
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2183
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2312
+msgid "URL"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2334
+msgid "Raw binary data"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2399
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2401
+msgid "Universally unique identifier"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:226
+msgid "File"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:375
+msgid "Image"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:18
+msgid "A JSON object"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:20
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:790
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:792
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1045
+msgid "One-to-one relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1099
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1100
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1142
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\venv\Lib\site-packages\django\forms\boundfield.py:150
+msgid ":?.!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:54
+msgid "This field is required."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:247
+msgid "Enter a whole number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:391
+#: .\venv\Lib\site-packages\django\forms\fields.py:1132
+msgid "Enter a valid date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:415
+#: .\venv\Lib\site-packages\django\forms\fields.py:1133
+msgid "Enter a valid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:443
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:477
+msgid "Enter a valid duration."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:478
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:538
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:539
+msgid "No file was submitted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:540
+msgid "The submitted file is empty."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:542
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:545
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:606
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:768
+#: .\venv\Lib\site-packages\django\forms\fields.py:858
+#: .\venv\Lib\site-packages\django\forms\models.py:1309
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:859
+#: .\venv\Lib\site-packages\django\forms\fields.py:974
+#: .\venv\Lib\site-packages\django\forms\models.py:1308
+msgid "Enter a list of values."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:975
+msgid "Enter a complete value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1191
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1221
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: .\venv\Lib\site-packages\django\forms\forms.py:76
+msgid ":"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\forms.py:203
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:370
+#, python-format
+msgid "Please submit at most %d form."
+msgid_plural "Please submit at most %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:377
+#, python-format
+msgid "Please submit at least %d form."
+msgid_plural "Please submit at least %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:405
+#: .\venv\Lib\site-packages\django\forms\formsets.py:412
+msgid "Order"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:417
+msgid "Delete"
+msgstr "حذف"
+
+#: .\venv\Lib\site-packages\django\forms\models.py:763
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:767
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:773
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:782
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1109
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1193
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1311
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\utils.py:172
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:403
+msgid "Clear"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:404
+msgid "Currently"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:405
+msgid "Change"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:714
+msgid "Unknown"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:805
+msgid "yes,no,maybe"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:834
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:851
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:853
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:855
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:857
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:859
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:861
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:66
+msgid "p.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:67
+msgid "a.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:72
+msgid "PM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:73
+msgid "AM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:146
+msgid "midnight"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:148
+msgid "noon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "jan"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "feb"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "mar"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "apr"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "may"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "jun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "jul"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "aug"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "sep"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "oct"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "nov"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "dec"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:25
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:27
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:39
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:41
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:45
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:47
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:48
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:71
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:240
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: .\venv\Lib\site-packages\django\utils\text.py:259
+#: .\venv\Lib\site-packages\django\utils\timesince.py:94
+msgid ", "
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:120
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" …> for links to third-party sites."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:61
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:111
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:338
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:594
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:628
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:67
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:154
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:42
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:207
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:222
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
+msgid "Django Documentation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:231
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:240
+msgid "Get started with Django"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
+msgid "Django Community"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#~ msgid "Slot"
+#~ msgstr "التوقيت"
+
+#~ msgid "Select Your slot"
+#~ msgstr "اختر التوقيت"
+
+#~ msgid "Select"
+#~ msgstr "ااختر"
+
+#~ msgid "Session Day"
+#~ msgstr "اليوم"
+
+#~ msgid "Contact Details"
+#~ msgstr "بيانات الاتصال"
+
+#~ msgid "Class Name"
+#~ msgstr "إسم الفصل"
+
+#~ msgid "Search by Day"
+#~ msgstr "البحث باليوم"
+
+#~ msgid "Mobile Number with country code"
+#~ msgstr "رقم الهاتف مع مفتاح الدولة"
+
+#~ msgid "Standford"
+#~ msgstr "اختبار ستانفورد بينيه"

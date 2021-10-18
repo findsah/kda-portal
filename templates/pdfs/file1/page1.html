@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+{#<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">#}
+<html lang="en">
+<head>
+{#    <meta charset="UTF-8">#}
+{#    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">#}
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDA</title>
+{#    <link rel="stylesheet" media="print" href="print.css" type="text/css" />#}
+{#    <link rel="stylesheet" href='https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/pdfindex.css' type="text/css" />#}
+{#    <link rel="stylesheet" href='https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/HelveticaNeueLTArabic-Light.ttf' />#}
+    <style type="text/css">
+        {#@media print {#}
+        {#    .img4 {#}
+        {#        width: 20rem !important;#}
+        {#        top: 59vh !important;#}
+        {#        left: 10% !important;#}
+        {#    }#}
+        {# }#}
+
+        body {
+            margin: 0;
+            {#font-family: 'Simplified Arabic', "Arabic Typesetting", serif;#}
+            {#font-weight: bold;#}
+}
+.main {
+    background-image: url("https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Rectangle%20245.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+}
+
+.img4 {
+    width: 25rem;
+    position: absolute;
+    top: 200%;
+    left: 20%;
+    /* display: none; */
+}
+.hala {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4rem 0;
+    height: 5rem;
+}
+.colorDiv {
+    height: 100%;
+    width: 15rem;
+    background-color: orange;
+}
+.halaInputDiv {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #87c556;
+    border-bottom: 2px solid #87c556;
+    margin-right: 0.5rem;
+    width: 75%;
+    justify-content: flex-end;
+}
+.halaInput {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    margin-right: 0.5rem;
+    width: 89%;
+    outline: none;
+}
+
+/* artBoard2.css */
+.imgDiv {
+    background-image: url("https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Group%20642.png");
+    background-repeat: no-repeat;
+    background-size: 100% 19rem;
+    height: 4rem;
+    width: 100%;
+    background-color: #f99d1c;
+}
+.containerPart {
+    /* background-image: url(img2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 19rem; */
+    padding: 0 3rem 5rem 3rem;
+}
+.bayanatHeading{
+    background: #FFE8CB;
+    padding: .5rem;
+    text-align: center;
+    color: #f99d1c;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+.subHeading{
+    background: #E6E7E8;
+    margin: 1rem 0;
+    padding: .5rem;
+    text-align: right;
+    font-weight: bold;
+}
+table, th, td {
+    border: 1px solid #CFCFCF;
+    border-collapse: collapse;
+    text-align: right;
+    padding: 0.3rem;
+    width: 33%;
+    height: 1rem;
+  }
+.doubleValueTd{
+    display: flex;
+    justify-content: flex-end;
+    width: 98%;
+    border: none;
+    height: 1rem;
+    align-items: center;
+}
+.differentTableHead{
+    text-align: center;
+    padding: 1rem;
+}
+
+    </style>
+</head>
+
+<body>
+{#    <div>#}
+{#        <div class="main">#}
+{#            <img style="width: 100%; height: 100%;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Group+623.png' />#}
+{#        </div>#}
+{#        <img style="width: 100%; position: absolute; top: 0; left: 0;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Group+642.png' />#}
+{#        <img class="img4" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/KDA-logo-removebg-preview.png' />#}
+{#        <div class="hala">#}
+{#            <div class="halaInputDiv">#}
+{#                <input class="halaInput" type="text" style="width: 75%" />#}
+{#                <label>استمار الحالة</label>#}
+{#            </div>#}
+{#            <div class="colorDiv"></div>#}
+{#        </div>#}
+{#    </div>#}
+    <div style="height: 5vh"></div>
+    <div>
+        <!-- <img src="head.png" /> -->
+        <div class="imgDiv"></div>
+        <div class="containerPart">
+            <img style="width: 15rem;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/KDA-logo-removebg-preview.png' />
+            <div class="bayanatHeading">أول: بيانات أولية</div>
+            <div class="subHeading">عن الحالة</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{{ c.child.full_name }}</td>
+                    <td>:الاسم</td>
+                </tr>
+                <tr>
+                    <td>{% if c.civil_number %}{{ c.civil_number }}{% endif %}</td>
+                    <td>:الرقم المدني</td>
+                </tr>
+                <tr>
+                    <td>{% if c.child.school %}{{ c.child.school }}{% endif %}</td>
+                    <td>:المدرسة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.grade %}{{ c.grade }}{% endif %}</td>
+                    <td>:الصف</td>
+                </tr>
+                <tr>
+                    <td>{% if c.child.dob %}{{ c.child.dob }}{% endif %}</td>
+                    <td>:تاريخ الميلاد</td>
+                </tr>
+                <tr>
+                    <td>{% if c.place_of_birth %}{{ c.place_of_birth }}{% endif %}</td>
+                    <td>:مكـان الولادة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.child.nationality %}{{ c.child.nationality }}{% endif %}</td>
+                    <td>:الجنسية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.child.gender == 'Male' %}ذكر{% elif c.child.gender == 'Female' %}انثى{% endif %}</td>
+                    <td>:الجنس</td>
+                </tr>
+                <tr>
+                    <td>{% if appoint.appointment_date %}{{ appoint.appointment_date }}{% endif %}</td>
+                    <td>:تاريخ التقييم</td>
+                </tr>
+            </table>
+            <div class="subHeading">عن الأب</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.f_name %}{{ c.f_name }}{% endif %}</td>
+                    <td>:اسم الأب</td>
+                </tr>
+                <tr>
+                    <td>{% if c.f_age %}{{ c.f_age }}{% endif %}</td>
+                    <td>:العمر</td>
+                </tr>
+                <tr>
+                    <td>{% if c.f_nationality %}{{ c.f_nationality }}{% endif %}</td>
+                    <td>:الجنسية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.f_education_level %}{{ c.f_education_level }}{% endif %}</td>
+                    <td>:المستوى التعليمي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.f_phone %}{{ c.f_phone }}{% endif %}</td>
+                    <td>:رقم الهاتف</td>
+                </tr>
+                <tr>
+                    <td>{% if c.f_occupation %}{{ c.f_occupation }}{% endif %}</td>
+                    <td>:الوظيفة الحالية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.f_address %}{{ c.f_address }}{% endif %}</td>
+                    <td>:عنوان السكن</td>
+                </tr>
+                <tr>
+                    <td>{% if c.f_email %}{{ c.f_email }}{% endif %}</td>
+                    <td>:البريد الإلكتروني</td>
+                </tr>
+            </table>
+            <div class="subHeading">عن الأم</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.m_name %}{{ c.m_name }}{% endif %}</td>
+                    <td>:اسم الأم</td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_age %}{{ c.m_age }}{% endif %}</td>
+                    <td>:العمر</td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_nationality %}{{ c.m_nationality }}{% endif %}</td>
+                    <td>:الجنسية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_education_level %}{{ c.m_education_level }}{% endif %}</td>
+                    <td>:المستوى التعليمي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_phone %}{{ c.m_phone }}{% endif %}</td>
+                    <td>:رقم الهاتف</td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_occupation %}{{ c.m_occupation }}{% endif %}</td>
+                    <td>:الوظيفة الحالية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_address %}{{ c.m_address }}{% endif %}</td>
+                    <td>:عنوان السكن</td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_email %}{{ c.m_email }}{% endif %}</td>
+                    <td>:البريد الإلكتروني</td>
+                </tr>
+            </table>
+            <div class="subHeading">عن ولي الأمر</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.g_name %}{{ c.g_name }}{% endif %}</td>
+                    <td>:اسم ولي الأمر</td>
+                </tr>
+                <tr>
+                    <td>{% if c.g_relation_child %}{{ c.g_relation_child }}{% endif %}</td>
+                    <td>:صلته بالطفل</td>
+                </tr>
+                <tr>
+                    <td>{% if c.g_education_level %}{{ c.g_education_level }}{% endif %}</td>
+                    <td>:المستوى التعليمي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.g_phone %}{{ c.g_phone }}{% endif %}</td>
+                    <td>:رقم الهاتف</td>
+                </tr>
+                <tr>
+                    <td>{% if c.g_occupation %}{{ c.g_occupation }}{% endif %}</td>
+                    <td>:الوظيفة الحالية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.g_address %}{{ c.g_address }}{% endif %}</td>
+                    <td>:عنوان السكن</td>
+                </tr>
+                <tr>
+                    <td>{% if c.g_email %}{{ c.g_email }}{% endif %}</td>
+                    <td>:البريد الإلكتروني</td>
+                </tr>
+            </table>
+            <div class="subHeading">الأسرة</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.relation_btw_parents == 'very_close' %}شديدة{% elif c.relation_btw_parents == 'far' %}بعيدة{% elif c.relation_btw_parents == 'there_is_none' %}لا توجد{% endif %}</td>
+                    <td>:صلة القرابة بين الوالدين<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.martial_status == 'still_exists' %}الزواج قائم{% elif c.martial_status == 'does_not_exists' %}الزواج غير قائم{% endif %}</td>
+                    <td>:الحالة الاجتماعية للوالدين<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.passed_away == 'the_mother' %}الام{% elif c.passed_away == 'the_father' %}الاب{% elif c.passed_away == 'both' %}كلاهما{% elif c.passed_away == 'none' %}{% endif %}</td>
+                    <td>: يرجى الإشارة إن كان أحد الوالدين متوفيًا<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.living_in_case %}{{ c.living_in_case }}{% endif %}</td>
+                    <td>:يعيش الطفل في حالة فقد الأب والأم مع<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.father_married == 'yes' %}نعم{% elif c.father_married == 'no' %}لا{% endif %}</td>
+                    <td>:سبق للأب الزواج<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.mother_married == 'yes' %}نعم{% elif c.mother_married == 'no' %}لا{% endif %}</td>
+                    <td>:سبق للأم الزواج<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.married_when == 'before_marriage' %}{% elif c.married_when == 'after_separation' %}{% endif %}</td>
+                    <td>:إن كان نعم؛ متى تم<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.second_marriage == 'yes' %}نعم{% elif c.second_marriage == 'no' %}لا{% endif %}</td>
+                    <td>:يوجد في الأسرة زواج ثاني<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.nationality_sec_m %}{{ c.nationality_sec_m }}{% endif %}</td>
+                    <td>:ما جنسية الزوج أو الزوجة ( في حالة وجود زواج ثان)<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.number_of_fam %}{{ c.number_of_fam }}{% endif %}</td>
+                    <td>:عدد أفراد الأسرة<p style="margin: 0 7vw"></p></td>
+                </tr>
+{#            </table>#}
+{#            <table style="width:100%; margin-top: 2rem;">#}
+                <tr>
+                    <td>{{ c.number_of_bros|add:c.number_of_sis }}</td>
+                    <td>:عدد الإخوة الأشقاء للحالة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{{ c.number_of_bros_f|add:c.number_of_sis_f }}</td>
+                    <td>:عدد الإخوة للحالة من الأب (إن وجد)<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{{ c.number_of_bros_m|add:c.number_of_sis_m }}</td>
+                    <td>:عدد الإخوة للحالة من الأم (إن وجد)<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.order_sib %}{{ c.order_sib }}{% endif %}</td>
+                    <td>:ترتيب الحالة بين إخوته<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.other_people_house %}{{ c.other_people_house }}{% endif %}</td>
+                    <td>:الذين يقيمون في المنزل ( أقارب أو خدم .. الخ )<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.lives_current %}{{ c.lives_current }}{% endif %}</td>
+                    <td>:ً يعيش الطفل حاليا مع<p style="margin: 0 7vw"></p></td>
+                </tr>
+            </table>
+            <div class="bayanatHeading">ثانيا: التاريخ التطوري للحالة</div>
+            <div class="subHeading">فترة الحمل</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.state_of_m %}{{ c.state_of_m }}{% endif %}</td>
+                    <td>:لحالة الصحية للأم خلال فترة الحمل كانت<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_m_age %}{{ c.p_m_age }}{% endif %}</td>
+                    <td>:كان عمر الأم عند الحمل بالحالة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.m_health %}{{ c.m_health }}{% endif %}</td>
+                    <td>:حالة الأم النفسية أثناء الحمل كانت<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>:تعرضت الأم أثناء الحمل للمشاكل التالية:</td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_bleeding == 'yes' %}نعم{% elif c.p_bleeding == 'no' %}لا{% endif %}</td>
+                    <td>:نزيف<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_poisoning == 'yes' %}نعم{% elif c.p_poisoning == 'no' %}لا{% endif %}</td>
+                    <td>:تسمم<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_infection == 'yes' %}نعم{% elif c.p_infection == 'no' %}لا{% endif %}</td>
+                    <td>:الالتهابات<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.accident == 'yes' %}نعم{% elif c.accident == 'no' %}لا{% endif %}</td>
+                    <td>:حوادث<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_accident_detail %}{{ c.p_accident_detail }}{% endif %}</td>
+                    <td>:  نوع الحادث (إن وجد)<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_medicines %}{{ c.p_medicines }}{% endif %}</td>
+                    <td>: نوع الأدوية والعقاقير التي تناولتها الأم أثناء الحمل<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_problems %}{{ c.p_problems }}{% endif %}</td>
+                    <td>:هناك مشاكل أو أمراض أخرى أثناء فترة الحمل<p style="margin: 0 7vw"></p></td>
+                </tr>
+
+{#                <tr>#}
+{#                    <td></td>#}
+{#                    <td>:مشاكل في (إن وجدت)<p style="margin: 0 7vw"></p></td>#}
+{#                </tr>#}
+                <tr>
+                    <td>{% if c.p_duration == 'complete' %}مكتملة{% elif c.p_duration == 'incomplete' %}غير مكتملة{% endif %}</td>
+                    <td>:مدة الحمل<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.p_month %}{{ c.p_month }}{% endif %}</td>
+                    <td>:تمت الولادة في الشهر<p style="margin: 0 7vw"></p></td>
+                </tr>
+            </table>
+            <div class="subHeading">فترة الولادة</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.type_birth == 'normal' %}طبيعية{% elif c.type_birth == 'retraction_ring' %}بمساعدة آلة السحب{% elif c.type_birth == 'c_section' %}قيصرية{% elif c.type_birth == 'anesthesia' %}تخدير الأم للولادة{% endif %}</td>
+                    <td style="font-weight: bold;">:نوع الولادة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="font-weight: bold;">:حالة المولود أثناء الولادة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.umbilical_cord == 'yes' %}نعم{% elif c.umbilical_cord == 'no' %}لا{% endif %}</td>
+                    <td>:ولد والحبل السري حول عنقه<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.skin_blue == 'yes' %}نعم{% elif c.skin_blue == 'no' %}لا{% endif %}</td>
+                    <td>:ازرقت بشرته<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.needed_oxy == 'yes' %}نعم{% elif c.needed_oxy == 'no' %}لا{% endif %}</td>
+                    <td>: احتاج إلى الأكسجين (نقص أكسجين)<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.dropsy == 'yes' %}نعم{% elif c.dropsy == 'no' %}لا{% endif %}</td>
+                    <td>:استسقاء<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.skin_yellow == 'yes' %}نعم{% elif c.skin_yellow == 'no' %}لا{% endif %}</td>
+                    <td>:اصفرت بشرته<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.twin_trip == 'yes' %}نعم{% elif c.twin_trip == 'no' %}لا{% endif %}</td>
+                    <td>:كان توأمًا أو أحد توائم ثلاثة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.colic_cramps == 'yes' %}نعم{% elif c.colic_cramps == 'no' %}لا{% endif %}</td>
+                    <td>:أصيب بالتشنجات<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.baby_weight %}{{ c.baby_weight }}{% endif %}</td>
+                    <td>:وزن المولود عند الولادة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.b_problems %}{{ c.b_problems }}{% endif %}</td>
+                    <td>:مشاكل  أخرى تعرضت لها الحالة أثناء الولادة لم تذكر (إن وجدت)<p style="margin: 0 7vw"></p></td>
+                </tr>
+            </table>
+            <div class="subHeading">فترة ما بعد الولادة</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.health_m_pb %}{{ c.health_m_pb }}{% endif %}</td>
+                    <td>:كانت الحالة الصحية والنفسية للآم بعد الولادة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.incubator == 'yes' %}نعم{% elif c.incubator == 'no' %}لا{% endif %}</td>
+                    <td>:وضعت الحالة بالحاضنة بعد الولادة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.b_surgery %}{{ c.b_surgery }}{% endif %}</td>
+                    <td>:احتاجت الحالة لعملية جراحية مباشرة بعد الولادة<p style="margin: 0 7vw"></p></td>
+                </tr>
+            </table>
+            <div class="subHeading">:المشاكل التي تعرضت الحالة لها</div>
+            <table style="width:100%">
+                <tr>
+                    <th class="differentTableHead">المدة الزمنية/نسبة تكرارها</th>
+                    <th class="differentTableHead">السن</th>
+                    <th class="differentTableHead">المشكلة</th>
+                </tr>
+                <tr>
+                    <td>{% if c.extremely_high_temp_dur %}{{ c.extremely_high_temp_dur }}{% endif %}</td>
+                    <td>{% if c.extremely_high_temp_age %}{{ c.extremely_high_temp_age }}{% endif %}</td>
+                    <td>:ارتفاع شديد بدرجة الحرارة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.ear_problems_dur %}{{ c.ear_problems_dur }}{% endif %}</td>
+                    <td>{% if c.ear_problems_age %}{{ c.ear_problems_age }}{% endif %}</td>
+                    <td>:مشاكل سمعية / التهابات في الأذن</td>
+                </tr>
+                <tr>
+                    <td>{% if c.vision_problems_dur %}{{ c.vision_problems_dur }}{% endif %}</td>
+                    <td>{% if c.vision_problems_age %}{{ c.vision_problems_age }}{% endif %}</td>
+                    <td>:مشاكل بصرية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.juandice_dur %}{{ c.juandice_dur }}{% endif %}</td>
+                    <td>{% if c.juandice_age %}{{ c.juandice_age }}{% endif %}</td>
+                    <td>:اصفرار</td>
+                </tr>
+                <tr>
+                    <td>{% if c.asthma_dur %}{{ c.asthma_dur }}{% endif %}</td>
+                    <td>{% if c.asthma_age %}{{ c.asthma_age }}{% endif %}</td>
+                    <td>:الربو</td>
+                </tr>
+                <tr>
+                    <td>{% if c.allergy_dur %}{{ c.allergy_dur }}{% endif %}</td>
+                    <td>{% if c.allergy_age %}{{ c.allergy_age }}{% endif %}</td>
+                    <td>:الحساسية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.poisoning_dur %}{{ c.poisoning_dur }}{% endif %}</td>
+                    <td>{% if c.poisoning_age %}{{ c.poisoning_age }}{% endif %}</td>
+                    <td>:تسمم</td>
+                </tr>
+                <tr>
+                    <td>{% if c.surgical_dur %}{{ c.surgical_dur }}{% endif %}</td>
+                    <td>{% if c.surgical_age %}{{ c.surgical_age }}{% endif %}</td>
+                    <td>:عمليات جراحية (نوع العملية)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.accident_dur %}{{ c.accident_dur }}{% endif %}</td>
+                    <td>{% if c.accident_age %}{{ c.accident_age }}{% endif %}</td>
+                    <td>:حوادث (نوع الحادث)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{% if c.not_mentioned_disease %}{{ c.not_mentioned_disease }}{% endif %}</td>
+                    <td>:أخرى (تذكر)</td>
+                </tr>
+            </table>
+            <div class="subHeading">مراحل النمو</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.breastfeeding == 'natural' %}طبيعية{% elif c.breastfeeding == 'industrial' %}صناعية{% endif %}</td>
+                    <td>:الرضاعة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_weaning %}{{ c.age_weaning }}{% endif %}</td>
+                    <td>:سن الفطام<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_teething %}{{ c.age_teething }}{% endif %}</td>
+                    <td>:السن الذي بدأ فيه التسنين<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_commune %}{{ c.age_commune }}{% endif %}</td>
+                    <td>:السن الذي بدأ في المناغاة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_pronouncing %}{{ c.age_pronouncing }}{% endif %}</td>
+                    <td>: سن نطق كلمات بسيطة مثل (ماما، بابا)<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_speech %}{{ c.age_speech }}{% endif %}</td>
+                    <td>:السن الذي بدأ فيه الكلام<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_full_sentence %}{{ c.age_full_sentence }}{% endif %}</td>
+                    <td>:السن الذي استخدم فيه جملة كاملة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_bottle_milk %}{{ c.age_bottle_milk }}{% endif %}</td>
+                    <td>:حمل قنينة الحليب لوحده في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_love %}{{ c.age_love }}{% endif %}</td>
+                    <td>:السن الذي بدأ فيه الحبو<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_sat_self %}{{ c.age_sat_self }}{% endif %}</td>
+                    <td>:جلس بدون مساعدة في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_stop_self %}{{ c.age_stop_self }}{% endif %}</td>
+                    <td>:وقف دون مساعدة في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_walking %}{{ c.age_walking }}{% endif %}</td>
+                    <td>:مشى بمفرده<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_wearing_help %}{{ c.age_wearing_help }}{% endif %}</td>
+                    <td>:ارتدى ملابسه بمساعدة في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_wearing_self %}{{ c.age_wearing_self }}{% endif %}</td>
+                    <td>:ارتدى ملابسه وخلعها بنفسه في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_shoes %}{{ c.age_shoes }}{% endif %}</td>
+                    <td>:بدأ بارتداء حذاءه في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_feeding %}{{ c.age_feeding }}{% endif %}</td>
+                    <td>:بدأ بإطعام نفسه بصورة جيدة في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_urination %}{{ c.age_urination }}{% endif %}</td>
+                    <td>:بدأ فيه ضبط وظائف الإخراج والتبول في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_bathroom %}{{ c.age_bathroom }}{% endif %}</td>
+                    <td>:تم تدريبه على استخدام الحمام بصورة جيدة في سن<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.visual_prob == 'yes' %}نعم{% elif c.visual_prob == 'no' %}لا{% endif %}</td>
+                    <td>:لديه مشاكل بصرية<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.use_glasses == 'yes' %}نعم{% elif c.use_glasses == 'no' %}لا{% endif %}</td>
+                    <td>:يستخدم نظارة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.hearing_prob == 'yes' %}نعم{% elif c.hearing_prob == 'no' %}لا{% endif %}</td>
+                    <td>:لديه مشاكل في السمع<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.use_hearing_aid == 'yes' %}نعم{% elif c.use_hearing_aid == 'no' %}لا{% endif %}</td>
+                    <td>: يستخدم معين سمعي<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.diff_speaking == 'yes' %}نعم{% elif c.diff_speaking == 'no' %}لا{% endif %}</td>
+                    <td>:تعاني الحالة من صعوبة النطق<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.treated_speech == 'yes' %}نعم{% elif c.treated_speech == 'no' %}لا{% endif %}</td>
+                    <td>:تم علاجها عند مراكز النطق<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.hand_writing == 'right' %}اليمنى{% elif c.hand_writing == 'left' %}اليسرى{% endif %}</td>
+                    <td>:اليد التي يستخدمها في الكتابة والرسم<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.leg_kicking == 'right' %}اليمنى{% elif c.leg_kicking == 'left' %}اليسرى{% endif %}</td>
+                    <td>:الرجل التي يستخدمها في ركله الكرة<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.both_hands == 'yes' %}نعم{% elif c.both_hands == 'no' %}لا{% endif %}</td>
+                    <td>:يستخدم كلتا اليدين<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_stop_left_hand %}{{ c.age_stop_left_hand }}{% endif %}</td>
+                    <td>:هنالك محاولة لوقف استخدامه اليد اليسرى<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.involuntary_urination == 'yes' %}نعم{% elif c.involuntary_urination == 'no' %}لا{% endif %}</td>
+                    <td>:تعاني الحالة من التبول اللاإرادي<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.cause_involuntary_urination == 'psychological' %}الأخصائي{% elif c.cause_involuntary_urination == 'organic' %}Organic{% endif %}</td>
+                    <td>:أسباب التبول اللاإرادي<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_involuntary_urination %}{{ c.age_involuntary_urination }}{% endif %}</td>
+                    <td>:بدأ التبول اللاإرادي (إن وجد)<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.medicines_bool == 'yes' %}نعم{% elif c.medicines_bool == 'no' %}لا{% endif %}</td>
+                    <td>:يتناول أي أدوية<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.medicines_name %}{{ c.medicines_name }}{% endif %}</td>
+                    <td>:اسم الدواء<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.medicine_reason %}{{ c.medicine_reason }}{% endif %}</td>
+                    <td>:أسباب<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.eating_habits %}{{ c.eating_habits }}{% endif %}</td>
+                    <td>:الشهية وعادات الأكل<p style="margin: 0 7vw"></p></td>
+                </tr>
+                <tr>
+                    <td>{% if c.fav_food %}{{ c.fav_food }}{% endif %}</td>
+                    <td>:الأكل المفضل لديه<p style="margin: 0 7vw"></p></td>
+                </tr>
+            </table>
+
+            <div class="bayanatHeading">ثالثا: التاريخ الأسري</div>
+            <div class="subHeading">تحديد إن كان أحد أفراد العائلة أو الأسرة يعاني من المشاكل التالية</div>
+            <table style="width:100%">
+                <tr>
+                    <th style="background-color: #FFE8CB; text-align: center;">أفراد العائلة</th>
+                    <th style="background-color: #FFE8CB; ">المشكلة</th>
+                </tr>
+                <tr>
+                    <td>{% if c.hyperinactivity != 'None' %}{{ c.hyperinactivity }}{% endif %}</td>
+                    <td>:فرط نشاط</td>
+                </tr>
+                <tr>
+                    <td>{% if c.reading_diff != 'None' %}{{ c.reading_diff }}{% endif %}</td>
+                    <td>:صعوبة في القراءة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.writing_dictating_diff != 'None' %}{{ c.writing_dictating_diff }}{% endif %}</td>
+                    <td>:صعوبة في الكتابة والإملاء</td>
+                </tr>
+                <tr>
+                    <td>{% if c.calculating_diff != 'None' %}{{ c.calculating_diff }}{% endif %}</td>
+                    <td>:صعوبة في الحساب</td>
+                </tr>
+                <tr>
+                    <td>{% if c.concentration_diff != 'None' %}{{ c.concentration_diff }}{% endif %}</td>
+                    <td>:صعوبة في التركيز والانتباه</td>
+                </tr>
+                <tr>
+                    <td>{% if c.pronouncing_diff != 'None' %}{{ c.pronouncing_diff }}{% endif %}</td>
+                    <td>:صعوبة في النطق</td>
+                </tr>
+                <tr>
+                    <td>{% if c.impaired_hearing != 'None' %}{{ c.impaired_hearing }}{% endif %}</td>
+                    <td>:إعاقة سمعية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.visual_impairment != 'None' %}{{ c.visual_impairment }}{% endif %}</td>
+                    <td>:إعاقة بصرية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.impaired_mobility != 'None' %}{{ c.impaired_mobility }}{% endif %}</td>
+                    <td>:إعاقة حركية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.intellectual_disability != 'None' %}{{ c.intellectual_disability }}{% endif %}</td>
+                    <td>:إعاقة ذهنية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.down_syn != 'None' %}{{ c.down_syn }}{% endif %}</td>
+                    <td>:حالة داون</td>
+                </tr>
+
+                <tr>
+                    <td>{% if c.autism != 'None' %}{{ c.autism }}{% endif %}</td>
+                    <td>:حالة توحد</td>
+                </tr>
+                <tr>
+                    <td>{% if c.other_prob != 'None' %}{{ c.other_prob }}{% endif %}</td>
+                    <td>:مشاكل أخرى لم تذكر وتحدد أفراد العائلة (اذكرها)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.child_hereditary == 'yes' %}نعم{% elif c.child_hereditary == 'no' %}لا{% endif %}</td>
+                    <td>:هل مشكلة الحالة وراثية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_problem %}{{ c.age_problem }}{% endif %}</td>
+                    <td>:كان عمر الحالة عند اكتشاف المشكلة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.prob_effect %}{{ c.prob_effect }}{% endif %}</td>
+                    <td>:أثر المشكلة على الحالة</td>
+                </tr>
+            </table>
+            <div class="subHeading">التطور الاجتماعي / الشخصي</div>
+            <table style="width:100%">
+                <tr>
+                    <td></td>
+                    <td>:وصف مختصر عن علاقة الحالة تجاه كل من</td>
+                </tr>
+                <tr>
+                    <td>{% if c.friends %}{{ c.friends }}{% endif %}</td>
+                    <td>:الأصدقاء</td>
+                </tr>
+                <tr>
+                    <td>{% if c.siblings %}{{ c.siblings }}{% endif %}</td>
+                    <td>:الأخوة والأخوات</td>
+                </tr>
+                <tr>
+                    <td>{% if c.parents %}{{ c.parents }}{% endif %}</td>
+                    <td>:الوالدين</td>
+                </tr>
+                <tr>
+                    <td>{% if c.adults %}{{ c.adults }}{% endif %}</td>
+                    <td>:الكبار والآخرين</td>
+                </tr>
+                <tr>
+                    <td>{% if c.maid %}{{ c.maid }}{% endif %}</td>
+                    <td>:مدى ارتباطه بالخادمة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.age_maid %}{{ c.age_maid }}{% endif %}</td>
+                    <td>:كان عمر الحالة عند ارتباطه بالخادمة (إن كان مرتبطا بها)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.fam_auth %}{{ c.fam_auth }}{% endif %}</td>
+                    <td>:السلطة الضابطة بالأسرة هي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.fam_close %}{{ c.fam_close }}{% endif %}</td>
+                    <td>:الشخص المعين في الأسرة مرتبطة به الحالة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.punishment_sys == 'yes' %}نعم{% elif c.punishment_sys == 'no' %}لا{% endif %}</td>
+                    <td>:يستخدم مع الحالة أسلوب العقاب والثواب</td>
+                </tr>
+                <tr>
+                    <td>{% if c.punisher %}{{ c.punisher }}{% endif %}</td>
+                    <td>:من يقوم بالعقاب (في حالة وجوده)</td>
+                </tr>
+
+                <tr>
+                    <td>{% if c.punishment == 'immediate' %}فورية{% elif c.punishment == 'delayed' %}مؤجلة{% endif %}</td>
+                    <td>:يكون العقاب</td>
+                </tr>
+                <tr>
+                    <td>{% if c.spent_time_in %}{{ c.spent_time_in }}{% endif %}</td>
+                    <td>:يقضي الطفل معظم وقته في البيت في</td>
+                </tr>
+                <tr>
+                    <td>{% if c.fav_hobby %}{{ c.fav_hobby }}{% endif %}</td>
+                    <td>:الألعاب المفضلة لدى الحالة (هواياته) هي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.main_lang %}{{ c.main_lang }}{% endif %}</td>
+                    <td>:اللغة الرئيسية المستخدمة في البيت هي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.other_lang %}{{ c.other_lang }}{% endif %}</td>
+                    <td>:اللغات الأخرى المستخدمة في البيت</td>
+                </tr>
+                <tr>
+                    <td>{% if c.dilects == 'yes' %}نعم{% elif c.dilects == 'no' %}لا{% endif %}</td>
+                    <td>:هناك لهجات أخرى مستخدمة في البيت</td>
+                </tr>
+            </table>
+
+            <div class="subHeading">سلوكيات الحالة</div>
+            <table style="width:100%">
+                <tr>
+                    <td>{% if c.mental_illness_bool == 'yes' %}نعم{% elif c.mental_illness_bool == 'no' %}لا{% endif %}</td>
+                    <td>:تعاني الحالة من أمراض نفسية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.mental_illness %}{{ c.mental_illness }}{% endif %}</td>
+                    <td>:الأمراض النفسية التي تعاني منها الحالة (إن وجدت) هي</td>
+                </tr>
+            </table>
+
+            <table style="width:100%; margin-top: 2rem;">
+                <tr>
+                    <th style="background-color: #FFE8CB; text-align: center; padding: 1rem;">الإجابة</th>
+                    <th style="background-color: #FFE8CB; padding: 1rem; ">السلوك</th>
+                </tr>
+                <tr>
+                    <td>{% if c.spends_time_alone == 'not_true' %}غير صحيح{% elif c.spends_time_alone == 'rarely' %}بعض الأحيان{% elif c.spends_time_alone == 'true' %}صحيح{% endif %}</td>
+                    <td>:يقضي معظم الوقت وحيدً</td>
+                </tr>
+                <tr>
+                    <td>{% if c.no_friend == 'not_true' %}غير صحيح{% elif c.no_friend == 'rarely' %}بعض الأحيان{% elif c.no_friend == 'true' %}صحيح{% endif %}</td>
+                    <td>:ليس لديه أصدقاء معينون</td>
+                </tr>
+                <tr>
+                    <td>{% if c.diff_friend == 'not_true' %}غير صحيح{% elif c.diff_friend == 'rarely' %}بعض الأحيان{% elif c.diff_friend == 'true' %}صحيح{% endif %}</td>
+                    <td>:يجد صعوبة في تكوين صداقات مع الآخرين</td>
+                </tr>
+                <tr>
+                    <td>{% if c.quarrels_friend == 'not_true' %}غير صحيح{% elif c.quarrels_friend == 'rarely' %}بعض الأحيان{% elif c.quarrels_friend == 'true' %}صحيح{% endif %}</td>
+                    <td>:كثيرًا ما يتشاجر مع أصدقائه</td>
+                </tr>
+                <tr>
+                    <td>{% if c.like_to_play == 'not_true' %}غير صحيح{% elif c.like_to_play == 'rarely' %}بعض الأحيان{% elif c.like_to_play == 'true' %}صحيح{% endif %}</td>
+                    <td>:يرغب الأطفال الآخرون في اللعب مع الحالة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.avoid_to_play == 'not_true' %}غير صحيح{% elif c.avoid_to_play == 'rarely' %}بعض الأحيان{% elif c.avoid_to_play == 'true' %}صحيح{% endif %}</td>
+                    <td>:يتجنب الأطفال الآخرون اللعب معه</td>
+                </tr>
+                <tr>
+                    <td>{% if c.older_friend == 'not_true' %}غير صحيح{% elif c.older_friend == 'rarely' %}بعض الأحيان{% elif c.older_friend == 'true' %}صحيح{% endif %}</td>
+                    <td>:معظم أصدقائه أكبر منه سنًا</td>
+                </tr>
+                <tr>
+                    <td>{% if c.younger_friend == 'not_true' %}غير صحيح{% elif c.younger_friend == 'rarely' %}بعض الأحيان{% elif c.younger_friend == 'true' %}صحيح{% endif %}</td>
+                    <td>:معظم أصدقاءه أصغر منه سنًا</td>
+                </tr>
+                <tr>
+                    <td>{% if c.seeker_attention == 'not_true' %}غير صحيح{% elif c.seeker_attention == 'rarely' %}بعض الأحيان{% elif c.seeker_attention == 'true' %}صحيح{% endif %}</td>
+                    <td>:يتطلب أن يكون محور الاهتمام</td>
+                </tr>
+                <tr>
+                    <td>{% if c.confidence_ability == 'not_true' %}غير صحيح{% elif c.confidence_ability == 'rarely' %}بعض الأحيان{% elif c.confidence_ability == 'true' %}صحيح{% endif %}</td>
+                    <td>:يبدي ثقة بمقدرته</td>
+                </tr>
+                <tr>
+                    <td>{% if c.quite == 'not_true' %}غير صحيح{% elif c.quite == 'rarely' %}بعض الأحيان{% elif c.quite == 'true' %}صحيح{% endif %}</td>
+                    <td>:معظم الوقت هادئ جدًا</td>
+                </tr>
+
+                <tr>
+                    <td>{% if c.impulsive == 'not_true' %}غير صحيح{% elif c.impulsive == 'rarely' %}بعض الأحيان{% elif c.impulsive == 'true' %}صحيح{% endif %}</td>
+                    <td>:معظم الوقت كثير الحركة واندفاعي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.normal_activity == 'not_true' %}غير صحيح{% elif c.normal_activity == 'rarely' %}بعض الأحيان{% elif c.normal_activity == 'true' %}صحيح{% endif %}</td>
+                    <td>:نشاطه عادي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.cooperative == 'not_true' %}غير صحيح{% elif c.cooperative == 'rarely' %}بعض الأحيان{% elif c.cooperative == 'true' %}صحيح{% endif %}</td>
+                    <td>:متعاون مع الآخرين</td>
+                </tr>
+                <tr>
+                    <td>{% if c.lies == 'not_true' %}غير صحيح{% elif c.lies == 'rarely' %}بعض الأحيان{% elif c.lies == 'true' %}صحيح{% endif %}</td>
+                    <td>:كلامه غير صادق (كثير الكذب)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.moody == 'not_true' %}غير صحيح{% elif c.moody == 'rarely' %}بعض الأحيان{% elif c.moody == 'true' %}صحيح{% endif %}</td>
+                    <td>:سريع الغضب ومتقلب المزاج</td>
+                </tr>
+                <tr>
+                    <td>{% if c.gets_bored == 'not_true' %}غير صحيح{% elif c.gets_bored == 'rarely' %}بعض الأحيان{% elif c.gets_bored == 'true' %}صحيح{% endif %}</td>
+                    <td>:سريع الملل</td>
+                </tr>
+                <tr>
+                    <td>{% if c.completes_tasks == 'not_true' %}غير صحيح{% elif c.completes_tasks == 'rarely' %}بعض الأحيان{% elif c.completes_tasks == 'true' %}صحيح{% endif %}</td>
+                    <td>:يستكمل المهام التي يكلف بها</td>
+                </tr>
+                <tr>
+                    <td>{% if c.sad == 'not_true' %}غير صحيح{% elif c.sad == 'rarely' %}بعض الأحيان{% elif c.sad == 'true' %}صحيح{% endif %}</td>
+                    <td>:يبدو غير سعيد (شعور بالاكتئاب والحزن)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.cheerful == 'not_true' %}غير صحيح{% elif c.cheerful == 'rarely' %}بعض الأحيان{% elif c.cheerful == 'true' %}صحيح{% endif %}</td>
+                    <td>:يبدو مرحًا ومتفائلًا</td>
+                </tr>
+                <tr>
+                    <td>{% if c.aggressive == 'not_true' %}غير صحيح{% elif c.aggressive == 'rarely' %}بعض الأحيان{% elif c.aggressive == 'true' %}صحيح{% endif %}</td>
+                    <td>:يتسم سلوك الحالة بالعدوانية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.avoid_competition == 'not_true' %}غير صحيح{% elif c.avoid_competition == 'rarely' %}بعض الأحيان{% elif c.avoid_competition == 'true' %}صحيح{% endif %}</td>
+                    <td>:يتجنب المشاركة في المواقف التي تتطلب المنافسة مع الآخرين</td>
+                </tr>
+                <tr>
+                    <td>{% if c.compete_others == 'not_true' %}غير صحيح{% elif c.compete_others == 'rarely' %}بعض الأحيان{% elif c.compete_others == 'true' %}صحيح{% endif %}</td>
+                    <td>:يميل إلى المنافسة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.lazy == 'not_true' %}غير صحيح{% elif c.lazy == 'rarely' %}بعض الأحيان{% elif c.lazy == 'true' %}صحيح{% endif %}</td>
+                    <td>:كسول ويميل إلى اللامبالاة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.leadership == 'not_true' %}غير صحيح{% elif c.leadership == 'rarely' %}بعض الأحيان{% elif c.leadership == 'true' %}صحيح{% endif %}</td>
+                    <td>:قيامه بالأدوار القيادية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.self_reliance == 'not_true' %}غير صحيح{% elif c.self_reliance == 'rarely' %}بعض الأحيان{% elif c.self_reliance == 'true' %}صحيح{% endif %}</td>
+                    <td>:اعتماده على الذات (وتحقيق الاستقلال الذاتي)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.long_time_tasks == 'not_true' %}غير صحيح{% elif c.long_time_tasks == 'rarely' %}بعض الأحيان{% elif c.long_time_tasks == 'true' %}صحيح{% endif %}</td>
+                    <td>:يستغرق في العمل فترة طويلة من الزمن</td>
+                </tr>
+                <tr>
+                    <td>{% if c.anxious == 'not_true' %}غير صحيح{% elif c.anxious == 'rarely' %}بعض الأحيان{% elif c.anxious == 'true' %}صحيح{% endif %}</td>
+                    <td>:يبدو قلقًا دائمًا</td>
+                </tr>
+                <tr>
+                    <td>{% if c.afraid == 'not_true' %}غير صحيح{% elif c.afraid == 'rarely' %}بعض الأحيان{% elif c.afraid == 'true' %}صحيح{% endif %}</td>
+                    <td>:شعوره بالخوف</td>
+                </tr>
+            </table>
+
+            <div class="bayanatHeading">رابعا: التاريخ الدراسي للحالة والتوافق مع الحياة المدرسية</div>
+            <div class="subHeading">أسماء المدارس التي تم الالتحاق بها</div>
+            <table style="width:100%">
+                <tr>
+                    <th style="background-color: #FFE8CB; padding: 1rem;">موقف الطفل تجاه المدرسة</th>
+                    <th style="background-color: #FFE8CB; padding: 1rem; ">تاريخ اللتحاق</th>
+                    <th style="background-color: #FFE8CB; padding: 1rem; ">اسم المدرسة</th>
+                </tr>
+                <tr>
+                    <td style="height: 3rem;">{% if c.attitude_school_1 %}{{ c.attitude_school_1 }}{% endif %}</td>
+                    <td>{% if c.enroll_date_1 %}{{ c.enroll_date_1 }}{% endif %}</td>
+                    <td>{% if c.school_name_1 %}{{ c.school_name_1 }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <td style="height: 3rem;">{% if c.attitude_school_2 %}{{ c.attitude_school_2 }}{% endif %}</td>
+                    <td>{% if c.enroll_date_2 %}{{ c.enroll_date_2 }}{% endif %}</td>
+                    <td>{% if c.school_name_2 %}{{ c.school_name_2 }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <td style="height: 3rem;">{% if c.attitude_school_3 %}{{ c.attitude_school_3 }}{% endif %}</td>
+                    <td>{% if c.enroll_date_3 %}{{ c.enroll_date_3 }}{% endif %}</td>
+                    <td>{% if c.school_name_3 %}{{ c.school_name_3 }}{% endif %}</td>
+                </tr>
+            </table>
+
+            <table style="width:100%; margin-top: 2rem;">
+
+                <tr>
+                    <td>{% if c.first_stage %}{{ c.first_stage }}{% endif %}</td>
+                    <td>:أول مرحلة تعليم للحالة كانت</td>
+                </tr>
+                <tr>
+                    <td>{% if c.failed == 'yes' %}نعم{% elif c.failed == 'no' %}لا{% endif %}</td>
+                    <td>:رسب الطفل في أحد المراحل</td>
+                </tr>
+                <tr>
+                    <td>{% if c.failed_subjs %}{{ c.failed_subjs }}{% endif %}</td>
+                    <td>:مواد الرسوب (إن وجدت)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.private_tutors == 'yes' %}نعم{% elif c.private_tutors == 'no' %}لا{% endif %}</td>
+                    <td>:استعانت الأسرة بمدرسين خصوصيين أو مراكز خاصة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.take_advantage %}{{ c.take_advantage }}{% endif %}</td>
+                    <td>:مدى الاستفادة من هذه لاستعانة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.difficult_teaching == 'yes' %}نعم{% elif c.difficult_teaching == 'no' %}لا{% endif %}</td>
+                    <td>:تعاني الأسرة من صعوبة في تدريسه</td>
+                </tr>
+                <tr>
+                    <td>{% if c.teachers_note %}{{ c.teachers_note }}{% endif %}</td>
+                    <td>:ملاحظات المدرسين على الحالة هي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.supervision == 'yes' %}نعم{% elif c.supervision == 'no' %}لا{% endif %}</td>
+                    <td>:تحتاج الحالة إلى من يشرف عليها أثناء التدريس</td>
+                </tr>
+                <tr>
+                    <td>{% if c.academic_achievement %}{{ c.academic_achievement }}{% endif %}</td>
+                    <td>:مستواه التحصيلي الدراسي الحالي</td>
+                </tr>
+            </table>
+
+
+            <div class="subHeading">التعليق على تصرف الحالة بالنسبة لـ</div>
+            <table style="width:100%;">
+
+                <tr>
+                    <td>{% if c.motivation %}{{ c.motivation }}{% endif %}</td>
+                    <td>:دافعيته للتعلم</td>
+                </tr>
+                <tr>
+                    <td>{% if c.enthusiasm %}{{ c.enthusiasm }}{% endif %}</td>
+                    <td>:مستوى الحماس (لتأدية الواجبات)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.time_punctual %}{{ c.time_punctual }}{% endif %}</td>
+                    <td>:تنظيم وتقسيم الوقت</td>
+                </tr>
+                <tr>
+                    <td>{% if c.fav_articles %}{{ c.fav_articles }}{% endif %}</td>
+                    <td>:المواد المفضلة له</td>
+                </tr>
+                <tr>
+                    <td>{% if c.least_fav_material %}{{ c.least_fav_material }}{% endif %}</td>
+                    <td>:أقل المواد تفضيلًا</td>
+                </tr>
+                <tr>
+                    <td>{% if c.rel_teachers %}{{ c.rel_teachers }}{% endif %}</td>
+                    <td>:علاقته مع مدرسيه</td>
+                </tr>
+                <tr>
+                    <td>{% if c.desire_school %}{{ c.desire_school }}{% endif %}</td>
+                    <td>:رغبته في الذهاب إلى المدرسة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.reason_absent %}{{ c.reason_absent }}{% endif %}</td>
+                    <td>:إذا كان كثير الغياب، فما هي الأسباب</td>
+                </tr>
+            </table>
+
+            <div class="subHeading">يرجى تحديد الصعوبات التي تعاني منها الحالة</div>
+            <table style="width:100%;">
+                <tr>
+                    <td>{% if c.reading == 'yes' %}نعم{% elif c.reading == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  القراءة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.dictating == 'yes' %}نعم{% elif c.dictating == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  الاملاء</td>
+                </tr>
+                <tr>
+                    <td>{% if c.writing == 'yes' %}نعم{% elif c.writing == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في   الكتابة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.remembering_nearby == 'yes' %}نعم{% elif c.remembering_nearby == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في تذكر المعلومات القريبة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.recog_time == 'yes' %}نعم{% elif c.recog_time == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  التعرف على الوقت</td>
+                </tr>
+                <tr>
+                    <td>{% if c.recog_days == 'yes' %}نعم{% elif c.recog_days == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  التعرف على ايام الاسبوع والاشهر</td>
+                </tr>
+                <tr>
+                    <td>{% if c.recog_directions == 'yes' %}نعم{% elif c.recog_directions == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  التعرف على الاتجاهات</td>
+                </tr>
+                <tr>
+                    <td>{% if c.completing_work == 'yes' %}نعم{% elif c.completing_work == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  انهاء الاعمال المطلوبة في الوقت المحددد</td>
+                </tr>
+                <tr>
+                    <td>{% if c.focus_attention == 'yes' %}نعم{% elif c.focus_attention == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  التركيز والانتباه</td>
+                </tr>
+                <tr>
+                    <td>{% if c.understanding == 'yes' %}نعم{% elif c.understanding == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  الاستيعاب والفهم</td>
+                </tr>
+                <tr>
+                    <td>{% if c.remembering_remote == 'yes' %}نعم{% elif c.remembering_remote == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  تذكر المعلومات البعيدة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.relationships == 'yes' %}نعم{% elif c.relationships == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  ادراك العلاقات (كبير – صغير  - بعيد – قريب )</td>
+                </tr>
+                <tr>
+                    <td>{% if c.expressing_ideas == 'yes' %}نعم{% elif c.expressing_ideas == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  التعبير عن الافكار أو رواية القصص</td>
+                </tr>
+                <tr>
+                    <td>{% if c.remembering_skills == 'yes' %}نعم{% elif c.remembering_skills == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في  تذكر ما يقدم من مهارات وخبرات سابقة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.moving_blackboard == 'yes' %}نعم{% elif c.moving_blackboard == 'no' %}لا{% endif %}</td>
+                    <td>:لديه صعوبة في النقل من السبورة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.copying_printed == 'yes' %}نعم{% elif c.copying_printed == 'no' %}لا{% endif %}</td>
+                    <td>:لديه صعوبة في النسخ من المادة المطبوعة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.flip_words == 'yes' %}نعم{% elif c.flip_words == 'no' %}لا{% endif %}</td>
+                    <td>:يميل إلى قلب الكلمات والأحرف والأشكال</td>
+                </tr>
+                <tr>
+                    <td>{% if c.confuses_numbers == 'yes' %}نعم{% elif c.confuses_numbers == 'no' %}لا{% endif %}</td>
+                    <td>:بخلط بين الأرقام والحروف ذات المكونات المتشابهة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.understanding_verbal == 'yes' %}نعم{% elif c.understanding_verbal == 'no' %}لا{% endif %}</td>
+                    <td>:لا يستطيع فهم وتنفيذ التعليمات الشفهية</td>
+                </tr>
+                <tr>
+                    <td>{% if c.learning_listening == 'yes' %}نعم{% elif c.learning_listening == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في التعلم عن طريق الاستماع</td>
+                </tr>
+                <tr>
+                    <td>{% if c.repeat_instruction == 'yes' %}نعم{% elif c.repeat_instruction == 'no' %}لا{% endif %}</td>
+                    <td>:يحتاج دائماً إلى تكرار التعليمات</td>
+                </tr>
+                <tr>
+                    <td>{% if c.distinguish_numbers == 'yes' %}نعم{% elif c.distinguish_numbers == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في التمييز بين الارقام</td>
+                </tr>
+                <tr>
+                    <td>{% if c.memorizing_multiplication == 'yes' %}نعم{% elif c.memorizing_multiplication == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في حفظ جداول الضرب</td>
+                </tr>
+                <tr>
+                    <td>{% if c.memorizing_phone == 'yes' %}نعم{% elif c.memorizing_phone == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في حفظ ارقام التليفونات</td>
+                </tr>
+                <tr>
+                    <td>{% if c.counting_up == 'yes' %}نعم{% elif c.counting_up == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في العد التنازلي والتصاعدي</td>
+                </tr>
+                <tr>
+                    <td>{% if c.performing_add_subt == 'yes' %}نعم{% elif c.performing_add_subt == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في اجراء عمليات الجمع والطرح والضرب والقسمة</td>
+                </tr>
+                <tr>
+                    <td>{% if c.understanding_mathematical == 'yes' %}نعم{% elif c.understanding_mathematical == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في فهم الرموز الرياضية وترجمة رموزها مثل <، ></td>
+                </tr>
+                <tr>
+                    <td>{% if c.distinguish_size == 'yes' %}نعم{% elif c.distinguish_size == 'no' %}لا{% endif %}</td>
+                    <td>:صعوبة في تمييز الحجم والكمية والمسافة والزمن</td>
+                </tr>
+                <tr>
+                    <td>{% if c.parents_cooperation != 'None' %}{{ c.parents_cooperation }}{% endif %}</td>
+                    <td>:ما مدى تعاون الأهل مع المدرسة، هل يحضرون لمتابعته تلقائيًا أم تلبية لاستدعاء المدرسة</td>
+                </tr>
+            </table>
+
+
+            <div class="bayanatHeading">خامسا: أسباب التحويل ومعلومات عن الاختبار</div>
+            <table style="width: 100%; margin-top: 2rem;">
+                <tr>
+                    <td style="padding: 16px">{% if c.reason_1 != 'None' %}{{ c.reason_1 }}{% endif %}</td>
+                    <td rowspan="5" style="text-align: center; width: 10%; padding: 1rem;">:أسباب تحويل الحالة إلى الجمعية</td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem;">{% if c.reason_2 != 'None' %}{{ c.reason_2 }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem;">{% if c.reason_3 != 'None' %}{{ c.reason_3 }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem;">{% if c.reason_4 != 'None' %}{{ c.reason_4 }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem;">{% if c.reason_5 != 'None' %}{{ c.reason_5 }}{% endif %}</td>
+                </tr>
+            </table>
+            <table style="width: 100%; margin-top: 2rem;">
+                <tr>
+                    <td>{% if c.prev_iq == 'yes' %}نعم{% elif c.prev_iq == 'no' %}لا{% endif %}</td>
+                    <td style="text-align: center; width: 10%; padding: 1rem;">سبق للطالب أخذ اختبار ذكاء من قبل</td>
+                </tr>
+                <tr>
+                    <td>{% if c.date_last_assessment %}{{ c.date_last_assessment }}{% endif %}</td>
+                    <td style="text-align: center; width: 10%; padding: 1rem;">تاريخ آخر اختبار (إن وجد)</td>
+                </tr>
+                <tr>
+                    <td>{% if c.place_last_assessment %}{{ c.place_last_assessment }}{% endif %}</td>
+                    <td style="text-align: center; width: 10%; padding: 1rem;">مقر إقامة الاختبار</td>
+                </tr>
+            </table>
+            <table style="width: 100%; margin-top: 2rem;">
+                <tr>
+                    <td>{% if c.other_info != 'None' %}{{ c.other_info }}{% endif %}</td>
+                    <td style="text-align: center;height: 10rem; width: 10%; padding: 1rem;">:إضافة معلومات أخرى</td>
+                </tr>
+            </table>
+            <div style="text-align: right; padding-top: 4rem;">
+                <p>,,,مع خالص الشكر والتقدير</p>
+                <p>توقيع ولي الأمر</p>
+                <p>.......................................................</p>
+            </div>
+            <div style="text-align: right; padding-top: 4rem;">
+                <h2 style="text-align: center;">إقـــــــرار</h2>
+                <p>.......................................................أقر أنا</p>
+                <p>.......................................................ولي أمر الطالب</p>
+                <h2 style="text-align: center;">بصحة كافة الإجابات المذكورة أعلاه، وكذلك أتحمل المسؤولية القانونية الكاملة</h2>
+                <p>.......................................................:توقيع ولي الأمر</p>
+                <p>.......................................................:لرقم المدني</p>
+                <p>.......................................................:التاريخ</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

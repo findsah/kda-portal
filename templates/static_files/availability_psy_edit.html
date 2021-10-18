@@ -1,0 +1,125 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Availability of Psychologist' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li><a href={% url "search_psy" %}>{% translate 'Availability' %}</a></li>
+            <li><a href={% url "availability" psy.id %}>{{ psy.full_name }}</a></li>
+            <li>{% translate 'Edit' %}</li>
+        </ul>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>{% translate 'Psychologist:' %} {{ psy.full_name }}</h3>
+                    </div>
+                   <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <form method="post">
+                        {% csrf_token %}
+                        <table class="table bs-table table-striped table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>{% translate 'Start Time' %}</th>
+                                    <th>{% translate 'End Time' %}</th>
+                                    <th>{% translate 'Day' %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    {% if psy.role.name == 'Physiologist' %}
+                                        <td><input type="time" name="1-stime" value="{{ dic.m_from }}" step="7200" min="08:00" max="18:00"></td>
+                                        <td><input type="time" name="1-ftime" value="{{ dic.m_to }}" step="7200" min="10:00" max="20:00"></td>
+                                    {% else %}
+                                        <td><input type="time" name="1-stime" value="{{ dic.m_from }}" step="1800" min="08:00" max="19:30"></td>
+                                        <td><input type="time" name="1-ftime" value="{{ dic.m_to }}" step="1800" min="08:30" max="20:00"></td>
+                                    {% endif %}
+                                    <td>{% translate 'Monday' %}</td>
+                                </tr>
+                                <tr>
+                                    {% if psy.role.name == 'Physiologist' %}
+                                        <td><input type="time" name="2-stime" value="{{ dic.tu_from }}" step="7200" min="08:00" max="18:00"></td>
+                                        <td><input type="time" name="2-ftime" value="{{ dic.tu_to }}" step="7200" min="10:00" max="20:00"></td>
+                                    {% else %}
+                                        <td><input type="time" name="2-stime" value="{{ dic.tu_from }}" step="1800" min="08:00" max="19:30"></td>
+                                        <td><input type="time" name="2-ftime" value="{{ dic.tu_to }}" step="1800" min="08:30" max="20:00"></td>
+                                    {% endif %}
+                                    <td>{% translate 'Tuesday' %}</td>
+                                </tr>
+                                <tr>
+                                    {% if psy.role.name == 'Physiologist' %}
+                                        <td><input type="time" name="3-stime" value="{{ dic.w_from }}" step="7200" min="08:00" max="18:00"></td>
+                                        <td><input type="time" name="3-ftime" value="{{ dic.w_to }}" step="7200" min="10:00" max="20:00"></td>
+                                    {% else %}
+                                        <td><input type="time" name="3-stime" value="{{ dic.w_from }}" step="1800" min="08:00" max="19:30"></td>
+                                        <td><input type="time" name="3-ftime" value="{{ dic.w_to }}" step="1800" min="08:30" max="20:00"></td>
+                                    {% endif %}
+                                    <td>{% translate 'Wednesday' %}</td>
+                                </tr>
+                                <tr>
+                                    {% if psy.role.name == 'Physiologist' %}
+                                        <td><input type="time" name="4-stime" value="{{ dic.th_from }}" step="7200" min="08:00" max="18:00"></td>
+                                        <td><input type="time" name="4-ftime" value="{{ dic.th_to }}" step="7200" min="10:00" max="20:00"></td>
+                                    {% else %}
+                                        <td><input type="time" name="4-stime" value="{{ dic.th_from }}" step="1800" min="08:00" max="19:30"></td>
+                                        <td><input type="time" name="4-ftime" value="{{ dic.th_to }}" step="1800" min="08:30" max="20:00"></td>
+                                    {% endif %}
+                                    <td>{% translate 'Thursday' %}</td>
+                                </tr>
+{#                                <tr>#}
+{#                                    <td><input type="time" name="5-stime" value="{{ dic.f_from }}"></td>#}
+{#                                    <td><input type="time" name="5-ftime" value="{{ dic.f_to }}"></td>#}
+{#                                    <td>Friday</td>#}
+{#                                </tr>#}
+                                <tr>
+                                    {% if psy.role.name == 'Physiologist' %}
+                                        <td><input type="time" name="6-stime" value="{{ dic.sa_from }}" step="7200" min="08:00" max="18:00"></td>
+                                        <td><input type="time" name="6-ftime" value="{{ dic.sa_to }}" step="7200" min="10:00" max="20:00"></td>
+                                    {% else %}
+                                        <td><input type="time" name="6-stime" value="{{ dic.sa_from }}" step="1800" min="08:00" max="19:30"></td>
+                                        <td><input type="time" name="6-ftime" value="{{ dic.sa_to }}" step="1800" min="08:30" max="20:00"></td>
+                                    {% endif %}
+                                    <td>{% translate 'Saturday' %}</td>
+                                </tr>
+                                <tr>
+                                    {% if psy.role.name == 'Physiologist' %}
+                                        <td><input type="time" name="7-stime" value="{{ dic.su_from }}" step="7200" min="08:00" max="18:00"></td>
+                                        <td><input type="time" name="7-ftime" value="{{ dic.su_to }}" step="7200" min="10:00" max="20:00"></td>
+                                    {% else %}
+                                        <td><input type="time" name="7-stime" value="{{ dic.su_from }}" step="1800" min="08:00" max="19:30"></td>
+                                        <td><input type="time" name="7-ftime" value="{{ dic.su_to }}" step="1800" min="08:30" max="20:00"></td>
+                                    {% endif %}
+                                    <td>{% translate 'Sunday' %}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <td><button type="submit" class="btn-fill-lmd radius-30 text-light shadow-true-v bg-true-v">{% translate 'Update' %}</button></td>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

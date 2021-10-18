@@ -1,0 +1,299 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Report for' %} "{{ a_intervention.session.intervention.student.full_name }}"</h3>
+        <p>{% translate 'Teacher:' %} "{{ a_intervention.session.intervention.teacher.full_name }}"</p>
+        <p>{% translate 'Date:' %} "{{ a_intervention.date }}"</p>
+    </div>
+
+     <div class="card height-auto">
+        <div class="card-body">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <canvas id="bar-chart1"></canvas>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <canvas id="line-chart1"></canvas>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <canvas id="line-chart2"></canvas>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <canvas id="line-chart3"></canvas>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <canvas id="line-chart4"></canvas>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script>
+
+        var colorArray = [
+                '#dd0453', '#fdfd05', '#66E64D', '#0660e7', '#9900B3',
+                 '#d07201', '#14b300','#06d2a6','#f8061a','#c45850',
+                '#66664D', '#d6d6d7', '#76008f', '#4DB3FF', '#1AB399',
+                '#ec92d1', '#33991A', '#ba8383', '#B3B31A', '#00E680',
+                '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+                '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+            new Chart(document.getElementById("bar-chart1"), {
+                type: 'line',
+                data: {
+                    labels:  ['', 'Reviewing CVC words (2-3 letters)', 'The Letter sound', 'Review Test CVC Words (2-4 letters)',
+                    'Two-Syllable Compound Words', 'Spelling Rule –ff-ll-ss-zz', 'Review Tests for CVC Detached Syllable',
+                    'Syllabication –Method VC/CV', 'Initial Blends', 'Final Consonant Blends'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: {{ result1 }},
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function (label, index, labels){
+                                    switch (label) {
+                                   case 2:
+                                     return 'Not Mastered';
+                                   case 4:
+                                     return 'Mastery';
+                                 }
+                                }
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout:{
+                        padding:{
+                            left:50
+                        }
+                    }
+                }
+            });
+
+
+            new Chart(document.getElementById("line-chart1"), {
+                type: 'line',
+                data: {
+                    labels:  ['', 'Page 92 Review Test', 'Multisyllabic words with Blends (VC/CV, VCCCV)', 'ng and nk Endings)',
+                    'Suffix: ed as /id/ ;/d/; /t/', 'Magic E', 'Review Test for Magic e Words',
+                    'Review Test- CVC and CVCe Contrasts', 'Review Test – Two Syllable Words with Magic e', 'Syllable Magic e'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        backgroundColor: '#4DB3FF',
+                        data: {{ result2 }},
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                callback: function (label, index, labels){
+                                    switch (label) {
+                                   case 2:
+                                     return 'Not Mastered';
+                                   case 4:
+                                     return 'Mastery';
+                                 }
+                                }
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout:{
+                        padding:{
+                            left:50
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById("line-chart2"), {
+                type: 'line',
+                data: {
+                    labels:  ['', 'Open and Closed Syllable V/CV', 'ph Digraph', '-ck',
+                    'Pre test Vowel Digraphs ea, oa, ai, ee, ay, oe Introduce Vowel Digraphs not mastered',
+                        'Spellings for /k/: k, ck, or ke', 'r-Controlled Vowels – er, ir, ,ur',
+                    'Dipthongs ow; ou', '-igh', 'Consonant le Endings (-ble; -fle; -tle; -dle; -gle; -kle; -ple; -zle)'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: {{ result3 }},
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes:[{
+                            ticks:{
+                                beginAtZero: true,
+                                callback: function (label, index, labels){
+                                    switch (label) {
+                                   case 2:
+                                     return 'Not Mastered';
+                                   case 4:
+                                     return 'Mastery';
+                                 }
+                                }
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title:{
+                      display: false,
+                    },
+                    layout:{
+                        padding:{
+                            left:50
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById("line-chart3"), {
+                type: 'line',
+                data: {
+                    labels:  ['', 'Doubling Rule Consonant-le', 'Consonant-y Endings (y, vy, by, dy, ty, ry, ny, py, sy, my; -l y)',
+                        'Word endings in –ild; -old; -ind-; olt, ost', 'r-Controlled Vowels – ar, or,', 'Oo',
+                        'y as a vowel', 'Hard and Soft c', 'Hard and Soft g', 'Spelling with ge, dge'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        backgroundColor: '#4DB3FF',
+                        data: {{ result4 }},
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes:[{
+                            ticks:{
+                                beginAtZero: true,
+                                callback: function (label, index, labels){
+                                    switch (label) {
+                                   case 2:
+                                     return 'Not Mastered';
+                                   case 4:
+                                     return 'Mastery';
+                                 }
+                                }
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title:{
+                      display: false,
+                    },
+                    layout:{
+                        padding:{
+                            left:80
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById("line-chart4"), {
+                type: 'line',
+                data: {
+                    labels:  ['', 'Review Test on Hard and Soft sounds of g and c', 'The Three (au)s - aw -au -a',
+                        'Oi and oy, tch', 'ing as an Ending', 'VCV Spelling Rule ( Alternative Spelling and Pronunciation)',
+                        'Three Syllable Words', 'Schwa Sound'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        backgroundColor: '#4DB3FF',
+                        data: {{ result5 }},
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes:[{
+                            ticks:{
+                                beginAtZero: true,
+                                callback: function (label, index, labels){
+                                    switch (label) {
+                                   case 2:
+                                     return 'Not Mastered';
+                                   case 4:
+                                     return 'Mastery';
+                                 }
+                                }
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title:{
+                      display: false,
+                    },
+                    layout:{
+                        padding:{
+                            left:100
+                        }
+                    }
+                }
+            });
+
+    </script>
+{% endblock %}

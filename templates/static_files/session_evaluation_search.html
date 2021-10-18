@@ -1,0 +1,65 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Search Student' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Weekly Evaluation Search' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Search Student' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Student Name' %}</label>
+                        <select class="select2" name="student" onchange="form.requestSubmit();">
+                            <option value="">{% translate 'Please Select Student' %}</option>
+                            {% for student in students %}
+                                <option value={{ student.id }} {% if stu == student.id %} selected='selected' {% endif %}>{{ student.first_name }} {{ student.parent.first_name }} {{ student.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% if display %}
+                    <div class="col-xl-6 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Session Date' %}</label>
+                        <select class="select2" name="date">
+                            <option value="">{% translate 'Please Select Session Date' %}</option>
+                            {% for intv in all_intvs %}
+                                <option value={{ intv.id }}>{{ intv.date }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

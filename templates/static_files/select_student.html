@@ -1,0 +1,56 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+        <div class="breadcrumbs-area">
+            {% if fromm == 'intervention' %}
+                <h3>{% translate 'Schedule New Weekly Intervention' %}</h3>
+            {% else %}
+                {% if request.user.role.name == 'Parent' %}
+                    <h3>{% translate 'Child Dashboard' %}</h3>
+                {% else %}
+                    <h3>{% translate 'Student Dashboard' %}</h3>
+                {% endif %}
+            {% endif %}
+            <ul>
+                <li>
+                    <a href="index.html">{% translate 'Home' %}</a>
+                </li>
+                {% if request.user.role.name == 'Parent' %}
+                    <li>{% translate 'Child' %}</li>
+                {% else %}
+                    <li>{% translate 'Student' %}</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="card height-auto">
+            <div class="card-body">
+                <form class="new-added-form" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            {% if request.user.role.name == 'Parent' %}
+                                <label>{% translate 'Child Name' %}</label>
+                            {% else %}
+                                <label>{% translate 'Student Name' %}</label>
+                            {% endif %}
+                            <select class="select2" name="student" required>
+                                <option value="">{% translate 'Please Select Student' %}</option>
+                                {% for student in students %}
+                                    <option value={{ student.id }}>{{ student.first_name }} {{ student.parent.first_name }} {{ student.last_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group" style="margin: 42px 0">
+                           <button type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Next' %}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}

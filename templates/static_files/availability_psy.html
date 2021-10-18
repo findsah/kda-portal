@@ -1,0 +1,86 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Availability of Psychologist' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li><a href={% url "search_psy" %}>{% translate 'Availability' %}</a></li>
+            <li>{{ psy.full_name }}</li>
+        </ul>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>{% translate 'Psychologist:' %} {{ psy.full_name }}</h3>
+                    </div>
+                   <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table bs-table table-striped table-bordered text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Start Time' %}</th>
+                                <th>{% translate 'End Time' %}</th>
+                                <th>{% translate 'Day' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ ava.m_available_time_from|date:"G:i:s" }}</td>
+                                <td>{{ ava.m_available_time_to|date:"G:i:s" }}</td>
+                                <td>{% translate 'Monday' %}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ ava.tu_available_time_from|date:"G:i:s" }}</td>
+                                <td>{{ ava.tu_available_time_to|date:"G:i:s" }}</td>
+                                <td>{% translate 'Tuesday' %}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ ava.w_available_time_from|date:"G:i:s" }}</td>
+                                <td>{{ ava.w_available_time_to|date:"G:i:s" }}</td>
+                                <td>{% translate 'Wednesday' %}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ ava.th_available_time_from|date:"G:i:s" }}</td>
+                                <td>{{ ava.th_available_time_to|date:"G:i:s" }}</td>
+                                <td>{% translate 'Thursday' %}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ ava.sa_available_time_from|date:"G:i:s" }}</td>
+                                <td>{{ ava.sa_available_time_to|date:"G:i:s" }}</td>
+                                <td>{% translate 'Saturday' %}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ ava.su_available_time_from|date:"G:i:s" }}</td>
+                                <td>{{ ava.su_available_time_to|date:"G:i:s" }}</td>
+                                <td>{% translate 'Sunday' %}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href={% url 'availability_edit' ava.psychologist.id %}><button type="button" class="btn-fill-lmd radius-30 text-light shadow-dodger-blue bg-dodger-blue">{% translate 'Edit' %}?</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

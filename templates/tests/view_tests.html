@@ -1,0 +1,100 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Tests' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate "Home" %}</a>
+            </li>
+            <li>{% translate 'View Tests for child ' %}"{{ appointment.child.full_name }}"</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+
+            <div class="table-responsive">
+            <table class="table display text-nowrap">
+                <thead>
+                    <tr>
+                        <th>{% translate 'Test Name' %}</th>
+                        <th>{% translate 'Sub Test' %}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>IQ</td>
+                        <td>IQ</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="8">ACOPS</td>
+                        <td>Rabbits</td>
+                        <td>
+                            <a href={% url 'rabbits' appointment.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Races</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ryhms</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zoid Friends</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zoid Letter Names</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zoid Letters</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Wock</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Toybox</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Junior</td>
+                        <td>Spelling</td>
+                        <td>
+                            <a href='#'><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Start Test' %}</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

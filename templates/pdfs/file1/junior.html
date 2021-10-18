@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <title>KDA</title>
+</head>
+<style type="text/css">
+    body {
+        margin: 0;
+        line-height: 1rem;
+    }
+    .main {
+    background-image: url("https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Rectangle%20245.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+}
+
+.img4 {
+    width: 25rem;
+    position: absolute;
+    top: 200%;
+    left: 20%;
+    /* display: none; */
+}
+.hala {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4rem 0;
+    height: 5rem;
+}
+.colorDiv {
+    height: 100%;
+    width: 15rem;
+    background-color: orange;
+}
+.halaInputDiv {
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #87c556;
+    border-bottom: 2px solid #87c556;
+    margin-right: 0.5rem;
+    width: 75%;
+    justify-content: flex-end;
+}
+.halaInput {
+    border: none;
+    border-bottom: 1px solid lightgray;
+    margin-right: 0.5rem;
+    width: 89%;
+    outline: none;
+}
+
+/* artBoard2.css */
+.imgDiv {
+    background-image: url("https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Group%20642.png");
+    background-repeat: no-repeat;
+    background-size: 100% 19rem;
+    height: 4rem;
+    width: 100%;
+    background-color: #f99d1c;
+}
+.containerPart {
+    /* background-image: url(img2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 19rem; */
+    padding: 0 3rem 5rem 3rem;
+}
+.bayanatHeading{
+    background: #FFE8CB;
+    padding: .5rem;
+    text-align: center;
+    color: #f99d1c;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+.subHeading{
+    background: #E6E7E8;
+    margin: 1rem 0;
+    padding: .5rem;
+    text-align: right;
+    font-weight: bold;
+}
+table, th, td {
+    border: 1px solid #CFCFCF;
+    border-collapse: collapse;
+    text-align: right;
+    padding: 0.3rem;
+    width: 33%;
+    height: 2.5rem;
+  }
+.doubleValueTd{
+    display: flex;
+    justify-content: flex-end;
+    width: 98%;
+    border: none;
+    height: 1rem;
+    align-items: center;
+}
+.differentTableHead{
+    text-align: center;
+    padding: 1rem;
+}
+
+{#.html2canvas-container { width: 3000px !important; height: 3000px !important; }#}
+
+</style>
+
+<body>
+    <div>
+        <div class="main" style="height: 96rem">
+            <img style="width: 100%; height: 100%;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Group+623.png' />
+        </div>
+        <img style="width: 100%; position: absolute; top: 0; left: 0; height: 80rem" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/media/Group+642.png' />
+        <img style="position: relative; top: -18rem; left: 11rem;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/KDA-logo-removebg-preview.png' />
+        <div class="hala" style="margin-top: -14rem">
+            <div class="halaInputDiv">
+{#                <input class="halaInput" type="text" style="width: 20%" />#}
+                <label style="font-size: 2.5rem; font-weight: bold">{{ child.first_name }} {{ child.parent.first_name }} {{ child.last_name }}</label>
+                <input class="halaInput" type="text" style="width: 30%" />
+                <label style="font-size: 2rem">تقرير تشخيص</label>
+            </div>
+            <div class="colorDiv"></div>
+        </div>
+    </div>
+    <div style="height: 14vh"></div>
+    <div>
+        <!-- <img src="head.png" /> -->
+        <div class="imgDiv"></div>
+        <div class="containerPart">
+            <img id="i" style="width: 15rem;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/KDA-logo-removebg-preview.png' />
+
+            <div style="text-align: center; font-size: 4rem; font-weight: bold; margin-bottom: 10px">بيانات الطالب</div>
+
+            <div style="text-align: right; font-size: 2rem; margin-bottom: 2rem; display: flex; justify-content: flex-end; margin-top: 5rem"><div style="margin-right: 3rem">{{ child.full_name }}</div>:اســم الطـــالب</div>
+            <div style="text-align: right; font-size: 2rem; margin-bottom: 2rem; display: flex; justify-content: flex-end;"><div style="margin-right: 1.5rem">{{ child.gender }}</div>:الـجنــــــــــــــــــس</div>
+            <div style="text-align: right; font-size: 2rem; margin-bottom: 2rem; display: flex; justify-content: flex-end;"><div style="margin-right: 1.8rem">{{ child.dob }}</div>:تـــاريـــخ الميلاد</div>
+            <div style="text-align: right; font-size: 2rem; margin-bottom: 2rem; display: flex; justify-content: flex-end;"><div style="margin-right: 3.3rem">{{ child.school }}</div>:اســم المدرسة</div>
+            <div style="text-align: right; font-size: 2rem; margin-bottom: 2rem; display: flex; justify-content: flex-end;"><div style="margin-right: 1.5rem">{{ child.class_name }}</div>:الصـــــــــــــــــــف</div>
+            <div style="text-align: right; font-size: 2rem; margin-bottom: 2rem; display: flex; justify-content: flex-end;"><div style="margin-right: 1.8rem">{{ reading.appointment.appointment_date }}</div>:تـاريخ الاختبــــار</div>
+
+            <div style="text-align: center; font-size: 4rem; font-weight: bold; margin-top: 10rem">نتائج الاختبار</div>
+
+            <div style="text-align: right; font-size: 2rem; margin-bottom: 2rem; font-weight: bold; margin-top: 3rem">:اختبار الفئة العمرية المتوسطة</div>
+
+            <div style="text-align: right; margin-bottom: 2rem; font-size: 2rem">برنامج لتشخيص وفرز الدسلكسيا للطلبة الذين تتراوح أعمارهم ما بين عمر الولد 8 ســنوات</div>
+            <div style="text-align: right; margin-bottom: 2rem; font-size: 2rem">  وحتــى 11 ســنة وإحــدى عشــر شــهر، يتألــف البرنامــج مــن  7 اختبــارات متنوعــة  2 منهــا اختبــارات</div>
+            <div style="text-align: right; margin-bottom: 2rem; font-size: 2rem"> تحصيليــة (الإمــلاء وقــراءة الجملــة) و  4 اختبــارات تشخيصيــــة </div>
+            <div style="text-align: right; margin-bottom: 2rem; font-size: 2rem">إدراكيــــــة (الذاكـرة السـمعية ، الذاكـرة البصريـة ، المهـارات الصوتيـة ، ومعالجـة الرمـوز الصوتيـة) يضـاف لهـا اختبـار</div>
+            <div style="text-align: right; margin-bottom: 2rem; font-size: 2rem">لقيـاس القـدرات العقليـة العامـة (اختبـار الـذكاء.) هـذه الاختبـارات يتـم عرضهـا بطريقـة مشـوقة بالصـوت والصـورة، ويتم</div>
+            <div style="text-align: right; margin-bottom: 2rem; font-size: 2rem">احتسـاب الدرجات والزمـن المسـتغرق بشـكل آلـي عـن طريـق الكمبيوتـر</div>
+        </div>
+    </div>
+
+    <div class="subHeading" style="margin-right: 3rem; background: #FCB861; font-size: 2rem">جدول اختبارات المرحلة المتوسطة</div>
+
+    <table style="width:97%">
+        <tr>
+            <th style="background-color: #FFE8CB; padding: 1rem; font-size: 2rem">المهارات المعرفية التي يقيسها</th>
+            <th style="background-color: #FFE8CB; padding: 1rem; font-size: 2rem">اسم الاختبار</th>
+        </tr>
+        <tr>
+            <td style="width: 70%; font-size: 2rem">استخدام مهارات فك الرموز الصوتية وفهم القراءة</td>
+            <td style="font-size: 2rem">قراءة الجملة</td>
+        </tr>
+        <tr style="background: #FEF8F0">
+            <td style="font-size: 2rem">القدرة على تهجئة كلمة مفردة</td>
+            <td style="font-size: 2rem">التهجئة</td>
+        </tr>
+        <tr>
+            <td style="font-size: 2rem">الذاكرة التتابعية السمعية بالاعتماد على سلسلة من الأرقام وعليه تذكرها بنفس الترتيب</td>
+            <td style="font-size: 2rem">الهاتف النقال</td>
+        </tr>
+        <tr style="background: #FEF8F0">
+            <td style="font-size: 2rem">لذاكرة البصرية المكانية</td>
+            <td style="font-size: 2rem">الكهف المسكون</td>
+        </tr>
+        <tr>
+            <td style="font-size: 2rem">يقيس القدرة على المهارات في تحليل الأصوات</td>
+            <td style="font-size: 2rem">الكلمات المسلية</td>
+        </tr>
+        <tr style="background: #FEF8F0; line-height: normal">
+            <td style="font-size: 2rem">يقيس القدرة على تحليل أنماط صوتية إلى مكوناتها الجزئية والتعرف على النمط الناتج عند حذف جزء معين من النمط الأصلي</td>
+            <td style="font-size: 2rem">تقطيع الكلمات</td>
+        </tr>
+    </table>
+
+
+    <div style="height: 50vh"></div>
+    <div style="margin-top: 5rem" id="zz">
+        <!-- <img src="head.png" /> -->
+        <div class="imgDiv"></div>
+        <div class="containerPart" style="padding: 0 0 5rem 0">
+            <div style="display: flex; justify-content: space-between; align-items: center">
+                <img style="width: 15rem;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/KDA-logo-removebg-preview.png' />
+                <div class="subHeading" style="background: #FCB861; width: 65%; height: 2rem; font-size: 2rem; padding-top: 1.5rem; padding-right: 7rem">نتائج اختبار الفئة العمرية المتوسطة</div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-end">
+
+                <div style="display: flex; justify-content: flex-end; align-items: center">
+                    <div style="border: 1px dotted #409D27; width: 70vw"></div>
+                    <div style="padding: 13px 60px; border: 1px solid #409D27; background-color: #409D27; border-radius: 35px; margin-right: -2px; font-weight: bold; font-size: 2rem"> قراءة الجملة<div style="text-align: center; color: white; margin-top: 17px; font-size: 1.4rem; font-weight: normal">Reading</div></div>
+                    <div style="border: 6px solid #409D27; width: 3rem; background-color: #409D27; height: 0"></div>
+                </div>
+                <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                    وصف الاختبار
+                </div>
+
+                    {% if reading.sub_grade == 'one' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ reading.sub_score }}  ضمن المستوى المرتفع في الأداء,  ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif reading.sub_grade == 'two' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ reading.sub_score }}  ضمن المستوى الجيد  في الأداء, ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif reading.sub_grade == 'three' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ reading.sub_score }}  ضمن المستوى فوق المتوسط  في الأداء , ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif reading.sub_grade == 'four' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ reading.sub_score }}  ضمن المستوى دون المتوسط  في الأداء ,  وهذه النتيجة تدل على   بعض مظاهر صعوبات القراءة وهي
+                        </div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 20px">حذف بعض الكلمات أو أجزاء من الكلمة المقروءة. -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">إضافة بعض الكلمات غير الموجودة في النص الأصلي إلى الجملة أو بعض المقاطع أو الأحرف إلى الكلمة المقروءة. -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">إبدال بعض الكلمات بأخرى قد تحمل بعضاً من معناها -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">تكرار بعض الكلمات أكثر من مرة بدون مبرر -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">إبدال أماكن الحروف -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">ضعف في التمييز بين بعض الأحرف المتشابهة في الشكل أو الرسم -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">ضعف في التمييز بين الأحرف المتشابهة في الصوت أو في اللفظ -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">صعوبة في تتبع مكان الوصول في القراءة وازدياد حيرة الطالب وارتباكه -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">قراءة الجملة بطريقة سريعة وغير واضحة -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">قراءة الجملة بطريقة بطيئة كلمة كلمة أو حروف مفردة -</div>
+                    {% elif reading.sub_grade == 'five' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ reading.sub_score }}  ضمن المستوى المنخفض   في الأداء , وهذه النتيجة تدل على   بعض مظاهر صعوبات القراءة وهي
+                        </div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 20px">حذف بعض الكلمات أو أجزاء من الكلمة المقروءة. -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">إضافة بعض الكلمات غير الموجودة في النص الأصلي إلى الجملة أو بعض المقاطع أو الأحرف إلى الكلمة المقروءة. -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">إبدال بعض الكلمات بأخرى قد تحمل بعضاً من معناها -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">تكرار بعض الكلمات أكثر من مرة بدون مبرر -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">إبدال أماكن الحروف -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">ضعف في التمييز بين بعض الأحرف المتشابهة في الشكل أو الرسم -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">ضعف في التمييز بين الأحرف المتشابهة في الصوت أو في اللفظ -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">صعوبة في تتبع مكان الوصول في القراءة وازدياد حيرة الطالب وارتباكه -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">قراءة الجملة بطريقة سريعة وغير واضحة -</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">قراءة الجملة بطريقة بطيئة كلمة كلمة أو حروف مفردة -</div>
+                    {% endif %}
+
+                <div style="display: flex; align-items: center">
+                    <div style="color: #FCB861; font-size: 2rem; font-weight: bold">
+                        يقيس قدرة الفرد على استخدام مهارات فك الرموز الصوتية وفهم القراءة
+                    </div>
+                <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                        الهدف من الاختبار
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center">
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ reading.sub_time }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الزمــن</div>
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ reading.sub_score }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الدقـــــــة</div>
+                </div>
+
+
+                {# 2 #}
+
+                <div style="display: flex; justify-content: flex-end; align-items: center">
+                    <div style="border: 1px dotted #409D27; width: 70vw; margin-top: 2rem"></div>
+                    <div style="margin-top: 2rem; padding: 13px 85px; border: 1px solid #409D27; background-color: #409D27; border-radius: 35px; margin-right: -2px; font-weight: bold; font-size: 2rem"> التهجئة<div style="text-align: center; color: white; margin-top: 17px; font-size: 1.4rem; font-weight: normal">Spelling</div></div>
+                    <div style="margin-top: 2rem; border: 6px solid #409D27; width: 3rem; background-color: #409D27; height: 0"></div>
+                </div>
+
+                <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                    وصف الاختبار
+                </div>
+                    {% if spelling.sub_grade == 'one' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ spelling.sub_score }}  ضمن المستوى المرتفع في الأداء,  ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif spelling.sub_grade == 'two' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ spelling.sub_score }}  ضمن المستوى الجيد  في الأداء, ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif spelling.sub_grade == 'three' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ spelling.sub_score }}  ضمن المستوى فوق المتوسط  في الأداء , ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif spelling.sub_grade == 'four' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ spelling.sub_score }}  ضمن المستوى دون المتوسط  في الأداء ,  وهذه النتيجة تدل على  الأخطاء الإملائية وأنماط الأخطاء الكتابية التالية
+                        </div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 20px">-	ضعف في قواعد كتابة الهمزة والتنوين والتاء المربوطة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	يخلط في الكتابة بين الأحخرف المتشابهة في الشكل</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	ضعف في التمييز بين بعض الحروف المتشابهة في الصوت واللفظ</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	خلط في اتجاهات الكتابة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	ضعف في ترتيب أحرف الكلمات والمقاطع بصورة صحيحة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	إبدال حروف الكلمة بحروف أخرى عند الكتابة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	صعوبة في الإلتزام بالكتابة على نفس السطر في  الورقة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	الخط مختلف عن أقران الطالب</div>
+                    {% elif spelling.sub_grade == 'five' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ spelling.sub_score }}  ضمن المستوى المنخفض   في الأداء , وهذه النتيجة تدل على  الأخطاء الإملائية وأنماط الأخطاء الكتابية التالية
+                        </div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 20px">-	ضعف في قواعد كتابة الهمزة والتنوين والتاء المربوطة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	يخلط في الكتابة بين الأحخرف المتشابهة في الشكل</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	ضعف في التمييز بين بعض الحروف المتشابهة في الصوت واللفظ</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	خلط في اتجاهات الكتابة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	ضعف في ترتيب أحرف الكلمات والمقاطع بصورة صحيحة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	إبدال حروف الكلمة بحروف أخرى عند الكتابة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	صعوبة في الإلتزام بالكتابة على نفس السطر في  الورقة</div>
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">-	الخط مختلف عن أقران الطالب</div>
+                    {% endif %}
+
+                <div style="display: flex; align-items: center">
+                    <div style="color: #FCB861; font-size: 2rem; font-weight: bold">
+                        يقيس القدرة على تهجئة كلمة مفردة
+                    </div>
+                    <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                        الهدف من الاختبار
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center">
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ spelling.sub_time }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الزمــن</div>
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ spelling.sub_score }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الدقـــــــة</div>
+                </div>
+
+                {# 3 #}
+
+                <div style="display: flex; justify-content: flex-end; align-items: center">
+                    <div style="border: 1px dotted #409D27; width: 70vw; margin-top: 2rem"></div>
+                     <div style="margin-top: 2rem; padding: 13px 60px; border: 1px solid #409D27; background-color: #409D27; border-radius: 35px; margin-right: -2px; font-weight: bold; font-size: 2rem"> الهاتف النقال<div style="text-align: center; color: white; margin-top: 17px; font-size: 1.4rem; font-weight: normal">Mobile</div></div>
+                    <div style="margin-top: 2rem; border: 6px solid #409D27; width: 3rem; background-color: #409D27; height: 0"></div>
+                </div>
+                <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                    وصف الاختبار
+                </div>
+
+                    {% if mobile.sub_grade == 'one' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ mobile.sub_score }}  ضمن المستوى المرتفع في الأداء,  ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif mobile.sub_grade == 'two' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ mobile.sub_score }}  ضمن المستوى الجيد  في الأداء, ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif mobile.sub_grade == 'three' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ mobile.sub_score }}  ضمن المستوى فوق المتوسط  في الأداء , ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif mobile.sub_grade == 'four' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ mobile.sub_score }}  ضمن المستوى دون المتوسط  في الأداء ,  وهذه النتيجة تدل على  ضعف في الذاكرة السمعية (  التتابعية - السعة ) التي تؤثر على الحفظ وتخزين المعلومة واسترجاعها ( لأن الذاكرة السمعية هي  عبارة عن عمليات متداخلة من التركيز والانتباه, لتمييز السمعي , الاستماع, تخزين المعلومة, استرجاه المعلومة عند الاستجابة للمثيرات الصوتية ) وعلى القدرة على إعادة سلسلة من الكلمات أو الأصوات أو الأرقام وتتابعها بالشكل الصحيح
+                        </div>
+                    {% elif mobile.sub_grade == 'five' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ mobile.sub_score }}  ضمن المستوى المنخفض   في الأداء , وهذه النتيجة تدل على  ضعف في الذاكرة السمعية (  التتابعية - السعة ) التي تؤثر على الحفظ وتخزين المعلومة واسترجاعها ( لأن الذاكرة السمعية هي  عبارة عن عمليات متداخلة من التركيز والانتباه, لتمييز السمعي , الاستماع, تخزين المعلومة, استرجاه المعلومة عند الاستجابة للمثيرات الصوتية ) وعلى القدرة على إعادة سلسلة من الكلمات أو الأصوات أو الأرقام وتتابعها بالشكل الصحيح
+                        </div>
+                    {% endif %}
+
+                <div style="display: flex; align-items: center">
+                    <div style="color: #FCB861; font-size: 2rem; font-weight: bold">
+                        يقيس الذاكرة التتابعية السمعية بالاعتماد على سلسلة من الأرقام وعليه تذكرها بنفس الترتيب
+                    </div>
+                    <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                        الهدف من الاختبار
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center">
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ mobile.sub_time }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الزمــن</div>
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ mobile.sub_score }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الدقـــــــة</div>
+                </div>
+
+                {# 4 #}
+
+                <div style="display: flex; justify-content: flex-end; align-items: center">
+                    <div style="border: 1px dotted #409D27; width: 70vw; margin-top: 2rem"></div>
+                    <div style="margin-top: 2rem; padding: 13px 44px; border: 1px solid #409D27; background-color: #409D27; border-radius: 35px; margin-right: -2px; font-weight: bold; font-size: 2rem">الكهف المسكون<div style="text-align: center; color: white; margin-top: 17px; font-size: 1.4rem; font-weight: normal">Cave</div></div>
+                    <div style="margin-top: 2rem; border: 6px solid #409D27; width: 3rem; background-color: #409D27; height: 0"></div>
+                </div>
+                <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                    وصف الاختبار
+                </div>
+
+                    {% if cave.sub_grade == 'one' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ cave.sub_score }}  ضمن المستوى المرتفع في الأداء,  ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif cave.sub_grade == 'two' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ cave.sub_score }}  ضمن المستوى الجيد  في الأداء, ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif cave.sub_grade == 'three' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ cave.sub_score }}  ضمن المستوى فوق المتوسط  في الأداء , ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif cave.sub_grade == 'four' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ cave.sub_score }}ضمن المستوى دون المتوسط  في الأداء ,  وهذه النتيجة تدل على  ضعف  في الذاكرة البصرية التي يمكن أن تؤثر سلباً على القدرة في اكتساب المفردات المرئية, وعلى سرعة الإستعاد للأشكال البصرية للكلمات الكاملة من المخزون الذهني
+                        </div>
+                    {% elif cave.sub_grade == 'five' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ cave.sub_score }}ضمن المستوى المنخفض   في الأداء , وهذه النتيجة تدل على  ضعف  في الذاكرة البصرية التي يمكن أن تؤثر سلباً على القدرة في اكتساب المفردات المرئية, وعلى سرعة الإستعاد للأشكال البصرية للكلمات الكاملة من المخزون الذهني
+                        </div>
+                    {% endif %}
+
+                <div style="display: flex; align-items: center">
+                    <div style="color: #FCB861; font-size: 2rem; font-weight: bold">
+                        يقيس الذاكرة البصرية المكانية
+                    </div>
+                    <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                        الهدف من الاختبار
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center">
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ cave.sub_time }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الزمــن</div>
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ cave.sub_score }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الدقـــــــة</div>
+                </div>
+
+                {# 5 #}
+
+                <div style="display: flex; justify-content: flex-end; align-items: center">
+                    <div style="border: 1px dotted #409D27; width: 70vw; margin-top: 2rem"></div>
+                    <div style="margin-top: 2rem; padding: 13px 44px; border: 1px solid #409D27; background-color: #409D27; border-radius: 35px; margin-right: -2px; font-weight: bold; font-size: 2rem"> الكلمات المسلية<div style="text-align: center; color: white; margin-top: 17px; font-size: 1.4rem; font-weight: normal">Non words</div></div>
+                    <div style="margin-top: 2rem; border: 6px solid #409D27; width: 3rem; background-color: #409D27; height: 0"></div>
+                </div>
+                <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                    وصف الاختبار
+                </div>
+
+                    {% if funny.sub_grade == 'one' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ funny.sub_score }}  ضمن المستوى المرتفع في الأداء,  ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif funny.sub_grade == 'two' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ funny.sub_score }}  ضمن المستوى الجيد  في الأداء, ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif funny.sub_grade == 'three' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ funny.sub_score }}  ضمن المستوى فوق المتوسط  في الأداء , ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif funny.sub_grade == 'four' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ funny.sub_score }}ضمن المستوى دون المتوسط  في الأداء ,  وهذه النتيجة تدل على  ضعف في القدرة على تحليل أشكال الكلمات المرئية وربط هذه الكلمات مع التحليل السمعي لأصوات حروف هذه الكلمات
+                        </div>
+                    {% elif funny.sub_grade == 'five' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ funny.sub_score }}ضمن المستوى المنخفض   في الأداء , وهذه النتيجة تدل على  ضعف في القدرة على تحليل أشكال الكلمات المرئية وربط هذه الكلمات مع التحليل السمعي لأصوات حروف هذه الكلمات
+                        </div>
+                    {% endif %}
+
+                <div style="display: flex; align-items: center">
+                    <div style="color: #FCB861; font-size: 2rem; font-weight: bold">
+                        يقيس القدرة على المهارات في تحليل الأصوات
+                    </div>
+                    <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                        الهدف من الاختبار
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center">
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ funny.sub_time }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الزمــن</div>
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ funny.sub_score }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الدقـــــــة</div>
+                </div>
+
+
+                {# 6 #}
+
+                <div style="display: flex; justify-content: flex-end; align-items: center">
+                    <div style="border: 1px dotted #409D27; width: 70vw; margin-top: 2rem"></div>
+                    <div style="margin-top: 2rem; padding: 13px 44px; border: 1px solid #409D27; background-color: #409D27; border-radius: 35px; margin-right: -2px; font-weight: bold; font-size: 2rem">تقطيع الكلمات<div style="text-align: center; color: white; margin-top: 17px; font-size: 1.4rem; font-weight: normal">Segments</div></div>
+                    <div style="margin-top: 2rem; border: 6px solid #409D27; width: 3rem; background-color: #409D27; height: 0"></div>
+                </div>
+                <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                    وصف الاختبار
+                </div>
+
+                    {% if segment.sub_grade == 'one' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ segment.sub_score }}  ضمن المستوى المرتفع في الأداء,  ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif segment.sub_grade == 'two' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ segment.sub_score }}  ضمن المستوى الجيد  في الأداء, ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif segment.sub_grade == 'three' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ segment.sub_score }}  ضمن المستوى فوق المتوسط  في الأداء , ولا توجد دلالات على احتمالية الاصابة بالدسلكسيا
+                        </div>
+                    {% elif segment.sub_grade == 'four' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ segment.sub_score }}ضمن المستوى دون المتوسط  في الأداء ,  وهذه النتيجة تدل على  ضعف في مهارة التحليل السمعي لأصوات الحروف بالشكل الجيد, لأن تحليل الكلمة المسموعة إلى الأصوات المفردة التي تتركب منها الكلمة هو جزء أساسي من مهارات المعالجة السمعية وضروي لتعلّم القراءة, وكيف يتم الربط بين الحروف الهجائية وبين الأنماط الصوتية الخاصة بكل  منها بمعنى ان على الطالب أن يتعلم لكل حرف او مجموعة من الحروف صوتاً مميزاً له
+                        </div>
+                    {% elif segment.sub_grade == 'five' %}
+                        <div style="float: right; margin-right: 4rem; font-size: 1.5rem; margin-top: 10px; line-height: 2rem; direction: rtl">
+                    الدرجة المئينية {{ segment.sub_score }}ضمن المستوى المنخفض   في الأداء , وهذه النتيجة تدل على  ضعف في مهارة التحليل السمعي لأصوات الحروف بالشكل الجيد, لأن تحليل الكلمة المسموعة إلى الأصوات المفردة التي تتركب منها الكلمة هو جزء أساسي من مهارات المعالجة السمعية وضروي لتعلّم القراءة, وكيف يتم الربط بين الحروف الهجائية وبين الأنماط الصوتية الخاصة بكل  منها بمعنى ان على الطالب أن يتعلم لكل حرف او مجموعة من الحروف صوتاً مميزاً له
+                        </div>
+                    {% endif %}
+
+
+                <div style="display: flex; align-items: flex-start">
+                    <div style="color: #FCB861; font-size: 2rem; font-weight: bold">
+                        <div>
+                        يقيـس القـدرة علـى تحليـل أنمـاط صوتيـة إلـى مكوناتهـا الجزئيـة والتعـرف علـى النمـط
+                        </div>
+                        <div style="margin-top: 20px; margin-left: 23rem">
+                            الناتـج عنـد حـذف جـزء معيـن مـن النمـط الأصلـي
+                        </div>
+                    </div>
+                    <div style="font-weight: bold; text-align: center; border: 1px solid green; border-radius: 35px; padding: 17px 19px; height: 28px; display: flex; align-items: center; justify-content: space-around; width: 13rem; float: right; margin: 14px 60px; background: #FEF8F0; font-size: 2rem">
+                        الهدف من الاختبار
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center">
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ segment.sub_time }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الزمــن</div>
+                    <div style="border: 1px solid #409D27; width: 24vw; border-radius: 40px; height: 48px; margin-right: 17px; display: flex; justify-content: flex-end; align-items: center; padding-right: 1rem; font-size: 2rem">{{ segment.sub_score }}</div>
+                    <div style="padding: 17px 57px; border: 1px solid #409D27; background-color: #E2F2D3; border-radius: 30px; margin-right: 60px; display: flex; justify-content: center; width: 23px; font-size: 2rem; font-weight: bold">الدقـــــــة</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div style="height: 5vh"></div>
+    <div>
+        <div class="imgDiv"></div>
+        <div class="containerPart" style="padding: 0 0 5rem 3rem">
+            <img style="width: 15rem;" src='https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/KDA-logo-removebg-preview.png' />
+
+            <div class="subHeading" style="margin-right: 3rem; background: #FCB861; font-size: 2rem">تاريخ الحالة</div>
+
+            <p style="direction: rtl; font-size:2rem; text-align: right; margin-right: 46px; word-break: normal; line-height: 44px; padding-top: 10px">
+                {% if child.gender == 'Female' %}
+             تبلغ"{{ child.first_name }}" من العمر {{ child.age_in_years }} سنة و {{ child.age_in_months }} شهراً , وهي الإبنة {{ c.order_sib }}
+             لأبوين{% if c.relation_btw_parents == 'very_close' %} تربطهما صلة قرابة شديدة {% elif c.relation_btw_parents == 'far' %} تربطها صلة قرابة بعيدة {% elif c.relation_btw_parents == 'there_is_none' %} لا تربطهما صلة قرابة {% endif %}
+             , ولدت{% if c.type_birth == 'normal' %} ولادة طبيعية {% elif c.type_birth == 'retraction_ring' %} بمساعدة آلة السحب {% elif c.type_birth == 'c_section' %} ولادة قيصرية {% elif c.type_birth == 'anesthesia' %} تخدير الام للولادة {% endif %}
+             بعد مدة حمل{% if c.p_duration == 'complete' %} مدة حمل كاملة {% elif c.p_duration == 'incomplete' %}  أشهر  {{ c.p_month }} {% endif %}
+            الوزن عند الولادة {{ c.baby_weight }} كيلو ,{% if c.umbilical_cord == 'yes' %} ولد والحبل السري حول عنقه, {% endif %} {% if c.skin_yellow == 'yes' %} اصفرت بشرته, {% endif %}
+            {% if c.skin_blue == 'yes' %} ازرقت بشرته, {% endif %} {% if c.twin_trip == 'yes' %} كان توأمًا أو أحد توائم ثلاثة, {% endif %} {% if c.needed_oxy == 'yes' %} احتاج إلى الأكسجين (نقص أكسجين), {% endif %}
+            {% if c.colic_cramps == 'yes' %} أصيب بالتشنجات, {% endif %} {% if c.dropsy == 'yes' %} استسقاء, {% endif %} {{ b_problems }}
+            وفيما يتعلق بمراحل نموها التطوري (الحركي - اللغوي),{% if c.age_commune > 4 %} تأخرت في المناغاة, {% else %} كانت المناغاة في السن الطبيعي,  {% endif %}
+            {% if c.age_pronouncing > 1 %} تأخرت في نطق الكلمات البسيطة مثل (بابا و ماما), {% else %} بدأت في نطق الكلمات البسيطة مثل (بابا و ماما) في السن الطبيعي,  {% endif %} {% if c.age_speech > 2 %} تأخرت في بدء الكلام, {% else %} بدأت الكلام في السن الطبيعي,  {% endif %}
+            {% if c.age_full_sentence > 4 %} تأخرت في استخدام جملة كاملة, {% else %} بدأت استخدام الجملة الكاملة  في السن الطبيعي,  {% endif %} {% if c.age_sat_self > 9 %} تأخرت في الجلوس بدون مساعدة, {% else %} بدأت الجلوس بدون مساعدة  في السن الطبيعي,  {% endif %}
+            {% if c.age_stop_self > 1 %} تأخرت في الوقوف بدون مساعدة, {% else %} بدأت الوقوف بدون مساعدة  في السن الطبيعي,  {% endif %} {% if c.age_walking > 1 %} تأخرت في المشي بمفردها, {% else %} بدأت المشي بمفردها  في السن الطبيعي  {% endif %}
+            من الناحية الصحية , فإن"{{ child.first_name }}" {% if c.extremely_high_temp_age %} عانت من ارتفاع شديد بدرجة الحرارة, {% endif %} {% if c.juandice_age %} عانت من اصفرار, {% endif %}
+            {% if c.asthma_age %} عانت من الربو, {% endif %} {% if c.allergy_age %} عانت من الحساسية, {% endif %}
+            {% if c.poisoning_age %} عانت من التسمم, {% endif %} {% if c.surgical_age %} اجرت عمليات جراحية , {{ c.surgery }}{% endif %}
+            {% if c.visual_prob == 'yes' %} تعاني من مشاكل بصرية, {% endif %} {% if c.use_glasses == 'yes' %} تستخدم نظارة طبية, {% endif %}
+            {% if c.hearing_prob == 'yes' %} تعاني من مشاكل سمعية, {% endif %} {% if c.use_hearing_aid == 'yes' %} تستخدم أدوات سمعية مساعدة, {% endif %}
+            {% if c.diff_speaking == 'yes' %} تعاني من مشاكل في النطق, {% endif %} {% if c.treated_speech == 'yes' %} تراجع مراكز متخصصة للعلاج, {% endif %}
+            وبناء على ما ذكرت ولية الامر , فإن"{{ child.first_name }}" {% if c.spends_time_alone == 'true' or c.spends_time_alone == 'rarely' %} تقضي معظم الوقت وحيدة, {% elif c.spends_time_alone == 'not_true' %} اجتماعية {% endif %}
+            {% if c.spends_time_alone == 'true' or c.spends_time_alone == 'rarely' %} تقضي معظم الوقت وحيدة, {% elif c.spends_time_alone == 'not_true' %} اجتماعية, {% endif %}
+            {% if c.no_friend == 'true' or c.no_friend == 'rarely' %} ليس لديها اصدقاء معينين, {% elif c.no_friend == 'not_true' %} لديها اصدقاء معينين, {% endif %}
+            {% if c.diff_friend == 'true' or c.diff_friend == 'rarely' %} تجد صعوبة في تكوين صداقات مع الآخرين, {% elif c.diff_friend == 'not_true' %} لا تجد صعوبة في تكوين صداقات مع الآخرين, {% endif %}
+            {% if c.quarrels_friend == 'true' or c.quarrels_friend == 'rarely' %} كثيراً ما تتشاجر مع الأصدقاء, {% elif c.quarrels_friend == 'not_true' %} نادراً ما تتشاجر مع الأصدقاء, {% endif %}
+            {% if c.like_to_play == 'true' or c.like_to_play == 'rarely' %} يرغب الأطفال الآخرون في اللعب معها, {% elif c.like_to_play == 'not_true' %} لا يرغب الأطفال الآخرون دوماً باللعب معها, {% endif %}
+            {% if c.seeker_attention == 'true' or c.seeker_attention == 'rarely' %} تتطلب أن تكون محور الإهتمام, {% elif c.seeker_attention == 'not_true' %} لا تتطلب أن تكونمحور الإهتمام, {% endif %}
+            {% if c.confidence_ability == 'true' or c.confidence_ability == 'rarely' %} تبدي ثقة بمقدرتها, {% elif c.confidence_ability == 'not_true' %} لا تبدي ثقة بمقدرتها, {% endif %}
+            {% if c.quite == 'true' or c.quite == 'rarely' %} معظم الوقت هادئة جدا, {% endif %}
+            {% if c.moody == 'true' or c.moody == 'rarely' %} سريعة الغضب, ومتقلبة المزاج, {% endif %}
+            {% if c.gets_bored == 'true' or c.gets_bored == 'rarely' %} سريعة الملل, {% endif %}
+            {% if c.completes_tasks == 'true' or c.completes_tasks == 'rarely' %} تستكمل المهام التي تكلف بها, {% elif c.completes_tasks == 'not_true' %} لا تستكمل المهام التي تكلف بها, {% endif %}
+            {% if c.cheerful == 'true' or c.cheerful == 'rarely' %} تبدو مرحة ومتفائلة, {% elif c.cheerful == 'not_true' %} لاتبدو مرحة وغير متفائلة, {% endif %}
+            {% if c.aggressive == 'true' or c.aggressive == 'rarely' %}  يتسم سلوكها بالعدوانية, {% endif %}
+            {% if c.avoid_competition == 'true' or c.avoid_competition == 'rarely' %} تتجنب المشاركة في المواقف التي تتطلب المنافسة مع الآخرين, {% elif c.avoid_competition == 'not_true' %} لا تتجنب المشاركة في المواقف التي تتطلب المنافسة مع الآخرين, {% endif %}
+            {% if c.compete_others == 'true' or c.compete_others == 'rarely' %} تميل إلى المنافسة, {% elif c.compete_others == 'not_true' %} لا تميل إلى المنافسة, {% endif %}
+            {% if c.lazy == 'true' or c.lazy == 'rarely' %} كسولة وتميل إلى اللامبالاة, {% endif %}
+            {% if c.self_reliance == 'true' or c.self_reliance == 'rarely' %} تعتمد على ذاتها, {% elif c.self_reliance == 'not_true' %} لا تعتمد على ذاتها, {% endif %}
+            {% if c.long_time_tasks == 'true' or c.long_time_tasks == 'rarely' %}  تستغرق في العمل فترة طويلة من الزمن, {% endif %}
+            {% if c.anxious == 'true' or c.anxious == 'rarely' %} تبدو قلقة دوماً, {% endif %}
+            {% if c.afraid == 'true' or c.afraid == 'rarely' %} تشعر بالخوف دوماً,{% endif %}
+            دافعيتها للتعلم {{ c.motivation }} , ومن ملاحظات المعلمات عليها {{ c.teachers_note }}, {% if c.supervision == 'yes' %} تحتاج دوماً إلى من يشرف عليها أثناء التدريس {% endif %}
+            كما أشارت ولية الأمر إلى بعض الصعوبات التي تعاني منها"{{ child.first_name }}" من أهمها :{% if c.reading == 'yes' %} القراءة, {% endif %}
+            {% if c.dictating == 'yes' %} صعوبة في الاملاء, {% endif %} {% if c.writing == 'yes' %} صعوبة في الكتابة, {% endif %} {% if c.remembering_nearby == 'yes' %} صعوبة في تذكر المعلومات القريبة, {% endif %}
+            {% if c.recog_time == 'yes' %} صعوبة في التعرف على الوقت, {% endif %} {% if c.recog_days == 'yes' %} صعوبة في التعرف على ايام الاسبوع والاشهر, {% endif %} {% if c.recog_directions == 'yes' %} صعوبة في التعرف على الاتجاهات, {% endif %}
+            {% if c.completing_work == 'yes' %} صعوبة في  انهاء الاعمال المطلوبة في الوقت المحددد, {% endif %} {% if c.focus_attention == 'yes' %} صعوبة في  التركيز والانتباه, {% endif %} {% if c.understanding == 'yes' %} صعوبة في  الاستيعاب والفهم, {% endif %}
+            {% if c.remembering_remote == 'yes' %} صعوبة في  تذكر المعلومات البعيدة, {% endif %} {% if c.relationships == 'yes' %} صعوبة في  ادراك العلاقات (كبير – صغير  - بعيد – قريب ), {% endif %} {% if c.expressing_ideas == 'yes' %} صعوبة في  التعبير عن الافكار أو رواية القصص, {% endif %}
+            {% if c.remembering_skills == 'yes' %} صعوبة في  تذكر ما يقدم من مهارات وخبرات سابقة, {% endif %} {% if c.moving_blackboard == 'yes' %} صعوبة في  النقل من السبورة, {% endif %} {% if c.copying_printed == 'yes' %}  صعوبة في النسخ من المادة المطبوعة, {% endif %}
+            {% if c.flip_words == 'yes' %} يميل إلى قلب الكلمات والأحرف والأشكال, {% endif %} {% if c.confuses_numbers == 'yes' %} بخلط بين الأرقام والحروف ذات المكونات المتشابهة, {% endif %} {% if c.understanding_verbal == 'yes' %} لا يستطيع فهم وتنفيذ التعليمات الشفهية, {% endif %}
+            {% if c.learning_listening == 'yes' %} صعوبة في التعلم عن طريق الاستماع, {% endif %} {% if c.repeat_instruction == 'yes' %} يحتاج دائماً إلى تكرار التعليمات, {% endif %} {% if c.distinguish_numbers == 'yes' %} صعوبة في التمييز بين الارقام, {% endif %}
+            {% if c.memorizing_multiplication == 'yes' %} صعوبة في حفظ جداول الضرب, {% endif %} {% if c.memorizing_phone == 'yes' %} صعوبة في حفظ ارقام التليفونات, {% endif %} {% if c.counting_up == 'yes' %} صعوبة في العد التنازلي والتصاعدي, {% endif %}
+            {% if c.performing_add_subt == 'yes' %} صعوبة في اجراء عمليات الجمع والطرح والضرب والقسمة, {% endif %} {% if c.understanding_mathematical == 'yes' %} صعوبة في فهم الرموز الرياضية وترجمة رموزها مثل <,>, {% endif %} {% if c.distinguish_size == 'yes' %} صعوبة في تمييز الحجم والكمية والمسافة والزمن, {% endif %}
+            لذلك استعانت الأسرة بمدرسين خصوصيين لتحسين مستواها الدراسي
+
+                {% else %}
+
+            يبلغ "{{ child.first_name }}" من العمر {{ child.age_in_years }} سنة و {{ child.age_in_months }} شهراً , وهو الإبن {{ c.order_sib }}
+             لأبوين{% if c.relation_btw_parents == 'very_close' %} تربطهما صلة قرابة شديدة {% elif c.relation_btw_parents == 'far' %} تربطها صلة قرابة بعيدة {% elif c.relation_btw_parents == 'there_is_none' %} لا تربطهما صلة قرابة {% endif %}
+             , ولد{% if c.type_birth == 'normal' %} ولادة طبيعية {% elif c.type_birth == 'retraction_ring' %} بمساعدة آلة السحب {% elif c.type_birth == 'c_section' %} ولادة قيصرية {% elif c.type_birth == 'anesthesia' %} تخدير الام للولادة {% endif %}
+             بعد مدة حمل{% if c.p_duration == 'complete' %} مدة حمل كاملة {% elif c.p_duration == 'incomplete' %}  أشهر  {{ c.p_month }} {% endif %}
+            الوزن عند الولادة{{ c.baby_weight }}كيلو ,{% if c.umbilical_cord == 'yes' %} ولد والحبل السري حول عنقه, {% endif %} {% if c.skin_yellow == 'yes' %} اصفرت بشرته, {% endif %}
+            {% if c.skin_blue == 'yes' %} ازرقت بشرته, {% endif %} {% if c.twin_trip == 'yes' %} كان توأمًا أو أحد توائم ثلاثة, {% endif %} {% if c.needed_oxy == 'yes' %} احتاج إلى الأكسجين (نقص أكسجين), {% endif %}
+            {% if c.colic_cramps == 'yes' %} أصيب بالتشنجات, {% endif %} {% if c.dropsy == 'yes' %} استسقاء, {% endif %} {{ b_problems }}
+            وفيما يتعلق بمراحل نموه التطوري (الحركي - اللغوي),{% if c.age_commune > 4 %} تأخرت في المناغاة, {% else %} كانت المناغاة في السن الطبيعي,  {% endif %}
+            {% if c.age_pronouncing > 1 %} تأخرت في نطق الكلمات البسيطة مثل (بابا و ماما), {% else %} بدأت في نطق الكلمات البسيطة مثل (بابا و ماما) في السن الطبيعي,  {% endif %} {% if c.age_speech > 2 %} تأخرت في بدء الكلام, {% else %} بدأت الكلام في السن الطبيعي,  {% endif %}
+            {% if c.age_full_sentence > 4 %} تأخرت في استخدام جملة كاملة, {% else %} بدأت استخدام الجملة الكاملة  في السن الطبيعي,  {% endif %} {% if c.age_sat_self > 9 %} تأخرت في الجلوس بدون مساعدة, {% else %} بدأت الجلوس بدون مساعدة  في السن الطبيعي,  {% endif %}
+            {% if c.age_stop_self > 1 %} تأخرت في الوقوف بدون مساعدة, {% else %} بدأت الوقوف بدون مساعدة  في السن الطبيعي,  {% endif %} {% if c.age_walking > 1 %} تأخرت في المشي بمفردها, {% else %} بدأت المشي بمفردها  في السن الطبيعي  {% endif %}
+            من الناحية الصحية , فإن"{{ child.first_name }}" {% if c.extremely_high_temp_age %} عانت من ارتفاع شديد بدرجة الحرارة, {% endif %} {% if c.juandice_age %} عانت من اصفرار, {% endif %}
+            {% if c.asthma_age %} عانت من الربو, {% endif %} {% if c.allergy_age %} عانت من الحساسية, {% endif %}
+            {% if c.poisoning_age %} عانت من التسمم, {% endif %} {% if c.surgical_age %} اجرت عمليات جراحية , {{ c.surgery }}{% endif %}
+            {% if c.visual_prob == 'yes' %} تعاني من مشاكل بصرية, {% endif %} {% if c.use_glasses == 'yes' %} تستخدم نظارة طبية, {% endif %}
+            {% if c.hearing_prob == 'yes' %} تعاني من مشاكل سمعية, {% endif %} {% if c.use_hearing_aid == 'yes' %} تستخدم أدوات سمعية مساعدة, {% endif %}
+            {% if c.diff_speaking == 'yes' %} تعاني من مشاكل في النطق, {% endif %} {% if c.treated_speech == 'yes' %} تراجع مراكز متخصصة للعلاج, {% endif %}
+            وبناء على ما ذكرت ولية الامر , فإن"{{ child.first_name }}" {% if c.spends_time_alone == 'true' or c.spends_time_alone == 'rarely' %} تقضي معظم الوقت وحيدة {% elif c.spends_time_alone == 'not_true' %} اجتماعية {% endif %}
+            {% if c.spends_time_alone == 'true' or c.spends_time_alone == 'rarely' %} تقضي معظم الوقت وحيدة, {% elif c.spends_time_alone == 'not_true' %} اجتماعية, {% endif %}
+            {% if c.no_friend == 'true' or c.no_friend == 'rarely' %} ليس لديها اصدقاء معينين, {% elif c.no_friend == 'not_true' %} لديها اصدقاء معينين, {% endif %}
+            {% if c.diff_friend == 'true' or c.diff_friend == 'rarely' %} تجد صعوبة في تكوين صداقات مع الآخرين, {% elif c.diff_friend == 'not_true' %} لا تجد صعوبة في تكوين صداقات مع الآخرين, {% endif %}
+            {% if c.quarrels_friend == 'true' or c.quarrels_friend == 'rarely' %} كثيراً ما تتشاجر مع الأصدقاء, {% elif c.quarrels_friend == 'not_true' %} نادراً ما تتشاجر مع الأصدقاء, {% endif %}
+            {% if c.like_to_play == 'true' or c.like_to_play == 'rarely' %} يرغب الأطفال الآخرون في اللعب معها, {% elif c.like_to_play == 'not_true' %} لا يرغب الأطفال الآخرون دوماً باللعب معها, {% endif %}
+            {% if c.seeker_attention == 'true' or c.seeker_attention == 'rarely' %} تتطلب أن تكون محور الإهتمام, {% elif c.seeker_attention == 'not_true' %} لا تتطلب أن تكونمحور الإهتمام, {% endif %}
+            {% if c.confidence_ability == 'true' or c.confidence_ability == 'rarely' %} تبدي ثقة بمقدرتها, {% elif c.confidence_ability == 'not_true' %} لا تبدي ثقة بمقدرتها, {% endif %}
+            {% if c.quite == 'true' or c.quite == 'rarely' %} معظم الوقت هادئة جدا, {% endif %}
+            {% if c.moody == 'true' or c.moody == 'rarely' %} سريعة الغضب ومتقلبة المزاج, {% endif %}
+            {% if c.gets_bored == 'true' or c.gets_bored == 'rarely' %} سريعة الملل, {% endif %}
+            {% if c.completes_tasks == 'true' or c.completes_tasks == 'rarely' %} تستكمل المهام التي تكلف بها, {% elif c.completes_tasks == 'not_true' %} لا تستكمل المهام التي تكلف بها, {% endif %}
+            {% if c.cheerful == 'true' or c.cheerful == 'rarely' %} تبدو مرحة ومتفائلة, {% elif c.cheerful == 'not_true' %} لاتبدو مرحة وغير متفائلة, {% endif %}
+            {% if c.aggressive == 'true' or c.aggressive == 'rarely' %}  يتسم سلوكها بالعدوانية, {% endif %}
+            {% if c.avoid_competition == 'true' or c.avoid_competition == 'rarely' %} تتجنب المشاركة في المواقف التي تتطلب المنافسة مع الآخرين, {% elif c.avoid_competition == 'not_true' %} لا تتجنب المشاركة في المواقف التي تتطلب المنافسة مع الآخرين {% endif %}
+            {% if c.compete_others == 'true' or c.compete_others == 'rarely' %} تميل إلى المنافسة, {% elif c.compete_others == 'not_true' %} لا تميل إلى المنافسة, {% endif %}
+            {% if c.lazy == 'true' or c.lazy == 'rarely' %} كسولة وتميل إلى اللامبالاة, {% endif %}
+            {% if c.self_reliance == 'true' or c.self_reliance == 'rarely' %} تعتمد على ذاتها, {% elif c.self_reliance == 'not_true' %} لا تعتمد على ذاتها, {% endif %}
+            {% if c.long_time_tasks == 'true' or c.long_time_tasks == 'rarely' %}  تستغرق في العمل فترة طويلة من الزمن, {% endif %}
+            {% if c.anxious == 'true' or c.anxious == 'rarely' %} تبدو قلقة دوماً, {% endif %}
+            {% if c.afraid == 'true' or c.afraid == 'rarely' %} تشعر بالخوف دوماً, {% endif %}
+             دافعيته للتعلم{{ c.motivation }} , ومن ملاحظات المعلمات عليه {{ c.teachers_note }}, {% if c.supervision == 'yes' %} تحتاج دوماً إلى من يشرف عليها أثناء التدريس {% endif %}
+            كما أشارت ولية الأمر إلى بعض الصعوبات التي يعاني منها"{{ child.first_name }}" من أهمها :{% if c.reading == 'yes' %} القراءة, {% endif %}
+            {% if c.dictating == 'yes' %} صعوبة في الاملاء, {% endif %} {% if c.writing == 'yes' %} صعوبة في الكتابة, {% endif %} {% if c.remembering_nearby == 'yes' %} صعوبة في تذكر المعلومات القريبة, {% endif %}
+            {% if c.recog_time == 'yes' %} صعوبة في التعرف على الوقت, {% endif %} {% if c.recog_days == 'yes' %} صعوبة في التعرف على ايام الاسبوع والاشهر, {% endif %} {% if c.recog_directions == 'yes' %} صعوبة في التعرف على الاتجاهات, {% endif %}
+            {% if c.completing_work == 'yes' %} صعوبة في  انهاء الاعمال المطلوبة في الوقت المحددد, {% endif %} {% if c.focus_attention == 'yes' %} صعوبة في  التركيز والانتباه, {% endif %} {% if c.understanding == 'yes' %} صعوبة في  الاستيعاب والفهم, {% endif %}
+            {% if c.remembering_remote == 'yes' %} صعوبة في  تذكر المعلومات البعيدة, {% endif %} {% if c.relationships == 'yes' %} صعوبة في  ادراك العلاقات (كبير – صغير  - بعيد – قريب ), {% endif %} {% if c.expressing_ideas == 'yes' %} صعوبة في  التعبير عن الافكار أو رواية القصص, {% endif %}
+            {% if c.remembering_skills == 'yes' %} صعوبة في  تذكر ما يقدم من مهارات وخبرات سابقة, {% endif %} {% if c.moving_blackboard == 'yes' %} صعوبة في  النقل من السبورة, {% endif %} {% if c.copying_printed == 'yes' %}  صعوبة في النسخ من المادة المطبوعة, {% endif %}
+            {% if c.flip_words == 'yes' %} يميل إلى قلب الكلمات والأحرف والأشكال, {% endif %} {% if c.confuses_numbers == 'yes' %} بخلط بين الأرقام والحروف ذات المكونات المتشابهة, {% endif %} {% if c.understanding_verbal == 'yes' %} لا يستطيع فهم وتنفيذ التعليمات الشفهية, {% endif %}
+            {% if c.learning_listening == 'yes' %} صعوبة في التعلم عن طريق الاستماع, {% endif %} {% if c.repeat_instruction == 'yes' %} يحتاج دائماً إلى تكرار التعليمات, {% endif %} {% if c.distinguish_numbers == 'yes' %} صعوبة في التمييز بين الارقام, {% endif %}
+            {% if c.memorizing_multiplication == 'yes' %} صعوبة في حفظ جداول الضرب, {% endif %} {% if c.memorizing_phone == 'yes' %} صعوبة في حفظ ارقام التليفونات, {% endif %} {% if c.counting_up == 'yes' %} صعوبة في العد التنازلي والتصاعدي, {% endif %}
+            {% if c.performing_add_subt == 'yes' %} صعوبة في اجراء عمليات الجمع والطرح والضرب والقسمة, {% endif %} {% if c.understanding_mathematical == 'yes' %} صعوبة في فهم الرموز الرياضية وترجمة رموزها مثل <,>, {% endif %} {% if c.distinguish_size == 'yes' %} صعوبة في تمييز الحجم والكمية والمسافة والزمن, {% endif %}
+            لذلك استعانت الأسرة بمدرسين خصوصيين لتحسين مستواه الدراسي
+
+                {% endif %}
+            </p>
+
+
+            <div class="subHeading" style="margin-right: 3rem; background: #FCB861; font-size: 2rem">سلوك الحالة</div>
+
+
+
+            {% if cognitive %}
+            <p style="font-size:2rem; text-align: right; margin-right: 46px; word-break: break-all; line-height: 34px; padding-top: 10px">{{ cognitive.notice }}</p>
+            {% else %}
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%; padding-top: 2rem"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+{#            <div style="border-bottom: 1px solid black; margin-bottom: 32px; width: 38.5rem"></div>#}
+            {% endif %}
+
+            <div class="subHeading" style="margin-right: 3rem; background: #FCB861; font-size: 2rem">التشخيص النهائي</div>
+
+            {% if cognitive %}
+            <p style="font-size:2rem; text-align: right; margin-right: 46px; word-break: break-all; line-height: 34px; padding-top: 10px">{{ cognitive.cognitive_result }}</p>
+            {% else %}
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%; padding-top: 2rem"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+{#            <div style="border-bottom: 1px solid black; margin-bottom: 32px; width: 38.5rem"></div>#}
+            {% endif %}
+
+            <div class="subHeading" style="margin-right: 3rem; background: #FCB861; font-size: 2rem">التوصيات</div>
+
+            {% if cognitive %}
+            <p style="font-size:2rem; text-align: right; margin-right: 46px; word-break: break-all; line-height: 34px; padding-top: 10px">{{ cognitive.recommendations }}</p>
+            {% else %}
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%; padding-top: 2rem"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+            <div style="border-bottom: 1px solid black; margin-bottom: 3rem; width: 96%"></div>
+{#            <div style="border-bottom: 1px solid black; margin-bottom: 32px; width: 38.5rem"></div>#}
+            {% endif %}
+
+            <div class="subHeading" style="margin-right: 3rem; background: #FCB861; font-size: 2rem">الأخصائي</div>
+
+             <div style="display: flex; justify-content: space-between; margin: 40px 40px 0 204px; align-items: center">
+                 <div style="font-size: 2rem">رئيس قسم التشخيص</div>
+                 <div style="width: 50rem; text-align: right; margin-right: 8px; font-size: 2rem">{{ reading.appointment.psychologist.full_name }}:اسم الاخصائي</div>
+            </div>
+
+             <div style="margin: 26px 48px 0 0; display: flex; justify-content: space-between; align-items: center">
+                 <div style="font-size: 2rem; margin-top: 2rem">---------------------------------التوقيع</div>
+                 <div style="font-size: 2rem; margin-top: 2rem">---------------------------------التوقيع</div>
+            </div>
+
+        </div>
+    </div>
+{#<script src="https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/js/jquery-3.3.1.min.js"></script>#}
+{#<script src="https://kda-assets.s3.eu-central-1.amazonaws.com/static/static_files/js/jsPDF-1.3.2/jsPDF-1.3.2/dist/jspdf.min.js"></script>#}
+    <script src="  https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script src="  https://unpkg.com/html2canvas@1.0.0-rc.5/dist/html2canvas.js"></script>
+<script>
+    function pdf() {
+        const input = document.getElementById('xx');
+        html2canvas(document.body, {
+            dpi: 192,
+             useCORS: true,
+            proxy: "Server",
+            {#onrendered : function(canvas) {#}
+            {#     var myImage = canvas.toDataURL("image/png");#}
+            {#     window.open(myImage);#}
+            {# }#}
+        })
+      .then((canvas) => {
+
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'PNG', 0, 0);
+        pdf.save("download.pdf");
+   });
+    }
+</script>
+
+
+</body>

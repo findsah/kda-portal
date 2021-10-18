@@ -1,0 +1,93 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Search Teacher' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Search Teacher' %}</li>
+        </ul>
+    </div>
+
+     <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'All Available Teachers' %}</h3>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="mg-b-20" method="post">
+                {% csrf_token %}
+                <div class="row gutters-8">
+{#                    <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">#}
+{#                        <input type="text" placeholder="Search by ID ..." class="form-control" name="search_by_id">#}
+{#                    </div>#}
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group" >
+                        <input type="text" placeholder="{% translate 'Search by Name' %}" class="form-control" name="search_by_name" style="height: 51px">
+                    </div>
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <select class="select2" name="subject">
+                            <option value="">{% translate 'Search by Subject' %}</option>
+                            {% for subj in subjects %}
+                                <option value={{ subj.lower }}>{{ subj }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group" >
+                        <button type="submit" class="fw-btn-fill btn-gradient-yellow" style="height: 51px">{% translate 'Search' %}</button>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>{% translate 'Full Name' %}</th>
+{#                            <th>{% translate 'Language' %}</th>#}
+                            <th>{% translate 'Course' %}</th>
+                            <th>{% translate 'Mobile Number' %}</th>
+                            <th>{% translate 'Email' %}</th>
+                            <th>{% translate 'Username' %}</th>
+                            <th>{% translate 'Availability' %}</th>
+                            <th>{% translate 'Password' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for teacher in teachers %}
+                            <tr>
+                            <td>{{ teacher.full_name }}</td>
+{#                            <td>{{ teacher.language }}</td>#}
+                            <td>{% if teacher.subject_teaching == 'English' %}{% translate 'English' %}{% elif teacher.subject_teaching == 'Arabic' %}{% translate 'Arabic' %}{% endif %}</td>
+                            <td>{{ teacher.country_code }}{{ teacher.mobile_number }}</td>
+                            <td>{{ teacher.email }} </td>
+                            <td>{{ teacher.username }} </td>
+                            <td><a href={% url 'availability' teacher.id %}>{% translate 'Check Availability' %}</a></td>
+                            <td><a href={% url 'change-password' teacher.id %}>{% translate 'Change Password?' %}</a></td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

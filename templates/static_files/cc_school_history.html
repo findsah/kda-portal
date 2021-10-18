@@ -1,0 +1,201 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate "Child Case Form" %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 1" %}</button></a></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 2" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 3" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 4" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 5" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 6" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 7" %}</button></a>
+            </li>
+            <li>
+                <button style="margin-bottom: 8px" type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate "Step 8" %}</button>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate "Step 9" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate "Step 10" %}</button></a>
+            </li>
+        </ul>
+    </div>
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate "School Life History" %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate "Names of the Schools in which Child was enrolled in:" %}</strong></p>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table bs-table table-striped table-bordered text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>{% translate "School Name" %}</th>
+                                    <th>{% translate "Enrollment Date" %}</th>
+                                    <th>{% translate "Child's Attitude towards School" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{% render_field form.s_name_1 style="width:240px" value=cc.school_name_1 %}</td>
+                                    <td>{% render_field form.s_enroll_1|attr:"readonly" type='text' class="air-datepicker" data-position='bottom left' value=cc.enroll_date_1%}</td>
+                                    <td>{% render_field form.s_beh_1 style="width:240px" value=cc.attitude_school_1%}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% render_field form.s_name_2 style="width:240px" value=cc.school_name_2%}</td>
+                                    <td>{% render_field form.s_enroll_2|attr:"readonly" type='text' class="air-datepicker" data-position='bottom left' value=cc.enroll_date_2%}</td>
+                                    <td>{% render_field form.s_beh_2 style="width:240px" value=cc.attitude_school_2%}</td>
+                                </tr>
+                                <tr>
+                                    <td>{% render_field form.s_name_3 style="width:240px" value=cc.school_name_3%}</td>
+                                    <td>{% render_field form.s_enroll_3|attr:"readonly" type='text' class="air-datepicker" data-position='bottom left' value=cc.enroll_date_3%}</td>
+                                    <td>{% render_field form.s_beh_3 style="width:240px" value=cc.attitude_school_3%}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "First Stage of Child's Education?" %}</label>
+                            {% render_field form.first_stage class="form-control" value=cc.first_stage%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Child Failed in One of the stages" %}</label>
+                            <select class="select2" name="stages_failed">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="yes" {% if cc.failed == "yes"%}selected="selected"{% endif %}>{% translate "Yes" %}</option>
+                                <option value="no" {% if cc.failed == "no"%}selected="selected"{% endif %}>{% translate "No" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Failure Class(If any)" %}</label>
+                            {% render_field form.failure_class class="form-control" value=cc.failed_class%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Failure Subjects(If any)" %}</label>
+                            {% render_field form.failure_subjs class="form-control" value=cc.failed_subjs%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate "Used Private Tutors/Special Centres?" %}</label>
+                            <select class="select2" name="private_tutors">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="yes" {% if cc.private_tutors == "yes"%}selected="selected"{% endif %}>{% translate "Yes" %}</option>
+                                <option value="no" {% if cc.private_tutors == "no"%}selected="selected"{% endif %}>{% translate "No" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-12 form-group">
+                            <label>{% translate "How to take advantage of these for the help of" %}</label>
+                            {% render_field form.advantage class="form-control" value=cc.take_advantage%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Had difficult teaching the Child" %}</label>
+                            <select class="select2" name="diff_teaching">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="yes" {% if cc.difficult_teaching == "yes"%}selected="selected"{% endif %}>{% translate "Yes" %}</option>
+                                <option value="no" {% if cc.difficult_teaching == "no"%}selected="selected"{% endif %}>{% translate "No" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Teachers Note on the Case" %}</label>
+                            {% render_field form.teachers_note class="form-control" value=cc.teachers_note%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Case needs supervision during teaching" %}</label>
+                            <select class="select2" name="supervision_teaching">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="yes" {% if cc.supervision == "yes"%}selected="selected"{% endif %}>{% translate "Yes" %}</option>
+                                <option value="no" {% if cc.supervision == "no"%}selected="selected"{% endif %}>{% translate "No" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate "Current Academic achievement level" %}</label>
+                            {% render_field form.achievement class="form-control" value=cc.academic_achievement%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate "Comment on the Behaviour of the Child with respect to:" %}</strong></p>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "His Motivation To Learn" %}</label>
+                            {% render_field form.motivation class="form-control" value=cc.motivation%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Enthusiasm level (for Homework)" %}</label>
+                            {% render_field form.enthusiasm class="form-control" value=cc.enthusiasm%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Time Punctuality" %}</label>
+                            {% render_field form.time_punctuality class="form-control" value=cc.time_punctual%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Favourite articles" %}</label>
+                            {% render_field form.fav_articles class="form-control" value=cc.fav_articles%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Least Preferred material" %}</label>
+                            {% render_field form.least_fav_material class="form-control" value=cc.least_fav_material%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Relationship with Teachers" %}</label>
+                            {% render_field form.rel_teachers class="form-control" value=cc.rel_teachers%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Desire to go to School" %}</label>
+                            {% render_field form.desire_school class="form-control" value=cc.desire_school%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate "Reason for being absent (If any)" %}</label>
+                            {% render_field form.absent_reasons class="form-control" value=cc.reason_absent%}
+                        </div>
+
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <a href={% url 'cc_child-behaviour' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Previous" %}</button></a>
+                            <a href={% url 'cc_difficulties' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Next" %}</button></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

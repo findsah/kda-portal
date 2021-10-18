@@ -1,0 +1,152 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>All Interventions</h3>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>Search Intervention</li>
+        </ul>
+    </div>
+
+     <div class="card height-auto">
+        <div class="card-body">
+{#            <div class="heading-layout1">#}
+{#                <div class="item-title">#}
+{#                    <h3>All Interventions</h3>#}
+{#                </div>#}
+{#                <div class="dropdown">#}
+{#                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"#}
+{#                        aria-expanded="false">...</a>#}
+{##}
+{#                    <div class="dropdown-menu dropdown-menu-right">#}
+{#                        <a class="dropdown-item" href="#"><i#}
+{#                                class="fas fa-times text-orange-red"></i>Close</a>#}
+{#                        <a class="dropdown-item" href="#"><i#}
+{#                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>#}
+{#                        <a class="dropdown-item" href="#"><i#}
+{#                                class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+            <div class="row">
+                <div class="col-12 form-group mg-t-8" style="width: 100px">
+                    <p><strong>Intervention Information:</strong></p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                     <label>Student Name</label>
+                     <p class="form-control" style="padding-top: 13px">{{ intervention.student.full_name }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                     <label>Teacher Name</label>
+                     <p class="form-control" style="padding-top: 13px">{{ intervention.teacher.full_name }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                     <label>Subject Name</label>
+                     <p class="form-control" style="padding-top: 13px">{{ intervention.teacher.subject_teaching }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                     <label>Intervention Time Slot</label>
+                     <p class="form-control" style="padding-top: 13px">{{ intervention.time }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                     <label>Intervention Day</label>
+                     <p class="form-control" style="padding-top: 13px">{{ intervention.day }}</p>
+                </div>
+                <div class="col-12 form-group mg-t-8" style="width: 100px">
+                    <p><strong>All Interventions:</strong></p>
+                </div>
+            </div>
+            <form class="mg-b-20" method="post">
+                {% csrf_token %}
+                <div class="row gutters-8">
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group" >
+                        <input type="text" placeholder="Search by Date ..." class="form-control air-datepicker" data-position='bottom left' name="search_by_d" style="height: 51px">
+                    </div>
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group" >
+                        <button type="submit" class="fw-btn-fill btn-gradient-yellow" style="height: 51px">SEARCH</button>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table display text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Absent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for date in dates %}
+                            <tr>
+                                <td>{{ date }}</td>
+                                <td>
+                                    <select class="select2" name="absent">
+                                        <option value="">Select Option</option>
+                                        <option value="student">Student</option>
+                                        <option value="teacher">Teacher</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        {% endfor %}
+{#                        <div class="ui-modal-box">#}
+{#                            <div class="modal-box">#}
+{#                                <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">#}
+{#                                    <div class="modal-dialog success-modal-content" role="document">#}
+{#                                        <div class="modal-content">#}
+{#                                            <div class="modal-header">#}
+{#                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">#}
+{#                                                    <span aria-hidden="true">&times;</span>#}
+{#                                                </button>#}
+{#                                            </div>#}
+{#                                            <div class="modal-body">#}
+{#                                                <div class="success-message">#}
+{#                                                    <h3 class="item-title">You want to delete this Intervention?</h3>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="modal-footer">#}
+{#                                                <a href={% url 'delete-intervention' intervention.id %}><button type="button" class="footer-btn bg-linkedin">Ok</button></a>#}
+{#                                                <button type="button" class="footer-btn bg-dark-low" data-bs-dismiss="modal">Cancel</button>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+
+                        <div class="ui-modal-box">
+                            <div class="modal-box">
+                                <div class="modal fade" id="confirmation-modal-1" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog success-modal-content" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="success-message">
+                                                    <h3 class="item-title">You want to Change Status to "Closed"?</h3>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href={% url 'status-intervention' intervention.id %}><button type="button" class="footer-btn bg-linkedin">Ok</button></a>
+                                                <button type="button" class="footer-btn bg-dark-low" data-bs-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

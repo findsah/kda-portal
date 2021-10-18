@@ -1,0 +1,156 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Child Case Form' %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 1' %}</button></a></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 2' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 3' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 4' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 5' %}</button></a>
+            </li>
+            <li>
+                <button style="margin-bottom: 8px" type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate 'Step 6' %}</button>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 7' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 8' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 9' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 10' %}</button></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate 'Social/Personal Development' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate "Brief Description of child's relation towards following:" %}</strong></p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Friends' %}</label>
+                            {% render_field form.friends class="form-control" value=cc.friends%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Siblings' %}</label>
+                            {% render_field form.siblings class="form-control" value=cc.siblings%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Parents' %}</label>
+                            {% render_field form.parents class="form-control" value=cc.parents%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Adults and Others' %}</label>
+                            {% render_field form.adults class="form-control" value=cc.adults%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Maid' %}</label>
+                            {% render_field form.maid class="form-control" value=cc.maid%}
+                        </div>
+                        <div class="col-xl-6 col-lg-7 col-12 form-group">
+                            <label>{% translate 'Age at which have attachment with maid (if any)' %}</label>
+                            {% render_field form.maid_rel_age class="form-control" value=cc.age_maid%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Family's controlling authority" %}</label>
+                            {% render_field form.fam_auth class="form-control" value=cc.fam_auth%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Family member close to the child' %}</label>
+                            {% render_field form.link_fam class="form-control" value=cc.fam_close%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Use Punishment/Reward System?' %}</label>
+                            <select class="select2" name="punishment_reward">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.punishment_sys == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.punishment_sys == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Who punishes (if any)' %}</label>
+                            {% render_field form.punisher class="form-control" value=cc.punisher%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Is the Punishment' %}</label>
+                            <select class="select2" name="punishment">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="immediate" {% if cc.punishment == "immediate"%}selected="selected"{% endif %}>{% translate 'Immediate' %}</option>
+                                <option value="delayed" {% if cc.punishment == "delayed"%}selected="selected"{% endif %}>{% translate 'Delayed' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Child spend time at home in?' %}</label>
+                            {% render_field form.spending_time class="form-control" value=cc.spent_time_in%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Favourite game/hobby' %}</label>
+                            {% render_field form.hobbies_child class="form-control" value=cc.fav_hobby%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Main Language at home' %}</label>
+                            {% render_field form.m_lang class="form-control" value=cc.main_lang%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Any Other Language used' %}</label>
+                            {% render_field form.o_lang class="form-control" value=cc.other_lang%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Other Dialects used at home?' %}</label>
+                            <select class="select2" name="dialects">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.dilects == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.dilects == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <a href={% url 'cc_family_history' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Previous' %}</button></a>
+                            <a href={% url 'cc_child-behaviour' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+
+
+{% endblock %}

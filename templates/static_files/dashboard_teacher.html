@@ -1,0 +1,377 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+        <div class="breadcrumbs-area">
+            <h3>{% translate 'Dashboard of' %} "{{ teacher.full_name }}"</h3>
+            <ul>
+                <li>
+                    <a href="index.html">{% translate 'Home' %}</a>
+                </li>
+                <li>{% translate 'Teacher' %}</li>
+            </ul>
+        </div>
+
+{#        <div class="col-8-xxl col-12">#}
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-magenta">
+                                    <i class="flaticon-shopping-list text-magenta"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'On Going Sessions' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ on_going }}>{{ on_going }}</span><span> {% translate 'Students' %}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="item-icon bg-light-blue">
+                                    <i class="flaticon-calendar text-blue"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Concluded Sessions' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ concluded }}>{{ concluded }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-couple text-orange"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Attended Sessions' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ attended }}>{{ attended }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-calendar text-green"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Student Absents' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ stu_absents }}>{{ stu_absents }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-calendar text-violet-blue"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Teacher Absents' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ teacher_absents }}>{{ teacher_absents }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-yellow">
+                                    <i class="flaticon-reload text-red"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Cancelled' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ cancelled }}>{{ cancelled }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{#        </div>#}
+
+
+        <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>{% translate 'Availability' %}:</h3>
+                    </div>
+                   <div>
+                       <a href="{% url 'availability' teacher.id %}"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Check Availability' %}</button></a>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Weekly Schedule' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table display text-nowrap">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>08:00 - 08:30</th>
+                            <th>08:30 - 09:00</th>
+                            <th>09:00 - 09:30</th>
+                            <th>09:30 - 10:00</th>
+                            <th>10:00 - 10:30</th>
+                            <th>10:30 - 11:00</th>
+                            <th>11:00 - 11:30</th>
+                            <th>11:30 - 12:00</th>
+                            <th>12:00 - 12:30</th>
+                            <th>12:30 - 13:00</th>
+                            <th>13:00 - 13:30</th>
+                            <th>13:30 - 14:00</th>
+                            <th>14:00 - 14:30</th>
+                            <th>14:30 - 15:00</th>
+                            <th>15:00 - 15:30</th>
+                            <th>15:30 - 16:00</th>
+                            <th>16:00 - 16:30</th>
+                            <th>16:30 - 17:00</th>
+                            <th>17:00 - 17:30</th>
+                            <th>17:30 - 18:00</th>
+                            <th>18:00 - 18:30</th>
+                            <th>18:30 - 19:00</th>
+                            <th>19:00 - 19:30</th>
+                            <th>19:30 - 20:00</th>
+                        </tr>
+                    </thead>
+                    <form class="new-added-form" method="POST">
+                    {% csrf_token %}
+                    <tbody>
+                        <tr>
+                            <td>
+                                Monday
+                            </td>
+                            {% for key, value in monday.items %}
+                                {% if value == '' %}
+                                    <td><button style="background-color: grey; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Empty' %}</button></td>
+                                {% else %}
+                                    <td><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{{ value.intervention.student.full_name }}</button></td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                Tuesday
+                            </td>
+                            {% for key, value in tuesday.items %}
+                                {% if value == '' %}
+                                    <td><button style="background-color: grey; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Empty' %}</button></td>
+                                {% else %}
+                                    <td><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{{ value.intervention.student.full_name }}</button></td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                Wednesday
+                            </td>
+                            {% for key, value in wednesday.items %}
+                                {% if value == '' %}
+                                    <td><button style="background-color: grey; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Empty' %}</button></td>
+                                {% else %}
+                                    <td><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{{ value.intervention.student.full_name }}</button></td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                Thursday
+                            </td>
+                            {% for key, value in thursday.items %}
+                                {% if value == '' %}
+                                    <td><button style="background-color: grey; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Empty' %}</button></td>
+                                {% else %}
+                                    <td><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{{ value.intervention.student.full_name }}</button></td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                Saturday
+                            </td>
+                            {% for key, value in saturday.items %}
+                                {% if value == '' %}
+                                    <td><button style="background-color: grey; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Empty' %}</button></td>
+                                {% else %}
+                                    <td><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{{ value.intervention.student.full_name }}</button></td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                Sunday
+                            </td>
+                            {% for key, value in sunday.items %}
+                                {% if value == '' %}
+                                    <td><button style="background-color: grey; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Empty' %}</button></td>
+                                {% else %}
+                                    <td><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{{ value.intervention.student.full_name }}</button></td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                     </tbody>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'All Sessions' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="mg-b-20" method="post">
+                {% csrf_token %}
+{#                <div class="row gutters-8">#}
+{#                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">#}
+{#                        <select class="select2" name="s_child">#}
+{#                            <option value="">{% translate 'Select Child' %}</option>#}
+{#                            {% for child in children %}#}
+{#                                <option value={{ child.username }} {% if child.username == ch.username %}selected='selected'{% endif %}>{{ child.full_name }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </div>#}
+{#                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">#}
+{#                        <button name="s_child_btn" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Apply Filter' %}</button>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row gutters-8">#}
+{#                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">#}
+{#                        <input type="text" class="form-control air-datepicker" data-position='bottom left' placeholder="{% translate 'Filter by Specific Date' %}" name="s_date">#}
+{#                    </div>#}
+{#                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">#}
+{#                        <button name="s_date_btn" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Apply Filter' %}</button>#}
+{#                    </div>#}
+{#                </div>#}
+                <div class="row gutters-8">
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <input type="text" value="{{ from_date }}" placeholder="{% translate 'Select Range (From)' %}" data-position='bottom left' class="form-control air-datepicker" name="from_date">
+                    </div>
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <input type="text" value="{{ to_date }}" placeholder="{% translate 'Select Range (To)' %}" data-position='bottom left' class="form-control air-datepicker" name="to_date">
+                    </div>
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                        <button name="range" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Apply Filter' %}</button>
+                    </div>
+                </div>
+            </form>
+
+
+            <div>
+                <div class="table-responsive">
+                    <table class="table display data-table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Student Name' %}</th>
+                                <th>{% translate 'Session Date' %}</th>
+                                <th>{% translate 'Session Time' %}</th>
+                                <th>{% translate 'Status' %}</th>
+                                <th>{% translate 'Performance Data' %}</th>
+                                <th>{% translate 'Performance Report' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for intv in all_intvs %}
+                                <tr>
+                                <td>{{ intv.session.intervention.student.full_name }}</td>
+                                <td>{{ intv.date|date:'d/m/Y' }}</td>
+                                <td>{{ intv.session.time }}</td>
+                                <td>
+                                    {% if intv.status == 'attended' %}
+                                        {% translate 'Attended' %}
+                                    {% elif intv.status == 's_absent' %}
+                                        {% translate 'Student Absent' %}
+                                    {% elif intv.status == 't_absent' %}
+                                        {% translate 'Teacher Absent' %}
+                                    {% elif intv.status == 'cancelled' %}
+                                        {% translate 'Cancelled' %}
+                                    {% endif %}
+                                </td>
+                                <td><a href={% url 'eva' intv.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Add/Edit' %}</button></a></td>
+                                <td>
+                                    {% if intv.status == 'attended' %}
+                                        {% if intv.session.intervention.teacher.subject_teaching == 'English' %}
+                                            <a href={% url 'english-session-report' intv.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Check' %}</button></a>
+                                        {% elif intv.session.intervention.teacher.subject_teaching == 'Arabic' %}
+                                            <a href={% url 'arabic-session-report' intv.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Check' %}</button></a>
+                                        {% endif %}
+                                    {% else %}
+                                        <p style="text-align: center; margin: 0">--</p>
+                                    {% endif %}
+                                </td>
+                                </tr>
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

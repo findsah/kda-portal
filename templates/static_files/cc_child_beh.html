@@ -1,0 +1,352 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate "Child Case Form" %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 1" %}</button></a></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 2" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 3" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 4" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 5" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 6" %}</button></a>
+            </li>
+            <li>
+                <button style="margin-bottom: 8px" type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate "Step 7" %}</button>
+            </li>
+             <li>
+                 <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate "Step 8" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate "Step 9" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate "Step 10" %}</button></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate "Child Behaviour" %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Child Suffers from Mental Illnesses" %}</label>
+                            <select class="select2" name="mental_illness">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="yes" {% if cc.mental_illness_bool == "yes"%}selected="selected"{% endif %}>{% translate "Yes" %}</option>
+                                <option value="no" {% if cc.mental_illness_bool == "no"%}selected="selected"{% endif %}>{% translate "No" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Mental Illnesses (If any)" %}</label>
+                            {% render_field form.mental_illnesses class="form-control" value=cc.mental_illness%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8">
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Spends Most of the Time Alone" %}</label>
+                            <select class="select2" name="time_alone">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.spends_time_alone == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.spends_time_alone == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.spends_time_alone == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "No specific friends" %}</label>
+                            <select class="select2" name="specific_friend">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.no_friend == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.no_friend == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.no_friend == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Find Difficult to make friends" %}</label>
+                            <select class="select2" name="diff_friend">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.diff_friend == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.diff_friend == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.diff_friend == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Quarrels with friends" %}</label>
+                            <select class="select2" name="quarrel_friends">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.quarrels_friend == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.quarrels_friend == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.quarrels_friend == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate "Other children like to play with the child?" %}</label>
+                            <select class="select2" name="o_like_play">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.like_to_play == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.like_to_play == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.like_to_play == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate "Other children avoid to play with the child?" %}</label>
+                            <select class="select2" name="o_avoid_play">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.avoid_to_play == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.avoid_to_play == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.avoid_to_play == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate "Most of the friends older than the child?" %}</label>
+                            <select class="select2" name="f_older">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.older_friend == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.older_friend == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.older_friend == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate "Most of the friends younger than the child?" %}</label>
+                            <select class="select2" name="f_younger">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.younger_friend == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.younger_friend == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.younger_friend == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Seeks to attract attention" %}</label>
+                            <select class="select2" name="attention_seeker">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.seeker_attention == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.seeker_attention == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.seeker_attention == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Shows confidence in his ability?" %}</label>
+                            <select class="select2" name="confi_ability">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.confidence_ability == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.confidence_ability == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.confidence_ability == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Quite most of the time?" %}</label>
+                            <select class="select2" name="quite">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.quite == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.quite == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.quite == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Impulsive most of the time?" %}</label>
+                            <select class="select2" name="impulsive">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.impulsive == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.impulsive == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.impulsive == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Activity is normal?" %}</label>
+                            <select class="select2" name="activity_normal">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.normal_activity == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.normal_activity == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.normal_activity == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Cooperative with others?" %}</label>
+                            <select class="select2" name="cooperative">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.cooperative == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.cooperative == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.cooperative == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Mostly lies?" %}</label>
+                            <select class="select2" name="lies">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.lies == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.lies == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.lies == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Irritable or moody" %}</label>
+                            <select class="select2" name="moody">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.moody == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.moody == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.moody == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Gets bored quickly" %}</label>
+                            <select class="select2" name="bored">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.gets_bored == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.gets_bored == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.gets_bored == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Completes the assigned tasks" %}</label>
+                            <select class="select2" name="comp_tasks">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.completes_tasks == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.completes_tasks == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.completes_tasks == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Seems Unhappy/Sad/Depressed?" %}</label>
+                            <select class="select2" name="sad">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.sad == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.sad == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.sad == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Looks Cheerful/Upbeat" %}</label>
+                            <select class="select2" name="cheerful">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.cheerful == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.cheerful == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.cheerful == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Quite Aggressive behaviour?" %}</label>
+                            <select class="select2" name="aggressive">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.aggressive == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.aggressive == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.aggressive == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Avoids competition with others" %}</label>
+                            <select class="select2" name="avoid_competition">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.avoid_competition == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.avoid_competition == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.avoid_competition == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Tends to Compete with others" %}</label>
+                            <select class="select2" name="compete_others">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.compete_others == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.compete_others == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.compete_others == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Lazy/Indifferent" %}</label>
+                            <select class="select2" name="lazy">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.lazy == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.lazy == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.lazy == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Performs Leadership roles" %}</label>
+                            <select class="select2" name="leadership">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.leadership == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.leadership == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.leadership == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Self-Reliance/Autonomy" %}</label>
+                            <select class="select2" name="autonomy">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.self_reliance == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.self_reliance == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.self_reliance == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate "Takes long time in completing a task?" %}</label>
+                            <select class="select2" name="time_task">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.long_time_tasks == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.long_time_tasks == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.long_time_tasks == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Always seems Anxious" %}</label>
+                            <select class="select2" name="anxious">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.anxious == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.anxious == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.anxious == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Always seems Afraid" %}</label>
+                            <select class="select2" name="feel_afraid">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="not_true" {% if cc.afraid == "not_true"%}selected="selected"{% endif %}>{% translate "Not True" %}</option>
+                                <option value="rarely" {% if cc.afraid == "rarely"%}selected="selected"{% endif %}>{% translate "Rarely/Sometimes" %}</option>
+                                <option value="true" {% if cc.afraid == "true"%}selected="selected"{% endif %}>{% translate "True" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <a href={% url 'cc_social_development' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Previous" %}</button></a>
+                            <a href={% url 'cc_school_history' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Next" %}</button></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+
+
+{% endblock %}
