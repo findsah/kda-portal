@@ -1,0 +1,119 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Assessment for' %} "{{ child.full_name }}"</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Assessment Data' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <form class="new-added-form" method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <p style="padding-top: 13px"><strong>{% translate 'Results' %}</strong></p>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Test Name' %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ Test }}</p>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Sub Test Name' %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ subtest }}</p>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Sub Test Score' %}</label>
+                        {% if Test == 'Weksler' %}
+                            <input type="number" class="form-control" step="0.001" min="0" name="sub_score" value="{{ assess.sub_score_float }}" required>
+                        {% else %}
+                        <select name="sub_score" class="form-control" required>
+                            <option value="">{% translate 'Select A Score' %}</option>
+                            {% for r in number %}
+                                {% widthratio r 1 5 as x %}
+                                <option value={% widthratio r 1 5 %} {% if assess.sub_score == x %} selected="selected"{% endif %}>{% widthratio r 1 5 %}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        {% if Test == 'Weksler' %}
+                            <label>{% translate 'Sub Test Percentage' %} (%)</label>
+                            <input type="number" class="form-control" step="0.001" min="0" max="100" name="sub_percent" value="{{ assess.sub_percentage }}" required>
+                        {% else %}
+                        <label>{% translate 'Sub Test Time (in seconds)' %}</label>
+                        <select name="sub_time" class="form-control" required>
+                            <option value="">{% translate 'Select A Time' %}</option>
+                            {% for r in number %}
+                                {% widthratio r 1 5 as x %}
+                                <option value={% widthratio r 1 5 %} {% if assess.sub_time == x %} selected="selected"{% endif %}>{% widthratio r 1 5 %}</option>
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                    </div>
+                    {% if Test != 'Weksler' %}
+                        {% if Test == 'ACOPS' or Test == 'Junior' or Test == 'Secondary' %}
+                            <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>{% translate 'Sub Test Grade' %}</label>
+                                <select class="select2" name="sub_grade" required>
+                                    <option value="">{% translate 'Select A Grade' %}</option>
+                                    <option {% if assess.sub_grade == 'one' %}selected="selected"{% endif %} value="one">أ</option>
+                                    <option {% if assess.sub_grade == 'two' %}selected="selected"{% endif %} value="two">ب</option>
+                                    <option {% if assess.sub_grade == 'three' %}selected="selected"{% endif %} value="three">ج</option>
+                                    <option {% if assess.sub_grade == 'four' %}selected="selected"{% endif %} value="four">د</option>
+                                    <option {% if assess.sub_grade == 'five' %}selected="selected"{% endif %} value="five">هـ</option>
+                                </select>
+                            </div>
+                        {% else %}
+                            <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>{% translate 'Sub Test Grade' %}</label>
+                                <input type="text" name="sub_grade" class="form-control" value="{{ assess.sub_grade }}" required>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Test Date' %}</label>
+                        <input type="text" placeholder="dd/mm/yyyy" name="test_date" class="form-control air-datepicker" data-position='bottom left' value="{{ assess.test_date }}" required>
+                    </div>
+{#                    {% if Test == 'Junior' or Test == 'Secondary' %}#}
+{#                        <div class="col-xl-12 col-lg-12 col-12 form-group">#}
+{#                            <label>{% translate 'Sub Test Description' %}</label>#}
+{#                            <textarea name="description" class="textarea form-control" style="width: 570px" cols="10" rows="5">{{ assess.description }}</textarea>#}
+{#                        </div>#}
+{#                    {% endif %}#}
+{#                    <div class="col-12 form-group mg-t-8" style="width: 100px">#}
+{#                        <p style="padding-top: 13px"><strong>Cognitive Results</strong></p>#}
+{#                    </div>#}
+{#                    <div class="col-xl-3 col-lg-6 col-12 form-group">#}
+{#                        <label>Cognitive Date</label>#}
+{#                        <input type="text" placeholder="dd/mm/yyyy" name="cognitive_date" class="form-control air-datepicker" data-position='bottom left' value={{ assess.cognitive_date }}>#}
+{#                    </div>#}
+{#                    <div class="col-xl-3 col-lg-6 col-12 form-group">#}
+{#                        <label>Cognitive Result</label>#}
+{#                        <input type="text" name="cognitive_result" class="form-control" value={{ assess.cognitive_result }}>#}
+{#                    </div>#}
+{#                    <div class="col-xl-3 col-lg-6 col-12 form-group">#}
+{#                        <label>Recommendations</label>#}
+{#                        <input type="text" name="recommendations" class="form-control" value={{ assess.recommendations }}>#}
+{#                    </div>#}
+{#                    <div class="col-xl-3 col-lg-6 col-12 form-group">#}
+{#                        <label>Notice</label>#}
+{#                        <input type="text" name="notice" class="form-control" value={{ assess.notice }}>#}
+{#                    </div>#}
+                    <div class="col-12 form-group mg-t-8">
+                        <button type="submit" name='submitt' class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Submit' %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

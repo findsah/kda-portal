@@ -1,0 +1,185 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Weekly Schedule' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Weekly Schedule' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Select a slot' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table display text-nowrap">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>08:00 - 08:30</th>
+                            <th>08:30 - 09:00</th>
+                            <th>09:00 - 09:30</th>
+                            <th>09:30 - 10:00</th>
+                            <th>10:00 - 10:30</th>
+                            <th>10:30 - 11:00</th>
+                            <th>11:00 - 11:30</th>
+                            <th>11:30 - 12:00</th>
+                            <th>12:00 - 12:30</th>
+                            <th>12:30 - 13:00</th>
+                            <th>13:00 - 13:30</th>
+                            <th>13:30 - 14:00</th>
+                            <th>14:00 - 14:30</th>
+                            <th>14:30 - 15:00</th>
+                            <th>15:00 - 15:30</th>
+                            <th>15:30 - 16:00</th>
+                            <th>16:00 - 16:30</th>
+                            <th>16:30 - 17:00</th>
+                            <th>17:00 - 17:30</th>
+                            <th>17:30 - 18:00</th>
+                            <th>18:00 - 18:30</th>
+                            <th>18:30 - 19:00</th>
+                            <th>19:00 - 19:30</th>
+                            <th>19:30 - 20:00</th>
+                        </tr>
+                    </thead>
+                    <form class="new-added-form" method="POST">
+                    {% csrf_token %}
+                    <tbody>
+                        <tr>
+                            <td>
+                                {% translate 'Monday' %}
+                            </td>
+                            {% for x in content.s_mon %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                            {% for x in content.mon %}
+                                {% if x in content2.mon %}
+                                    <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                                    {% else %}
+                                    <td><button name="{{ x }}-mon" style="background-color: #00ee56" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-check"></i></button></td>
+                                {% endif %}
+                            {% endfor %}
+                             {% for x in content.e_mon %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                {% translate 'Tuesday' %}
+                            </td>
+                            {% for x in content.s_tue %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                            {% for x in content.tue %}
+                                {% if x in content2.tue %}
+                                    <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                                    {% else %}
+                                    <td><button name="{{ x }}-tue" style="background-color: #00ee56" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-check"></i></button></td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for x in content.e_tue %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                {% translate 'Wednesday' %}
+                            </td>
+                            {% for x in content.s_wed %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                            {% for x in content.wed %}
+                                {% if x in content2.wed %}
+                                    <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                                    {% else %}
+                                    <td><button name="{{ x }}-wed" style="background-color: #00ee56" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-check"></i></button></td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for x in content.e_wed %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                {% translate 'Thursday' %}
+                            </td>
+                            {% for x in content.s_th %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                            {% for x in content.th %}
+                                {% if x in content2.th %}
+                                    <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                                    {% else %}
+                                    <td><button name="{{ x }}-th" style="background-color: #00ee56" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-check"></i></button></td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for x in content.e_th %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                {% translate 'Saturday' %}
+                            </td>
+                            {% for x in content.s_sat %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                            {% for x in content.sat %}
+                                {% if x in content2.sat %}
+                                    <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                                    {% else %}
+                                    <td><button name="{{ x }}-sat" style="background-color: #00ee56" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-check"></i></button></td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for x in content.e_sat %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <td>
+                                {% translate 'Sunday' %}
+                            </td>
+                            {% for x in content.s_sun %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                           {% for x in content.sun %}
+                               {% if x in content2.sun %}
+                                    <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                                    {% else %}
+                                    <td><button name="{{ x }}-sun" style="background-color: #00ee56" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-check"></i></button></td>
+                                {% endif %}
+                           {% endfor %}
+                            {% for x in content.e_sun %}
+                                <td><button style="background-color: red; width: 106px; cursor: auto" type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark"><i class="fas fa-times"></i></button></td>
+                            {% endfor %}
+                        </tr>
+                     </tbody>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

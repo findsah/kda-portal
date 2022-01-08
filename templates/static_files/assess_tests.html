@@ -1,0 +1,152 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Data for Assessments' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Data for Assessments' %}</li>
+        </ul>
+    </div>
+
+     <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'All Tests Assessments for' %} "{{ child.full_name }}" </h3>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+            {% csrf_token %}
+            {% if appoints %}
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Select Appointment Date' %}</label>
+                    <select class="select2" name="appoint" onchange="form.requestSubmit();">
+                        <option value="">{% translate 'Please Select Option' %}</option>
+                        {% for appoint in appoints %}
+                            <option value="appoint">{{ appoint.appointment_date }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Test Name' %}</label>
+                    <select class="select2" name="test" onchange="form.requestSubmit();">
+                        <option value="">{% translate 'Please Select Option' %}</option>
+                        <option value="iq" {% if content.test == 'iq'%}selected="selected"{% endif %}>{% translate 'IQ' %}</option>
+                        <option value="acops" {% if content.test == 'acops'%}selected="selected"{% endif %}>{% translate 'ACOPS' %}</option>
+                        <option value="junior" {% if content.test == 'junior'%}selected="selected"{% endif %}>{% translate 'Junior' %}</option>
+                        <option value="secondary" {% if content.test == 'secondary'%}selected="selected"{% endif %}>{% translate 'Secondary' %}</option>
+                        <option value="standford" {% if content.test == 'standford'%}selected="selected"{% endif %}>{% translate 'Stanford' %}</option>
+                        <option value="weksler" {% if content.test == 'weksler'%}selected="selected"{% endif %}>{% translate 'Weksler' %}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table class="table display text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>{% translate 'Sub Tests Name' %}</th>
+                            <th>{% translate 'Add/Edit Assessment' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subset in content.subtests %}
+                            <tr>
+                                {% if subset == 'IQ' %}<td>{% translate 'IQ' %}</td>{% endif %}
+
+                                {% if subset == 'Rabbits' %}<td>{% translate 'Rabbits' %}</td>{% endif %}
+                                {% if subset == 'Zoid Friends' %}<td>{% translate 'Zoid Friends' %}</td>{% endif %}
+                                {% if subset == 'Zoid Letter Names' %}<td>{% translate 'Zoid Letter Names' %}</td>{% endif %}
+                                {% if subset == 'Zoid Letters' %}<td>{% translate 'Zoid Letters' %}</td>{% endif %}
+                                {% if subset == 'Wock' %}<td>{% translate 'Wock' %}</td>{% endif %}
+                                {% if subset == 'Ryhms' %}<td>{% translate 'Ryhms' %}</td>{% endif %}
+                                {% if subset == 'Races' %}<td>{% translate 'Races' %}</td>{% endif %}
+                                {% if subset == 'Toybox' %}<td>{% translate 'Toybox' %}</td>{% endif %}
+
+                                {% if subset == 'Spelling' %}<td>{% translate 'Spelling' %}</td>{% endif %}
+                                {% if subset == 'Reading' %}<td>{% translate 'Reading' %}</td>{% endif %}
+                                {% if subset == 'Single Word Reading' %}<td>{% translate 'Single Word Reading' %}</td>{% endif %}
+                                {% if subset == 'Mobile' %}<td>{% translate 'Mobile' %}</td>{% endif %}
+                                {% if subset == 'Funny Words' %}<td>{% translate 'Funny Words' %}</td>{% endif %}
+                                {% if subset == 'Segment' %}<td>{% translate 'Segment' %}</td>{% endif %}
+                                {% if subset == 'Cave' %}<td>{% translate 'Cave' %}</td>{% endif %}
+
+                                {% if subset == 'Stanford' %}<td>{% translate 'Stanford' %}</td>{% endif %}
+
+                                {% if subset == 'Vocabulary IQ' %}<td>{% translate 'Vocabulary IQ' %}</td>{% endif %}
+                                {% if subset == 'Practical IQ' %}<td>{% translate 'Practical IQ' %}</td>{% endif %}
+                                {% if subset == 'Total IQ' %}<td>{% translate 'Total IQ' %}</td>{% endif %}
+                                {% if subset in content.list_subs %}
+                                    <td><a href={% url 'assessment' child.id psy.id content.test subset %}><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Edit' %}</button></a></td>
+                                {% else %}
+                                    <td><a href={% url 'assessment' child.id psy.id content.test subset %}><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Add' %}</button></a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+            <br>
+            {% if content.test %}
+            <div class="row">
+                <div class="col-12 form-group mg-t-8" style="width: 100px">
+                    <p style="padding-top: 13px"><strong>{% translate 'Cognitive Results for selected test' %}</strong></p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Cognitive Date' %}</label>
+                    <input type="text" placeholder="dd/mm/yyyy" name="cognitive_date" class="form-control air-datepicker" data-position='bottom left' value={{ cog.cognitive_date }}>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-12 form-group">
+                    <label>{% translate 'Cognitive Result' %}</label>
+                    <textarea name="cognitive_result" class="textarea form-control" style="width: 570px" cols="10" rows="5">{{ cog.cognitive_result }}</textarea>
+{#                    <input type="text" name="cognitive_result" class="form-control" value={{ assess.cognitive_result }}>#}
+                </div>
+                <div class="col-xl-12 col-lg-12 col-12 form-group">
+                    <label>{% translate 'Recommendations' %}</label>
+                    <textarea name="recommendations" class="textarea form-control" style="width: 570px" cols="10" rows="5">{{ cog.recommendations }}</textarea>
+{#                    <input type="text" name="recommendations" class="form-control" value={{ assess.recommendations }}>#}
+                </div>
+                <div class="col-xl-12 col-lg-12 col-12 form-group">
+                    <label>{% translate 'Notice' %}</label>
+                    <textarea name="notice" class="textarea form-control" style="width: 570px" cols="10" rows="5">{{ cog.notice }}</textarea>
+{#                    <input type="text" name="notice" class="form-control" value={{ assess.notice }}>#}
+                </div>
+{#                <div class="col-xl-12 col-lg-12 col-12 form-group">#}
+{#                    <label>{% translate 'History of Child' %}</label>#}
+{#                    <textarea name="history" class="textarea form-control" style="width: 570px" cols="10" rows="5">{{ cog.history }}</textarea>#}
+{#                </div>#}
+                <div class="col-12 form-group mg-t-8">
+                    <button type="submit" name='cognitive' class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Submit' %}</button>
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

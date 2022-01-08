@@ -1,0 +1,145 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Child Case Form' %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 1' %}</button></a></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 2' %}</button></a>
+            </li>
+            <li>
+                <button style="margin-bottom: 8px" href={% url 'receptionist' %} type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate 'Step 3' %}</button>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 4' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 5' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 6' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 7' %}</button></a>
+            </li>
+             <li>
+                 <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 8' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 9' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 10' %}</button></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate 'Did the child suffer from the following complications and problems' %}?</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table bs-table table-striped table-bordered text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Condition' %}</th>
+                                <th>{% translate 'Age' %}</th>
+                                <th>{% translate 'Duration/Recurrence' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{% translate 'Severe High Temperature' %}</td>
+                                <td>{% render_field form.extremely_high_temp_age value=cc.extremely_high_temp_age%}</td>
+                                <td>{% render_field form.extremely_high_temp_dur value=cc.extremely_high_temp_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Auditory problems/Ears Infection' %}</td>
+                                <td>{% render_field form.ear_problems_age value=cc.ear_problems_age%}</td>
+                                <td>{% render_field form.ear_problems_dur value=cc.ear_problems_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Vision Problems' %}</td>
+                                <td>{% render_field form.vision_problems_age value=cc.vision_problems_age%}</td>
+                                <td>{% render_field form.vision_problems_dur value=cc.vision_problems_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Juandice/Yellow Skin' %}</td>
+                                <td>{% render_field form.juandice_age value=cc.juandice_age%}</td>
+                                <td>{% render_field form.juandice_dur value=cc.juandice_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Asthma' %}</td>
+                                <td>{% render_field form.asthma_age value=cc.asthma_age%}</td>
+                                <td>{% render_field form.asthma_dur value=cc.asthma_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Allergy' %}</td>
+                                <td>{% render_field form.allergy_age value=cc.allergy_age%}</td>
+                                <td>{% render_field form.allergy_dur value=cc.allergy_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Poisoning' %}</td>
+                                <td>{% render_field form.poisoning_age value=cc.poisoning_age%}</td>
+                                <td>{% render_field form.poisoning_dur value=cc.poisoning_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Surgical Intervention' %}</td>
+                                <td>{% render_field form.surgical_age value=cc.surgical_age%}</td>
+                                <td>{% render_field form.surgical_dur value=cc.surgical_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'In case there was, please mention the surgery' %}</td>
+                                <td>{% render_field form.surgery value=cc.surgery%}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Accidents' %}</td>
+                                <td>{% render_field form.accident_age value=cc.accident_age%}</td>
+                                <td>{% render_field form.accident_dur value=cc.accident_dur%}</td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'In case there was, please mention the type Accidents' %}</td>
+                                <td>{% render_field form.accident value=cc.accident%}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Does the child suffer from diseases or have health issues not mentioned' %}?</td>
+                                <td>{% render_field form.not_mentioned_disease value=cc.not_mentioned_disease%}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <a href={% url 'cc_child_history' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Previous' %}</button></a>
+                        <a href={% url 'cc_stages_of_growth' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,310 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        {% if today %}
+            <h3>{% translate "Today's Interventions" %}</h3>
+        {% else %}
+            <h3>{% translate "Weekly Interventions" %}</h3>
+        {% endif %}
+
+        <ul>
+            <li>
+                <a href="index.html">{% translate "Home" %}</a>
+            </li>
+            <li>{% translate "Search Intervention" %}</li>
+        </ul>
+    </div>
+    <form class="mg-b-20" method="post">
+     <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    {% if today %}
+                        <h3>{% translate "Today's Interventions" %}</h3>
+                    {% else %}
+                        <h3>{% translate "Weekly Interventions" %}</h3>
+                    {% endif %}
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                {% csrf_token %}
+                <div class="row gutters-8">
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group" >
+                        <select class="select2" name="search_by_sname">
+                            <option value="">Search by Student Name</option>
+                            {% for student in students %}
+                                <option value="{{ student.username }}">{{ student.first_name }} {{ student.parent.first_name }} {{ student.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% if request.user.role.name == 'Receptionist' %}
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group" >
+                        <select class="select2" name="search_by_tname">
+                            <option value="">Search by Teacher Name</option>
+                            {% for teacher in teachers %}
+                                <option value="{{ teacher.username }}">{{ teacher.full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group" >
+                        <select class="select2" name="search_by_s">
+                            <option value="">Search by Subject</option>
+                            {% for subj in subjs %}
+                                <option value="{{ subj }}">{{ subj }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group" >
+                        <button name="search" type="submit" class="fw-btn-fill btn-gradient-yellow" style="height: 51px">{% translate 'Search' %}</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                <table class="table display  text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>{% translate "Student Name" %}</th>
+                            {% if request.user.role.name == 'Receptionist' %}
+                                <th>{% translate "Teacher Name" %}</th>
+                                <th></th>
+                                <th>{% translate "Subject" %}</th>
+                            {% endif %}
+                            <th>{% translate "Start Date" %}</th>
+                            <th>{% translate "Total Sessions" %}</th>
+                            <th>{% translate "Sessions Conducted" %}</th>
+                            <th>{% translate "Day" %}</th>
+                            <th>{% translate "Time" %}</th>
+{#                            {% if today %}#}
+{#                                <th>{% translate "Status" %}</th>#}
+{#                            {% endif %}#}
+{#                            {% if request.user.role.name == 'Receptionist' and not today%}#}
+{#                                <th>{% translate "Reschedule" %}</th>#}
+{#                                <th>{% translate "Status" %}</th>#}
+{#                            {% endif %}#}
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for intv in interventions %}
+                            <tr>
+                                <td rowspan="{{ intv.count|add:2 }}">{{ intv.student.full_name }}</td>
+                                {% if request.user.role.name == 'Receptionist' %}
+                                    <td rowspan="{{ intv.count|add:2 }}">{{ intv.teacher.full_name }}</td>
+                                    <td rowspan="{{ intv.count|add:2 }}">
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <span class="flaticon-more-button-of-three-dots"></span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="{% url 'select_teacher_status_change' intv.id %}">Change Teacher</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td rowspan="{{ intv.count|add:2 }}">{{ intv.teacher.subject_teaching }}</td>
+                                {% endif %}
+                                <td rowspan="{{ intv.count|add:2 }}">{{ intv.start_date|date:'d/m/Y' }}</td>
+                                <td rowspan="{{ intv.count|add:2 }}">{{ intv.total_sessions }}</td>
+                                <td rowspan="{{ intv.count|add:2 }}">{{ intv.conducted }}</td>
+                            </tr>
+                            {% for session in intv.sessions %}
+                                <tr>
+                                    <td>{{ session.day }}</td>
+                                    <td>{{ session.time }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
+                                                <span class="flaticon-more-button-of-three-dots"></span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="{% url 'weekly' session.id intv.teacher.id %}"><i
+                                                        class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                                <tr>
+                                    <td> </td>
+                                    <td> </td>
+                                    {% if intv.count < 6 %}
+                                        <td><a href="{% url 'check_intervention' intv.student.id intv.teacher.id %}"><button type="button" class="fw-btn-fill btn-gradient-yellow" style="height: 51px">{% translate 'Add' %}</button></a></td>
+                                    {% else %}
+                                        <td> </td>
+                                    {% endif %}
+                                </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+
+
+
+
+
+
+{#            <div class="table-responsive">#}
+{#                <table class="table display  text-nowrap">#}
+{#                    <thead>#}
+{#                        <tr>#}
+{#                            <th>{% translate "Student Name" %}</th>#}
+{#                            {% if request.user.role.name == 'Receptionist' %}#}
+{#                            <th>{% translate "Teacher Name" %}</th>#}
+{#                            <th>{% translate "Subject" %}</th>#}
+{#                            {% endif %}#}
+{#                            <th>{% translate "Start Date" %}</th>#}
+{#                            <th>{% translate "Day" %}</th>#}
+{#                            <th>{% translate "Time" %}</th>#}
+{#                            {% if today %}#}
+{#                                <th>{% translate "Status" %}</th>#}
+{#                            {% endif %}#}
+{#                            {% if request.user.role.name == 'Receptionist' and not today%}#}
+{#                                <th>{% translate "Reschedule" %}</th>#}
+{#                                <th>{% translate "Status" %}</th>#}
+{#                            {% endif %}#}
+{#                        </tr>#}
+{#                    </thead>#}
+{#                    <tbody>#}
+{#                        {% for intervention in interventions %}#}
+{#                            <tr>#}
+{#                            <td>{{ intervention.student.full_name }}</td>#}
+{#                            {% if request.user.role.name == 'Receptionist' %}#}
+{#                            <td>{{ intervention.teacher.full_name }}</td>#}
+{#                            <td>{{ intervention.teacher.subject_teaching }}</td>#}
+{#                            {% endif %}#}
+{#                            <td>{{ intervention.start_date }}</td>#}
+{#                            <td>{{ intervention.day }}</td>#}
+{#                            <td>{{ intervention.time }} </td>#}
+{#                            {% if today and request.user.role.name == 'Receptionist'%}#}
+{#                                <td>#}
+{#                                    <div class="dropdown">#}
+{#                                        {% for x,y in c_ids.items %}#}
+{#                                            {% if x == intervention.id %}#}
+{#                                                {{ y }}#}
+{#                                            {% endif %}#}
+{#                                        {% endfor %}#}
+{#                                        {% if intervention.id in c_ids.keys %}#}
+{#                                        {% else %}#}
+{#                                            Attended#}
+{#                                        {% endif %}#}
+{#                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"#}
+{#                                           aria-expanded="false"><i class="fa fas fa-caret-down"></i> </a>#}
+{##}
+{#                                        <div class="dropdown-menu dropdown-menu-right">#}
+{#                                            <a class="dropdown-item" href={% url 'todays-status' intervention.id 'attended' %}>{% translate 'Attended' %}</a>#}
+{#                                            <a class="dropdown-item" href={% url 'todays-status' intervention.id 's_absent' %}>{% translate 'Student Absent' %}</a>#}
+{#                                            <a class="dropdown-item" href={% url 'todays-status' intervention.id 't_absent' %}>{% translate 'Teacher Absent' %}</a>#}
+{#                                            <a class="dropdown-item" href={% url 'todays-status' intervention.id 'cancelled' %}>{% translate 'Cancelled' %}</a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </td>#}
+{#                            {% else %}#}
+{#                                {% if request.user.role.name == 'Teacher' and today %}#}
+{#                                    <td>#}
+{#                                        {% for x,y in c_ids.items %}#}
+{#                                            {% if x == intervention.id %}#}
+{#                                                {{ y }}#}
+{#                                            {% endif %}#}
+{#                                        {% endfor %}#}
+{#                                        {% if intervention.id in c_ids.keys %}#}
+{#                                        {% else %}#}
+{#                                            {% translate 'Attended' %}#}
+{#                                        {% endif %}#}
+{#                                    </td>#}
+{#                                {% endif %}#}
+{#                            {% endif %}#}
+{##}
+{#                            <td>#}
+{#                                <button type="button" class="fw-btn-fill btn-gradient-yellow" data-bs-toggle="modal" data-bs-target="#confirmation-modal">#}
+{#                                    Delete#}
+{#                                </button>#}
+{#                            </td>#}
+{#                            <td><a href={% url 'detail-intervention' intervention.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">View List</button></a></td>#}
+{#                            {% if not today and request.user.role.name == 'Receptionist'%}#}
+{#                            <td>#}
+{#                                <a href={% url 'weekly' intervention.student.username intervention.teacher.username %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Reschedule' %}</button></a>#}
+{#                            </td>#}
+{#                                <td><button type="button" class="fw-btn-fill btn-gradient-yellow" data-bs-toggle="modal" data-bs-target="#confirmation-modal-1">{{ intervention.status }}</button></td>#}
+{#                            {% endif %}#}
+{#                        </tr>#}
+{##}
+{#                        <div class="ui-modal-box">#}
+{#                            <div class="modal-box">#}
+{#                                <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">#}
+{#                                    <div class="modal-dialog success-modal-content" role="document">#}
+{#                                        <div class="modal-content">#}
+{#                                            <div class="modal-header">#}
+{#                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">#}
+{#                                                    <span aria-hidden="true">&times;</span>#}
+{#                                                </button>#}
+{#                                            </div>#}
+{#                                            <div class="modal-body">#}
+{#                                                <div class="success-message">#}
+{#                                                    <h3 class="item-title">You want to delete this Intervention?</h3>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="modal-footer">#}
+{#                                                <a href={% url 'delete-intervention' intervention.id %}><button type="button" class="footer-btn bg-linkedin">Ok</button></a>#}
+{#                                                <button type="button" class="footer-btn bg-dark-low" data-bs-dismiss="modal">Cancel</button>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <div class="ui-modal-box">#}
+{#                            <div class="modal-box">#}
+{#                                <div class="modal fade" id="confirmation-modal-1" tabindex="-1" role="dialog" aria-hidden="true">#}
+{#                                    <div class="modal-dialog success-modal-content" role="document">#}
+{#                                        <div class="modal-content">#}
+{#                                            <div class="modal-header">#}
+{#                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">#}
+{#                                                    <span aria-hidden="true">&times;</span>#}
+{#                                                </button>#}
+{#                                            </div>#}
+{#                                            <div class="modal-body">#}
+{#                                                <div class="success-message">#}
+{#                                                    <h3 class="item-title">You want to Change Status to "Stopped"?</h3>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <div class="modal-footer">#}
+{#                                                <a href={% url 'status-intervention' intervention.id %}><button type="button" class="footer-btn bg-linkedin">Ok</button></a>#}
+{#                                                <button type="button" class="footer-btn bg-dark-low" data-bs-dismiss="modal">Cancel</button>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{##}
+{#                        {% endfor %}#}
+{#                     </tbody>#}
+{#                </table>#}
+{#            </div>#}
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

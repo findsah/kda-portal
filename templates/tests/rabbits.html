@@ -1,0 +1,1182 @@
+{#{% extends 'static_files/dashboard_receptionist.html' %}#}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{#{% block content %}#}
+<head>
+    <title>KDA</title>
+    <link rel="shortcut icon" type="image/x-icon" href={% static 'static_files/img/favicon.png' %}>
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href={% static 'static_files/css/normalize.css' %}>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href={% static 'static_files/css/main.css' %}>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href={% static 'static_files/css/bootstrap.min.css' %}>
+</head>
+<body>
+    <style>
+        .rabbits {
+            background-image: url("https://kda-assets.s3.eu-central-1.amazonaws.com/media/Backgrn2.bmp");
+            background-repeat: no-repeat;
+            background-size: 100% 61rem;
+            padding: 4rem 1rem;
+        }
+
+        .rabbitsWrapper {
+            display: flex;
+            margin-top: 2rem;
+        }
+
+        .rabbitDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 7rem;
+            width: 7rem;
+            background: black;
+            border-radius: 50%;
+        }
+        .no_display {
+             width: 4rem;
+            display: none;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+
+{#    <div class="breadcrumbs-area">#}
+{#        <h3>{% translate 'ACOPS Test' %}</h3>#}
+{#        <ul>#}
+{#            <li>#}
+{#                <a href="index.html">{% translate 'Home' %}</a>#}
+{#            </li>#}
+{#            <li>{% translate 'Rabbits' %}</li>#}
+{#        </ul>#}
+{#    </div>#}
+
+{#    <div class="card height-auto">#}
+{#        <div class="card-body">#}
+{#            <button type="button" id="start-btn" name='submitt' class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Start Test' %}</button>#}
+{#            <button type="button" onclick="full_func();" name='submitt' class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Start Test' %}</button>#}
+{#        </div>#}
+{#    </div>#}
+
+{#    <div class="card height-auto">#}
+{#        <div class="card-body">#}
+{#            <div id="message" style="font-size: 10rem;" class="no_display"></div>#}
+{#            <div id="full_container">#}
+{#                <div class="row" style="display: flex ; justify-content: space-evenly">#}
+{#                    <div class="col-6">Click On Full Screen Button to start!</div>#}
+{#                    <div class="col-6"><button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" onclick="full_func();">Full Screen</button></div>#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img style="width: 100vw; height: 100vh" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Backgrn2.bmp">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box1" style="position: relative; bottom: 90vh; left: 2vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img1" style="position: relative; bottom: 91.5vh; left: -4.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box2" style="position: relative; bottom: 90vh; left: 19vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img2" style="position: relative; bottom: 91.5vh; left: 12.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box3" style="position: relative; bottom: 90vh; left: 33vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img3" style="position: relative; bottom: 91.5vh; left: 26.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box4" style="position: relative; bottom: 88vh; left: 9vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img4" style="position: relative; bottom: 90vh; left: 2.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box5" style="position: relative; bottom: 84vh; left: 14vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img5" style="position: relative; bottom: 85vh; left: 7.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box6" style="position: relative; bottom: 98vh; left: 38vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img6" style="position: relative; bottom: 100vh; left: 31.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box7" style="position: relative; bottom: 162vh; left: 75vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img7" style="position: relative; bottom: 163vh; left: 68.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box8" style="position: relative; bottom: 163vh; left: 64vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img8" style="position: relative; bottom: 164vh; left: 57.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box9" style="position: relative; bottom: 162vh; left: 70vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img9" style="position: relative; bottom: 163vh; left: 63.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#                <div>#}
+{#                    <img id="box10" style="position: relative; bottom: 157vh; left: 74vw; height: 8vw" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Singhole.bmp">#}
+{#                    <img id="img10" style="position: relative; bottom: 158vh; left: 67.5vw; height: 6vw" class="no_display" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+    <div class="card height-auto" style="width: 50%; position: relative; top: 30vh; left: 25vw;" id="full_screen_div">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Test by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" onclick="full_func();">Full Screen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <div class="card height-auto no_display" style="width: 50%; position: relative; top: 30vh; left: 25vw;" id="text_container">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px" id="text1">
+                </div>
+                <div class="col-12" style="text-align: center; margin-bottom: 10px" id="text2">
+                </div>
+                <div class="col-12" style="text-align: center; margin-bottom: 10px" id="text3">
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <div>Continue?</div>
+                    <button id="btn_yes" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Yes</button>
+                    <button id="btn_no" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card height-auto no_display" style="width: 50%; position: relative; top: 20vh; left: 25vw;" id="intro_part">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12" style="text-align: center">
+                    <h3>Introduction To Test</h3>
+                    {% if below_age %}
+                        <p style="margin-top: 2rem">The Test will Comprise of 3 levels.</p>
+                        <p>Level 1: 2 burrows, 1 Question </p>
+                        <p>Level 2: 3 burrows, 6 Questions </p>
+                        <p>Level 3: 4 burrows, 3 Questions </p>
+                    {% else %}
+                        <p style="margin-top: 2rem">The Test will Comprise of 5 levels.</p>
+                        <p>Level 1: 2 burrows, 2 Questions </p>
+                        <p>Level 2: 3 burrows, 2 Questions </p>
+                        <p>Level 3: 4 burrows, 4 Questions </p>
+                        <p>Level 4: 5 burrows, 3 Questions </p>
+                        <p>Level 5: 6 burrows, 2 Questions </p>
+                    {% endif %}
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 5rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" onclick="display_question();">Next</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{#    <div class="row" id="full_screen_div">#}
+{#        <div class="col-6">Click On Full Screen Button to start!</div>#}
+{#        <div id="clickk" class="col-6"><button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" onclick="full_func();">Full Screen</button></div>#}
+{#    </div>#}
+    <div id="vid" class="no_display">
+        <video id="myVideo" width="1080" height="700" style="width: 100vw; height: 100vh">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbdemo.mp4" type="video/mp4">
+        </video>
+    </div>
+    <audio id="audio1">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/morehole.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio2">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/sameordr.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio3">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/tryagain.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio4">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/seerabitwheregoes.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="help_audio1">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/vprompt1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="help_audio2">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/vprompt2.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="help_audio3">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/vprompt3.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="help_audio4">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/vprompt4.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="help_audio5">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/vprompt5.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="help_audio6">
+      <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/vprompt6.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="main_game" class="rabbits no_display">
+        <div class="rabbitsWrapper">
+            <div id="box1" class="rabbitDiv">
+                <img id="img1" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+        </div>
+        <div class="rabbitsWrapper" style="justify-content: space-around;">
+            <div id="box2" class="rabbitDiv">
+                <img id="img2" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+            <div id="box3" class="rabbitDiv">
+                <img id="img3" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+        </div>
+        <div class="rabbitsWrapper" style="justify-content: space-evenly;">
+            <div id="box4" class="rabbitDiv">
+                <img id="img4" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+            <div id="box5" class="rabbitDiv">
+                <img id="img5" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+        </div>
+        <div class="rabbitsWrapper" style="justify-content: space-between;">
+            <div id="box6" class="rabbitDiv" style="margin-left: 4rem;">
+                <img id="img6" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+            <div id="box7" class="rabbitDiv" style="margin-right: 7rem;">
+                <img id="img7" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+        </div>
+        <div class="rabbitsWrapper" style="justify-content: space-between;">
+            <div id="box8" class="rabbitDiv" style="margin-left: 10rem;">
+                <img id="img8" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+            <div id="box9" class="rabbitDiv" style="margin-right: 4rem;">
+                <img id="img9" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+            <div id="box10" class="rabbitDiv" style="margin-right: 2rem;">
+                <img id="img10" class="no_display"
+                    src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/rabbit.JPG">
+            </div>
+        </div>
+    </div>
+
+    <form method="post" name="theform">
+        {% csrf_token %}
+        <input id="comp_order1" name="comp_order1" style="display: none">
+        <input id="player_order1" name="player_order1" style="display: none">
+        <input id="start_time1" name="start_time1" style="display: none">
+        <input id="end_time1" name="end_time1" style="display: none">
+
+        <input id="comp_order2" name="comp_order2" style="display: none">
+        <input id="player_order2" name="player_order2" style="display: none">
+        <input id="start_time2" name="start_time2" style="display: none">
+        <input id="end_time2" name="end_time2" style="display: none">
+
+        <input id="comp_order3" name="comp_order3" style="display: none">
+        <input id="player_order3" name="player_order3" style="display: none">
+        <input id="start_time3" name="start_time3" style="display: none">
+        <input id="end_time3" name="end_time3" style="display: none">
+
+        <input id="comp_order4" name="comp_order4" style="display: none">
+        <input id="player_order4" name="player_order4" style="display: none">
+        <input id="start_time4" name="start_time4" style="display: none">
+        <input id="end_time4" name="end_time4" style="display: none">
+
+        <input id="comp_order5" name="comp_order5" style="display: none">
+        <input id="player_order5" name="player_order5" style="display: none">
+        <input id="start_time5" name="start_time5" style="display: none">
+        <input id="end_time5" name="end_time5" style="display: none">
+
+        <input id="comp_order6" name="comp_order6" style="display: none">
+        <input id="player_order6" name="player_order6" style="display: none">
+        <input id="start_time6" name="start_time6" style="display: none">
+        <input id="end_time6" name="end_time6" style="display: none">
+
+        <input id="comp_order7" name="comp_order7" style="display: none">
+        <input id="player_order7" name="player_order7" style="display: none">
+        <input id="start_time7" name="start_time7" style="display: none">
+        <input id="end_time7" name="end_time7" style="display: none">
+
+        <input id="comp_order8" name="comp_order8" style="display: none">
+        <input id="player_order8" name="player_order8" style="display: none">
+        <input id="start_time8" name="start_time8" style="display: none">
+        <input id="end_time8" name="end_time8" style="display: none">
+
+        <input id="comp_order9" name="comp_order9" style="display: none">
+        <input id="player_order9" name="player_order9" style="display: none">
+        <input id="start_time9" name="start_time9" style="display: none">
+        <input id="end_time9" name="end_time9" style="display: none">
+
+        <input id="comp_order10" name="comp_order10" style="display: none">
+        <input id="player_order10" name="player_order10" style="display: none">
+        <input id="start_time10" name="start_time10" style="display: none">
+        <input id="end_time10" name="end_time10" style="display: none">
+
+        <input id="comp_order11" name="comp_order11" style="display: none">
+        <input id="player_order11" name="player_order11" style="display: none">
+        <input id="start_time11" name="start_time11" style="display: none">
+        <input id="end_time11" name="end_time11" style="display: none">
+
+        <input id="comp_order12" name="comp_order12" style="display: none">
+        <input id="player_order12" name="player_order12" style="display: none">
+        <input id="start_time12" name="start_time12" style="display: none">
+        <input id="end_time12" name="end_time12" style="display: none">
+
+        <input id="comp_order13" name="comp_order13" style="display: none">
+        <input id="player_order13" name="player_order13" style="display: none">
+        <input id="start_time13" name="start_time13" style="display: none">
+        <input id="end_time13" name="end_time13" style="display: none">
+    </form>
+
+
+    <script>
+        {#var elem = document.getElementById("vid");#}
+        var elem = document.documentElement;
+
+
+        function full_s () {
+            top.resizeTo(window.screen.availWidth, window.screen.availHeight);
+            top.moveTo(0, 0)
+        }
+
+
+        let order = [];
+        let playerOrder = [];
+        let flash;
+        let turn;
+        let good;
+        var compTurn = true;
+        let intervalId;
+        let strict = false;
+        let noise = true;
+        let on = false;
+        let win;
+        var clicks = 0;
+        let practice = true;
+        var d = new Date();
+        let start_time = 0;
+        let end_time = 0;
+        var max_levels;
+
+        if ('{{ below_age }}' === 'True'){
+            max_levels = 3;
+        }
+        else{
+            max_levels = 5;
+        }
+
+        const box1 = document.querySelector('#box1');
+        const box2 = document.querySelector('#box2');
+        const box3 = document.querySelector('#box3');
+        const box4 = document.querySelector('#box4');
+        const box5 = document.querySelector('#box5');
+        const box6 = document.querySelector('#box6');
+        const box7 = document.querySelector('#box7');
+        const box8 = document.querySelector('#box8');
+        const box9 = document.querySelector('#box9');
+        const box10 = document.querySelector('#box10');
+
+        const message = document.querySelector('#message');
+
+        const comp_order1 = document.querySelector('#comp_order1');
+        const player_order1 = document.querySelector('#player_order1');
+        const comp_order2 = document.querySelector('#comp_order2');
+        const player_order2 = document.querySelector('#player_order2');
+        const comp_order3 = document.querySelector('#comp_order3');
+        const player_order3 = document.querySelector('#player_order3');
+        const comp_order4 = document.querySelector('#comp_order4');
+        const player_order4 = document.querySelector('#player_order4');
+        const comp_order5 = document.querySelector('#comp_order5');
+        const player_order5 = document.querySelector('#player_order5');
+        const comp_order6 = document.querySelector('#comp_order6');
+        const player_order6 = document.querySelector('#player_order6');
+        const comp_order7 = document.querySelector('#comp_order7');
+        const player_order7 = document.querySelector('#player_order7');
+        const comp_order8 = document.querySelector('#comp_order8');
+        const player_order8 = document.querySelector('#player_order8');
+        const comp_order9 = document.querySelector('#comp_order9');
+        const player_order9 = document.querySelector('#player_order9');
+        const comp_order10 = document.querySelector('#comp_order10');
+        const player_order10 = document.querySelector('#player_order10');
+        const comp_order11 = document.querySelector('#comp_order11');
+        const player_order11 = document.querySelector('#player_order11');
+        const comp_order12 = document.querySelector('#comp_order12');
+        const player_order12 = document.querySelector('#player_order12');
+        const comp_order13 = document.querySelector('#comp_order13');
+        const player_order13 = document.querySelector('#player_order13');
+
+        const text_container = document.querySelector('#text_container');
+        const text1 = document.querySelector('#text1');
+        const text2 = document.querySelector('#text2');
+        const text3 = document.querySelector('#text3');
+        const btn_yes = document.querySelector('#btn_yes');
+        const btn_no = document.querySelector('#btn_no');
+
+
+        var vid = document.getElementById("myVideo");
+        full_screen_div = document.getElementById('full_screen_div');
+        main_game = document.getElementById('main_game');
+        audio1 = document.getElementById('audio1');
+        audio2 = document.getElementById('audio2');
+        audio3 = document.getElementById('audio3');
+        audio4 = document.getElementById('audio4');
+
+        help_audio1 = document.getElementById('help_audio1');
+        help_audio2 = document.getElementById('help_audio2');
+        help_audio3 = document.getElementById('help_audio3');
+        help_audio4 = document.getElementById('help_audio4');
+        help_audio5 = document.getElementById('help_audio5');
+        help_audio6 = document.getElementById('help_audio6');
+
+
+        const img1 = document.querySelector('#img1');
+        const img2 = document.querySelector('#img2');
+        const img3 = document.querySelector('#img3');
+        const img4 = document.querySelector('#img4');
+        const img5 = document.querySelector('#img5');
+        const img6 = document.querySelector('#img6');
+        const img7 = document.querySelector('#img7');
+        const img8 = document.querySelector('#img8');
+        const img9 = document.querySelector('#img9');
+        const img10 = document.querySelector('#img10');
+        const start_btn = document.querySelector('#start-btn');
+        var global_burrows = 2;
+        var level = 0;
+        var question = 1;
+        {#start_btn.addEventListener('click', (event) => {#}
+        {#    play();#}
+        {# })#}
+
+        function full_func() {
+            document.getElementById('vid').classList.remove('no_display');
+
+            vid.play();
+
+            var elemm = document.documentElement;
+            if (elemm.requestFullscreen) {
+                elemm.requestFullscreen();
+            } else if (elemm.webkitRequestFullscreen) { /* Safari */
+                elemm.webkitRequestFullscreen();
+            } else if (elemm.msRequestFullscreen) { /* IE11 */
+                elemm.msRequestFullscreen();
+            }
+
+            full_screen_div.classList.add('no_display');
+            {#full_screen_div.classList.remove('row');#}
+        }
+
+         document.addEventListener('DOMContentLoaded', function () {
+
+        })
+
+        vid.addEventListener('ended',myHandler,false);
+        function myHandler(e) {
+            vid.classList.add('no_display');
+
+            audio1.play();
+
+            {#setTimeout(() => {#}
+            {#    main_game.classList.remove('no_display');#}
+            {# }, 3000);#}
+        }
+
+        audio1.onended = function () {
+            setTimeout(() => {
+                audio2.play();
+            }, 1000);
+        }
+
+        audio2.onended = function () {
+            text_container.classList.remove('no_display');
+            text1.innerHTML = 'تدريب'
+            text2.innerHTML = 'جحران'
+            text3.innerHTML = 'مرة واحدة'
+
+            btn_yes.addEventListener('click', function practice () {
+                text_container.classList.add('no_display');
+                main_game.classList.remove('no_display');
+                play(2);
+                btn_yes.removeEventListener('click', practice);
+            })
+
+            btn_no.addEventListener('click', () => {
+                window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} +"/";
+            });
+        }
+
+        function play(burrows){
+
+            win = false;
+            order = [];
+            playerOrder = [];
+            flash = 0;
+            intervalId = 0;
+            turn = 1;
+            good = true;
+            let i = 0
+            global_burrows = burrows
+
+            {#for (var i = 0; i < 5; i++)#}
+            while (i < burrows){
+                let x = Math.floor(Math.random() * 10) + 1
+                if (order.includes(x) === false)
+                {
+                    order.push(x);
+                    i ++;
+                }
+              }
+            console.log(order);
+            console.log(global_burrows);
+            compTurn = true;
+            intervalId = setInterval(gameTurn, 2000);
+            clearimages();
+        }
+        var n = 0
+        function gameTurn() {
+            compTurn = true;
+            if (n == global_burrows) {
+                compTurn = false;
+                clearimages();
+                clearInterval(intervalId);
+            }
+            if (compTurn) {
+                clearimages();
+                setTimeout(() => {
+                    if (order[n] == 1) one();
+                    if (order[n] == 2) two();
+                    if (order[n] == 3) three();
+                    if (order[n] == 4) four();
+                    if (order[n] == 5) five();
+                    if (order[n] == 6) six();
+                    if (order[n] == 7) seven();
+                    if (order[n] == 8) eight();
+                    if (order[n] == 9) nine();
+                    if (order[n] == 10) ten();
+                    n++;
+                }, 2000)
+            }
+        }
+
+        function one() {
+            img1.classList.remove('no_display')
+        }
+        function two() {
+            img2.classList.remove('no_display')
+        }
+        function three() {
+            img3.classList.remove('no_display')
+        }
+        function four() {
+            img4.classList.remove('no_display')
+        }
+        function five() {
+            img5.classList.remove('no_display')
+        }
+        function six() {
+            img6.classList.remove('no_display')
+        }
+        function seven() {
+            img7.classList.remove('no_display')
+        }
+        function eight() {
+            img8.classList.remove('no_display')
+        }
+        function nine() {
+            img9.classList.remove('no_display')
+        }
+        function ten() {
+            img10.classList.remove('no_display')
+        }
+
+        function clearimages() {
+            img1.classList.add('no_display');
+            img2.classList.add('no_display');
+            img3.classList.add('no_display');
+            img4.classList.add('no_display');
+            img5.classList.add('no_display');
+            img6.classList.add('no_display');
+            img7.classList.add('no_display');
+            img8.classList.add('no_display');
+            img9.classList.add('no_display');
+            img10.classList.add('no_display');
+        }
+        box1.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(1);
+                console.log('visible');
+                one();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box2.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(2);
+                two();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box3.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(3);
+                three();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+               if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box4.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(4);
+                four();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box5.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(5);
+                five();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box6.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(6);
+                six();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box7.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(7);
+                seven();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box8.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(8);
+                eight();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box9.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(9);
+                nine();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        })
+        box10.addEventListener('click', (event) => {
+            if (compTurn === false && clicks < global_burrows) {
+                playerOrder.push(10);
+                ten();
+                clicks ++;
+            }
+
+            if (practice === false && compTurn === false) help_audios(clicks);
+
+            if (clicks == global_burrows && compTurn === false){
+                if (practice === true) {
+                    test();
+                }else {
+                    setTimeout(() => {
+                        store_value();
+                    }, 1000);
+                }
+            }
+        });
+
+        function test() {
+            if (JSON.stringify(order) !== JSON.stringify(playerOrder)){
+                compTurn = true;
+                audio3.play();
+                setTimeout(() => {
+                    n = 0;
+                    clicks = 0;
+                    play(2);
+                }, 2000);
+            }else {
+                setTimeout(() => {
+                    main_game.classList.add('no_display');
+                    compTurn = true;
+                    practice = false;
+                    display_question();
+                }, 2000)
+            }
+        }
+
+        function display_question(){
+             compTurn = true;
+             practice = false;
+             clearimages();
+             audio4.play();
+             audio4.onended = function (){
+                {% if below_age %}
+                    text1.innerHTML = 'جحران'
+                    text2.innerHTML = 'مرة واحدة'
+                    text3.innerHTML = ''
+                {% else %}
+                    text1.innerHTML = 'جحران'
+                    text2.innerHTML = 'مرتان'
+                    text3.innerHTML = ''
+                {% endif %}
+                text_container.classList.remove('no_display');
+
+                btn_yes.addEventListener('click', function level_1 () {
+                    text_container.classList.add('no_display');
+                    main_game.classList.remove('no_display');
+                    play_loop(2);
+                    btn_yes.removeEventListener('click', level_1);
+                })
+                btn_no.addEventListener('click', () => {
+                    window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} + "/";
+                });
+             };
+        }
+
+    var help_audio_timeout = 0;
+        function play_loop(burrows){
+                n = 0;
+                clicks = 0;
+
+                play(burrows);
+                setTimeout(() => {
+                    d = new Date();
+                    start_time = d.getTime();
+                    console.log(start_time);
+                }, 2000*2*2 + 2000*(burrows-2))
+
+                setTimeout(() => {
+                    help_audios(0);
+            }, 2000*(burrows-1) + 6000);
+        }
+
+        function actual_test() {
+            d = new Date();
+            end_time = d.getTime();
+
+            document.getElementById('start_time_1').value = start_time;
+            document.getElementById('end_time_1').value = end_time;
+
+            document.theform.submit();
+        }
+
+        function help_audios(cll) {
+
+            if (help_audio_timeout !== 0){
+                clearTimeout(help_audio_timeout);
+            }
+
+            help_audio1.pause();
+            help_audio1.currentTime = 0;
+            help_audio2.pause();
+            help_audio2.currentTime = 0;
+            help_audio3.pause();
+            help_audio3.currentTime = 0;
+            help_audio4.pause();
+            help_audio4.currentTime = 0;
+            help_audio5.pause();
+            help_audio5.currentTime = 0;
+            help_audio6.pause();
+            help_audio6.currentTime = 0;
+
+
+            help_audio_timeout = setTimeout(() => {
+                if (cll === 0) help_audio1.play();
+                if (cll === 1) help_audio2.play();
+                if (cll === 2) help_audio3.play();
+                if (cll === 3) help_audio4.play();
+                if (cll === 4) help_audio5.play();
+                if (cll === 5) help_audio6.play();
+            }, 5000)
+        }
+
+        function store_value(){
+            console.log('question', question)
+            clearTimeout(help_audio_timeout);
+            if (question === 1) {
+                comp_order1.value = order;
+                player_order1.value = playerOrder;
+                document.getElementById('start_time1').value = start_time;
+                d = new Date();
+                document.getElementById('end_time1').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    main_game.classList.add('no_display');
+                    text1.innerHTML = '3  جحور'
+                    text2.innerHTML = '6 مرات'
+                    text_container.classList.remove('no_display');
+                    btn_yes.addEventListener('click', function level_2 () {
+                        main_game.classList.remove('no_display');
+                        text_container.classList.add('no_display');
+                        play_loop(3);
+                        btn_yes.removeEventListener('click', level_2);
+                    })
+                    btn_no.addEventListener('click', () => {
+                        window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} + "/";
+                    });
+                }
+                else{
+                    play_loop(2);
+                }
+            }
+            else if (question === 2) {
+                comp_order2.value = order;
+                player_order2.value = playerOrder;
+                document.getElementById('start_time2').value = start_time;
+                d = new Date();
+                document.getElementById('end_time2').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    play_loop(3);
+                }
+                else{
+                    main_game.classList.add('no_display');
+                    text1.innerHTML = '3 جحور'
+                    text2.innerHTML = 'مرتان'
+                    text_container.classList.remove('no_display');
+                    btn_yes.addEventListener('click', function level_2 () {
+                        main_game.classList.remove('no_display');
+                        text_container.classList.add('no_display');
+                        play_loop(3);
+                        btn_yes.removeEventListener('click', level_2);
+                    })
+                    btn_no.addEventListener('click', () => {
+                        window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} + "/";
+                    });
+                }
+
+            }
+            else if (question === 3) {
+                comp_order3.value = order;
+                player_order3.value = playerOrder;
+                document.getElementById('start_time3').value = start_time;
+                d = new Date();
+                document.getElementById('end_time3').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    play_loop(3);
+                }
+                else{
+                    play_loop(3);
+                }
+            }
+            else if (question === 4) {
+                comp_order4.value = order;
+                player_order4.value = playerOrder;
+                document.getElementById('start_time4').value = start_time;
+                d = new Date();
+                document.getElementById('end_time4').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    play_loop(3);
+                }
+                else{
+                    main_game.classList.add('no_display');
+                    text1.innerHTML = '4 جحور'
+                    text2.innerHTML = '4 مرات'
+                    text_container.classList.remove('no_display');
+                    btn_yes.addEventListener('click', function level_2 () {
+                        main_game.classList.remove('no_display');
+                        text_container.classList.add('no_display');
+                        play_loop(4);
+                        btn_yes.removeEventListener('click', level_2);
+                    })
+                    btn_no.addEventListener('click', () => {
+                        window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} + "/";
+                    });
+                }
+            }
+            else if (question === 5) {
+                comp_order5.value = order;
+                player_order5.value = playerOrder;
+                document.getElementById('start_time5').value = start_time;
+                d = new Date();
+                document.getElementById('end_time5').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    play_loop(3);
+                }
+                else{
+                    play_loop(4);
+                }
+            }
+            else if (question === 6) {
+                comp_order6.value = order;
+                player_order6.value = playerOrder;
+                document.getElementById('start_time6').value = start_time;
+                d = new Date();
+                document.getElementById('end_time6').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    play_loop(3);
+                }
+                else{
+                    play_loop(4);
+                }
+            }
+            else if (question === 7) {
+                comp_order7.value = order;
+                player_order7.value = playerOrder;
+                document.getElementById('start_time7').value = start_time;
+                d = new Date();
+                document.getElementById('end_time7').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    main_game.classList.add('no_display');
+                    text1.innerHTML = '4 جحور'
+                    text2.innerHTML = '3 مرات'
+                    text_container.classList.remove('no_display');
+                    btn_yes.addEventListener('click', function level_2 () {
+                        main_game.classList.remove('no_display');
+                        text_container.classList.add('no_display');
+                        play_loop(4);
+                        btn_yes.removeEventListener('click', level_2);
+                    })
+                    btn_no.addEventListener('click', () => {
+                        window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} + "/";
+                    });
+                }
+                else{
+                    play_loop(4);
+                }
+            }
+            else if (question === 8) {
+                comp_order8.value = order;
+                player_order8.value = playerOrder;
+                document.getElementById('start_time8').value = start_time;
+                d = new Date();
+                document.getElementById('end_time8').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    play_loop(4);
+                }
+                else{
+                    main_game.classList.add('no_display');
+                    text1.innerHTML = '5 جحور'
+                    text2.innerHTML = '3 مرات'
+                    text_container.classList.remove('no_display');
+                    btn_yes.addEventListener('click', function level_2 () {
+                        main_game.classList.remove('no_display');
+                        text_container.classList.add('no_display');
+                        play_loop(5);
+                        btn_yes.removeEventListener('click', level_2);
+                    })
+                    btn_no.addEventListener('click', () => {
+                        window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} + "/";
+                    });
+                }
+            }
+            else if (question === 9) {
+                comp_order9.value = order;
+                player_order9.value = playerOrder;
+                document.getElementById('start_time9').value = start_time;
+                d = new Date();
+                document.getElementById('end_time9').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    play_loop(4);
+                }
+                else{
+                    play_loop(5);
+                }
+            }
+            else if (question === 10) {
+                comp_order10.value = order;
+                player_order10.value = playerOrder;
+                document.getElementById('start_time10').value = start_time;
+                d = new Date();
+                document.getElementById('end_time10').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    document.theform.submit();
+                }
+                else{
+                    play_loop(5);
+                }
+            }
+            else if (question === 11) {
+                comp_order11.value = order;
+                player_order11.value = playerOrder;
+                document.getElementById('start_time11').value = start_time;
+                d = new Date();
+                document.getElementById('end_time11').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    document.theform.submit();
+                }
+                else{
+                    main_game.classList.add('no_display');
+                    text1.innerHTML = '6 جحور'
+                    text2.innerHTML = 'مرتان'
+                    text_container.classList.remove('no_display');
+                    btn_yes.addEventListener('click', function level_2 () {
+                        main_game.classList.remove('no_display');
+                        text_container.classList.add('no_display');
+                        play_loop(6);
+                        btn_yes.removeEventListener('click', level_2);
+                    })
+                    btn_no.addEventListener('click', () => {
+                        window.location.href = "http://127.0.0.1:8015/en/view_tests/" + {{ appointment.id }} + "/";
+                    });
+                }
+            }
+            else if (question === 12) {
+                comp_order12.value = order;
+                player_order12.value = playerOrder;
+                document.getElementById('start_time12').value = start_time;
+                d = new Date();
+                document.getElementById('end_time12').value = d.getTime();
+                question = question + 1;
+
+                if ('{{ below_age }}' === 'True') {
+                    document.theform.submit();
+                }
+                else{
+                    play_loop(6);
+                }
+            }
+            else if (question === 13) {
+                comp_order13.value = order;
+                player_order13.value = playerOrder;
+                document.getElementById('start_time13').value = start_time;
+                d = new Date();
+                document.getElementById('end_time13').value = d.getTime();
+
+                document.theform.submit();
+            }
+        }
+
+    </script>
+
+</body>
+{#{% endblock %}#}

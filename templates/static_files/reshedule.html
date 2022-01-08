@@ -1,0 +1,65 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Reschedule Appointment' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Confirm Psychologist and Date for Reschedule' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Re-Schedule Your Appointment' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Child' %}</label>
+                        <p class="form-control" style="padding-top: 13px">{{ appointment.child.full_name }}</p>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Appointment Date' %}</label>
+                        <input name="appointment_date" type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker" data-position='bottom left'>
+{#                       {% render_field form.appointment_date type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker" data-position='bottom left'%}#}
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Select Psychologist' %}</label>
+                            <select class="select2" name="psy">
+                                <option value={{ appointment.psychologist.full_name }}>{{ appointment.psychologist.full_name }}</option>
+                                {% for psy in psys %}
+                                    <option value={{ psy.full_name }}>{{ psy.full_name }}</option>
+                                {% endfor %}
+                            </select>
+                    </div>
+                    <div class="col-12 form-group mg-t-8">
+                        <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Check Availability' %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

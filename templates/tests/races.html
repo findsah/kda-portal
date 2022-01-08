@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>raceGame</title>
+    <link rel="stylesheet" href="race.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="race.js"></script>
+    <style>
+        .resultDemo {
+            display: none;
+            justify-content: center;
+            flex-direction: row-reverse;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+
+        .resultrace {
+            display: none;
+            justify-content: center;
+            flex-direction: row-reverse;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+
+        .imgStyle {
+            width: 15rem;
+            height: 15rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card height-auto container1" style="width: 50%; position: relative; top: 30vh; left: 25vw;"
+        id="full_screen_div">
+        <div class="card-body" id="startSection" style="display: none;">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Training by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" id="demoPlay">Start
+                        Training</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body" id="test1">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Test1 by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" id="test1Play">Start
+                        Test</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div id="showDemoImages" class="col-12"
+                    style="text-align: center; margin-bottom: 10px; width: 150px; margin: 20% auto; display: none">
+                    <img class="imgStyle" src="" id="img" alt="Starting...  ">
+                </div>
+            </div>
+        </div>
+
+        <div class="showImagesBeforeVideo" style="display: none; text-align: center;">
+            <img class="imgStyle" src="../Resources/Elephant11.png" alt="img">
+            <img class="imgStyle" src="../Resources/Giraffe.png" alt="img">
+        </div>
+
+        <div class="showImagesRace1" style="display: none; text-align: center;">
+            <img class="imgStyle" src="../Resources/Fox.png" alt="img" id="Fox"
+                onclick="showResultRace1('ofox.wav', 'Fox.png')">
+            <img class="imgStyle" src="../Resources/Dog.png" alt="img" id="Dog"
+                onclick="showResultRace1('odog.wav', 'Dog.png')">
+            <img class="imgStyle" src="../Resources/Cat.png" alt="img" id="Cat"
+                onclick="showResultRace1('ocat.wav', 'Cat.png')">
+        </div>
+        <div class="showImagesRace2" style="display: none; text-align: center;">
+            <img class="imgStyle" src="../Resources/Cow.png" alt="img" id="Cow"
+                onclick="showResultRace1('OCow.wav', 'Cow.png')">
+            <img class="imgStyle" src="../Resources/Donkey1.png" alt="img" id="Donkey1"
+                onclick="showResultRace1('odonkey.wav', 'Donkey1.png')">
+            <img class="imgStyle" src="../Resources/Goat11.png" alt="img" id="Goat11"
+                onclick="showResultRace1('ogoatwav', 'Goat11.png')">
+        </div>
+
+        <div class="showImagesAfterVideo" style="display: none; width: 100%; text-align: center;">
+            <img class="imgStyle" src="../Resources/Elephant11.png" alt="img" id="Elephant11"
+                onclick="showResultDemo('OElephant.wav', 'Elephant11.png')">
+            <img class="imgStyle" src="../Resources/Giraffe.png" alt="img" id="Giraffe"
+                onclick="showResultDemo('ogiraffe.wav', 'Giraffe.png')">
+        </div>
+
+        <!-- <div class="showImagesAfterVideoRace1" style="display: none; width: 100%; text-align: center;">
+            <img class="imgStyle" src="../Resources/Elephant11.png" alt="img" id="Elephant11"
+                onclick="showResultRace1('OElephant.wav', 'Elephant11.png')">
+            <img class="imgStyle" src="../Resources/Giraffe.png" alt="img" id="Giraffe"
+                onclick="showResultRace1('ogiraffe.wav', 'Giraffe.png')">
+            <img class="imgStyle" src="../Resources/Giraffe.png" alt="img" id="Giraffe"
+                onclick="showResultRace1('ogiraffe.wav', 'Giraffe.png')">
+        </div> -->
+
+        <div class="resultDemo"></div>
+        <div class="resultrace"></div>
+
+        <div id="vid" style="display: none;">
+            <video id="myVideo" width="1920" height="500" style="width: 100%; height: 100%">
+                <source src="../Resources/race.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <audio id="audio0" autoplay>
+            <source src="../Resources/audio/this is Elefant.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio1" autoplay>
+            <source src="../Resources/audio/this is giraffe.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio2" autoplay>
+            <source src="../Resources/audio/hadarace.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio3" autoplay>
+            <source src="../Resources/audio/theorder.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio4" autoplay>
+            <source src="../Resources/audio/Thesequence.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio5" autoplay>
+            <source src="../Resources/audio/First1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio6" autoplay>
+            <source src="../Resources/audio/ogiraffe.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio7" autoplay>
+            <source src="../Resources/audio/Second1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio8" autoplay>
+            <source src="../Resources/audio/OElephant.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio9" autoplay>
+            <source src="../Resources/races/wcame1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio10" autoplay>
+            <source src="../Resources/races/wcame2.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio11" autoplay>
+            <source src="../Resources/races/tryagain.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest0" autoplay>
+            <source src="../Resources/audio/this is fox.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest1" autoplay>
+            <source src="../Resources/audio/this is dog.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest2" autoplay>
+            <source src="../Resources/audio/this is cat.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest3" autoplay>
+            <source src="../Resources/audio/odog.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest4" autoplay>
+            <source src="../Resources/audio/ocat.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest5" autoplay>
+            <source src="../Resources/audio/ofox.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest6" autoplay>
+            <source src="../Resources/races/Third1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest7" autoplay>
+            <source src="../Resources/races/wcame3.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest8" autoplay>
+            <source src="../Resources/audio/OCow.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest9" autoplay>
+            <source src="../Resources/races/odonkey.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest10" autoplay>
+            <source src="../Resources/races/ogoat.wav" type="audio/mpeg">
+        </audio>
+    </div>
+    <script>
+        let x = -1;
+        var demo = 0;
+        let playaudio = 0;
+        let startRace = 1;
+        let check = false;
+        let audioSrcArr = [];
+        let swap = (arr, i, j) => arr.map((e, k) => k - i ? (k - j ? e : arr[i]) : arr[j]);
+
+        var audio2 = document.getElementById("audio2");
+        var audio3 = document.getElementById("audio3");
+        var audio4 = document.getElementById("audio4");
+        var audio5 = document.getElementById("audio5");
+        var audio6 = document.getElementById("audio6");
+        var audio7 = document.getElementById("audio7");
+        var audio8 = document.getElementById("audio8");
+        var audio9 = document.getElementById("audio9");
+        var audio10 = document.getElementById("audio10");
+        var audio11 = document.getElementById("audio11");
+
+        var atest3 = document.getElementById("atest3");
+        var atest4 = document.getElementById("atest4");
+        var atest5 = document.getElementById("atest5");
+        var atest6 = document.getElementById("atest6");
+        var atest7 = document.getElementById("atest7");
+        var atest8 = document.getElementById("atest8");
+        var atest9 = document.getElementById("atest9");
+        var atest10 = document.getElementById("atest10");
+
+        const musics = [audio4, audio5, audio6, audio7, audio8];
+        var order = ["Thesequence.wav", "First1.wav", "ogiraffe.wav", "Second1.wav", "OElephant.wav"];
+        var demoVideo = document.getElementById("myVideo");
+        let demoImages = ["../Resources/Elephant11.png", "../Resources/Giraffe.png"];
+
+
+        $("#test1Play").click(function () {
+            var element = document.querySelector(".container1");
+            element.requestFullscreen()
+                .then(function () {
+                    $("#showDemoImages").css("display", "block");
+                    $("#test1").css("display", "none");
+                    oneByOneImages();
+                })
+                .catch(function (error) {
+
+                });
+        });
+
+        function oneByOneImages() {
+            console.log(startRace)
+            var race1 = ["../Resources/Fox.png", "../Resources/Dog.png", "../Resources/Cat.png"];
+            var race2 = ["../Resources/Cow.png", "../Resources/Donkey1.png", "../Resources/Goat11.png"];
+            var race3 = ["../Resources/Dove.png", "../Resources/peacock.png", "../Resources/Bird11.png"];
+            var race4 = ["../Resources/ostrich11.png", "../Resources/Tiger.png", "../Resources/bear.png"];
+            if (startRace = 1) {
+                var stop = 0;
+                var value = setInterval(() => {
+                    x = (x === race1.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${x}`).play();
+                    document.getElementById("img").src = race1[x];
+                    console.log(x)
+                    if (stop >= 2) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            $("#showDemoImages").css("display", "none");
+                            $(".showImagesRace1").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    stop++;
+                }, 2000);
+            } else if (startRace = 2) {
+                var stop = 0;
+                var value = setInterval(() => {
+                    x = (x === race2.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${x}`).play();
+                    document.getElementById("img").src = race2[x];
+                    console.log(x)
+                    if (stop >= 2) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            $("#showDemoImages").css("display", "none");
+                            $(".showImagesRace2").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    stop++;
+                }, 2000);
+            }
+        }
+
+
+        function test1VideoPlay() {
+            setTimeout(() => {
+                $(".showImagesRace1").css("display", "none");
+                $(".showImagesRace2").css("display", "none");
+                $("#vid").css("display", "block");
+                demoVideo.play();
+                demoVideo.onended = () => {
+                    playmusic();
+                }
+            }, 2000);
+        }
+
+
+        var music1 = [audio4, audio5, atest3, audio7, atest4, atest6, atest5];
+        var music2 = [audio4, audio5, atest8, audio7, atest9, atest6, atest10];
+        var order1 = ["Thesequence.wav", "First1.wav", "odog.wav", "Second1.wav", "ocat.wav", "Third1.wav", "ofox.wav"];
+        var order2 = ["Thesequence.wav", "First1.wav", "OCow.wav", "Second1.wav", "odonkey.wav", "Third1.wav", "ogoat.wav"];
+        function playmusic() {
+            if (startRace = 1) {
+                var current = music1.shift();
+                var orderValue = order1.shift();
+                if (current) {
+                    current.src = `../Resources/audio/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace1").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace = 2) {
+                var current = music2.shift();
+                var orderValue = order2.shift();
+                if (current) {
+                    current.src = `../Resources/audio/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace1").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            }
+        }
+
+
+        function showResultRace1(audioSrc, imgSrc) {
+            if (check) {
+                let makeID = imgSrc.split('.')[0];
+                var order1 = ["Thesequence.wav", "First1.wav", "odog.wav", "Second1.wav", "ocat.wav", "Third1.wav", "ofox.wav"];
+                audioSrcArr.push(audioSrc);
+                $(".resultrace").append(`<img  class="imgStyle" src="../Resources/${imgSrc}" alt="img" >`);
+                $(`#${makeID}`).css("display", "none");
+                if (playaudio === 0) {
+                    audio10.play();
+                    playaudio++;
+                } else if (playaudio === 1) {
+                    atest7.play();
+                    playaudio++;
+                } else {
+                    startRace = 2;
+                    $("#showDemoImages").css("display", "block");
+                    $(".resultrace").css("display", "none");
+                    oneByOneImages();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+        function displayNextImage() {
+            var value = setInterval(() => {
+                x = (x === demoImages.length - 1) ? 0 : x + 1;
+                document.getElementById(`audio${x}`).play();
+                document.getElementById("img").src = demoImages[x];
+                // console.log(x)
+                if (demo >= 1) {
+                    clearInterval(value);
+                    setTimeout(() => {
+                        $("#showDemoImages").css("display", "none");
+                        $(".showImagesBeforeVideo").css("display", "block");
+                        audio2.play();
+                        audio2.onended = () => {
+                            audio3.play();
+                            playVideo();
+                        }
+                    }, 2000);
+                }
+                demo++;
+            }, 2000);
+        }
+
+
+        function showResultDemo(audioSrc, imgSrc) {
+            let makeID = imgSrc.split('.')[0];
+            order = ["Thesequence.wav", "First1.wav", "ogiraffe.wav", "Second1.wav", "OElephant.wav"];
+            audioSrcArr.push(audioSrc);
+            $(".resultDemo").append(`<img  class="imgStyle" src="../Resources/${imgSrc}" alt="img" >`);
+            $(`#${makeID}`).css("display", "none");
+            if (playaudio === 0) {
+                audio10.play();
+                playaudio++;
+            } else if (playaudio === 1) {
+                if (audioSrcArr[0] === order[2]) {
+                    $(".resultDemo").css("display", "none");
+                    x = -1;
+                    document.getElementById("img").src = "";
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen()
+                            .then(() => {
+                                $("#test1").css("display", "block");
+                            })
+                            .catch((err) => console.error(err))
+                    }
+                } else {
+                    // let b = swap(order, 2, 4);
+                    // order = b;
+                    audio11.play();
+                    audio11.onended = () => {
+                        window.location.reload();
+                        // $(".resultDemo").css("display", "none");
+                        // if (document.fullscreenElement) {
+                        //     document.exitFullscreen()
+                        //         .then(() => {
+                        //             $("#startSection").css("display", "block");
+                        //         })
+                        //         .catch((err) => console.error(err))
+                        // }
+                    }
+                }
+            }
+        }
+
+        function playArray() {
+            var current = musics.shift();
+            var orderValue = order.shift();
+            if (current) {
+                current.src = `../Resources/audio/${orderValue}`;
+                current.addEventListener('ended', playArray);
+            } else {
+                $(".showImagesAfterVideo").css("display", "block");
+                audio9.play();
+                $(".resultDemo").css("display", "flex");
+                $("#vid").css("display", "none");
+            }
+        }
+
+        function playVideo() {
+            setTimeout(() => {
+                $(".showImagesBeforeVideo").css("display", "none");
+                $("#vid").css("display", "block");
+                demoVideo.play();
+                demoVideo.onended = () => {
+                    playArray();
+                }
+            }, 2000);
+        }
+
+
+        $("#demoPlay").click(function () {
+            var element = document.querySelector(".container1");
+            element.requestFullscreen()
+                .then(function () {
+                    $("#showDemoImages").css("display", "block");
+                    $("#startSection").css("display", "none");
+                    displayNextImage();
+                })
+                .catch(function (error) {
+
+                });
+        });
+    </script>
+</body>
+
+</html>

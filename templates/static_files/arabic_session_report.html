@@ -1,0 +1,148 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Report for' %} "{{ student.full_name }}"</h3>
+        <p>{% translate 'Teacher:' %} "{{ teacher.full_name }}"</p>
+        <p>{% translate 'Session Date:' %} "{{ intv.date }}"</p>
+    </div>
+    <form method="post">
+    {% csrf_token %}
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-12">
+                <label>{% translate 'Letter:' %} </label>
+                    <select class="select2" name="letter" onchange="form.requestSubmit();">
+                        <option value="1">{% translate 'Please Select Letter' %}</option>
+                        <option value="1" {% if letter_number == "1" %}selected="selected"{% endif %} {% if n_of_letters < 1 %}disabled="disabled"{% endif %}>الراء</option>
+                        <option value="2" {% if letter_number == "2" %}selected="selected"{% endif %} {% if n_of_letters < 2 %}disabled="disabled"{% endif %}>الباء</option>
+                        <option value="3" {% if letter_number == "3" %}selected="selected"{% endif %} {% if n_of_letters < 3 %}disabled="disabled"{% endif %}>العين</option>
+                        <option value="4" {% if letter_number == "4" %}selected="selected"{% endif %} {% if n_of_letters < 4 %}disabled="disabled"{% endif %}>الدال</option>
+                        <option value="5" {% if letter_number == "5" %}selected="selected"{% endif %} {% if n_of_letters < 5 %}disabled="disabled"{% endif %}>السين</option>
+                        <option value="6" {% if letter_number == "6" %}selected="selected"{% endif %} {% if n_of_letters < 6 %}disabled="disabled"{% endif %}>الميم</option>
+                        <option value="7" {% if letter_number == "7" %}selected="selected"{% endif %} {% if n_of_letters < 7 %}disabled="disabled"{% endif %}>النون</option>
+                        <option value="8" {% if letter_number == "8" %}selected="selected"{% endif %} {% if n_of_letters < 8 %}disabled="disabled"{% endif %}>التنوين</option>
+                        <option value="9" {% if letter_number == "9" %}selected="selected"{% endif %} {% if n_of_letters < 9 %}disabled="disabled"{% endif %}>الصاد</option>
+                        <option value="10" {% if letter_number == "10" %}selected="selected"{% endif %} {% if n_of_letters < 10 %}disabled="disabled"{% endif %}>الزاي</option>
+                        <option value="11" {% if letter_number == "11" %}selected="selected"{% endif %} {% if n_of_letters < 11 %}disabled="disabled"{% endif %}>الكاف</option>
+                        <option value="12" {% if letter_number == "12" %}selected="selected"{% endif %} {% if n_of_letters < 12 %}disabled="disabled"{% endif %}>الهاء</option>
+                        <option value="13" {% if letter_number == "13" %}selected="selected"{% endif %} {% if n_of_letters < 13 %}disabled="disabled"{% endif %}>النون</option>
+                        <option value="14" {% if letter_number == "14" %}selected="selected"{% endif %} {% if n_of_letters < 14 %}disabled="disabled"{% endif %}>التاء المربوطة</option>
+                        <option value="15" {% if letter_number == "15" %}selected="selected"{% endif %} {% if n_of_letters < 15 %}disabled="disabled"{% endif %}>الحاء</option>
+                        <option value="16" {% if letter_number == "16" %}selected="selected"{% endif %} {% if n_of_letters < 16 %}disabled="disabled"{% endif %}>الواو</option>
+                        <option value="17" {% if letter_number == "17" %}selected="selected"{% endif %} {% if n_of_letters < 17 %}disabled="disabled"{% endif %}>الفاء</option>
+                        <option value="18" {% if letter_number == "18" %}selected="selected"{% endif %} {% if n_of_letters < 18 %}disabled="disabled"{% endif %}>الياء</option>
+                        <option value="19" {% if letter_number == "19" %}selected="selected"{% endif %} {% if n_of_letters < 19 %}disabled="disabled"{% endif %}>الضاد</option>
+                        <option value="20" {% if letter_number == "20" %}selected="selected"{% endif %} {% if n_of_letters < 20 %}disabled="disabled"{% endif %}>اللام</option>
+                        <option value="21" {% if letter_number == "21" %}selected="selected"{% endif %} {% if n_of_letters < 21 %}disabled="disabled"{% endif %}>الألف</option>
+                        <option value="22" {% if letter_number == "22" %}selected="selected"{% endif %} {% if n_of_letters < 22 %}disabled="disabled"{% endif %}>همزتا الوصل والقطع</option>
+                        <option value="23" {% if letter_number == "23" %}selected="selected"{% endif %} {% if n_of_letters < 23 %}disabled="disabled"{% endif %}>الهمزة المتوسطة</option>
+                        <option value="24" {% if letter_number == "24" %}selected="selected"{% endif %} {% if n_of_letters < 24 %}disabled="disabled"{% endif %}>الهمزة آخر الكلمة</option>
+                        <option value="25" {% if letter_number == "25" %}selected="selected"{% endif %} {% if n_of_letters < 25 %}disabled="disabled"{% endif %}>الألف المتطرفة</option>
+                        <option value="26" {% if letter_number == "26" %}selected="selected"{% endif %} {% if n_of_letters < 26 %}disabled="disabled"{% endif %}>الشدة</option>
+                        <option value="27" {% if letter_number == "27" %}selected="selected"{% endif %} {% if n_of_letters < 27 %}disabled="disabled"{% endif %}>الـ التعريف</option>
+                        <option value="28" {% if letter_number == "28" %}selected="selected"{% endif %} {% if n_of_letters < 28 %}disabled="disabled"{% endif %}>مهارة دخول حرف على الكلمة المبدوءة بـ ال</option>
+                        <option value="29" {% if letter_number == "29" %}selected="selected"{% endif %} {% if n_of_letters < 29 %}disabled="disabled"{% endif %}>القاف</option>
+                        <option value="30" {% if letter_number == "30" %}selected="selected"{% endif %} {% if n_of_letters < 30 %}disabled="disabled"{% endif %}>الجيم</option>
+                        <option value="31" {% if letter_number == "31" %}selected="selected"{% endif %} {% if n_of_letters < 31 %}disabled="disabled"{% endif %}>التاء</option>
+                        <option value="32" {% if letter_number == "32" %}selected="selected"{% endif %} {% if n_of_letters < 32 %}disabled="disabled"{% endif %}>الطاء</option>
+                        <option value="33" {% if letter_number == "33" %}selected="selected"{% endif %} {% if n_of_letters < 33 %}disabled="disabled"{% endif %}>الغين</option>
+                        <option value="34" {% if letter_number == "34" %}selected="selected"{% endif %} {% if n_of_letters < 34 %}disabled="disabled"{% endif %}>الشين</option>
+                        <option value="35" {% if letter_number == "35" %}selected="selected"{% endif %} {% if n_of_letters < 35 %}disabled="disabled"{% endif %}>الذال</option>
+                        <option value="36" {% if letter_number == "36" %}selected="selected"{% endif %} {% if n_of_letters < 36 %}disabled="disabled"{% endif %}>الخاء</option>
+                        <option value="37" {% if letter_number == "37" %}selected="selected"{% endif %} {% if n_of_letters < 37 %}disabled="disabled"{% endif %}>الطاء</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+     {% if letter_number %}
+         <div class="card height-auto">
+            <div class="card-body">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-12">
+                    <canvas id="bar-chart1"></canvas>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    {% endif %}
+    {{ labels|json_script:'labels' }}
+    <script>
+        const labels = JSON.parse(document.getElementById('labels').textContent);
+        {#if ({{ letter_number }} in {{ general }}){#}
+        {#    console.log('Yes')#}
+        {# } else {#}
+        {#    console.log("No")#}
+        {# }#}
+        var colorArray = [
+                '#dd0453', '#fdfd05', '#66E64D', '#0660e7', '#9900B3',
+                 '#d07201', '#14b300','#06d2a6','#f8061a','#c45850',
+                '#66664D', '#d6d6d7', '#76008f', '#4DB3FF', '#1AB399',
+                '#ec92d1', '#33991A', '#ba8383', '#B3B31A', '#00E680',
+                '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+                '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+            new Chart(document.getElementById("bar-chart1"), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: {{ result }},
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels){
+                                    switch (label) {
+                                   case 2:
+                                     return 'مقبول';
+                                   case 4:
+                                     return 'جيد';
+                                   case 6:
+                                     return 'جيد جداً';
+                                   case 8:
+                                     return 'ممتاز';
+                                 }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout:{
+                        padding:{
+                            left:160,
+                            right:200,
+                        }
+                    }
+                }
+            });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Confirm Appointment' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li><a href={% url 'add_appointment' %}>{% translate 'Add Appointment' %}</a></li>
+            <li><a href={% url 'check_slots' psy.id child.id date%}>{% translate 'Confirm Slot' %}</a></li>
+            <li>{% translate 'Confirm Appointment' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Confirm Your Appointment' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Child Name' %}:</label>
+                    <input class="form-control" name="child" value="{{ child.full_name }}" readonly>
+{#                    <select class="select2" name="child">#}
+{#                        <option value={{ child.full_name }}>{{ child.full_name }}</option>#}
+{#                        {% for child in children %}#}
+{#                            <option value={{ child.full_name }}>{{ child.full_name }}</option>#}
+{#                        {% endfor %}#}
+{#                    </select>#}
+                </div>
+                {% if request.user.role.name == "Receptionist" %}
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Your Selected Psychologist' %}: </label>
+                    <p class="form-control" style="padding-top: 13px">{{ psy.full_name }}</p>
+                </div>
+                {% endif %}
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Your Selected Date' %}: </label>
+                    <p class="form-control" style="padding-top: 13px">{{ date }}</p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                    <label>{% translate 'Your Selected Time Slot' %}: </label>
+                    <p class="form-control" style="padding-top: 13px">{{ time_s }}-{{ time_e }}</p>
+                </div>
+                <div class="col-12 form-group mg-t-8">
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Confirm Appointment' %}?</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Search Teacher' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Teacher Search' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Search Teacher' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-12 form-group">
+                        <label>{% translate 'Teacher Name' %}</label>
+                        <select class="select2" name="teacher" required>
+                            <option value="">{% translate 'Please Select Teacher' %}</option>
+                            {% for teacher in teachers %}
+                                <option value={{ teacher.username }}>"{{ teacher.subject_teaching }}"-{{ teacher.full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate "Child Case Form" %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 1" %}</button></a></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 2" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 3" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 4" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 5" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 6" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 7" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 8" %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate "Step 9" %}</button></a>
+            </li>
+            <li>
+                <button style="margin-bottom: 8px" type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate "Step 10" %}</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate "Other Information" %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "To what extent are the parents cooperating with the school, are they attending to follow it automatically or in response to the school summons?" %}</label>
+{#                            {% render_field form.follow_up class="form-control textarea" rows="5"%}#}
+                            <textarea name="follow_up" class="form-control textarea" rows="5">{% if not cc.parents_cooperation %}{% else %}{{ cc.parents_cooperation }}{% endif %}</textarea>
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate "Reason/reasons for transferring the case to the association:" %}</strong></p>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Reason 1" %}</label>
+                            <textarea name="reason_1" class="form-control textarea" rows="5">{% if not cc.reason_1 %}{% else %}{{ cc.reason_1 }}{% endif %}</textarea>
+{#                            {% render_field form.reason_1 class="form-control textarea" rows="2"%}#}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Reason 2" %}</label>
+                            <textarea name="reason_2" class="form-control textarea" rows="5">{% if not cc.reason_2 %}{% else %}{{ cc.reason_2 }}{% endif %}</textarea>
+{#                            {% render_field form.reason_2 class="form-control textarea" rows="2"%}#}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Reason 3" %}</label>
+                            <textarea name="reason_3" class="form-control textarea" rows="5">{% if not cc.reason_3 %}{% else %}{{ cc.reason_3 }}{% endif %}</textarea>
+{#                            {% render_field form.reason_3 class="form-control textarea" rows="2"%}#}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Reason 4" %}</label>
+                            <textarea name="reason_4" class="form-control textarea" rows="5">{% if not cc.reason_4 %}{% else %}{{ cc.reason_4 }}{% endif %}</textarea>
+{#                            {% render_field form.reason_4 class="form-control textarea" rows="2"%}#}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Reason 5" %}</label>
+                            <textarea name="reason_5" class="form-control textarea" rows="5">{% if not cc.reason_5 %}{% else %}{{ cc.reason_5 }}{% endif %}</textarea>
+{#                            {% render_field form.reason_5 class="form-control textarea" rows="2"%}#}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Child has taken the IQ Test Previously?" %}</label>
+                            <select class="select2" name="iq_test">
+                                <option value="">{% translate "Please Select Option" %}</option>
+                                <option value="yes" {% if cc.prev_iq == "yes"%}selected="selected"{% endif %}>{% translate "Yes" %}</option>
+                                <option value="no" {% if cc.prev_iq == "no"%}selected="selected"{% endif %}>{% translate "No" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Date of Last Assessment (If any)" %}</label>
+                            {% render_field form.date_last_a|attr:"readonly" type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker" data-position='bottom left' value=cc.date_last_assessment%}
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-12 form-group">
+                            <label>{% translate "Place of Last Assessment (If any)" %}</label>
+                            {% render_field form.place_last_a class="form-control" value=cc.place_last_assessment%}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Any Other Information?" %}</label>
+                            <textarea name="other_info" class="form-control textarea" rows="5">{% if not cc.other_info %}{% else %}{{ cc.other_info }}{% endif %}</textarea>
+{#                            {% render_field form.other_info class="form-control textarea" rows="5"%}#}
+                        </div>
+{#                         <div class="col-12 form-group mg-t-8" style="width: 100px">#}
+{#                            <p style="padding-top: 13px"><strong>Endorsement</strong></p>#}
+{#                        </div>#}
+
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <a href={% url 'cc_difficulties' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Previous" %}</button></a>
+                            <button name='next' type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate "Submit" %}</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,241 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+        <div class="breadcrumbs-area">
+            <h3>{% translate 'Dashboard of ' %} "{{ psy.full_name }}"</h3>
+            <ul>
+                <li>
+                    <a href="index.html">{% translate 'Home' %}</a>
+                </li>
+                <li>{% translate 'Psychologist' %}</li>
+            </ul>
+        </div>
+
+{#        <div class="col-8-xxxl col-12">#}
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="item-icon bg-light-magenta">
+                                    <i class="flaticon-shopping-list text-magenta"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'On Going Appointments' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ ca_count }}>{{ ca_count }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="item-icon bg-light-blue">
+                                    <i class="flaticon-calendar text-blue"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Concluded Appointments' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ pa_count }}>{{ pa_count }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{#                <div class="col-lg-4">#}
+{#                    <div class="dashboard-summery-one">#}
+{#                        <div class="row">#}
+{#                            <div class="col-6">#}
+{#                                <div class="item-icon bg-light-yellow">#}
+{#                                    <i class="flaticon-percentage-discount text-orange"></i>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-6">#}
+{#                                <div class="item-content">#}
+{#                                    <div class="item-title">Attendance</div>#}
+{#                                    <div class="item-number"><span class="counter" data-num="94">94</span><span>%</span></div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+{#        </div>#}
+
+        <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>{% translate 'Availability' %}:</h3>
+                    </div>
+                   <div>
+                       <a href="{% url 'availability' psy.id %}"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Check Availability' %}</button></a>
+                   </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card height-auto">
+            <div class="card-body">
+                {% if display == 's_name' %}
+                    <div class="row">
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p><strong>{% translate 'Appointments for child' %} "{{ child.full_name }}"</strong></p>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if display == "all" %}
+                <form class="mg-b-20" method="post">
+                {% csrf_token %}
+                <div class="row gutters-8">
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <select class="select2" name="s_child">
+                            <option value="">{% translate 'Select Child' %}</option>
+                            {% for child in children %}
+                                <option value={{ child.username }} {% if child.username == ch.username %}selected='selected'{% endif %}>{{ child.full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                        <button name="s_child_btn" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Apply Filter' %}</button>
+                    </div>
+                </div>
+                <div class="row gutters-8">
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <input type="text" class="form-control air-datepicker" data-position='bottom left' placeholder="{% translate 'Filter by Specific Date' %}" name="s_date">
+                    </div>
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                        <button name="s_date_btn" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Apply Filter' %}</button>
+                    </div>
+                </div>
+                <div class="row gutters-8">
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <input type="text" placeholder="{% translate 'Select Range (From)' %}" data-position='bottom left' class="form-control air-datepicker" name="from_date">
+                    </div>
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                        <input type="text" placeholder="{% translate 'Select Range (To)' %}" data-position='bottom left' class="form-control air-datepicker" name="to_date">
+                    </div>
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                        <button name="range" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Apply Filter' %}</button>
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+            {% if display != 's_date' and display != 'r_dates' %}
+
+                <!---TABLE 1 --->
+                <div class="row">
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <p style="padding-top: 13px"><strong>{% translate 'On Going Appointments' %}:</strong></p>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table display data-table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Child Name' %}</th>
+                                <th>{% translate 'Appointment Date' %}</th>
+                                <th>{% translate 'Appointment Time' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for appoint in c_appoints %}
+                                <tr>
+                                    <td>{{ appoint.child.full_name }}</td>
+                                    <td>{{ appoint.appointment_date|date:'d/m/Y' }}</td>
+                                    <td>{{ appoint.appointment_s_time|date:'H:i:s' }}-{{ appoint.appointment_e_time|date:'H:i:s' }}</td>
+                                </tr>
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+
+                <!---TABLE 2 --->
+                <div class="row">
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <p style="padding-top: 13px"><strong>{% translate 'Concluded Appointments' %}:</strong></p>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table display data-table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Child Name' %}</th>
+                                <th>{% translate 'Appointment Date' %}</th>
+                                <th>{% translate 'Appointment Time' %}</th>
+                                <th>{% translate 'Assessment Data' %}</th>
+                                <th>{% translate 'Assessment Report' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for appoint in p_appoints %}
+                                <tr>
+                                <td>{{ appoint.child.full_name }}</td>
+                                <td>{{ appoint.appointment_date|date:'d/m/Y' }}</td>
+                                <td>{{ appoint.appointment_s_time|date:'H:i:s' }}-{{ appoint.appointment_e_time|date:'H:i:s' }}</td>
+                                <td><a href={% url 'assess_tests' appoint.child.id appoint.psychologist.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Add/Edit' %}</button></a></td>
+                                {% if appoint in assessments %}
+                                    <td><a href={% url 'assessment-graph' appoint.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Check' %}</button></a></td>
+                                {% else %}
+                                    <td>---</td>
+                                {% endif %}
+                                </tr>
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+
+            {% else %}
+                 <!---TABLE FOR ALL APPOINTMENTS --->
+                <div class="row">
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        {% if display != 'r_dates' %}
+                            <p style="padding-top: 13px"><strong>{% translate 'All Appointments on Date' %} {{ ss_date }}</strong></p>
+                        {% else %}
+                            <p style="padding-top: 13px"><strong>{% translate 'All Appointments between' %} {{ f_date }} to {{ t_date }}</strong></p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table display data-table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Child Name' %}</th>
+                                <th>{% translate 'Appointment Date' %}</th>
+                                <th>{% translate 'Appointment Time' %}</th>
+                                <th>{% translate 'Assessment Data' %}</th>
+                                <th>{% translate 'Assessment Report' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for appoint in appoints %}
+                                <tr>
+                                <td>{{ appoint.child.full_name }}</td>
+                                <td>{{ appoint.appointment_date|date:'d:m:Y' }}</td>
+                                <td>{{ appoint.appointment_s_time|date:'H:i:s' }}-{{ appoint.appointment_e_time|date:'H:i:s' }}</td>
+                                <td><a href={% url 'assess_tests' appoint.child.id appoint.psychologist.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Add/Edit' %}</button></a></td>
+                                {% if appoint in assessments %}
+                                    <td><a href={% url 'assessment-graph' appoint.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Check' %}</button></a></td>
+                                {% else %}
+                                    <td>---</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+
+{% endblock %}

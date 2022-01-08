@@ -1,0 +1,85 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Check Intervention' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+             <li>{% translate 'Check Intervention' %}</li>
+        </ul>
+    </div>
+
+     <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                     <h3>{% translate 'Check Data for this Intervention' %}</h3>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    {% if intervention %}
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Student' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ intervention.student.full_name }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Teacher' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ intervention.teacher.full_name }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Subject' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ intervention.teacher.subject_teaching }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Total Sessions' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ intervention.total_sessions }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Currently Sessions per week' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ sessions_count }}</p>
+                        </div>
+                        {% if back %}
+                            <div class="col-12 form-group mg-t-8">
+                                <label>{% translate 'You can not add more sessions per week!' %}</label>
+                                <a href={% url 'add_intervention' intervention.student.id %}><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Go Back' %}</button></a>
+                            </div>
+                        {% else %}
+                            <div class="col-12 form-group mg-t-8">
+                                <a href={% url 'weekly' intervention.student.id intervention.teacher.id %}><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Add Session' %}</button></a>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Student' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ student.full_name }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Teacher' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ teacher.full_name }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Subject' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">{{ teacher.subject_teaching }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Currently Sessions per week' %}:</label>
+                             <p style="padding-top: 13px" class="form-control">0</p>
+                        </div>
+                        <div class="col-12 form-group mg-t-8">
+                            <a href={% url 'weekly' student.id teacher.id %}><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Add Session' %}</button></a>
+                        </div>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+     </div>
+
+{% endblock %}

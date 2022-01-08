@@ -1,0 +1,150 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Pre Performance for' %} "{{ intervention.student.full_name }}" </h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Pre Performance Search' %}</li>
+        </ul>
+    </div>
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Pre Performance' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {% if subj == "English" %}
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>Sequence Chart : Visual Presentation (Reading)</label>
+                        <select class="select2" name="reading">
+                            <option value="">Please Select Grade</option>
+                            <option value="accept" {% if skill_english.one == "accept" %}selected="selected"{% endif %}>Accept</option>
+                            <option value="good" {% if skill_english.one == "good" %}selected="selected"{% endif %}>Good</option>
+                            <option value="vgood" {% if skill_english.one == "vgood" %}selected="selected"{% endif %}>Very Good</option>
+                            <option value="excellent" {% if skill_english.one == "excellent" %}selected="selected"{% endif %}>Excellent</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>Sequence Chart : Auditory/Kinesthetic Presentation (spelling and writing)</label>
+                        <select class="select2" name="writing">
+                            <option value="">Please Select Grade</option>
+                            <option value="accept" {% if skill_english.two == "accept" %}selected="selected"{% endif %}>Accept</option>
+                            <option value="good" {% if skill_english.two == "good" %}selected="selected"{% endif %}>Good</option>
+                            <option value="vgood" {% if skill_english.two == "vgood" %}selected="selected"{% endif %}>Very Good</option>
+                            <option value="excellent" {% if skill_english.two == "excellent" %}selected="selected"{% endif %}>Excellent</option>
+                        </select>
+                    </div>
+                {% else %}
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>قياس قدرة التلميذ على تمييز صوت الحرف الأول في الكلمة شفهياً</label>
+                        <select class="select2" name="one">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.one == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.one == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.one == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.one == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>قياس قدرة التلميذ على التمييز بين كلمتين إن كانتا تبدآن  ينفس الصوت شفهياً</label>
+                        <select class="select2" name="two">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.two == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.two == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.two == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.two == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>قياس قدرة التلميذ على التمييز بين ثلاث كلمات اثنتان منهما تبدآن بنفس الصوت يحددها شفهياً</label>
+                        <select class="select2" name="three">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.three == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.three == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.three == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.three == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>قياس قدرة التلميذ على تمييز صوت الحرف الأخير في الكلمة شفهياً</label>
+                        <select class="select2" name="four">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.four == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.four == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.four == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.four == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>قياس قدرة التلميذ على التمييز بين كلمتين إن كانتا تنتهيان بنفس الصوت</label>
+                        <select class="select2" name="five">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.five == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.five == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.five == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.five == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>قياس قدرة التلميذ على التمييز بين ثلاث كلمات اثنتان منهما تنتهيان بنفس الصوت يحددها شفهياً</label>
+                        <select class="select2" name="six">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.six == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.six == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.six == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.six == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>يميز التلميذ بين الأصوات الطويلة والأصوات القصيرة شفهياً</label>
+                        <select class="select2" name="seven">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.seven == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.seven == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.seven == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.seven == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-12 form-group">
+                        <label>يتعرف الطالب اتجاه الحرف الصحيح يدوياً</label>
+                        <select class="select2" name="eight">
+                            <option value="">{% translate 'Please Select Grade' %}</option>
+                            <option value="acceptable" {% if skill_arabic.eight == "acceptable" %}selected="selected"{% endif %}>مقبول</option>
+                            <option value="good" {% if skill_arabic.eight == "good" %}selected="selected"{% endif %}>جيد</option>
+                            <option value="vgood" {% if skill_arabic.eight == "vgood" %}selected="selected"{% endif %}>جيد جداً</option>
+                            <option value="excellent" {% if skill_arabic.eight == "excellent" %}selected="selected"{% endif %}>ممتاز</option>
+                        </select>
+                    </div>
+                {% endif %}
+                <div class="col-12 form-group mg-t-8">
+                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Submit' %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

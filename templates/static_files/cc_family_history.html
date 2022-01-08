@@ -1,0 +1,170 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Child Case Form' %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 1' %}</button></a></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 2' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 3' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 4' %}</button></a>
+            </li>
+            <li>
+                <button style="margin-bottom: 8px" type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate 'Step 5' %}</button>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 6' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 7' %}</button></a>
+            </li>
+             <li>
+                 <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 8' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 9' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 10' %}</button></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate 'Specify if one of the family members suffers from the following problems:' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="table-responsive">
+                    <table class="table bs-table table-striped table-bordered text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Problems' %}</th>
+                                <th>{% translate 'Family Members' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{% translate 'Hyperactivity' %}</td>
+{#                                <td>{% render_field form.hyperinactivity style="width:570px" class="textarea" cols="10" rows="2" value="{{ cc.hyperinactivity }}"%}</td>#}
+                                <td><textarea name="hyperinactivity" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.hyperinactivity %}{% else %}{{ cc.hyperinactivity }}{% endif %}</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Reading Difficulty' %}</td>
+{#                                <td>{% render_field form.reading style="width:570px" class="textarea" cols="10" rows="2" value=cc.reading_diff%}</td>#}
+                                <td><textarea name="reading" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.reading_diff %}{% else %}{{ cc.reading_diff }}{% endif %}</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Writing and Dictating Difficulty' %}</td>
+{#                                <td>{% render_field form.writing_dictating style="width:570px" class="textarea" cols="10" rows="2" value=cc.writing_dictating_diff%}</td>#}
+                                <td><textarea name="writing_dictating" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.writing_dictating_diff %}{% else %}{{ cc.writing_dictating_diff }}{% endif %}</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Difficulty in calculating' %}</td>
+{#                                <td>{% render_field form.calculating style="width:570px" class="textarea" cols="10" rows="2" value=cc.calculating_diff%}</td>#}
+                                <td><textarea name="calculating" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.calculating_diff %}{% else %}{{ cc.calculating_diff }}{% endif %}</textarea></td>
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Concentration and attention Difficulty' %}</td>
+                                <td><textarea name="concentration" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.concentration_diff %}{% else %}{{ cc.concentration_diff }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.concentration style="width:570px" class="textarea" cols="10" rows="2" value=cc.concentration_diff%}</td>#}
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Difficulty in Pronouncing' %}</td>
+                                <td><textarea name="pronouncing" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.pronouncing_diff %}{% else %}{{ cc.pronouncing_diff }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.pronouncing style="width:570px" class="textarea" cols="10" rows="2" value=cc.pronouncing_diff%}</td>#}
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Impaired Hearing' %}</td>
+                                <td><textarea name="hearing" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.impaired_hearing %}{% else %}{{ cc.impaired_hearing }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.hearing style="width:570px" class="textarea" cols="10" rows="2" value=cc.impaired_hearing%}</td>#}
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Visual Impairment' %}</td>
+                                <td><textarea name="visual" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.visual_impairment %}{% else %}{{ cc.visual_impairment }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.visual style="width:570px" class="textarea" cols="10" rows="2" value=cc.visual_impairment%}</td>#}
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Impaired Mobility' %}</td>
+                                <td><textarea name="mobility" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.impaired_mobility %}{% else %}{{ cc.impaired_mobility }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.mobility style="width:570px" class="textarea" cols="10" rows="2" value=cc.impaired_mobility%}</td>#}
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Intellectual Disability' %}</td>
+                                <td><textarea name="intellectual" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.intellectual_disability %}{% else %}{{ cc.intellectual_disability }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.intellectual style="width:570px" class="textarea" cols="10" rows="2" value=cc.intellectual_disability%}</td>#}
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Down Syndrome' %}</td>
+                                <td><textarea name="down_syndrome" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.down_syn %}{% else %}{{ cc.down_syn }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.down_syndrome style="width:570px" class="textarea" cols="10" rows="2" value=cc.down_syn%}</td>#}
+                            </tr>
+                            <tr>
+                                <td>{% translate 'Autism' %}</td>
+                                <td><textarea name="autism" class="textarea" style="width: 570px" cols="10" rows="2">{% if not cc.autism %}{% else %}{{ cc.autism }}{% endif %}</textarea></td>
+{#                                <td>{% render_field form.autism style="width:570px" class="textarea" cols="10" rows="2" value=cc.autism%}</td>#}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xl-7 col-lg-9 col-12 form-group">
+                        <label>{% translate 'Other problems not mentioned, specifying family members' %}</label>
+                        <td><textarea name="other_problems" class="textarea form-control" style="width: 570px" cols="10" rows="2">{% if not cc.other_prob %}{% else %}{{ cc.other_prob }}{% endif %}</textarea></td>
+{#                        {% render_field form.other_problems class="textarea form-control" cols="10" rows="2" value=cc.other_prob%}#}
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-12 form-group">
+                        <label>{% translate 'Problem of the child hereditary?' %}</label>
+                        <select class="select2" name="child_hereditary">
+                            <option value="">{% translate 'Please Select Option' %}</option>
+                            <option value="yes" {% if cc.child_hereditary == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                            <option value="no" {% if cc.child_hereditary == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                        </select>
+                    </div>
+                    <div class="col-xl-6 col-lg-7 col-12 form-group">
+                        <label>{% translate 'Age of child when the problem was discovered' %}</label>
+                        {% render_field form.age_discovered class="form-control" value=cc.age_problem%}
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-12 form-group">
+                        <label>{% translate 'How is the problem affecting the child?' %}</label>
+                        {% render_field form.effecting_child class="form-control" value=cc.prob_effect%}
+                    </div>
+                    <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <a href={% url 'cc_stages_of_growth' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Previous' %}</button></a>
+                        <a href={% url 'cc_social_development' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button></a>
+                    </div>
+                </div>
+                <br>
+        </div>
+    </div>
+    </form>
+
+
+{% endblock %}

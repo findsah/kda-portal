@@ -1,0 +1,201 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'All Appointments Reports' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'All Appointments Reports' %}</li>
+        </ul>
+    </div>
+
+     <div class="card height-auto">
+        <div class="card-body">
+            <form class="mg-b-20" method="post">
+                {% csrf_token %}
+                <div class="row gutters-8">
+                    {% if display == "all" %}
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                     <select class="select2" name="psy">
+                        <option value="">{% translate 'Select Psychologist' %}</option>
+                        {% for psy in psys %}
+                            <option value="{{ psy.username }}" {% if psy.username == psyy.username %}selected='selected'{% endif %}>{{ psy.full_name }}</option>
+                        {% endfor %}
+                     </select>
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                        <button name="psy_btn" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Submit' %} </button>
+                     </div>
+                     <div class="col-12-xxxl col-xl-12 col-lg-12 col-12 form-group">
+                         <p style="margin: 30px; text-align: center">{% translate 'OR' %}</p>
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                        <label>{% translate 'From Date' %}</label>
+                        <input name="fromm" type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker" data-position='bottom left' value={{ fromm }}>
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                        <label>{% translate 'To Date' %}</label>
+                        <input name="to" type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker" data-position='bottom left' value={{ too }}>
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group"
+                        style="margin: 33px 0">
+                        <button name="range" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Submit' %} </button>
+                     </div>
+                     <div class="col-12-xxxl col-xl-12 col-lg-12 col-12 form-group">
+                         <p style="margin: 30px; text-align: center">{% translate 'OR' %}</p>
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                     <select class="select2" name="child">
+                        <option value="">{% translate 'Select Child' %}</option>
+                        {% for child in children %}
+                            <option value="{{ child.username }}" {% if child.username == ch.username %}selected='selected'{% endif %}>{{ child.first_name }} {{ child.parent.first_name }} {{ child.last_name }}</option>
+                        {% endfor %}
+                     </select>
+                     </div>
+                     <div class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group">
+                        <button name="child_btn" type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Submit' %} </button>
+                     </div>
+                     {% endif %}
+                     {% if display == 'psy'%}
+                     <div class="col-12 form-group mg-t-8" style="width: 100px">
+                         <p style="padding-top: 13px"><strong>{% translate "All Appointments of Psychologist" %} "{{ psyy.full_name }}":</strong></p>
+                     </div>
+                     {% elif display == 'child' %}
+                          <div class="col-12 form-group mg-t-8" style="width: 100px">
+                             <p style="padding-top: 13px"><strong>{% translate "All Appointments of Child" %} "{{ ch.full_name }}":</strong></p>
+                         </div>
+                     {% elif display == 'dates' %}
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                        <p style="padding-top: 13px"><strong>{% translate "All Appointments between" %} {{ fromm }}-{{ too }}:</strong></p>
+                     </div>
+                     {% endif %}
+                </div>
+            </form>
+
+        <!---TABLE 1 --->
+            {% if display == "psy" or display == "child" %}
+
+            <div class="row">
+                <div class="col-12 form-group mg-t-8" style="width: 100px">
+                    <p style="padding-top: 13px"><strong>{% translate "On Going Appointments:" %}</strong></p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            {% if display == 'psy' %}
+                                <th>{% translate "Child Name" %}</th>
+                            {% elif display == 'child' %}
+                                <th>{% translate "Psychologist Name" %}</th>
+                            {% endif %}
+                            <th>{% translate "Appointment Date" %}</th>
+                            <th>{% translate "Appointment Time" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appoint in c_appoints %}
+                            <tr>
+                            {% if display == 'psy' %}
+                                <td>{{ appoint.child.full_name }}</td>
+                            {% elif display == 'child' %}
+                                <td>{{ appoint.psychologist.full_name }}</td>
+                            {% endif %}
+                            <td>{{ appoint.appointment_date|date:'d/m/Y' }}</td>
+                            <td>{{ appoint.appointment_s_time|date:'H:i:s' }}-{{ appoint.appointment_e_time|date:'H:i:s' }}</td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+
+            <!---TABLE 2 --->
+            <div class="row">
+                <div class="col-12 form-group mg-t-8" style="width: 100px">
+                    <p style="padding-top: 13px"><strong>{% translate "Concluded Appointments:" %}</strong></p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            {% if display == 'psy' %}
+                                <th>{% translate "Child Name" %}</th>
+                            {% elif display == 'child' %}
+                                <th>{% translate "Psychologist Name" %}</th>
+                            {% endif %}
+                            <th>{% translate "Appointment Date" %}</th>
+                            <th>{% translate "Appointment Time" %}</th>
+                            <th>{% translate "Assessment Data" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appoint in p_appoints %}
+                            <tr>
+                            {% if display == 'psy' %}
+                                <td>{{ appoint.child.full_name }}</td>
+                            {% elif display == 'child' %}
+                                <td>{{ appoint.psychologist.full_name }}</td>
+                            {% endif %}
+                            <td>{{ appoint.appointment_date|date:'d/m/Y' }}</td>
+                            <td>{{ appoint.appointment_s_time|date:'H:i:s' }}-{{ appoint.appointment_e_time|date:'H:i:s' }}</td>
+                            {% if appoint in assessments %}
+                                <td><a href={% url 'assessment-graph' appoint.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate "Check" %}</button></a></td>
+                            {% else %}
+                                <td>---</td>
+                            {% endif %}
+                            </tr>
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+
+            {% elif display == 'dates' %}
+                <div class="row">
+                <div class="col-12 form-group mg-t-8" style="width: 100px">
+                    <p style="padding-top: 13px"><strong>{% translate "All Appointments:" %}</strong></p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>{% translate "Child Name" %}</th>
+                            <th>{% translate "Psychologist Name" %}</th>
+                            <th>{% translate "Appointment Date" %}</th>
+                            <th>{% translate "Appointment Time" %}</th>
+                            <th>{% translate "Assessment Data" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appoint in appoints %}
+                            <tr>
+                            <td>{{ appoint.child.full_name }}</td>
+                            <td>{{ appoint.psychologist.full_name }}</td>
+                            <td>{{ appoint.appointment_date|date:'d/m/Y' }}</td>
+                            <td>{{ appoint.appointment_s_time|date:'H:i:s' }}-{{ appoint.appointment_e_time|date:'H:i:s' }}</td>
+                            {% if appoint in assessments %}
+                            <td><a href={% url 'assessment-graph' appoint.id %}><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate "Check" %}</button></a></td>
+                            {% else %}
+                                <td>---</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

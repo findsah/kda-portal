@@ -1,0 +1,123 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Search Student' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Search Student' %}</li>
+        </ul>
+    </div>
+
+     <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'All Registered Students' %}</h3>
+                </div>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="mg-b-20" method="post">
+                {% csrf_token %}
+                <div class="row gutters-8">
+{#                    <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">#}
+{#                        <input type="text" placeholder="Search by ID ..." class="form-control" name="search_by_id">#}
+{#                    </div>#}
+                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group" >
+                        <input type="text" placeholder="{% translate 'Search by Name' %}" class="form-control" name="search_by_name" style="height: 51px">
+                    </div>
+{#                    <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">#}
+{#                        <select class="select2" name="subject">#}
+{#                            <option value="">Search by Subject ...</option>#}
+{#                            {% for subj in subjects %}#}
+{#                                <option value={{ subj.lower }}>{{ subj }}</option>#}
+{#                            {% endfor %}#}
+{#                        </select>#}
+{#                    </div>#}
+                    <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group" >
+                        <button type="submit" class="fw-btn-fill btn-gradient-yellow" style="height: 51px">{% translate 'Search' %}</button>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>{% translate 'Full Name' %}</th>
+                            <th>{% translate 'Class' %}</th>
+                            <th>{% translate 'Gender' %}</th>
+                            <th>{% translate 'Age' %}</th>
+                            <th>{% translate 'School' %}</th>
+                            <th>{% translate 'Parent' %}</th>
+                            <th>{% translate 'Parent Username' %}</th>
+                            <th></th>
+                            <th>{% translate 'Mobile Number' %}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                            <tr>
+                            <td>{{ student.full_name }}</td>
+                            <td>{{ student.class_name }}</td>
+                            <td>{% if student.gender == "Male" %}{% translate "Male" %}{% else %}{% translate "Female" %}{% endif %}</td>
+                            <td>{{ student.age }}</td>
+                            <td>{{ student.school }}</td>
+                            <td>{{ student.parent.full_name }}</td>
+                            <td>{{ student.parent.username }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <span class="flaticon-more-button-of-three-dots"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                    {% if student.parent %}
+                                        <a class="dropdown-item" href="{% url 'change-password' student.parent.id %}"><i
+                                                class="fas fa-redo-alt text-orange-peel"></i>{% translate 'Change Password' %}</a>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>+{{ student.country_code }}-{{ student.mobile_number }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <span class="flaticon-more-button-of-three-dots"></span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+{#                                        <a class="dropdown-item" href="#"><i#}
+{#                                                class="fas fa-times text-orange-red"></i>Close</a>#}
+                                        <a class="dropdown-item" href="{% url 'edit_student' student.id %}"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>{% translate 'Edit' %}</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

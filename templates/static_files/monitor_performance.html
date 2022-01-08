@@ -1,0 +1,1163 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+        <div class="breadcrumbs-area">
+            <h3>{% translate 'Monitor Performance of' %} "{{ student.full_name }}"</h3>
+            <ul>
+                <li>
+                    <a href="index.html">{% translate 'Home' %}</a>
+                </li>
+                <li>{% translate 'Student' %}</li>
+                <li>{{ subj }}</li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="dashboard-summery-one">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="item-icon bg-light-magenta">
+                                <i class="flaticon-shopping-list text-magenta"></i>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="item-content">
+                                <div class="item-title">{% translate 'Achievement' %}</div>
+                                <div class="item-number"><span class="counter" data-num={{ percent_complete|floatformat:0 }}>{{ percent_complete|floatformat:0 }}</span><span>%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% if subj == "English" %}
+                <div class="col-lg-6">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-magenta">
+                                    <i class="flaticon-shopping-list text-magenta"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Overall Skill Percentage' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ overall|floatformat:0 }}>{{ overall|floatformat:0 }}</span><span>%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Percentage for each Skill' %}:</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table display text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>{% translate 'Skill Name' %}</th>
+                                        <th>{% translate 'Skill Completion Date' %}</th>
+                                        <th>{% translate 'Percentage' %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     {% for skill in skills %}
+                                         <tr>
+                                            <td>{{ skill.skill_name }}</td>
+                                            <td>{{ skill.date }}</td>
+                                            <td>{{ skill.percentage|floatformat:1 }}</td>
+                                         </tr>
+                                     {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+             </div>
+
+             <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Graphical View' %}:</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+{#                        {% if skill_month1|length > 1 %}#}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas id="line-chart"></canvas>
+                            </div>
+{#                        {% endif %}#}
+                        {% if skill_month2|length > 1 %}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas style="margin-top: 12rem" id="line-chart1"></canvas>
+                            </div>
+                        {% endif %}
+                        {% if skill_month3|length > 1 %}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas style="margin-top: 12rem" id="line-chart2"></canvas>
+                            </div>
+                        {% endif %}
+                        {% if skill_month4|length > 1 %}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas style="margin-top: 12rem" id="line-chart3"></canvas>
+                            </div>
+                        {% endif %}
+                        {% if skill_month5|length > 1 %}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas style="margin-top: 12rem" id="line-chart4"></canvas>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+             </div>
+
+
+        {% else %}
+                <div class="col-lg-6">
+                    <div class="dashboard-summery-one">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="item-icon bg-light-magenta">
+                                    <i class="flaticon-shopping-list text-magenta"></i>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="item-content">
+                                    <div class="item-title">{% translate 'Overall Letters Percentage' %}</div>
+                                    <div class="item-number"><span class="counter" data-num={{ overall|floatformat:0 }}>{{ overall|floatformat:0 }}</span><span>%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+             <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Percentage for Each Letter' %}:</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table display text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>{% translate 'Letter' %}</th>
+                                        <th>{% translate 'Letter Completion Date' %}</th>
+                                        <th>{% translate 'Percentage' %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     {% for letter in letters %}
+                                         <tr>
+                                            <td>{{ letter.letter_name }}</td>
+                                            <td>{{ letter.date }}</td>
+                                            <td>{{ letter.percentage|floatformat:1 }}</td>
+                                         </tr>
+                                     {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+
+             <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Percentage for Grouped Skills' %}:</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table display text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>{% translate 'Skill' %}</th>
+                                        <th>{% translate 'Percentage' %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     {% for skill, percentage in grouped_skills.items %}
+                                         <tr>
+                                            <td>{{ skill }}</td>
+                                            <td>{{ percentage|floatformat:1 }}</td>
+                                         </tr>
+                                     {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+             </div>
+
+
+            <div class="card height-auto">
+                <div class="card-body">
+                    <div class="heading-layout1">
+                        <div class="item-title">
+                            <h3>{% translate 'Graphical View' %}:</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-12">
+                            <canvas id="line-chart-a"></canvas>
+                        </div>
+                        {% if letters_month2|length > 1 %}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas id="line-chart-a1"></canvas>
+                            </div>
+                        {% endif %}
+                        {% if letters_month3|length > 1 %}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas id="line-chart-a2"></canvas>
+                            </div>
+                        {% endif %}
+                        {% if letters_month4|length > 1 %}
+                            <div class="col-xl-12 col-lg-12 col-12">
+                                <canvas id="line-chart-a3"></canvas>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+
+        {% endif %}
+
+    {# FOR ENGLISH #}
+    {{ skill_months|json_script:'skill_months' }}
+    {{ skill_month1|json_script:'skill_month1' }}
+    {{ skill_month2|json_script:'skill_month2' }}
+    {{ skill_month3|json_script:'skill_month3' }}
+    {{ skill_month4|json_script:'skill_month4' }}
+    {{ skill_month5|json_script:'skill_month5' }}
+
+    {# FOR ARABIC #}
+    {{ letters_months|json_script:'letters_months' }}
+    {{ letters_month1|json_script:'letters_month1' }}
+    {{ letters_month2|json_script:'letters_month2' }}
+    {{ letters_month3|json_script:'letters_month3' }}
+    {{ letters_month4|json_script:'letters_month4' }}
+
+    <script>
+
+        const skill_months = JSON.parse(document.getElementById('skill_months').textContent);
+        const skill_month1 = JSON.parse(document.getElementById('skill_month1').textContent);
+        const skill_month2 = JSON.parse(document.getElementById('skill_month2').textContent);
+        const skill_month3 = JSON.parse(document.getElementById('skill_month3').textContent);
+        const skill_month4 = JSON.parse(document.getElementById('skill_month4').textContent);
+        const skill_month5 = JSON.parse(document.getElementById('skill_month5').textContent);
+
+        const letters_months = JSON.parse(document.getElementById('letters_months').textContent);
+        const letters_month1 = JSON.parse(document.getElementById('letters_month1').textContent);
+        const letters_month2 = JSON.parse(document.getElementById('letters_month2').textContent);
+        const letters_month3 = JSON.parse(document.getElementById('letters_month3').textContent);
+        const letters_month4 = JSON.parse(document.getElementById('letters_month4').textContent);
+
+
+        var colorArray = [
+                '#dd0453', '#fdfd05', '#66E64D', '#0660e7', '#9900B3',
+                 '#d07201', '#14b300','#06d2a6','#f8061a','#c45850',
+                '#66664D', '#d6d6d7', '#76008f', '#4DB3FF', '#1AB399',
+                '#ec92d1', '#33991A', '#ba8383', '#B3B31A', '#00E680',
+                '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+                '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+        console.log(skill_months)
+        if ('{{ subj }}' === 'English')
+        {
+            new Chart(document.getElementById("line-chart"), {
+                type: 'line',
+                data: {
+                    {#labels: ['', 'Reviewing CVC words (2-3 letters)', 'The Letter sound', 'Review Test CVC Words (2-4 letters)',#}
+                    {#    'Two-Syllable Compound Words', 'Spelling Rule –ff-ll-ss-zz', 'Review Tests for CVC Detached Syllable',#}
+                    {#    'Review Tests for CVC Detached Syllable', 'Initial Blends', 'Final Consonant Blends'],#}
+                    {#labels : ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',#}
+                    {#'October', 'November', 'December'],#}
+                    datasets: [{
+                        label: 'Score',
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: skill_months,
+                        {#data: [{x:'2016-10-25', y:1}, {x:'2016-10-26', y:3}],#}
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                stepSize: 1,
+                                {#beginAtZero: true,#}
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'Reviewing CVC words (2-3 letters)';
+                                        case 2:
+                                            return 'The Letter sound';
+                                        case 3:
+                                            return 'Review Test CVC Words (2-4 letters)';
+                                        case 4:
+                                            return 'Two-Syllable Compound Words';
+                                        case 5:
+                                            return 'Spelling Rule –ff-ll-ss-zz';
+                                        case 6:
+                                            return 'Review Tests for CVC Detached Syllable';
+                                        case 7:
+                                            return 'Initial Blends';
+                                        case 8:
+                                            return 'Final Consonant Blends';
+                                        case 9:
+                                            return 'Page 92 Review Test';
+                                        case 10:
+                                            return 'Multisyllabic words with Blends (VC/CV, VCCCV)';
+                                        case 11:
+                                            return 'ng and nk Endings';
+                                        case 12:
+                                            return 'Suffix: ed as /id/ ;/d/; /t/';
+                                        case 13:
+                                            return 'Magic E';
+                                        case 14:
+                                            return 'Review Test for Magic e Words';
+                                        case 15:
+                                            return 'Review Test- CVC and CVCe Contrasts';
+                                        case 16:
+                                            return 'Review Test – Two Syllable Words with Magic e';
+                                        case 17:
+                                            return 'Syllable Magic e';
+                                        case 18:
+                                            return 'Open and Closed Syllable V/CV';
+                                        case 19:
+                                            return 'ph Digraph';
+                                        case 20:
+                                            return '-ck';
+                                        case 21:
+                                            return 'Pre test Vowel Digraphs ea, oa, ai, ee, ay, oe Introduce Vowel Digraphs not mastered';
+                                        case 22:
+                                            return 'Spellings for /k/: k, ck, or ke';
+                                        case 23:
+                                            return 'r-Controlled Vowels – er, ir, ,ur';
+                                        case 24:
+                                            return 'Dipthongs ow; ou';
+                                        case 25:
+                                            return '-igh';
+                                        case 26:
+                                            return 'Consonant le Endings (-ble; -fle; -tle; -dle; -gle; -kle; -ple; -zle)';
+                                        case 27:
+                                            return 'Doubling Rule Consonant-le';
+                                        case 28:
+                                            return 'Consonant-y Endings (y, vy, by, dy, ty, ry, ny, py, sy, my; -l y)';
+                                        case 29:
+                                            return 'Word endings in –ild; -old; -ind-; olt, ost';
+                                        case 30:
+                                            return 'r-Controlled Vowels – ar, or,';
+                                        case 31:
+                                            return 'Oo';
+                                        case 32:
+                                            return 'y as a vowel';
+                                        case 33:
+                                            return 'Hard and Soft c';
+                                        case 34:
+                                            return 'Hard and Soft g';
+                                        case 35:
+                                            return 'Spelling with ge, dge';
+                                        case 36:
+                                            return 'Review Test on Hard and Soft sounds of g and c';
+                                        case 37:
+                                            return 'The Three (au)s - aw -au -a';
+                                        case 38:
+                                            return 'Oi and oy, tch';
+                                        case 39:
+                                            return 'ing as an Ending';
+                                        case 40:
+                                            return 'VCV Spelling Rule ( Alternative Spelling and Pronunciation)';
+                                        case 41:
+                                            return 'Three Syllable Words';
+                                        case 42:
+                                            return 'Schwa Sound'
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                stepSize: 1
+                            },
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+             });
+
+
+            {#new Chart(document.getElementById("line-chart"), {#}
+            {#    type: 'line',#}
+            {#    data: {#}
+            {#        labels: ['', 'Reviewing CVC words (2-3 letters)', 'The Letter sound', 'Review Test CVC Words (2-4 letters)',#}
+            {#            'Two-Syllable Compound Words', 'Spelling Rule –ff-ll-ss-zz', 'Review Tests for CVC Detached Syllable',#}
+            {#            'Syllabication –Method VC/CV', 'Initial Blends', 'Final Consonant Blends'],#}
+            {#        datasets: [{#}
+            {#            label: 'Score',#}
+            {#            fill: false,#}
+            {#            barThickness: 20,#}
+            {#            backgroundColor: '#4DB3FF',#}
+            {#            data: skill_month1,#}
+            {#            borderWidth: 4,#}
+                        {#showLine: false#}
+            {#        }]#}
+            {#    },#}
+            {#    options: {#}
+            {#        scales: {#}
+            {#            yAxes: [{#}
+            {#                ticks: {#}
+            {#                    beginAtZero: true,#}
+            {#                    fontSize: 20,#}
+            {#                    callback: function (label, index, labels) {#}
+            {#                        switch (label) {#}
+            {#                            case 1:#}
+            {#                                return 'January';#}
+            {#                            case 2:#}
+            {#                                return 'February';#}
+            {#                            case 3:#}
+            {#                                return 'March';#}
+            {#                            case 4:#}
+            {#                                return 'April';#}
+            {#                            case 5:#}
+            {#                                return 'May';#}
+            {#                            case 6:#}
+            {#                                return 'June';#}
+            {#                            case 7:#}
+            {#                                return 'July';#}
+            {#                            case 8:#}
+            {#                                return 'August';#}
+            {#                            case 9:#}
+            {#                                return 'September';#}
+            {#                            case 10:#}
+            {#                                return 'October';#}
+            {#                            case 11:#}
+            {#                                return 'November';#}
+            {#                            case 12:#}
+            {#                                return 'December';#}
+            {#                        }#}
+            {#                    }#}
+            {#                }#}
+            {#            }],#}
+            {#            xAxes: [{#}
+            {#                ticks: {#}
+            {#                    fontSize: 20#}
+            {#                }#}
+            {#            }]#}
+            {#        },#}
+            {#        legend: {#}
+            {#            display: false#}
+            {#        },#}
+            {#        title: {#}
+            {#            display: false,#}
+            {#        },#}
+            {#        layout: {#}
+            {#            padding: {#}
+            {#                left: 160,#}
+            {#                right: 200,#}
+            {#            }#}
+            {#        }#}
+            {#    }#}
+            {# });#}
+
+            {# 2 #}
+
+            new Chart(document.getElementById("line-chart1"), {
+                type: 'line',
+                data: {
+                    labels: ['', 'Page 92 Review Test', 'Multisyllabic words with Blends (VC/CV, VCCCV)', 'ng and nk Endings)',
+                        'Suffix: ed as /id/ ;/d/; /t/', 'Magic E', 'Review Test for Magic e Words',
+                        'Review Test- CVC and CVCe Contrasts', 'Review Test – Two Syllable Words with Magic e', 'Syllable Magic e'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: skill_month2,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'January';
+                                        case 2:
+                                            return 'February';
+                                        case 3:
+                                            return 'March';
+                                        case 4:
+                                            return 'April';
+                                        case 5:
+                                            return 'May';
+                                        case 6:
+                                            return 'June';
+                                        case 7:
+                                            return 'July';
+                                        case 8:
+                                            return 'August';
+                                        case 9:
+                                            return 'September';
+                                        case 10:
+                                            return 'October';
+                                        case 11:
+                                            return 'November';
+                                        case 12:
+                                            return 'December';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+
+            {# 3 #}
+            new Chart(document.getElementById("line-chart2"), {
+                type: 'line',
+                data: {
+                    labels: ['', 'Open and Closed Syllable V/CV', 'ph Digraph', '-ck',
+                        'Pre test Vowel Digraphs ea, oa, ai, ee, ay, oe Introduce Vowel Digraphs not mastered',
+                        'Spellings for /k/: k, ck, or ke', 'r-Controlled Vowels – er, ir, ,ur',
+                        'Dipthongs ow; ou', '-igh', 'Consonant le Endings (-ble; -fle; -tle; -dle; -gle; -kle; -ple; -zle)'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: skill_month3,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'January';
+                                        case 2:
+                                            return 'February';
+                                        case 3:
+                                            return 'March';
+                                        case 4:
+                                            return 'April';
+                                        case 5:
+                                            return 'May';
+                                        case 6:
+                                            return 'June';
+                                        case 7:
+                                            return 'July';
+                                        case 8:
+                                            return 'August';
+                                        case 9:
+                                            return 'September';
+                                        case 10:
+                                            return 'October';
+                                        case 11:
+                                            return 'November';
+                                        case 12:
+                                            return 'December';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+
+            {# 4 #}
+            new Chart(document.getElementById("line-chart3"), {
+                type: 'line',
+                data: {
+                    labels: ['', 'Doubling Rule Consonant-le', 'Consonant-y Endings (y, vy, by, dy, ty, ry, ny, py, sy, my; -l y)',
+                        'Word endings in –ild; -old; -ind-; olt, ost', 'r-Controlled Vowels – ar, or,', 'Oo',
+                        'y as a vowel', 'Hard and Soft c', 'Hard and Soft g', 'Spelling with ge, dge'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: skill_month4,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'January';
+                                        case 2:
+                                            return 'February';
+                                        case 3:
+                                            return 'March';
+                                        case 4:
+                                            return 'April';
+                                        case 5:
+                                            return 'May';
+                                        case 6:
+                                            return 'June';
+                                        case 7:
+                                            return 'July';
+                                        case 8:
+                                            return 'August';
+                                        case 9:
+                                            return 'September';
+                                        case 10:
+                                            return 'October';
+                                        case 11:
+                                            return 'November';
+                                        case 12:
+                                            return 'December';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+
+            {# 5 #}
+            new Chart(document.getElementById("line-chart4"), {
+                type: 'line',
+                data: {
+                    labels: ['', 'Review Test on Hard and Soft sounds of g and c', 'The Three (au)s - aw -au -a',
+                        'Oi and oy, tch', 'ing as an Ending', 'VCV Spelling Rule ( Alternative Spelling and Pronunciation)',
+                        'Three Syllable Words', 'Schwa Sound'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: skill_month5,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'January';
+                                        case 2:
+                                            return 'February';
+                                        case 3:
+                                            return 'March';
+                                        case 4:
+                                            return 'April';
+                                        case 5:
+                                            return 'May';
+                                        case 6:
+                                            return 'June';
+                                        case 7:
+                                            return 'July';
+                                        case 8:
+                                            return 'August';
+                                        case 9:
+                                            return 'September';
+                                        case 10:
+                                            return 'October';
+                                        case 11:
+                                            return 'November';
+                                        case 12:
+                                            return 'December';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+        }
+
+        {# ------------------------------------------- FOR ARABIC --------------------------------------------------- #}
+
+        if ('{{ subj }}' === 'Arabic') {
+
+            new Chart(document.getElementById("line-chart-a"), {
+                type: 'line',
+                data: {
+                    {#labels: ['', 'الراء', 'الباء', 'العين',#}
+                    {#    'الدال', 'السين', 'الميم',#}
+                    {#    'النون', 'التنوين', 'الصاد'],#}
+                    datasets: [{
+                        label: 'Score',
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: letters_months,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                stepSize: 1,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'العين';
+                                        case 2:
+                                            return 'الباء';
+                                        case 3:
+                                            return 'الراء';
+                                        case 4:
+                                            return 'الميم';
+                                        case 5:
+                                            return 'السين';
+                                        case 6:
+                                            return 'الدال';
+                                        case 7:
+                                            return 'الصاد';
+                                        case 8:
+                                            return 'التنوين';
+                                        case 9:
+                                            return 'النون';
+                                        case 10:
+                                            return 'الزاي';
+                                        case 11:
+                                            return 'الكاف';
+                                        case 12:
+                                            return 'الهاء';
+                                        case 13:
+                                            return 'النون';
+                                        case 14:
+                                            return 'التاء المربوطة';
+                                        case 15:
+                                            return 'الحاء';
+                                        case 16:
+                                            return 'الواو';
+                                        case 17:
+                                            return 'الفاء';
+                                        case 18:
+                                            return 'الياء';
+                                        case 19:
+                                            return 'الضاد';
+                                        case 20:
+                                            return 'اللام';
+                                        case 21:
+                                            return 'الألف';
+                                        case 22:
+                                            return 'همزتا الوصل والقطع';
+                                        case 23:
+                                            return 'الهمزة المتوسطة';
+                                        case 24:
+                                            return 'الهمزة آخر الكلمة';
+                                        case 25:
+                                            return 'الألف المتطرفة';
+                                        case 26:
+                                            return 'الشدة';
+                                        case 27:
+                                            return 'الـ التعريف';
+                                        case 28:
+                                            return 'مهارة دخول حرف على الكلمة المبدوءة بـ ال';
+                                        case 29:
+                                            return 'القاف';
+                                        case 30:
+                                            return 'الجيم';
+                                        case 31:
+                                            return 'التاء';
+                                        case 32:
+                                            return 'الطاء';
+                                        case 33:
+                                            return 'الغين';
+                                        case 34:
+                                            return 'الشين';
+                                        case 35:
+                                            return 'الذال';
+                                        case 36:
+                                            return 'الخاء';
+                                        case 37:
+                                            return 'الطاء';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                stepSize: 1
+                            },
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+
+            {# 2 #}
+
+            new Chart(document.getElementById("line-chart-a1"), {
+                type: 'line',
+                data: {
+                    labels: ['', 'الزاي', 'الكاف', 'الهاء',
+                            'النون', 'التاء المربوطة', 'الحاء',
+                            'الواو', 'الفاء', 'الياء'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: letters_month2,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'January';
+                                        case 2:
+                                            return 'February';
+                                        case 3:
+                                            return 'March';
+                                        case 4:
+                                            return 'April';
+                                        case 5:
+                                            return 'May';
+                                        case 6:
+                                            return 'June';
+                                        case 7:
+                                            return 'July';
+                                        case 8:
+                                            return 'August';
+                                        case 9:
+                                            return 'September';
+                                        case 10:
+                                            return 'October';
+                                        case 11:
+                                            return 'November';
+                                        case 12:
+                                            return 'December';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+
+            {# 3 #}
+            new Chart(document.getElementById("line-chart-a2"), {
+                type: 'line',
+                data: {
+                    labels: ['', 'الضاد', 'اللام', 'الألف',
+                            'همزتا الوصل والقطع', 'الهمزة المتوسطة', 'الهمزة آخر الكلمة',
+                            'الألف المتطرفة', 'الشدة', 'الـ التعريف'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: letters_month3,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'January';
+                                        case 2:
+                                            return 'February';
+                                        case 3:
+                                            return 'March';
+                                        case 4:
+                                            return 'April';
+                                        case 5:
+                                            return 'May';
+                                        case 6:
+                                            return 'June';
+                                        case 7:
+                                            return 'July';
+                                        case 8:
+                                            return 'August';
+                                        case 9:
+                                            return 'September';
+                                        case 10:
+                                            return 'October';
+                                        case 11:
+                                            return 'November';
+                                        case 12:
+                                            return 'December';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+
+            4
+            new Chart(document.getElementById("line-chart-a3"), {
+                type: 'line',
+                data: {
+                    labels: ['', 'مهارة دخول حرف على الكلمة المبدوءة بـ ال', 'القاف', 'الجيم',
+                            'التاء', 'الطاء', 'الغين',
+                            'الشين', 'الذال', 'الخاء', 'الطاء'],
+                    datasets: [{
+                        label: "Score",
+                        fill: false,
+                        barThickness: 20,
+                        backgroundColor: '#4DB3FF',
+                        data: letters_month4,
+                        borderWidth: 4,
+                        {#showLine: false#}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20,
+                                callback: function (label, index, labels) {
+                                    switch (label) {
+                                        case 1:
+                                            return 'January';
+                                        case 2:
+                                            return 'February';
+                                        case 3:
+                                            return 'March';
+                                        case 4:
+                                            return 'April';
+                                        case 5:
+                                            return 'May';
+                                        case 6:
+                                            return 'June';
+                                        case 7:
+                                            return 'July';
+                                        case 8:
+                                            return 'August';
+                                        case 9:
+                                            return 'September';
+                                        case 10:
+                                            return 'October';
+                                        case 11:
+                                            return 'November';
+                                        case 12:
+                                            return 'December';
+                                    }
+                                }
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                    },
+                    layout: {
+                        padding: {
+                            left: 160,
+                            right: 200,
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+
+{% endblock %}

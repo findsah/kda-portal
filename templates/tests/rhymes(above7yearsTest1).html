@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhymes Test</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .imgStyle {
+            width: 15rem;
+            height: 15rem;
+        }
+
+        .imgCenter {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card height-auto container1" style="width: 50%; position: relative; top: 30vh; left: 25vw;"
+        id="full_screen_div">
+        <div class="card-body" id="startSection" >
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Training by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" id="demoPlay">Start
+                        Training</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" id="startTest" style="display: none;">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Test by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" id="testPlay">Start
+                        Test</button>
+                </div>
+            </div>
+        </div>
+        <div id="showDemoImages" class="col-12" style="display: none; width: 90%; margin: 10rem auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-bottom: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Olives.bmp" id="img0" style="display: none;"
+                    onclick="clickImage('audio5','audio6')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Bicycle.bmp" id="img1" style="display: none;"
+                    onclick="clickImage('audio7','audio8')" alt="Starting...  ">
+            </div>
+            <div style="height: 15rem;">
+                <img class="imgStyle imgCenter" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Lemon.bmp" id="img4" style="display: none;"
+                    onclick="clickImage('audio6','audio7')" alt="Starting...  ">
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-top: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Book.bmp" id="img2" style="display: none;"
+                    onclick="clickImage('audio9','audio10')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Sun.bmp" id="img3" style="display: none;"
+                    onclick="clickImage('audio8','audio9')" alt="Starting...  ">
+            </div>
+        </div>
+        <div id="showDemoImages1" class="col-12" style="display: none; width: 90%; margin: 10rem auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-bottom: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Door.bmp" id="img11" style="display: none;"
+                    onclick="clickImage('audio5','audio6')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Pen.bmp" id="img12" style="display: none;"
+                    onclick="clickImage('audio16','audio16')" alt="Starting...  ">
+            </div>
+            <div style="height: 15rem;">
+                <img class="imgStyle imgCenter" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Flag.bmp" id="img15" style="display: none;"
+                    onclick="clickImage('audio6','audio7')" alt="Starting...  ">
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-top: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Egg.bmp" id="img13" style="display: none;"
+                    onclick="clickImage('audio9','audio10')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Chair.bmp" id="img14" style="display: none;"
+                    onclick="clickImage('audio8','audio9')" alt="Starting...  ">
+            </div>
+        </div>
+        <div id="test1Images" class="col-12" style="display: none; width: 90%; margin: 10rem auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-bottom: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Spoon.bmp" id="img17" style="display: none;"
+                    onclick="testClick('Spoon','2','test1Images','test2Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/MEAT.BMP" id="img18" style="display: none;"
+                    onclick="testClick('meat','2','test1Images','test2Images')" alt="Starting...  ">
+            </div>
+            <div style="height: 15rem;">
+                <img class="imgStyle imgCenter" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/COAL.bmp" id="img21" style="display: none;"
+                    onclick="testClick('COAL','2','test1Images','test2Images')" alt="Starting...  ">
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-top: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Bird.bmp" id="img19" style="display: none;"
+                    onclick="testClick('bird','2','test1Images','test2Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Car.bmp" id="img20" style="display: none;"
+                    onclick="testClick('Car','2','test1Images','test2Images')" alt="Starting...  ">
+            </div>
+        </div>
+
+        <div id="test2Images" class="col-12" style="display: none; width: 90%; margin: 10rem auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-bottom: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Plane.bmp" id="img23" style="display: none;"
+                    onclick="testClick('plane','3','test2Images','test3Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/khabab.jpg" id="img24" style="display: none;"
+                    onclick="testClick('khabab','3','test2Images','test3Images')" alt="Starting...  ">
+            </div>
+            <div style="height: 15rem;">
+                <img class="imgStyle imgCenter" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Whale.bmp" id="img27" style="display: none;"
+                    onclick="testClick('whale','3','test2Images','test3Images')" alt="Starting...  ">
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-top: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Raspberry.bmp" id="img25" style="display: none;"
+                    onclick="testClick('raspberry','3','test2Images','test3Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Scissor.bmp" id="img26" style="display: none;"
+                    onclick="testClick('scissor','3','test2Images','test3Images')" alt="Starting...  ">
+            </div>
+        </div>
+
+        <div id="test3Images" class="col-12" style="display: none; width: 90%; margin: 10rem auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-bottom: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Horse.bmp" id="img29" style="display: none;"
+                    onclick="testClick('horse','4','test3Images','test4Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Gate.bmp" id="img30" style="display: none;"
+                    onclick="testClick('gate','4','test3Images','test4Images')" alt="Starting...  ">
+            </div>
+            <div style="height: 15rem;">
+                <img class="imgStyle imgCenter" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/BASKET2.bmp" id="img33" style="display: none;"
+                    onclick="testClick('basket2','4','test3Images','test4Images')" alt="Starting...  ">
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-top: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Flower.bmp" id="img31" style="display: none;"
+                    onclick="testClick('flower','4','test3Images','test4Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Plane.bmp" id="img32" style="display: none;"
+                    onclick="testClick('plane','4','test3Images','test4Images')" alt="Starting...  ">
+            </div>
+        </div>
+
+        <div id="test4Images" class="col-12" style="display: none; width: 90%; margin: 10rem auto;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-bottom: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Donkey.bmp" id="img35" style="display: none;"
+                    onclick="testClick('donkey','5','test4Images','test5Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Bowl.bmp" id="img36" style="display: none;"
+                    onclick="testClick('bowl','5','test4Images','test5Images')" alt="Starting...  ">
+            </div>
+            <div style="height: 15rem;">
+                <img class="imgStyle imgCenter" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/TRAIN.bmp" id="img39" style="display: none;"
+                    onclick="testClick('Train','5','test4Images','test5Images')" alt="Starting...  ">
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-direction: row-reverse; margin-top: 8rem;">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Crocodile.bmp" id="img37" style="display: none;"
+                    onclick="testClick('Crocodile','5','test4Images','test5Images')" alt="Starting...  ">
+                <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Sun.bmp" id="img38" style="display: none;"
+                    onclick="testClick('sun','5','test4Images','test5Images')" alt="Starting...  ">
+            </div>
+        </div>
+    </div>
+
+
+    <audio id="audio0" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Olive.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio1" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Bicycle.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio2" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/book.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio3" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/sun.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio4" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Lemon.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio5" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/wwolive.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio6" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/wwlemon.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio7" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/WWBicycle.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio8" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/wwsun.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio9" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/wwbook.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio10" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/SL_Lemon.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio11" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/door.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio12" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/pen.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio13" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/egg.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio14" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/chair.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio15" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/flag.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio16" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/sl_flag.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio17" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/spoon.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio18" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/MEAT.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio19" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/bird.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio20" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/car.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio21" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/coal.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio22" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/SL_COAL.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio23" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/plane.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio24" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Khabab.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio25" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Raspberry.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio26" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Scissor.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio27" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Whale.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio28" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/SL_Whale.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio29" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Horse.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio30" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/gate.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio31" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/flower.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio32" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/plane.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio33" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/basket2.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio34" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/SL_Basket2.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio35" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/donkey.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio36" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/bowl.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio37" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Crocodile.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio38" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/sun.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio39" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/Train.wav" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio40" autoplay>
+        <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Rhymes/Audios/sl_train.wav" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let check1 = 0;
+        let check2 = 0;
+        let check3 = 0;
+        let test1array = [];
+        let audio4 = document.getElementById("audio4");
+        let audio10 = document.getElementById("audio10");
+        let audio15 = document.getElementById("audio15");
+        let audio16 = document.getElementById("audio16");
+        let audio21 = document.getElementById("audio21");
+        let audio27 = document.getElementById("audio27");
+        let audio33 = document.getElementById("audio33");
+        let audio39 = document.getElementById("audio39");
+
+
+
+
+
+        $("#testPlay").click(function () {
+            console.log("sdf")
+            var element = document.querySelector(".container1");
+            element.requestFullscreen()
+                .then(function () {
+                    $("#test1Images").css("display", "block");
+                    $("#startTest").css("display", "none");
+                    displaytests("1");
+                })
+        });
+
+
+        function displaytests(value) {
+            if (value === "1") {
+                let demo = 17;
+                var value = setInterval(() => {
+                    $(`#img${demo}`).css("display", "block");
+                    document.getElementById(`audio${demo}`).play();
+                    console.log(demo)
+                    if (demo > 20) {
+                        audio21.onended = () => {
+                            document.getElementById("audio22").play();
+                        }
+                        clearInterval(value);
+                    }
+                    demo++;
+                }, 2000);
+            } else if (value === "2") {
+                let demo = 23;
+                var value = setInterval(() => {
+                    $(`#img${demo}`).css("display", "block");
+                    document.getElementById(`audio${demo}`).play();
+                    console.log(demo)
+                    if (demo > 26) {
+                        audio27.onended = () => {
+                            document.getElementById("audio28").play();
+                        }
+                        clearInterval(value);
+                    }
+                    demo++;
+                }, 2000);
+            } else if (value === "3") {
+                let demo = 29;
+                var value = setInterval(() => {
+                    $(`#img${demo}`).css("display", "block");
+                    document.getElementById(`audio${demo}`).play();
+                    console.log(demo)
+                    if (demo > 32) {
+                        audio33.onended = () => {
+                            document.getElementById("audio34").play();
+                        }
+                        clearInterval(value);
+                    }
+                    demo++;
+                }, 2000);
+            } else if (value === "4") {
+                let demo = 35;
+                var value = setInterval(() => {
+                    $(`#img${demo}`).css("display", "block");
+                    document.getElementById(`audio${demo}`).play();
+                    console.log(demo)
+                    if (demo > 38) {
+                        audio39.onended = () => {
+                            document.getElementById("audio40").play();
+                        }
+                        clearInterval(value);
+                    }
+                    demo++;
+                }, 2000);
+            } 
+        }
+
+        function testClick(answerVoice, moveNext, hideCurrentDiv, showNextDiv) {
+            test1array.push(answerVoice);
+            console.log(hideCurrentDiv, showNextDiv)
+            $(`#${hideCurrentDiv}`).css("display", "none");
+            $(`#${showNextDiv}`).css("display", "block");
+            if (moveNext < 5) {
+                displaytests(moveNext);
+            } else {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen()
+                        .then(() => {
+                            window.location.href = "http://40.89.138.111/en/rhymes2/" + {{ appointment.child.id }} + "/";
+                        })
+                        .catch((err) => console.error(err))
+                }
+            }
+        }
+
+        function displayNextImage() {
+            let demo = 0;
+            if (check2 === 0) {
+                var value = setInterval(() => {
+                    $(`#img${demo}`).css("display", "block");
+                    document.getElementById(`audio${demo}`).play();
+                    // console.log(demo)
+                    if (demo > 3) {
+                        check1 = 1;
+                        audio4.onended = () => {
+                            document.getElementById("audio5").play();
+                        }
+                        clearInterval(value);
+                    }
+                    demo++;
+                }, 2000);
+            } else if (check2 === 1) {
+                demo = 11;
+                var value = setInterval(() => {
+                    $(`#img${demo}`).css("display", "block");
+                    document.getElementById(`audio${demo}`).play();
+                    // console.log(demo)
+                    if (demo > 14) {
+                        check3 = 1;
+                        audio15.onended = () => {
+                            document.getElementById("audio16").play();
+                        }
+                        clearInterval(value);
+                    }
+                    demo++;
+                }, 2000);
+            }
+        }
+
+        function clickImage(voice1, voice2) {
+            let arr = ["audio5", "audio6", "audio7", "audio8", "audio9", "audio10"];
+            if (check1 === 2) {
+                if (voice1 == arr[0]) {
+                    audio10.play();
+                    audio10.onended = () => {
+                        $("#showDemoImages").css("display", "none");
+                        $("#showDemoImages1").css("display", "block");
+                        check2 = 1;
+                        displayNextImage();
+                    }
+                }
+            }
+            if (check1 === 1) {
+                if (voice1 == arr[0]) {
+                    document.getElementById(voice2).play();
+                } else if (voice1 == arr[1]) {
+                    document.getElementById(voice2).play();
+                } else if (voice1 == arr[2]) {
+                    document.getElementById(voice2).play();
+                } else if (voice1 == arr[3]) {
+                    document.getElementById(voice2).play();
+                } else if (voice1 == arr[4]) {
+                    document.getElementById(voice2).play();
+                    check1 = 2;
+                }
+            } else if (check3 === 1) {
+                if (voice1 == "audio16") {
+                    document.getElementById(voice2).play();
+                    audio16.onended = () => {
+                        $("#showDemoImages1").css("display", "none");
+                        if (document.fullscreenElement) {
+                            document.exitFullscreen()
+                                .then(() => {
+                                    $("#startTest").css("display", "block");
+                                })
+                                .catch((err) => console.error(err))
+                        }
+                    }
+                } else {
+                    alert("wrong");
+                }
+            }
+        }
+
+
+        $("#demoPlay").click(function () {
+            var element = document.querySelector(".container1");
+            element.requestFullscreen()
+                .then(function () {
+                    $("#showDemoImages").css("display", "block");
+                    $("#startSection").css("display", "none");
+                    displayNextImage();
+                })
+        });
+    </script>
+</body>
+
+</html>

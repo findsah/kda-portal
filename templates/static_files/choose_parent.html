@@ -1,0 +1,43 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+        <div class="breadcrumbs-area">
+            <h3>{% translate 'Assign Parent to' %} {{ student.full_name }}</h3>
+            <ul>
+                <li>
+                    <a href="index.html">{% translate 'Home' %}</a>
+                </li>
+                <li>{% translate 'Parent' %}</li>
+            </ul>
+        </div>
+
+        <div class="card height-auto">
+            <div class="card-body">
+                <form class="new-added-form" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Parent Name' %}</label>
+                            <select class="select2" name="parent">
+                                <option value="">{% translate 'Please Select Parent' %}</option>
+                                {% for parent in parents%}
+                                    <option value={{ parent.username }} {% if parent.username == par.username %}selected='selected'{% endif %}>{{ parent.full_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group" style="margin: 42px 0">
+                           <button type="submit" class="fw-btn-fill btn-gradient-yellow">{% translate 'Assign' %}</button>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group" style="margin: 42px 0">
+                            <a href="{% url 'add_parent' student.id %}"><button type="button" class="fw-btn-fill btn-gradient-yellow">{% translate 'Add New Parent' %}</button></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}

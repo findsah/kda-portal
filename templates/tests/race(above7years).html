@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>raceGame</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .resultDemo {
+            display: none;
+            justify-content: center;
+            flex-direction: row-reverse;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+
+        .result {
+            display: none;
+            justify-content: center;
+            flex-direction: row-reverse;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+
+        .imgStyle {
+            width: 15rem;
+            height: 15rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card height-auto container1" style="width: 50%; position: relative; top: 30vh; left: 25vw;"
+        id="full_screen_div">
+        <div class="card-body" id="startSection">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Training by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" id="demoPlay">Start
+                        Training</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body" id="test1" style="display: none;">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Test1 by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" id="test1Play">Start
+                        Test</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div id="showDemoImages" class="col-12"
+                    style="text-align: center; margin-bottom: 10px; width: 150px; margin: 20% auto; display: none">
+                    <img class="imgStyle" src="" id="img" alt="Starting...  ">
+                </div>
+            </div>
+        </div>
+
+        <div class="showImagesBeforeVideo" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Elephant11.png" alt="img">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Giraffe.png" alt="img">
+        </div>
+
+        <div class="showImagesRace1" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Cat.png" alt="img" id="Cat"
+                onclick="showResultRace1('1','ocat.wav', 'Cat.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Dog.png" alt="img" id="Dog"
+                onclick="showResultRace1('1','odog.wav', 'Dog.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Fox.png" alt="img" id="Fox"
+                onclick="showResultRace1('1','ofox.wav', 'Fox.png')">
+        </div>
+        <div class="showImagesRace2" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Cow.png" alt="img" id="Cow"
+                onclick="showResultRace1('2','OCow.wav', 'Cow.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Goat11.png" alt="img" id="Goat11"
+                onclick="showResultRace1('2','ogoat.wav', 'Goat11.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Donkey1.png" alt="img" id="Donkey1"
+                onclick="showResultRace1('2','odonkey.wav', 'Donkey1.png')">
+        </div>
+
+        <div class="showImagesRace3" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Mouse.png" alt="img" id="Mouse"
+                onclick="showResultRace1('3','Mouse.wav', 'Mouse.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Rabbit.png" alt="img" id="Rabbit"
+                onclick="showResultRace1('3','Rabbit.wav', 'Rabbit.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Snake.png" alt="img" id="Snake"
+                onclick="showResultRace1('3','Snake.wav', 'Snake.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Scorpion.png" alt="img" id="Scorpion"
+                onclick="showResultRace1('3','Scorpion.wav', 'Scorpion.png')">
+        </div>
+
+        <div class="showImagesRace4" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Pigeon.png" alt="img" id="Pigeon"
+                onclick="showResultRace1('4','Pigeon.wav', 'Pigeon.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Hen11.png" alt="img" id="Hen11"
+                onclick="showResultRace1('4','Hen11.wav', 'Hen11.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Bird.png" alt="img" id="Bird"
+                onclick="showResultRace1('4','Bird11.wav', 'Bird.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Duck.png" alt="img" id="Duck"
+                onclick="showResultRace1('4','Duck.wav', 'Duck.png')">
+        </div>
+
+        <div class="showImagesRace5" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Deer.png" alt="img" id="Deer"
+                onclick="showResultRace1('5','Deer.wav', 'Deer.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Horse.png" alt="img" id="Horse"
+                onclick="showResultRace1('5','Horse.wav', 'Horse.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Camel11.png" alt="img" id="Camel11"
+                onclick="showResultRace1('5','Camel11.wav', 'Camel11.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Lion.png" alt="img" id="Lion"
+                onclick="showResultRace1('5','Lion11.wav', 'Lion.png')">
+        </div>
+
+        <div class="showImagesRace6" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/ostrich11.png" alt="img" id="ostrich11"
+                onclick="showResultRace1('6','oostrich.wav', 'ostrich11.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Lion11.png" alt="img" id="Lion11"
+                onclick="showResultRace1('6','olion.wav', 'Lion11.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/bear.png" alt="img" id="bear"
+                onclick="showResultRace1('6','OBear.wav', 'bear.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Elephant11.png" alt="img" id="Elephant11"
+                onclick="showResultRace1('6','OElephant.wav', 'Elephant11.png')">
+        </div>
+
+        <div class="showImagesRace7" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/ant.png" alt="img" id="ant"
+                onclick="showResultRace1('7','ant.wav', 'ant.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Lizard.png" alt="img" id="Lizard"
+                onclick="showResultRace1('7','Lizard.wav', 'Lizard.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Beetle1.png" alt="img" id="Beetle1"
+                onclick="showResultRace1('7','Beetle1.wav', 'Beetle1.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Scorpion1.png" alt="img" id="Scorpion1"
+                onclick="showResultRace1('7','Scorpion.wav', 'Scorpion1.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Snake1.png" alt="img" id="Snake1"
+                onclick="showResultRace1('7','Snake.wav', 'Snake1.png')">
+        </div>
+
+        <div class="showImagesRace8" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Pigeon1.png" alt="img" id="Pigeon1"
+                onclick="showResultRace1('8','Pigeon.wav', 'Pigeon1.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/parrot1.png" alt="img" id="parrot1"
+                onclick="showResultRace1('8','parrot1.wav', 'parrot1.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Blkbird1.png" alt="img" id="Blkbird1"
+                onclick="showResultRace1('8','Blkbird1.wav', 'Blkbird1.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Dove.png" alt="img" id="Dove"
+                onclick="showResultRace1('8','Dove.wav', 'Dove.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Bird11.png" alt="img" id="Bird11"
+                onclick="showResultRace1('8','Bird.wav', 'Bird11.png')">
+        </div>
+
+        <div class="showImagesRace9" style="display: none; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/ostrich1.png" alt="img" id="ostrich1"
+                onclick="showResultRace1('9','ostrich1.wav', 'ostrich1.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Tiger.png" alt="img" id="Tiger"
+                onclick="showResultRace1('9','Tiger.wav', 'Tiger.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Donkey11.png" alt="img" id="Donkey11"
+                onclick="showResultRace1('9','Donkey11.wav', 'Donkey11.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Cow1.png" alt="img" id="Cow1"
+                onclick="showResultRace1('9','Cow.wav', 'Cow1.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Giraffe.png" alt="img" id="Giraffe"
+                onclick="showResultRace1('9','Giraffe.wav', 'Giraffe.png')">
+        </div>
+
+        <div class="showImagesAfterVideo" style="display: none; width: 100%; text-align: center;">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Elephant.png" alt="img" id="Elephant"
+                onclick="showResultDemo('OElephant.wav', 'Elephant.png')">
+            <img class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Giraffe11.png" alt="img" id="Giraffe11"
+                onclick="showResultDemo('ogiraffe.wav', 'Giraffe11.png')">
+        </div>
+
+
+        <div class="resultDemo"></div>
+        <div class="result resultrace1"></div>
+        <div class="result resultrace2"></div>
+        <div class="result resultrace3"></div>
+        <div class="result resultrace4"></div>
+        <div class="result resultrace5"></div>
+        <div class="result resultrace6"></div>
+        <div class="result resultrace7"></div>
+        <div class="result resultrace8"></div>
+        <div class="result resultrace9"></div>
+
+        <div id="vid" style="display: none;">
+            <video id="myVideo" width="1920" height="500" style="width: 100%; height: 100%">
+                <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/race.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <audio id="audio0" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Elefant.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio1" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is giraffe.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio2" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/hadarace.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio3" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/theorder.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio4" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/Thesequence.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio5" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/First1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio6" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ogiraffe.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio7" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/Second1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio8" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OElephant.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio9" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/wcame1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio10" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/wcame2.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio11" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/tryagain.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest0" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is fox.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest1" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is dog.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest2" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is cat.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest3" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/odog.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest4" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ocat.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest5" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ofox.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest6" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/Third1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest7" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/wcame3.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest8" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OCow.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest9" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/odonkey.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest10" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ogoat.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest11" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Cow.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest12" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is donkey.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest13" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is goat.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest14" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Dove.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest15" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is peacock.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest16" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Bird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest17" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ODove.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest18" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/opeacock.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest19" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OBird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest20" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is ostrich.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest21" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is tiger.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest22" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Bear.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest23" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/oostrich.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest24" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/otiger.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest25" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OBear.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest26" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Scorpion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest27" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is rabbit.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest28" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is mouse.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest29" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is snake.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest30" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OScorpion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest31" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/orabbit.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest32" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/omouse.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest33" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/osnake.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest34" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/Fourth1.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="audio35" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/wcame4.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest36" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is pigeon.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest37" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is duck.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest38" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Bird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest39" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is hen.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest40" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/opigeon.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest41" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/oduck.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest42" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OBird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest43" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ohen.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest44" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is horse.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest45" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Deer.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest46" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is lion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest47" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is camel.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest48" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ohorse.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest49" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ODeer.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest50" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/olion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest51" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ocamel.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest52" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is lion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest53" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Bear.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest54" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Elefant.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest55" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is ostrich.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest56" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/olion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest57" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OBear.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest58" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OElephant.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest59" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/oostrich.wav" type="audio/mpeg">
+        </audio>
+
+
+
+        <audio id="atest60" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is lizard.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest61" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is beetle.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest62" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is snake.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest63" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Scorpion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest64" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is ant.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest65" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/olizard.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest66" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/obeetle.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest67" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/osnake.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest68" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OScorpion.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest69" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/oant.wav" type="audio/mpeg">
+        </audio>
+
+
+
+        <audio id="atest70" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Dove.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest71" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is blkbird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest72" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Bird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest73" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is pigeon.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest74" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is parrot.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest75" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ODove.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest76" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/oblkbird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest77" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OBird.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest78" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/opigeon.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest79" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/oparrot.wav" type="audio/mpeg">
+        </audio>
+
+
+
+        <audio id="atest80" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is tiger.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest81" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is donkey.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest82" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is giraffe.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest83" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is ostrich.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest84" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/this is Cow.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest85" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/otiger.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest86" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/odonkey.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest87" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/ogiraffe.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest88" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/oostrich.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest89" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/OCow.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest90" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/wcame5.wav" type="audio/mpeg">
+        </audio>
+
+        <audio id="atest91" autoplay>
+            <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/Fifth1.wav" type="audio/mpeg">
+        </audio>
+    </div>
+    <script>
+
+        var demo = 0;
+        let playaudio = 0;
+        let startRace = 1;
+        let check = false;
+        let audioSrcArr = [];
+        let swap = (arr, i, j) => arr.map((e, k) => k - i ? (k - j ? e : arr[i]) : arr[j]);
+
+        var audio2 = document.getElementById("audio2");
+        var audio3 = document.getElementById("audio3");
+        var audio4 = document.getElementById("audio4");
+        var audio5 = document.getElementById("audio5");
+        var audio6 = document.getElementById("audio6");
+        var audio7 = document.getElementById("audio7");
+        var audio8 = document.getElementById("audio8");
+        var audio9 = document.getElementById("audio9");
+        var audio10 = document.getElementById("audio10");
+        var audio11 = document.getElementById("audio11");
+
+        var atest3 = document.getElementById("atest3");
+        var atest4 = document.getElementById("atest4");
+        var atest5 = document.getElementById("atest5");
+        var atest6 = document.getElementById("atest6");
+        var atest7 = document.getElementById("atest7");
+        var atest8 = document.getElementById("atest8");
+        var atest9 = document.getElementById("atest9");
+        var atest10 = document.getElementById("atest10");
+        var atest17 = document.getElementById("atest17");
+        var atest18 = document.getElementById("atest18");
+        var atest19 = document.getElementById("atest19");
+        var atest23 = document.getElementById("atest23");
+        var atest24 = document.getElementById("atest24");
+        var atest25 = document.getElementById("atest25");
+        var atest30 = document.getElementById("atest30");
+        var atest31 = document.getElementById("atest31");
+        var atest32 = document.getElementById("atest32");
+        var atest33 = document.getElementById("atest33");
+        var atest34 = document.getElementById("atest34");
+        var atest35 = document.getElementById("atest35");
+        var atest40 = document.getElementById("atest40");
+        var atest41 = document.getElementById("atest41");
+        var atest42 = document.getElementById("atest42");
+        var atest43 = document.getElementById("atest43");
+        var atest48 = document.getElementById("atest48");
+        var atest49 = document.getElementById("atest49");
+        var atest50 = document.getElementById("atest50");
+        var atest51 = document.getElementById("atest51");
+        var atest56 = document.getElementById("atest56");
+        var atest57 = document.getElementById("atest57");
+        var atest58 = document.getElementById("atest58");
+        var atest59 = document.getElementById("atest59");
+
+        var atest65 = document.getElementById("atest65");
+        var atest66 = document.getElementById("atest66");
+        var atest67 = document.getElementById("atest67");
+        var atest68 = document.getElementById("atest68");
+        var atest69 = document.getElementById("atest69");
+
+        var atest75 = document.getElementById("atest75");
+        var atest76 = document.getElementById("atest76");
+        var atest77 = document.getElementById("atest77");
+        var atest78 = document.getElementById("atest78");
+        var atest79 = document.getElementById("atest79");
+
+        var atest85 = document.getElementById("atest85");
+        var atest86 = document.getElementById("atest86");
+        var atest87 = document.getElementById("atest87");
+        var atest88 = document.getElementById("atest88");
+        var atest89 = document.getElementById("atest89");
+
+        var atest90 = document.getElementById("atest90");
+
+
+
+        const musics = [audio4, audio5, audio6, audio7, audio8];
+        var order = ["Thesequence.wav", "First1.wav", "ogiraffe.wav", "Second1.wav", "OElephant.wav"];
+        var demoVideo = document.getElementById("myVideo");
+        let demoImages = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Elephant11.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Giraffe.png"];
+
+
+        $("#test1Play").click(function () {
+            var element = document.querySelector(".container1");
+            element.requestFullscreen()
+                .then(function () {
+                    $("#showDemoImages").css("display", "block");
+                    $("#test1").css("display", "none");
+                    // startRace = 8;
+                    oneByOneImages();
+                })
+                .catch(function (error) {
+
+                });
+        });
+
+        function oneByOneImages() {
+            if (startRace == 1) {
+                var race1 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Fox.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Dog.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Cat.png"];
+                var stop = 0;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race1.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${x}`).play();
+                    document.getElementById("img").src = race1[x];
+                    if (stop >= 2) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $(".showImagesRace1").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    stop++;
+                }, 2000);
+            } else if (startRace == 2) {
+                var race2 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Cow.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Donkey1.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Goat11.png"];
+                var stop = 0;
+                let audiox = 11;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race2.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race2[x];
+                    if (stop >= 2) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace1").css("display", "none");
+                            $(".showImagesRace2").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            } else if (startRace == 3) {
+                var race3 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Scorpion.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Rabbit.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Mouse.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Snake.png"];
+                var stop = 0;
+                let audiox = 26;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race3.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race3[x];
+                    if (stop >= 3) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace2").css("display", "none");
+                            $(".showImagesRace3").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            } else if (startRace == 4) {
+                var race4 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Pigeon.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Duck.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Bird.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Hen11.png"];
+                var stop = 0;
+                let audiox = 36;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race4.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race4[x];
+                    if (stop >= 3) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace2").css("display", "none");
+                            $(".showImagesRace3").css("display", "none");
+                            $(".showImagesRace4").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            } else if (startRace == 5) {
+                var race5 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Horse.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Deer.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Lion11.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Camel11.png"];
+                var stop = 0;
+                let audiox = 44;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race5.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race5[x];
+                    if (stop >= 3) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace2").css("display", "none");
+                            $(".showImagesRace3").css("display", "none");
+                            $(".showImagesRace4").css("display", "none");
+                            $(".showImagesRace5").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            } else if (startRace == 6) {
+                var race6 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Lion11.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/bear.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Elephant11.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/ostrich11.png"];
+                var stop = 0;
+                let audiox = 52;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race6.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race6[x];
+                    if (stop >= 3) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace2").css("display", "none");
+                            $(".showImagesRace3").css("display", "none");
+                            $(".showImagesRace4").css("display", "none");
+                            $(".showImagesRace5").css("display", "none");
+                            $(".showImagesRace6").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            } else if (startRace == 7) {
+                var race7 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Lizard.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Beetle1.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Snake.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Scorpion.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/ant.png"];
+                var stop = 0;
+                let audiox = 60;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race7.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race7[x];
+                    if (stop >= 4) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace2").css("display", "none");
+                            $(".showImagesRace3").css("display", "none");
+                            $(".showImagesRace4").css("display", "none");
+                            $(".showImagesRace5").css("display", "none");
+                            $(".showImagesRace6").css("display", "none");
+                            $(".showImagesRace7").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            } else if (startRace == 8) {
+                var race8 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Dove.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Blkbird1.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Bird.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Pigeon.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/parrot1.png"];
+                var stop = 0;
+                let audiox = 70;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race8.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race8[x];
+                    if (stop >= 4) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace2").css("display", "none");
+                            $(".showImagesRace3").css("display", "none");
+                            $(".showImagesRace4").css("display", "none");
+                            $(".showImagesRace5").css("display", "none");
+                            $(".showImagesRace6").css("display", "none");
+                            $(".showImagesRace7").css("display", "none");
+                            $(".showImagesRace8").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            } else if (startRace == 9) {
+                var race9 = ["https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Tiger.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Donkey1.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Giraffe.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/ostrich11.png", "https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Cow.png"];
+                var stop = 0;
+                let audiox = 80;
+                let x = -1;
+                var value = setInterval(() => {
+                    x = (x === race9.length - 1) ? 0 : x + 1;
+                    document.getElementById(`atest${audiox}`).play();
+                    document.getElementById("img").src = race9[x];
+                    if (stop >= 4) {
+                        clearInterval(value);
+                        setTimeout(() => {
+                            document.getElementById("img").src = "";
+                            $("#showDemoImages").css("display", "none");
+                            $("#showImagesRace2").css("display", "none");
+                            $(".showImagesRace3").css("display", "none");
+                            $(".showImagesRace4").css("display", "none");
+                            $(".showImagesRace5").css("display", "none");
+                            $(".showImagesRace6").css("display", "none");
+                            $(".showImagesRace7").css("display", "none");
+                            $(".showImagesRace8").css("display", "none");
+                            $(".showImagesRace9").css("display", "block");
+                            audio2.play();
+                            audio2.onended = () => {
+                                audio3.play();
+                                test1VideoPlay();
+                            }
+                        }, 2000);
+                    }
+                    audiox++;
+                    stop++;
+                }, 2000);
+            }
+        }
+
+
+        function test1VideoPlay() {
+            setTimeout(() => {
+                $(".showImagesRace1").css("display", "none");
+                $(".showImagesRace2").css("display", "none");
+                $(".showImagesRace3").css("display", "none");
+                $(".showImagesRace4").css("display", "none");
+                $(".showImagesRace5").css("display", "none");
+                $(".showImagesRace6").css("display", "none");
+                $(".showImagesRace7").css("display", "none");
+                $(".showImagesRace8").css("display", "none");
+                $(".showImagesRace9").css("display", "none");
+                $("#vid").css("display", "block");
+                demoVideo.play();
+                demoVideo.onended = () => {
+                    playmusic();
+                }
+            }, 2000);
+        }
+
+
+        var music1 = [audio4, audio5, atest3, audio7, atest4, atest6, atest5];
+        var music2 = [audio4, audio5, atest8, audio7, atest9, atest6, atest10];
+        // var music3 = [audio4, audio5, atest17, audio7, atest18, atest6, atest19];
+        // var music4 = [audio4, audio5, atest23, audio7, atest24, atest6, atest25];
+        var music3 = [audio4, audio5, atest30, audio7, atest31, atest6, atest32, atest34, atest33];
+        var music4 = [audio4, audio5, atest40, audio7, atest41, atest6, atest42, atest34, atest43];
+        var music5 = [audio4, audio5, atest48, audio7, atest49, atest6, atest50, atest34, atest51];
+        var music6 = [audio4, audio5, atest56, audio7, atest57, atest6, atest58, atest34, atest59];
+        var music7 = [audio4, audio5, atest65, audio7, atest66, atest6, atest67, atest34, atest68, atest91, atest68];
+        var music8 = [audio4, audio5, atest75, audio7, atest76, atest6, atest77, atest34, atest78, atest91, atest79];
+        var music9 = [audio4, audio5, atest85, audio7, atest86, atest6, atest87, atest34, atest88, atest91, atest89];
+        var order1 = ["Thesequence.wav", "First1.wav", "odog.wav", "Second1.wav", "ocat.wav", "Third1.wav", "ofox.wav"];
+        var order2 = ["Thesequence.wav", "First1.wav", "OCow.wav", "Second1.wav", "odonkey.wav", "Third1.wav", "ogoat.wav"];
+        // var order3 = ["Thesequence.wav", "First1.wav", "ODove.wav", "Second1.wav", "opeacock.wav", "Third1.wav", "OBird.wav"];
+        // var order4 = ["Thesequence.wav", "First1.wav", "oostrich.wav", "Second1.wav", "otiger.wav", "Third1.wav", "OBear.wav"];
+        var order3 = ["Thesequence.wav", "First1.wav", "OScorpion.wav", "Second1.wav", "orabbit.wav", "Third1.wav",
+            "omouse.wav", "Fourth1.wav", "osnake.wav"];
+        var order4 = ["Thesequence.wav", "First1.wav", "opigeon.wav", "Second1.wav", "oduck.wav", "Third1.wav",
+            "OBird.wav", "Fourth1.wav", "ohen.wav"];
+        var order5 = ["Thesequence.wav", "First1.wav", "ohorse.wav", "Second1.wav", "ODeer.wav", "Third1.wav",
+            "olion.wav", "Fourth1.wav", "ocamel.wav"];
+        var order6 = ["Thesequence.wav", "First1.wav", "olion.wav", "Second1.wav", "OBear.wav", "Third1.wav",
+            "OElephant.wav", "Fourth1.wav", "oostrich.wav"];
+        var order7 = ["Thesequence.wav", "First1.wav", "olizard.wav", "Second1.wav", "obeetle.wav", "Third1.wav",
+            "osnake.wav", "Fourth1.wav", "OScorpion.wav", "Fifth1.wav", "oant.wav"];
+        var order8 = ["Thesequence.wav", "First1.wav", "ODove.wav", "Second1.wav", "oblkbird.wav", "Third1.wav",
+            "OBird.wav", "Fourth1.wav", "opigeon.wav", "Fifth1.wav", "oparrot.wav"];
+        var order9 = ["Thesequence.wav", "First1.wav", "otiger.wav", "Second1.wav", "odonkey.wav", "Third1.wav",
+            "ogiraffe.wav", "Fourth1.wav", "oostrich.wav", "Fifth1.wav", "OCow.wav"];
+        function playmusic() {
+            if (startRace == 1) {
+                var current = music1.shift();
+                var orderValue = order1.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace1").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace1").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 2) {
+                var current = music2.shift();
+                var orderValue = order2.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace2").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace2").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 3) {
+                var current = music3.shift();
+                var orderValue = order3.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace3").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace3").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 4) {
+                var current = music4.shift();
+                var orderValue = order4.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace4").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace4").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 5) {
+                var current = music5.shift();
+                var orderValue = order5.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace5").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace5").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 6) {
+                var current = music6.shift();
+                var orderValue = order6.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace6").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace6").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 7) {
+                var current = music7.shift();
+                var orderValue = order7.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace7").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace7").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 8) {
+                var current = music8.shift();
+                var orderValue = order8.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace8").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace8").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            } else if (startRace == 9) {
+                var current = music9.shift();
+                var orderValue = order9.shift();
+                if (current) {
+                    current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                    audio9.pause();
+                    audio10.pause();
+                    atest7.pause();
+                    $(".resultDemo").css("display", "none");
+                    current.addEventListener('ended', playmusic);
+                } else {
+                    $(".showImagesRace9").css("display", "block");
+                    check = true;
+                    playaudio = 0;
+                    audio9.play();
+                    $(".resultrace9").css("display", "flex");
+                    $("#vid").css("display", "none");
+                }
+            }
+        }
+
+
+        function showResultRace1(condition, audioSrc, imgSrc) {
+            if (check) {
+                console.log(playaudio, condition)
+                let makeID = imgSrc.split('.')[0];
+                var order1 = ["Thesequence.wav", "First1.wav", "odog.wav", "Second1.wav", "ocat.wav", "Third1.wav", "ofox.wav"];
+                audioSrcArr.push(audioSrc);
+                $(`.resultrace${condition}`).append(`<img  class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/${imgSrc}" alt="img" >`);
+                $(`#${makeID}`).css("display", "none");
+                if (playaudio === 0) {
+                    audio10.play();
+                    playaudio++;
+                } else if (playaudio === 1) {
+                    atest7.play();
+                    playaudio++;
+                } else if ((playaudio === 2) &&
+                    (condition == "3" || condition == "4" || condition == "5" || condition == "6" || condition == "7" || condition == "8" || condition == "9")) {
+                    audio35.play();
+                    playaudio++;
+                } else if ((playaudio === 3) && (condition == "7" || condition == "8" || condition == "9")) {
+                    atest90.play();
+                    playaudio++;
+                } else {
+                    startRace = Number(condition) + 1;
+                    $("#showDemoImages").css("display", "block");
+                    $(`.resultrace${condition}`).css("display", "none");
+                    oneByOneImages();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+        function displayNextImage() {
+            var x=-1;
+            var value = setInterval(() => {
+                x = (x === demoImages.length - 1) ? 0 : x + 1;
+                document.getElementById(`audio${x}`).play();
+                document.getElementById("img").src = demoImages[x];
+                if (demo >= 1) {
+                    clearInterval(value);
+                    setTimeout(() => {
+                        $("#showDemoImages").css("display", "none");
+                        $(".showImagesBeforeVideo").css("display", "block");
+                        audio2.play();
+                        audio2.onended = () => {
+                            audio3.play();
+                            playVideo();
+                        }
+                    }, 2000);
+                }
+                demo++;
+            }, 2000);
+        }
+
+
+        function showResultDemo(audioSrc, imgSrc) {
+            let makeID = imgSrc.split('.')[0];
+            order = ["Thesequence.wav", "First1.wav", "ogiraffe.wav", "Second1.wav", "OElephant.wav"];
+            audioSrcArr.push(audioSrc);
+            $(".resultDemo").append(`<img  class="imgStyle" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/${imgSrc}" alt="img" >`);
+            $(`#${makeID}`).css("display", "none");
+            if (playaudio === 0) {
+                audio10.play();
+                playaudio++;
+            } else if (playaudio === 1) {
+                if (audioSrcArr[0] === order[2]) {
+                    $(".resultDemo").css("display", "none");
+                    x = -1;
+                    document.getElementById("img").src = "";
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen()
+                            .then(() => {
+                                $("#test1").css("display", "block");
+                            })
+                            .catch((err) => console.error(err))
+                    }
+                } else {
+                    // let b = swap(order, 2, 4);
+                    // order = b;
+                    audio11.play();
+                    audio11.onended = () => {
+                        window.location.reload();
+                        // $(".resultDemo").css("display", "none");
+                        // if (document.fullscreenElement) {
+                        //     document.exitFullscreen()
+                        //         .then(() => {
+                        //             $("#startSection").css("display", "block");
+                        //         })
+                        //         .catch((err) => console.error(err))
+                        // }
+                    }
+                }
+            }
+        }
+
+        function playArray() {
+            var current = musics.shift();
+            var orderValue = order.shift();
+            if (current) {
+                current.src = `https://kda-assets.s3.eu-central-1.amazonaws.com/media/Races/Audios/${orderValue}`;
+                current.addEventListener('ended', playArray);
+            } else {
+                $(".showImagesAfterVideo").css("display", "block");
+                audio9.play();
+                $(".resultDemo").css("display", "flex");
+                $("#vid").css("display", "none");
+            }
+        }
+
+        function playVideo() {
+            setTimeout(() => {
+                $(".showImagesBeforeVideo").css("display", "none");
+                $("#vid").css("display", "block");
+                demoVideo.play();
+                demoVideo.onended = () => {
+                    playArray();
+                }
+            }, 2000);
+        }
+
+
+        $("#demoPlay").click(function () {
+            var element = document.querySelector(".container1");
+            element.requestFullscreen()
+                .then(function () {
+                    $("#showDemoImages").css("display", "block");
+                    $("#startSection").css("display", "none");
+                    displayNextImage();
+                })
+                .catch(function (error) {
+
+                });
+        });
+    </script>
+</body>
+
+</html>

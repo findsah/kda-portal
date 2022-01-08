@@ -1,0 +1,369 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Child Case Form' %}</h3>
+        <br>
+        <ul>
+            <li><button style="margin-bottom: 8px" type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate 'Step 1' %}</button></li>
+            <li>
+                <a href="{% url 'cc_child_history' child.id %}"><button name="step2" style="margin-bottom: 8px" type="submit"  class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 2' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 3' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 4' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 5' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 6' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 7' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 8' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 9' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 10' %}</button></a>
+{#            </li>#}
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate 'Child Details' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                    <div class="row">
+                        {#-------Child Data-----#}
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p><strong>{% translate 'Data Of Child' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                             <label>{% translate 'Child Name' %}</label>
+                             <p class="form-control" style="padding-top: 13px">{{ child.full_name }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Civil Number' %}</label>
+                            {% render_field form.civil_number|attr:'onkeydown="return event.keyCode !== 69"' class="form-control" value=cc.civil_number %}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'School Name' %}*</label>
+                            {% render_field form.school_name|attr:"required" class="form-control" value=cc.school_name%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                           <label>{% translate 'Date Of Birth' %}*</label>
+                            {% render_field form.dob|attr:"required readonly" type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker" data-position='bottom left' value=cc.dob%}
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Place of Birth' %}*</label>
+                            {% render_field form.place_of_birth|attr:"required" class="form-control" value=cc.place_of_birth%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Nationality' %}*</label>
+                            {% render_field form.nationality|attr:"required" class="form-control" value=cc.nationality %}
+                        </div>
+                         <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Grade' %}*</label>
+{#                            {% render_field form.grade|attr:"required" class="form-control" value=cc.grade %}#}
+                            <select class="select2" name="grade" required>
+                            <option value="">{% translate 'Please Select Option' %}</option>
+                            <option value="KG1" {% if cc.grade == 'KG1' %}selected="selected"{% endif %}>{% translate 'KG1' %}</option>
+                            <option value="KG2" {% if cc.grade == 'KG2' %}selected="selected"{% endif %}>{% translate 'KG2' %}</option>
+                            <option value="1" {% if cc.grade == '1' %}selected="selected"{% endif %}>{% translate '1' %}</option>
+                            <option value="2" {% if cc.grade == '2' %}selected="selected"{% endif %}>{% translate '2' %}</option>
+                            <option value="3" {% if cc.grade == '3' %}selected="selected"{% endif %}>{% translate '3' %}</option>
+                            <option value="4" {% if cc.grade == '4' %}selected="selected"{% endif %}>{% translate '4' %}</option>
+                            <option value="5" {% if cc.grade == '5' %}selected="selected"{% endif %}>{% translate '5' %}</option>
+                            <option value="6" {% if cc.grade == '6' %}selected="selected"{% endif %}>{% translate '6' %}</option>
+                            <option value="7" {% if cc.grade == '7' %}selected="selected"{% endif %}>{% translate '7' %}</option>
+                            <option value="8" {% if cc.grade == '8' %}selected="selected"{% endif %}>{% translate '8' %}</option>
+                            <option value="9" {% if cc.grade == '9' %}selected="selected"{% endif %}>{% translate '9' %}</option>
+                            <option value="10" {% if cc.grade == '10' %}selected="selected"{% endif %}>{% translate '10' %}</option>
+                            <option value="11" {% if cc.grade == '11' %}selected="selected"{% endif %}>{% translate '11' %}</option>
+                            <option value="12" {% if cc.grade == '12' %}selected="selected"{% endif %}>{% translate '12' %}</option>
+                            <option value="12+" {% if cc.grade == '12+' %}selected="selected"{% endif %}>{% translate '12+' %}</option>
+                        </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Date of Evaluation' %}</label>
+                            <p class="form-control" style="padding-top: 13px">{{ obj.appointment_date }}</p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Gender' %}*</label>
+                            <select class="select2" name="gender" required>
+                                <option value="">{% translate 'Please Select Gender' %}</option>
+                                <option value="male" {% if cc.gender == "male" %}selected="selected"{% endif %}>{% translate 'Male' %}</option>
+                                <option value="female" {% if cc.gender == "female" %}selected="selected"{% endif %}>{% translate 'Female' %}</option>
+                            </select>
+                        </div>
+
+                        {#-------Father Data-----#}
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Data Of Father' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Father Name' %}*</label>
+                            {% render_field form.father_name|attr:"required" class="form-control" value=cc.f_name %}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age' %}</label>
+                            {% render_field form.age_f class="form-control" value=cc.f_age%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Nationality' %}</label>
+                            {% render_field form.nationality_f class="form-control" value=cc.f_nationality%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Phone Number' %}*</label>
+                            {% render_field form.phone_f|attr:"required" class="form-control" value=cc.f_phone %}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Education Level' %}</label>
+                            {% render_field form.education_level_f class="form-control" value=cc.f_education_level%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Current Occupation' %}</label>
+                            {% render_field form.current_occupation_f class="form-control" value=cc.f_occupation%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Residence Address' %}*</label>
+                            {% render_field form.residence_address_f class="form-control" value=cc.f_address%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Email' %}*</label>
+{#                            {% render_field form.email_f|attr:"required" class="form-control" value=cc.f_email %}#}
+                            <input type="email" name="email_f" class="form-control" required {% if cc.f_email %} value={{ cc.f_email }} {% else %} value="portal@q8da.com" {% endif %}>
+                        </div>
+
+                        {#-------Mother Data-----#}
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Data Of Mother' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Mother Name' %}</label>
+                            {% render_field form.mother_name class="form-control" value=cc.m_name%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Age' %}</label>
+                            {% render_field form.age_m class="form-control" value=cc.m_age%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Nationality' %}</label>
+                            {% render_field form.nationality_m class="form-control" value=cc.m_nationality%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Phone Number' %}</label>
+                            {% render_field form.phone_m class="form-control" value=cc.m_phone%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Education Level' %}</label>
+                            {% render_field form.education_level_m class="form-control" value=cc.m_education_level%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Current Occupation' %}</label>
+                            {% render_field form.current_occupation_m class="form-control" value=cc.m_occupation%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Residence Address' %}</label>
+                            {% render_field form.residence_address_m class="form-control" value=cc.m_address%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Email' %}</label>
+{#                            {% render_field form.email_m class="form-control" value=cc.m_email%}#}
+                            <input type="email" name="email_m" class="form-control" {% if cc.m_email %} value={{ cc.m_email }} {% else %} value="portal@q8da.com" {% endif %}>
+                        </div>
+
+                        {#-------Guardian Data-----#}
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Data Of Guardian' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Guardian Name' %}</label>
+                            {% render_field form.guardian_name class="form-control" value=cc.g_name%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Education Level' %}</label>
+                            {% render_field form.education_level_g class="form-control" value=cc.g_education_level%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Relation To Child' %}</label>
+                            {% render_field form.relation_to_child class="form-control" value=cc.g_relation_child%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Phone Number' %}</label>
+                            {% render_field form.phone_g class="form-control" value=cc.g_phone%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Current Occupation' %}</label>
+                            {% render_field form.current_occupation_g class="form-control" value=cc.g_occupation%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Residence Address' %}</label>
+                            {% render_field form.residence_address_g class="form-control" value=cc.g_address%}
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Email' %}</label>
+{#                            {% render_field form.email_g class="form-control" value=cc.g_email%}#}
+                            <input type="email" name="email_g" class="form-control" {% if cc.g_email %} value={{ cc.g_email }} {% else %} value="portal@q8da.com" {% endif %}>
+                        </div>
+
+                        {#-------Family Info-----#}
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Family' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Relation Between Parents' %}</label>
+                            <select class="select2" name="relation_btw_parents">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="very_close" {% if cc.relation_btw_parents == "very_close"%}selected="selected"{% endif %}>{% translate 'Very Close' %}</option>
+                                <option value="far" {% if cc.relation_btw_parents == "far"%}selected="selected"{% endif %}>{% translate 'Far' %}</option>
+                                <option value="there_is_none" {% if cc.relation_btw_parents == "there_is_none"%}selected="selected"{% endif %}>{% translate 'There is none' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Martial Status Of Parents' %}</label>
+                            <select class="select2" name="martial_status_parents">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="still_exists" {% if cc.martial_status == "still_exists"%}selected="selected"{% endif %}>{% translate 'Still Exists' %}</option>
+                                <option value="does_not_exists" {% if cc.martial_status == "does_not_exists"%}selected="selected"{% endif %}>{% translate 'Does Not Exists' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Indicate if Parent has passed away' %}</label>
+                            <select class="select2" name="parent_passed_away">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="the_mother" {% if cc.passed_away == "the_mother"%}selected="selected"{% endif %}>{% translate 'The Mother' %}</option>
+                                <option value="the_father" {% if cc.passed_away == "the_father"%}selected="selected"{% endif %}>{% translate 'The Father' %}</option>
+                                <option value="both" {% if cc.passed_away == "both"%}selected="selected"{% endif %}>{% translate 'Both' %}</option>
+                                <option value="none" {% if cc.passed_away == "none"%}selected="selected"{% endif %}>{% translate 'None' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-12 form-group">
+                            <label>{% translate 'Child living with in case father or mother is lost' %}</label>
+                            {% render_field form.child_living_with class="form-control" value=cc.living_in_case%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Father has been married before' %}?</label>
+                            <select class="select2" name="father_married_before">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.father_married == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.father_married == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Mother has been married before' %}?</label>
+                            <select class="select2" name="mother_married_before">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.mother_married == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.mother_married == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'If yes, When was it' %}?</label>
+                            <select class="select2" name="when_was_married">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="before_marriage" {% if cc.married_when == "before_marriage"%}selected="selected"{% endif %}>{% translate 'Before Marriage of Parents' %}</option>
+                                <option value="after_separation" {% if cc.married_when == "after_separation"%}selected="selected"{% endif %}>{% translate 'After the parents separated' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Second Marriage in family' %}?</label>
+                            <select class="select2" name="second_marriage">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.second_marriage == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.second_marriage == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'If yes, Nationality of Husband/Wife' %}</label>
+                            {% render_field form.nationality_second_marriage class="form-control" value=cc.nationality_sec_m%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Number Of Family Members' %}</label>
+                            {% render_field form.number_of_family_members class="form-control" value=cc.number_of_fam%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Number of Siblings' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Brothers' %}</label>
+                            {% render_field form.number_of_brothers class="form-control" value=cc.number_of_bros%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Sisters' %}</label>
+                            {% render_field form.number_of_sisters class="form-control" value=cc.number_of_sis%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Number of Siblings from Father' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Brothers' %}</label>
+                            {% render_field form.number_of_brothers_from_father class="form-control" value=cc.number_of_bros_f%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Sisters' %}</label>
+                            {% render_field form.number_of_sisters_from_father class="form-control" value=cc.number_of_sis_f%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p style="padding-top: 13px"><strong>{% translate 'Number of Siblings from Mother' %}:</strong></p>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Brothers' %}</label>
+                            {% render_field form.number_of_brothers_from_mother class="form-control" value=cc.number_of_bros_m%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Sisters' %}</label>
+                            {% render_field form.number_of_sisters_from_mother class="form-control" value=cc.number_of_sis_m%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Order of the child among siblings' %}</label>
+                            {% render_field form.order_sibling class="form-control" value=cc.order_sib%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Other People Living in the House' %}?</label>
+                            {% render_field form.others_living_in_house class="form-control" placeholder='' value=cc.other_people_house%}
+                        </div>
+                        <div class="col-xl-5 col-lg-6 col-12 form-group">
+                            <label>{% translate 'With whom the child lives currently' %}?</label>
+                            {% render_field form.lives_with class="form-control" value=cc.lives_current%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <a href={% url 'cc_child_history' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

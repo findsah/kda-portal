@@ -1,0 +1,262 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <form class="new-added-form" method="POST">
+        {% csrf_token %}
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Child Case Form' %}</h3>
+        <br>
+        <ul>
+            <li><a href="{% url 'child-case' child.id %}"><button name="step1" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-dark-pastel-green">{% translate 'Step 1' %}</button></a></li>
+            <li>
+                <button style="margin-bottom: 8px" type="button" class="btn-fill-lmd radius-30 text-light bg-true-v">{% translate 'Step 2' %}</button>
+            </li>
+            <li>
+                <a href="{% url 'cc_condition' child.id %}"><button name="step3" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 3' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_stages_of_growth' child.id %}"><button name="step4" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 4' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_family_history' child.id %}"><button name="step5" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 5' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_social_development' child.id %}"><button name="step6" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 6' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_child-behaviour' child.id %}"><button name="step7" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 7' %}</button></a>
+            </li>
+             <li>
+                 <a href="{% url 'cc_school_history' child.id %}"><button name="step8" style="margin-bottom: 8px"  type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 8' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_difficulties' child.id %}"><button name="step9" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 9' %}</button></a>
+            </li>
+            <li>
+                <a href="{% url 'cc_other_info' child.id %}"><button name="step10" style="margin-bottom: 8px" type="submit" class="btn-fill-md radius-30 text-light bg-martini">{% translate 'Step 10' %}</button></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card ui-tab-card">
+        <div class="card-body">
+            <div class="heading-layout1 mg-b-25">
+                <div class="item-title">
+                    <h3>{% translate 'Development Of Child History' %}</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p><strong>{% translate 'Pregnancy Period' %}</strong></p>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate 'State of Mind of Mother during Pregnancy' %}</label>
+                            {% render_field form.state_of_mind_preg class="form-control" value=cc.state_of_m%}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Mother's age when she got pregnant with the case" %}?</label>
+                            {% render_field form.age_during_preg class="form-control" value=cc.p_m_age%}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Mother's health and psychological states during pregnancy" %}?</label>
+                            {% render_field form.health_psy_preg class="form-control" value=cc.m_health%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p><strong>{% translate 'Did the mother suffer from any of the following problems' %}?</strong></p>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Bleeding' %}</label>
+                            <select class="select2" name="preg_bleeding">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.p_bleeding == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.p_bleeding == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Poisoning' %}</label>
+                            <select class="select2" name="preg_poisoning">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.p_poisoning == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.p_poisoning == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Infection' %}</label>
+                            <select class="select2" name="preg_infection">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.p_infection == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.p_infection == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Accident' %}</label>
+                            <select class="select2" name="preg_accident">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.p_accident == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.p_accident == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate 'Please specify the kind of the accident' %}:</label>
+                            {% render_field form.kind_of_accident_preg class="form-control" value=cc.p_accident_detail%}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate 'List the kind of medicines and drugs the mother took during pregnancy' %}</label>
+                            {% render_field form.medicines_drugs_preg class="form-control" value=cc.p_medicines%}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate 'Are there any other problems or diseases during the pregnancy period' %}</label>
+                            {% render_field form.prob_disease_preg class="form-control" value=cc.p_problems%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Duration of Pregnancy was' %}</label>
+                            <select class="select2" name="duration_preg">
+                                <option value="Please Select Option"></option>
+                                <option value="complete" {% if cc.p_duration == "complete"%}selected="selected"{% endif %}>{% translate 'Complete' %}</option>
+                                <option value="incomplete" {% if cc.p_duration == "incomplete"%}selected="selected"{% endif %}>{% translate 'In-Complete' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'If In-Complete, in which month' %}?</label>
+                            <select class="select2" name="preg_month">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="6" {% if cc.p_month == "6"%}selected="selected"{% endif %}>{% translate '6th' %}</option>
+                                <option value="7" {% if cc.p_month == "7"%}selected="selected"{% endif %}>{% translate '7th' %}</option>
+                                <option value="8" {% if cc.p_month == "8"%}selected="selected"{% endif %}>{% translate '8th' %}</option>
+                                <option value="9" {% if cc.p_month == "9"%}selected="selected"{% endif %}>{% translate '9th' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p><strong>{% translate 'Birth Period' %}</strong></p>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Type Of Birth' %}</label>
+                            <select class="select2" name="birth_type">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="normal" {% if cc.type_birth == "normal"%}selected="selected"{% endif %}>{% translate 'Normal' %}</option>
+                                <option value="retraction_ring" {% if cc.type_birth == "retraction_ring"%}selected="selected"{% endif %}>{% translate 'Birth With Retraction Ring' %}</option>
+                                <option value="c_section" {% if cc.type_birth == "c_section"%}selected="selected"{% endif %}>{% translate 'Cesarean Section' %}</option>
+                                <option value="anesthesia" {% if cc.type_birth == "anesthesia"%}selected="selected"{% endif %}>{% translate 'Maternal Prenatal Anesthesia' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p>{% translate 'Case Of Baby during Birth' %}:</p>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate "Born With Umbilical Cord around the baby's neck" %}</label>
+                            <select class="select2" name="umbilical_cord_neck">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.umbilical_cord == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.umbilical_cord == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Skin Turned Yellow' %}</label>
+                            <select class="select2" name="skin_yellow">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.skin_yellow == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.skin_yellow == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Skin was blue' %}</label>
+                            <select class="select2" name="skin_blue">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.skin_blue == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.skin_blue == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Twin or a Triplet' %}</label>
+                            <select class="select2" name="twin_triplet">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.twin_trip == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.twin_trip == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Needed Oxygen or Oxygen Deficiency' %}</label>
+                            <select class="select2" name="oxygen_deficiency">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.needed_oxy == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.needed_oxy == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Colic/Cramps' %}</label>
+                            <select class="select2" name="colic_cramps">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.colic_cramps == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.colic_cramps == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Dropsy/Edema/Hydrops' %}</label>
+                            <select class="select2" name="dropsy_edema_hydrops">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.dropsy == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.dropsy == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-12 form-group">
+                            <label>{% translate "Baby's weight at birth" %}</label>
+                            {% render_field form.baby_weight_birth class="form-control" value=cc.baby_weight%}
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-12 form-group">
+                            <label>{% translate 'Any other problems at birth not mentioned' %}?</label>
+                            {% render_field form.prob_birth class="form-control" value=cc.b_problems%}
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-12 form-group">
+                            <label>{% translate 'Did the mother suffer from complications during birth' %}</label>
+                            {% render_field form.complications_birth class="form-control" value=cc.b_complications %}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <p><strong>{% translate 'Post Birth Period' %}</strong></p>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate 'Health and psychological state of the mother post delivery' %}</label>
+                            {% render_field form.health_psy_post_b class="form-control" value=cc.health_m_pb%}
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Was baby in incubator' %}</label>
+                            <select class="select2" name="baby_incubator">
+                                <option value="">{% translate 'Please Select Option' %}</option>
+                                <option value="yes" {% if cc.incubator == "yes"%}selected="selected"{% endif %}>{% translate 'Yes' %}</option>
+                                <option value="no" {% if cc.incubator == "no"%}selected="selected"{% endif %}>{% translate 'No' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Identify the period' %}</label>
+                            {% render_field form.period_incubator class="form-control" value=cc.incubator_period%}
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-12 form-group">
+                            <label>{% translate 'Did the baby need surgery immediately after birth, and what was the surgery' %}?</label>
+                            {% render_field form.surgery_baby class="form-control" value=cc.b_surgery%}
+                        </div>
+                        <div class="col-12 form-group mg-t-8" style="width: 100px">
+                            <a href={% url 'child-case' child.id %}><button name="prev" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Previous' %}</button></a>
+                            <a href={% url 'cc_condition' child.id %}><button name="next" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

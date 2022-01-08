@@ -1,0 +1,2911 @@
+{% load static %}
+
+
+<head>
+    <title>KDA</title>
+    <link rel="shortcut icon" type="image/x-icon" href={% static 'static_files/img/favicon.png' %}>
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href={% static 'static_files/css/normalize.css' %}>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href={% static 'static_files/css/main.css' %}>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href={% static 'static_files/css/bootstrap.min.css' %}>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<style>
+    .no_display {
+        display: none;
+    }
+</style>
+
+<body>
+
+    {# Audios #}
+    {% if below_age == 1 %}
+        <audio id="audio1">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/audio/heretoyb.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio2">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/audio/clikrite.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio3">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/audio/lookatme.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio4">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/audio/tryto.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio5">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/audio/gooddeed.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio6">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/audio/quickley.mp3" type="audio/mpeg">
+        </audio>
+    {% else %}
+        <audio id="audio1">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/audios/heretoyb.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio2">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/audios/clikrite.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio3">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/audios/lookatme.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio4">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/audios/tryto.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio5">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/audios/gooddeed.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="audio6">
+          <source src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/audios/quickley.mp3" type="audio/mpeg">
+        </audio>
+    {% endif %}
+
+    <div class="card height-auto" style="width: 50%; position: relative; top: 30vh; left: 25vw;" id="full_screen_div">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12" style="text-align: center; margin-bottom: 10px">
+                    Start the Test by clicking the button below!
+                </div>
+                <div class="col-12" style="text-align: center; margin-top: 10rem">
+                    <button class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark" onclick="full_func();">Full Screen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="no_display" id="colored_shapes" style="border: solid white; margin: 0 1.5rem">
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="circle-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Circle1.png">
+                <img id="circle-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Circle2.png">
+                <img id="circle-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Circle3.png">
+                <img id="circle-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Circle4.png">
+                <img id="circle-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Circle5.png">
+                <img id="circle-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Circle6.png">
+            {% else %}
+                <img id="circle-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Circle1.png">
+                <img id="circle-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Circle2.png">
+                <img id="circle-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Circle3.png">
+                <img id="circle-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Circle4.png">
+                <img id="circle-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Circle5.png">
+                <img id="circle-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Circle6.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="cross-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Cross1.png">
+                <img id="cross-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Cross2.png">
+                <img id="cross-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Cross3.png">
+                <img id="cross-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Cross4.png">
+                <img id="cross-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Cross5.png">
+                <img id="cross-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Cross6.png">
+            {% else %}
+                <img id="cross-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Cross1.png">
+                <img id="cross-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Cross2.png">
+                <img id="cross-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Cross3.png">
+                <img id="cross-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Cross4.png">
+                <img id="cross-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Cross5.png">
+                <img id="cross-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Cross6.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="diamond-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Diamnd1.png">
+                <img id="diamond-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Diamnd2.png">
+                <img id="diamond-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Diamnd3.png">
+                <img id="diamond-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Diamnd4.png">
+                <img id="diamond-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Diamnd5.png">
+                <img id="diamond-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Diamnd6.png">
+            {% else %}
+                <img id="diamond-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Diamnd1.png">
+                <img id="diamond-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Diamnd2.png">
+                <img id="diamond-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Diamnd3.png">
+                <img id="diamond-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Diamnd4.png">
+                <img id="diamond-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Diamnd5.png">
+                <img id="diamond-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Diamnd6.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="square-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square1.png">
+                <img id="square-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square2.png">
+                <img id="square-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square3.png">
+                <img id="square-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square4.png">
+                <img id="square-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square5.png">
+                <img id="square-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square6.png">
+            {% else %}
+                <img id="square-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square1.png">
+                <img id="square-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square2.png">
+                <img id="square-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square3.png">
+                <img id="square-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square4.png">
+                <img id="square-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square5.png">
+                <img id="square-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square6.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="star-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Star1.png">
+                <img id="star-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Star2.png">
+                <img id="star-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Star3.png">
+                <img id="star-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Star4.png">
+                <img id="star-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Star5.png">
+                <img id="star-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Star6.png">
+            {% else %}
+                <img id="star-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Star1.png">
+                <img id="star-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Star2.png">
+                <img id="star-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Star3.png">
+                <img id="star-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Star4.png">
+                <img id="star-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Star5.png">
+                <img id="star-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Star6.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="triangle-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Triang1.png">
+                <img id="triangle-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Triang2.png">
+                <img id="triangle-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Triang3.png">
+                <img id="triangle-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Triang4.png">
+                <img id="triangle-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Triang5.png">
+                <img id="triangle-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Triang6.png">
+            {% else %}
+                <img id="triangle-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Triang1.png">
+                <img id="triangle-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Triang2.png">
+                <img id="triangle-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Traing3.png">
+                <img id="triangle-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Triang4.png">
+                <img id="triangle-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Triang5.png">
+                <img id="triangle-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Triang6.png">
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="no_display justify-content-center" id="question_shape" style="width: 100%; position: fixed; top: 40%">
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="outline-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Outline1.png">
+                <img id="outline-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Outline2.png">
+                <img id="outline-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Outline3.png">
+                <img id="outline-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Outline4.png">
+                <img id="outline-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Outline5.png">
+                <img id="outline-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Outline6.png">
+            {% else %}
+                <img id="outline-1" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Outline1.png">
+                <img id="outline-2" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Outline2.png">
+                <img id="outline-3" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Outline3.png">
+                <img id="outline-4" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Outline4.png">
+                <img id="outline-5" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Outline5.png">
+                <img id="outline-6" class="no_display" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Outline6.png">
+            {% endif %}
+
+        </div>
+    </div>
+
+    {# Squares #}
+    <div class="no_display" id="mcq_shapes" style="margin-top: 0; position: fixed; width: 100%; bottom: 0">
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="box1" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square1.png">
+            {% else %}
+                <img id="box1" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square1.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="box2" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square2.png">
+            {% else %}
+                <img id="box2" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square2.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="box3" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square3.png">
+            {% else %}
+                <img id="box3" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square3.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="box4" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square4.png">
+            {% else %}
+                <img id="box4" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square4.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            <i id="pointer" style="position: absolute; bottom: 38%; left: 33%; font-size: xx-large" class="fal fa-hand-pointer"></i>
+            {% if below_age == 1 %}
+                <img id="box5" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square5.png">
+            {% else %}
+                <img id="box5" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square5.png">
+            {% endif %}
+        </div>
+        <div class="col-2">
+            {% if below_age == 1 %}
+                <img id="box6" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/below_7/Square6.png">
+            {% else %}
+                <img id="box6" height="100%" width="80%" src="https://kda-assets.s3.eu-central-1.amazonaws.com/media/toybox/above_7/Square6.png">
+            {% endif %}
+        </div>
+    </div>
+
+
+
+    <script>
+        let lis = [];
+        let question;
+        let clickable = false;
+        let training_question = 0;
+        let training = true;
+        let d;
+        var start_time;
+        var end_time;
+        var question_displayed = 0;
+        var answered_correctly = 0;
+
+        function clear_images() {
+            document.getElementById('star-' + lis[0]).classList.add('no_display');
+            document.getElementById('square-' + lis[1]).classList.add('no_display');
+            document.getElementById('triangle-' + lis[2]).classList.add('no_display');
+            document.getElementById('cross-' + lis[3]).classList.add('no_display');
+            document.getElementById('diamond-' + lis[4]).classList.add('no_display');
+            document.getElementById('circle-' + lis[5]).classList.add('no_display');
+        }
+
+        function clear_question() {
+            document.getElementById('outline-' + question).classList.add('no_display');
+        }
+
+        {# Variables #}
+        var full_screen_div = document.getElementById('full_screen_div');
+        var main_div = document.getElementById('main_div');
+        var colored_shapes = document.getElementById('colored_shapes');
+        var question_shape = document.getElementById('question_shape');
+        var mcq_shapes = document.getElementById('mcq_shapes');
+        var pointer = document.getElementById('pointer');
+
+        var audio1 = document.getElementById('audio1');
+        var audio2 = document.getElementById('audio2');
+        var audio3 = document.getElementById('audio3');
+        var audio4 = document.getElementById('audio4');
+        var audio5 = document.getElementById('audio5');
+        var audio6 = document.getElementById('audio6');
+
+        function full_func() {
+            {#document.getElementById('vid').classList.remove('no_display');#}
+
+            {#vid.play();#}
+
+            var elemm = document.documentElement;
+            if (elemm.requestFullscreen) {
+                elemm.requestFullscreen();
+            } else if (elemm.webkitRequestFullscreen) { /* Safari */
+                elemm.webkitRequestFullscreen();
+            } else if (elemm.msRequestFullscreen) { /* IE11 */
+                elemm.msRequestFullscreen();
+            }
+
+            full_screen_div.classList.add('no_display');
+
+            document.body.style.backgroundColor = 'black'
+            audio1.play();
+        }
+
+        audio1.onended = function () {
+            colored_shapes.classList.remove('no_display');
+            colored_shapes.classList.add('row');
+            random_color_function();
+
+            setTimeout(() => {
+                question_shape.classList.remove('no_display');
+                question_shape.classList.add('row');
+                random_question_shape_function();
+
+                audio2.play();
+            }, 2000)
+        }
+
+        audio2.onended = function () {
+            setTimeout(() => {
+                audio3.play();
+            }, 2000)
+        }
+
+        audio3.onended = function () {
+            mcq_shapes.classList.remove('no_display');
+            mcq_shapes.classList.add('row');
+
+            setTimeout(() => {
+                pointer.classList.add('no_display');
+                mcq_shapes.classList.add('no_display');
+                mcq_shapes.classList.remove('row');
+                question_shape.classList.add('no_display');
+                question_shape.classList.remove('row');
+                clear_question();
+                clear_images();
+
+                audio4.play();
+                colored_shapes.classList.remove('no_display');
+                colored_shapes.classList.add('row');
+                random_color_function();
+            }, 3000)
+        }
+
+        function random_color_function() {
+            lis = [];
+            let i = 0;
+            while (i < 10){
+                let x = Math.floor(Math.random() * 6) + 1
+                lis.push(x);
+                i ++;
+              }
+            document.getElementById('star-' + lis[0]).classList.remove('no_display');
+            document.getElementById('square-' + lis[1]).classList.remove('no_display');
+            document.getElementById('triangle-' + lis[2]).classList.remove('no_display');
+            document.getElementById('cross-' + lis[3]).classList.remove('no_display');
+            document.getElementById('diamond-' + lis[4]).classList.remove('no_display');
+            document.getElementById('circle-' + lis[5]).classList.remove('no_display');
+        }
+
+        function random_question_shape_function() {
+            question = Math.floor(Math.random() * 6) + 1
+            document.getElementById('outline-' + question).classList.remove('no_display');
+        }
+
+
+        audio4.onended =  function () {
+            play();
+        }
+
+        function play() {
+
+            question_shape.classList.add('row')
+            question_shape.classList.remove('no_display')
+
+            question_shape.classList.remove('no_display');
+            question_shape.classList.add('row');
+            random_question_shape_function();
+
+            setTimeout(() => {
+                clear_images();
+                question_shape.classList.add('no_display');
+                question_shape.classList.remove('row');
+
+                mcq_shapes.classList.remove('no_display');
+                mcq_shapes.classList.add('row');
+                clickable = true;
+            }, 2000)
+        }
+
+
+        box1.addEventListener('click', (event) => {
+            if (clickable === true) {
+                if (question === 1){
+                    if (lis[0] === 1) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 2){
+                    if (lis[1] === 1) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 3){
+                    if (lis[2] === 1) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 4){
+                    if (lis[3] === 1) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 5){
+                    if (lis[4] === 1) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 6){
+                    if (lis[5] === 1) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        box2.addEventListener('click', (event) => {
+            if (clickable === true) {
+                if (question === 1){
+                    if (lis[0] === 2) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 2){
+                    if (lis[1] === 2) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 3){
+                    if (lis[2] === 2) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 4){
+                    if (lis[3] === 2) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 5){
+                    if (lis[4] === 2) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 6){
+                    if (lis[5] === 2) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        box3.addEventListener('click', (event) => {
+            if (clickable === true) {
+                if (question === 1){
+                    if (lis[0] === 3) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 2){
+                    if (lis[1] === 3) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 3){
+                    if (lis[2] === 3) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 4){
+                    if (lis[3] === 3) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 5){
+                    if (lis[4] === 3) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 6){
+                    if (lis[5] === 3) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        box4.addEventListener('click', (event) => {
+            if (clickable === true) {
+                if (question === 1){
+                    if (lis[0] === 4) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 2){
+                    if (lis[1] === 4) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 3){
+                    if (lis[2] === 4) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 4){
+                    if (lis[3] === 4) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 5){
+                    if (lis[4] === 4) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 6){
+                    if (lis[5] === 4) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        box5.addEventListener('click', (event) => {
+            if (clickable === true) {
+                if (question === 1){
+                    if (lis[0] === 5) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 2){
+                    if (lis[1] === 5) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 3){
+                    if (lis[2] === 5) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 4){
+                    if (lis[3] === 5) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 5){
+                    if (lis[4] === 5) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 6){
+                    if (lis[5] === 5) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        box6.addEventListener('click', (event) => {
+            if (clickable === true) {
+                if (question === 1){
+                    if (lis[0] === 6) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 2){
+                    if (lis[1] === 6) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 3){
+                    if (lis[2] === 6) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 4){
+                    if (lis[3] === 6) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 5){
+                    if (lis[4] === 6) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+                if (question === 6){
+                    if (lis[5] === 6) {
+                        if (training === true) {
+                            audio5.play();
+                            training_question = training_question + 1;
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                answered_correctly = answered_correctly + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                    else {
+                        mcq_shapes.classList.add('no_display');
+                        mcq_shapes.classList.remove('row');
+                        question_shape.classList.add('no_display');
+                        question_shape.classList.remove('row');
+                        clear_images();
+                        clear_question();
+
+                        if (training === true) {
+                            random_color_function();
+                            play();
+                        }
+                        else {
+                            d = new Date();
+                            if (d.getTime() - start_time < 90000){
+                                question_displayed = question_displayed + 1;
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+                                question_shape.classList.add('no_display');
+                                question_shape.classList.remove('row');
+                                clear_images();
+                                clear_question();
+                                random_color_function();
+                                play();
+                            }
+                            else {
+                                clear_question();
+                                clear_images();
+                                mcq_shapes.classList.add('no_display');
+                                mcq_shapes.classList.remove('row');
+
+                                console.log('Finished');
+                                console.log('Total Questions:', question_displayed, 'Correct Answered:', answered_correctly);
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+        audio5.onended = function () {
+
+            mcq_shapes.classList.add('no_display');
+            mcq_shapes.classList.remove('row');
+            question_shape.classList.add('no_display');
+            question_shape.classList.remove('row');
+            clear_images();
+            clear_question();
+            if (training_question < 6) {
+                random_color_function();
+                play();
+            }
+            else {
+                training = false;
+                setTimeout(() => {
+                    audio6.play();
+                }, 1000)
+            }
+        }
+
+        audio6.onended = function () {
+            d = new Date();
+            start_time = d.getTime();
+
+
+            console.log('start:', start_time, 'end:', end_time)
+
+            random_color_function();
+            play();
+        }
+
+    </script>
+
+</body>

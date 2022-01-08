@@ -1,0 +1,64 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'Search Student' %}</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Pre Performance Search' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                    <h3>{% translate 'Search Student for teacher' %} "{{ teacher.full_name }}"</h3>
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+            {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table display text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>{% translate 'Student Name' %}</th>
+                                <th>{% translate 'Session Start Date' %}</th>
+                                <th>{% translate 'Add/Edit Pre Evaluation' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for intv in intvs %}
+                                <tr>
+                                    <td>{{ intv.student.full_name }}</td>
+                                    <td>{{ intv.start_date }}</td>
+                                    {% if teacher.subject_teaching == 'English' %}
+                                        <td><a href="{% url 'pre-eva1' intv.id %}"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Add/Edit' %}</button></a></td>
+                                    {% elif teacher.subject_teaching == 'Arabic' %}
+                                        <td><a href="{% url 'pre-eva2' intv.id %}"><button type="button" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Add/Edit' %}</button></a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                         </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

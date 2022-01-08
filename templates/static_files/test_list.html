@@ -1,0 +1,45 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        <h3>{% translate 'All tests list for' %} "{{ psy.full_name }}"</h3>
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+            <li>{% translate 'Tests list' %}</li>
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="table-responsive" id="tablee">
+                <table class="table display data-table text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>{% translate 'Test Name' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for test in tests %}
+                            <tr>
+                                {% if test.test_name == "IQ" %}<td>{% translate 'IQ' %}</td>{% endif %}
+                                {% if test.test_name == "ACOPS" %}<td>{% translate 'ACOPS' %}</td>{% endif %}
+                                {% if test.test_name == "Junior" %}<td>{% translate 'Junior' %}</td>{% endif %}
+                                {% if test.test_name == "Secondary" %}<td>{% translate 'Secondary' %}</td>{% endif %}
+                                {% if test.test_name == "Stanford" %}<td>{% translate 'Stanford' %}</td>{% endif %}
+                                {% if test.test_name == "Weksler" %}<td>{% translate 'Weksler' %}</td>{% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

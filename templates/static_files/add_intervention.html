@@ -1,0 +1,77 @@
+{% extends 'static_files/dashboard_receptionist.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="breadcrumbs-area">
+        {% if intervention %}
+            <h3>{% translate 'Re-schedule Intervention' %}</h3>
+            {% else %}
+            <h3>{% translate 'Add Intervention' %}</h3>
+        {% endif %}
+        <ul>
+            <li>
+                <a href="index.html">{% translate 'Home' %}</a>
+            </li>
+             {% if intervention %}
+                 <li>{% translate 'Re-Schedule Intervention' %}</li>
+                 {% else %}
+                 <li>{% translate 'Add Intervention' %}</li>
+             {% endif %}
+        </ul>
+    </div>
+
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+                <div class="item-title">
+                     {% if intervention %}
+                         <h3>{% translate 'Re-Schedule Weekly Intervention' %}</h3>
+                         {% else %}
+                         <h3>{% translate 'Schedule New Weekly Intervention' %}</h3>
+                     {% endif %}
+                </div>
+               <div class="dropdown">
+                    <a class="dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">...</a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                    </div>
+                </div>
+            </div>
+            <form class="new-added-form" method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                         <label>{% translate 'Student' %}:</label>
+                         <input class="form-control" name="student" value="{{ student }}">
+                    </div>
+                    {% if teachers %}
+                    <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>{% translate 'Select Teacher' %}</label>
+                            <select class="select2" name="teacher">
+                                <option value="">{% translate 'Please Select Teacher' %} *</option>
+                                {% for teacher in teachers %}
+                                    <option value={{ teacher.username }} {% if intervention.teacher.username == teacher.username or session.intervention.teacher.username == teacher.username %} selected="selected" {% endif %}>"{{ teacher.subject_teaching }}"-{{ teacher.full_name }}</option>
+                                {% endfor %}
+                            </select>
+                    </div>
+                    <div class="col-12 form-group mg-t-8">
+                        <button name="sub" type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">{% translate 'Next' %}</button>
+{#                        <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>#}
+                    </div>
+                    {% else %}
+                        <p style="padding-top: 51px">{% translate 'Student Already added in every available Subject' %}</p>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
