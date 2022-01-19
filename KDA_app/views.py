@@ -2490,7 +2490,7 @@ def registration_student(request):
                                            mobile_number=mobile_number)
             # g_f_name = ''.join(parent.first_name.split(' '))
             # g_l_name = ''.join(parent.last_name.split(' '))
-            parent.username = f'{parent.mobile_number}'
+            parent.username = f'{parent.id}'
             parent.role = role
             parent.save()
         student = Person(email=email, first_name=f_name, last_name=l_name, gender=gender,
